@@ -197,7 +197,6 @@
   }
   @media (max-width:400px){
     .wrap{padding:0 16px}
-    h1{font-size:34px;line-height:1.3}
     .index ul{grid-template-columns:1fr}
     .index li{border-right:0;padding:16px 0}
     .index li:first-child{padding-top:18px}
@@ -205,6 +204,10 @@
     .r1{width:230px}.r2{width:176px}.r3{width:112px}
     .work .foot a{padding:11px 14px}
     .step{grid-template-columns:28px minmax(0,1fr);gap:10px}
+  }
+  /* 320px 一档内容宽只有 288px，38px 字号会把「从真实问题出发，」折成两截 */
+  @media (max-width:360px){
+    h1{font-size:34px;line-height:1.3}
   }
 
   /* ---------- print / PDF ---------- */

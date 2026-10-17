@@ -34,7 +34,9 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
 const val = async expr => { const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true }); if (r.exceptionDetails) throw new Error(r.exceptionDetails.exception?.description || r.exceptionDetails.text); return r.result.value; };
 const json = async expr => JSON.parse(await val(expr));
 
-await send('Page.enable'); await send('Runtime.enable');
+await send('Page.enable'); await send('Runtime.enable'); await send('Network.enable');
+// 必须禁用缓存：同一 URL 重复 navigate 时 Chrome 会复用旧响应，量到的就不是刚发布的那一版
+await send('Network.setCacheDisabled', { cacheDisabled: true });
 fs.mkdirSync(OUT, { recursive: true });
 
 const MEASURE = String.raw`(() => {
