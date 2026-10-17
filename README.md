@@ -2,7 +2,7 @@
 
 Ming（月明）的独立个人作品集网站。公开访问地址：
 
-**https://YuemingHub.github.io/ming-portfolio/**
+**https://yueminghub.github.io/ming-portfolio/**
 
 这一页只回答一件事：他是谁、真实做过什么、做到什么程度、哪些还没解决，以及别人可以怎么核实。
 
@@ -20,7 +20,8 @@ Ming（月明）的独立个人作品集网站。公开访问地址：
 3. **每个链接都要能核实。** 改完内容跑一次 `bash tools/verify-links.sh`，逐条看返回码和页面标题。
 4. **不绑定自定义域名。** 现有域名（`ymai.love`、`ymai.me`、`ymai.fun`、`mingos.cn`）都指向各自产品的生产服务，作品集只用 `github.io` 默认域名。
 5. **不为每次申请另建一个网站。** 求职、合作、分享、创造者计划都用这一份，持续更新。
-6. **移动端优先。** 改动后至少检查 320px / 390px 两档宽度，确认没有横向溢出与文字截断。
+6. **改完跑客观量测。** `node tools/audit-browser.mjs` 会用真实浏览器量线上页：横向溢出、文字截断、
+   点击命中区、失效锚点、外部依赖、键盘可达性，以及打印介质下的隐形文字（白字白底）。退出码非 0 就是没过。
 
 ## 发布
 
@@ -28,22 +29,34 @@ Ming（月明）的独立个人作品集网站。公开访问地址：
 
 ```bash
 git push origin main
-bash tools/verify-links.sh https://YuemingHub.github.io/ming-portfolio/
+bash tools/verify-links.sh https://yueminghub.github.io/ming-portfolio/
 ```
 
 `.nojekyll` 用于关闭 Jekyll 处理，保证文件按原样发布。
+
+## 复跑验收并刷新验证记录
+
+`evidence/VERIFICATION.md` 由脚本生成，内容全是命令原始输出，不是手写结论。改了内容或重新发布后刷新它：
+
+```bash
+# 先起一个带调试端口的无头浏览器（Chrome 或 Edge 均可）
+chrome.exe --headless=new --remote-debugging-port=9333 --user-data-dir=<空目录> about:blank
+# 再跑记录装置（内部会调用 tools/audit-browser.mjs）
+bash tools/record-verification.sh
+```
 
 ## 生成 PDF
 
 页面内置 A4 打印样式（`@media print`），PDF 必须从**线上地址**打印，才能确认交付的是发布版本：
 
 ```bash
-edge --headless --disable-gpu --no-pdf-header-footer \
-  --print-to-pdf=ming-portfolio.pdf \
-  "https://YuemingHub.github.io/ming-portfolio/"
+chrome --headless --disable-gpu --no-pdf-header-footer \
+  --print-to-pdf=evidence/ming-portfolio-$(date +%Y%m%d).pdf \
+  "https://yueminghub.github.io/ming-portfolio/"
 ```
 
-打印设置：A4、默认边距、背景图形开启（`print-color-adjust: exact` 已在样式里声明）。
+`evidence/ming-portfolio-20261017.pdf` 是这样产出的第一份：7 页 A4、36 个可点链接、字体已内嵌子集。
+重新生成时按日期另存，不要覆盖旧文件——它是那一版网页的交付凭据。
 
 ## 内容结构
 

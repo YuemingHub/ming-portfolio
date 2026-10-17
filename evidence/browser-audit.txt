@@ -1,0 +1,6 @@
+URL=https://yueminghub.github.io/ming-portfolio/
+viewport=1440x900 + 390x844 + 320x640 + 768x1024 (Chrome headless CDP)
+tab_chain=["M Ming · 个人作品集 -> #top","关于 -> #about","作品 -> #works","工作方式 -> #method","研究 -> #research","公开证据 -> #evidence","联系 -> #contact","看我真实做过的项目 -> #works","我的创造方式 ↗ -> #method","ymai.love ↗ -> https://ymai.love/","github.com/YuemingHub/Wo -> https://github.com/YuemingHub/World-Space","ymai.fun（进入需要账号）↗ -> https://ymai.fun/","mingos.cn ↗ -> https://mingos.cn/","github.com/YuemingHub/Mi -> https://github.com/YuemingHub/MingOS","ymai.me ↗ -> https://ymai.me/","https://ymai.love/ -> https://ymai.love/","https://ymai.me/ -> https://ymai.me/","https://ymai.fun/ -> https://ymai.fun/"]
+small_hit_targets=3
+js_exceptions=[]
+console_errors=[]
