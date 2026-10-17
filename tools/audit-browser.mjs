@@ -9,6 +9,7 @@ import fs from 'node:fs';
 
 const SITE = process.argv[2] || 'https://yueminghub.github.io/ming-portfolio/';
 const PORT = process.argv[3] || '9333';
+const PREFIX = process.argv[4] || '';   // 多个发布面要分别留证时用，如 fun-
 const OUT = new URL('../evidence/', import.meta.url).pathname.replace(/^\//, '');
 const fails = [];
 const say = (...a) => console.log(...a);
@@ -67,7 +68,7 @@ for (const [label, w, h, mob, dpr] of VIEWS) {
   await send('Page.navigate', { url: SITE }); await wait(mob ? 5200 : 6000);
   const m = await json(MEASURE);
   const shot = await send('Page.captureScreenshot', { format: 'png' });
-  fs.writeFileSync(`${OUT}${label}-fold.png`, Buffer.from(shot.data, 'base64'));
+  fs.writeFileSync(`${OUT}${PREFIX}${label}-fold.png`, Buffer.from(shot.data, 'base64'));
   say(`${label} ${w}x${h}: scrollW=${m.scrollW}/${m.vw} height=${m.scrollH} 溢出=${m.hOverflow} 截断=${m.clipped.length} 命中区<24px=${m.smallTargets.length} 失效锚点=${m.brokenAnchors.length} 外链=${m.counts.httpLinks} 项目块=${m.counts.works} 标题="${m.title}"`);
   if (m.hOverflow) fail(label + ' 横向溢出', JSON.stringify(m.overflowers));
   if (m.clipped.length) fail(label + ' 文字截断', JSON.stringify(m.clipped));
@@ -122,7 +123,7 @@ await send('Emulation.setEmulatedMedia', { media: '', features: [] });
 
 say('JS 异常=' + (exceptions.length ? JSON.stringify(exceptions) : '0'));
 if (exceptions.length) fail('JS 异常', JSON.stringify(exceptions));
-fs.writeFileSync(`${OUT}browser-audit.txt`, `${SITE}\n${new Date().toISOString()}\n视口=${VIEWS.map(v => v[1] + 'x' + v[2]).join(' ')}\n打印介质检查=${pr.checked} 违规=${pr.bad.length}\n键盘可达目标=${reached.length}\nJS异常=${exceptions.length}\n失败项=${fails.length ? fails.join(' | ') : '无'}\n`, 'utf8');
+fs.writeFileSync(`${OUT}${PREFIX}browser-audit.txt`, `${SITE}\n${new Date().toISOString()}\n视口=${VIEWS.map(v => v[1] + 'x' + v[2]).join(' ')}\n打印介质检查=${pr.checked} 违规=${pr.bad.length}\n键盘可达目标=${reached.length}\nJS异常=${exceptions.length}\n失败项=${fails.length ? fails.join(' | ') : '无'}\n`, 'utf8');
 say('----');
 say(fails.length ? 'RESULT=FAIL(' + fails.length + ')' : 'RESULT=PASS');
 ws.close();
