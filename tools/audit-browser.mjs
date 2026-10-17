@@ -6,11 +6,12 @@
 // 运行：node tools/audit-browser.mjs [要量的URL] [cdp端口]
 // 退出码：0 = 全部通过；1 = 有违规；2 = 连不上浏览器或页面。
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
 const SITE = process.argv[2] || 'https://yueminghub.github.io/ming-portfolio/';
 const PORT = process.argv[3] || '9333';
 const PREFIX = process.argv[4] || '';   // 多个发布面要分别留证时用，如 fun-
-const OUT = new URL('../evidence/', import.meta.url).pathname.replace(/^\//, '');
+const OUT = fileURLToPath(new URL('../evidence/', import.meta.url));
 const fails = [];
 const say = (...a) => console.log(...a);
 const fail = (name, detail) => { fails.push(name + ': ' + detail); say('FAIL  ' + name + ' — ' + detail); };
@@ -39,6 +40,7 @@ await send('Page.enable'); await send('Runtime.enable'); await send('Network.ena
 // 必须禁用缓存：同一 URL 重复 navigate 时 Chrome 会复用旧响应，量到的就不是刚发布的那一版
 await send('Network.setCacheDisabled', { cacheDisabled: true });
 fs.mkdirSync(OUT, { recursive: true });
+say('证据输出目录=' + OUT);
 
 const MEASURE = String.raw`(() => {
   const vw = innerWidth, de = document.documentElement;
@@ -48,7 +50,15 @@ const MEASURE = String.raw`(() => {
   document.querySelectorAll('body *').forEach(el => { const r = el.getBoundingClientRect(); if (!r.width && !r.height) return; if ((r.right > vw + 1 || r.left < -1) && !clippedAnc(el)) over.push(nm(el) + ' R' + Math.round(r.right)); });
   const clip = [];
   document.querySelectorAll('dd,h1,h2,h3,p,li,a,span').forEach(el => { const s = getComputedStyle(el); if (/hidden/.test(s.overflow + s.overflowY) && el.scrollHeight > el.clientHeight + 2) clip.push(nm(el) + ' ' + el.scrollHeight + '>' + el.clientHeight); });
-  const small = [...document.querySelectorAll('a,button')].filter(e => e.offsetParent !== null).map(e => { const r = e.getBoundingClientRect(); return { t: (e.innerText || '').replace(/\s+/g, ' ').trim().slice(0, 22), w: Math.round(r.width), h: Math.round(r.height) }; }).filter(o => o.t && (o.h < 24 || o.w < 24));
+  const small = [...document.querySelectorAll('a,button')].filter(e => e.offsetParent !== null).map(e => {
+    const st = getComputedStyle(e), r = e.getBoundingClientRect();
+    // WCAG 2.5.8 的 Inline 豁免：处在句子当中、尺寸受非目标文字行高约束的行内链接。
+    // 机械判定条件：display:inline + 无上下内边距 + 无描边 + 背景透明 + 同一父节点里还有别的文字。
+    const pt = ((e.parentElement || {}).innerText || '').replace(/\s+/g, '').length;
+    const own = (e.innerText || '').replace(/\s+/g, '').length;
+    const exempt = st.display === 'inline' && parseFloat(st.paddingTop) === 0 && parseFloat(st.paddingBottom) === 0 && parseFloat(st.borderTopWidth) === 0 && st.backgroundColor === 'rgba(0, 0, 0, 0)' && pt > own + 12;
+    return { t: (e.innerText || '').replace(/\s+/g, ' ').trim().slice(0, 22), w: Math.round(r.width), h: Math.round(r.height), disp: st.display, exempt };
+  }).filter(o => o.t && (o.h < 24 || o.w < 24));
   const broken = [...document.querySelectorAll('a[href^="#"]')].map(a => a.getAttribute('href')).filter(h => h !== '#' && !document.querySelector(h));
   const res = performance.getEntriesByType('resource');
   return JSON.stringify({
@@ -73,7 +83,7 @@ for (const [label, w, h, mob, dpr] of VIEWS) {
   if (m.hOverflow) fail(label + ' 横向溢出', JSON.stringify(m.overflowers));
   if (m.clipped.length) fail(label + ' 文字截断', JSON.stringify(m.clipped));
   if (m.brokenAnchors.length) fail(label + ' 失效锚点', JSON.stringify(m.brokenAnchors));
-  const smallReal = m.smallTargets.filter(o => !o.t.includes('ming-portfolio'));
+  const smallReal = m.smallTargets.filter(o => !o.exempt);
   if (smallReal.length) fail(label + ' 命中区过小', JSON.stringify(smallReal));
   if (m.externalHosts.length || m.fontRequests) fail(label + ' 出现外部依赖', JSON.stringify({ hosts: m.externalHosts, fonts: m.fontRequests }));
 }

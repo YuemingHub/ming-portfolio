@@ -10,7 +10,8 @@ Ming（月明）的独立个人作品集网站。
 ## 这个仓库是什么
 
 - 一个自包含的静态站点：`index.html` 单文件，内联样式，零依赖、零构建、零外部字体请求。
-- 通过 GitHub Pages（GitHub 免费静态托管）发布，分支 `main`，根目录。
+- 仓库自身由 GitHub Pages（GitHub 免费静态托管）发布，分支 `main`，根目录；正式面另由
+  `ymai.fun` 所在服务器的 nginx 从独立静态目录提供同一份文件（见下表）。
 - **不属于任何产品**。它不是 Family Space / Self Space / World Space 的一部分，也不是 Qoder 的资产。
   维护作品集只需要改这个仓库，不需要进任何产品仓库。
 
@@ -34,13 +35,15 @@ Ming（月明）的独立个人作品集网站。
 | 备份入口 | https://yueminghub.github.io/ming-portfolio/ | `git push origin main` 即自动发布 |
 
 同步命令与服务器内部路径**不写进本仓库**（公开仓库不放生产布局），在运维侧的
-`.deploy/`（本仓库同级、已被 `.gitignore` 排除）里：`deploy-ming.sh` / `rollback-ming.sh` / `verify-ming.sh`。
+`.deploy/`（本仓库同级、已被 `.gitignore` 排除）里：`deploy-ming.sh` / `rollback-ming.sh`。
 `deploy-ming.sh` 自带备份、`nginx -t` 闸门与"验收不过自动回滚"，不要绕过它手工改配置。
 
-改完两处任一处之后，跑一次公网侧验收：
+改完任一面之后，跑一次公网侧验收（对两个面各跑一次，逐条比对字节）：
 
 ```bash
-bash .deploy/verify-ming.sh index.html
+bash tools/verify-surface.sh index.html                       # 正式面 ymai.fun/ming/
+SITE=https://yueminghub.github.io BASE=/ming-portfolio \
+  bash tools/verify-surface.sh index.html                     # 备份面 GitHub Pages
 ```
 
 ## 发布
@@ -75,7 +78,8 @@ chrome --headless --disable-gpu --no-pdf-header-footer \
   "https://yueminghub.github.io/ming-portfolio/"
 ```
 
-`evidence/ming-portfolio-20261017.pdf` 是这样产出的第一份：7 页 A4、36 个可点链接、字体已内嵌子集。
+`evidence/ming-portfolio-20261017.pdf` 是这样产出的第一份：7 页 A4、42 个可点链接注释、字体已内嵌子集。
+两个发布面的 `index.html` 逐字节一致（md5 见 `evidence/VERIFICATION.md`），所以从任一面打印得到的都是同一份内容。
 重新生成时按日期另存，不要覆盖旧文件——它是那一版网页的交付凭据。
 
 ## 内容结构
