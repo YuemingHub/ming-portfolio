@@ -1,13 +1,13 @@
 # 发布验证记录
 
-生成时间：2026-10-17 13:17:45Z（UTC）· 生成命令：bash tools/record-verification.sh
+生成时间：2026-10-17 13:32:53Z（UTC）· 生成命令：bash tools/record-verification.sh
 本节全部为命令原始输出，未手工改写。
 
 ## 1. 部署状态
 
 ```text
 $ git rev-parse --short HEAD
-80a11ad
+f0cf65d
 $ gh api repos/YuemingHub/ming-portfolio/pages
 {"cname":null,"https_enforced":true,"source":{"branch":"main","path":"/"},"status":"built"}
 ```
@@ -15,13 +15,13 @@ $ gh api repos/YuemingHub/ming-portfolio/pages
 ## 2. 线上内容与提交内容逐字节一致
 
 ```text
-线上字节=40945  HEAD:index.html 字节=40945
-线上 md5=46878b097f7f  HEAD md5=46878b097f7f
+线上字节=41120  HEAD:index.html 字节=41120
+线上 md5=447a0b479443  HEAD md5=447a0b479443
 cmp=完全一致（线上服务的就是这个提交的内容）
 $ curl -sI https://yueminghub.github.io/ming-portfolio/
 Server: GitHub.com
 Content-Type: text/html; charset=utf-8
-Last-Modified: Sat, 17 Oct 2026 12:52:29 GMT
+Last-Modified: Sat, 17 Oct 2026 13:30:33 GMT
 ```
 
 ## 3. 页面内所有外链逐条核实
@@ -40,7 +40,7 @@ ok   200 https://mingos.cn/                                               [MingO
 ok   200 https://ymai.fun/                                                [World Space · 进入] 
 ok   200 https://ymai.love/                                               [Ymai — 这里，留给你们家。] 
 ok   200 https://ymai.me/                                                 [Self Space · 这里，留给你自己。] 
-code=200 https://yueminghub.github.io/ming-portfolio/                     bytes=40945
+code=200 https://yueminghub.github.io/ming-portfolio/                     bytes=41120
 ----
 RESULT=ALL_200
 ```
@@ -77,7 +77,7 @@ $ gh api repos/YuemingHub/World-Space/commits/main
 desktop 1440x900: scrollW=1425/1440 height=7779 溢出=false 截断=0 命中区<24px=1 失效锚点=0 外链=18 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
 tablet-768 768x1024: scrollW=753/768 height=10785 溢出=false 截断=0 命中区<24px=1 失效锚点=0 外链=18 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
 mobile-390 390x844: scrollW=390/390 height=13302 溢出=false 截断=0 命中区<24px=0 失效锚点=0 外链=18 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
-mobile-320 320x640: scrollW=320/320 height=14390 溢出=false 截断=0 命中区<24px=1 失效锚点=0 外链=18 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
+mobile-320 320x640: scrollW=320/320 height=14337 溢出=false 截断=0 命中区<24px=1 失效锚点=0 外链=18 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
 句内链接（豁免项，仅记录）=[{"t":"ming-portfolio","w":81,"h":16}]
 键盘 Tab 可达（前 14 次）=14 个不同目标
 打印介质：逐元素 189 项，对比度违规=0，深色区块底色=rgb(255, 255, 255)（应为白，否则白字白底）
