@@ -96,14 +96,21 @@ AUD="node $(cygpath -m "$R/tools/audit-browser.mjs" 2>/dev/null || echo "$R/tool
   echo '```text'
   pdf=$(ls "$R"/evidence/ming-portfolio-*.pdf 2>/dev/null | tail -1)
   if [ -n "$pdf" ]; then
+    # 五个计数先算进变量：写在 echo 的双引号里会让正则被转义吃掉（上一版就是这样报出"外部=0"）
+    nlink=$(grep -ao '/Subtype /Link' "$pdf" | wc -l)
+    nuri=$(grep -ao '/URI' "$pdf" | wc -l)
+    next=$(grep -oE 'href="https?://[^"]*"' "$R/index.html" | wc -l)
+    nhash=$(grep -oE 'href="#[^"]*"' "$R/index.html" | wc -l)
+    npdf=$(grep -oE 'href="ming-portfolio[^"]*"' "$R/index.html" | wc -l)
     echo "文件=$(basename "$pdf") 字节=$(wc -c < "$pdf")"
     echo "页数=$(grep -ao '/MediaBox' "$pdf" | wc -l)（A4 单页）"
     # 可点链接数按 /Subtype /Link 数，不按 /URI —— /URI 这个 token 在每个注释里出现不止一次，
     # 上一版拿它当"可点链接数"报过 42，实际注释只有 22 个（同页锚点数对不上就是这个原因）
-    echo "可点链接注释=$(grep -ao '/Subtype /Link' "$pdf" | wc -l)（按 /Subtype /Link 计）"
-    echo "  对照：/URI token=$(grep -ao '/URI' "$pdf" | wc -l)（不是链接数，每注释出现多次，只作记录）"
-    echo "  对照：页面锚点 外部=$(grep -o 'href=\"https\\?://[^\"]*\"' "$R/index.html" | wc -l) 页内=$(grep -o 'href=\"#[^\"]*\"' "$R/index.html" | wc -l) PDF=$(grep -o 'href=\"ming-portfolio[^\"]*\"' "$R/index.html" | wc -l)"
+    echo "可点链接注释=$nlink（按 /Subtype /Link 计）"
+    echo "  对照：/URI token=$nuri（不是链接数，每注释出现多次，只作记录）"
+    echo "  对照：页面锚点 外部=$next 页内=$nhash PDF=$npdf"
     echo "  期望关系：注释数 = 外部 + PDF 相对（页内 # 锚点在纸上没有可跳目标，不进注释）"
+    if [ "$nlink" = "$((next + npdf))" ]; then echo "  闭合=是"; else echo "  闭合=否（$nlink ≠ $next+$npdf），这把尺或那把尺有问题，先查再引用"; LEAK_FAIL=1; fi
     echo "页面尺寸=$(grep -ao '/MediaBox \[[^]]*\]' "$pdf" | head -1)（594.96x841.92pt = A4）"
     echo "内嵌字体=$(grep -ao '/BaseFont /[A-Za-z0-9+-]*' "$pdf" | sed 's|/BaseFont */||; s/^[A-Z]*+//' | sort -u | tr '\n' ' ')"
   else

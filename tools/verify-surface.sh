@@ -38,16 +38,20 @@ if [ "$BASE" = "/ming" ]; then
   case "$loc" in "301 $SITE/ming/"*) echo "ok    $BASE 规范化跳转到 $BASE/";; *) echo "FAIL  $BASE 未按预期 301"; fail=$((fail+1));; esac
 fi
 
-# PDF 可下载且字节数对得上
-pdf=$(curl -s -o /tmp/vm.pdf -w '%{http_code} %{size_download}' --max-time 40 "$SITE$BASE/ming-portfolio-20261017.pdf")
-echo "      GET $BASE/ming-portfolio-20261017.pdf = $pdf"
+# PDF 名从"页面实际链到的那个"取，不写死文件名：写死会让这个检查永远测上一版文件
+pdfname=$(sed -n 's/.*href="\(ming-portfolio-[0-9]*\.pdf\)".*/\1/p' /tmp/vm-ming.html | head -1)
+if [ -z "$pdfname" ]; then echo "FAIL  页面里没有 ming-portfolio-*.pdf 的下载链接"; fail=$((fail+1)); pdfname=none; fi
+pdf=$(curl -s -o /tmp/vm.pdf -w '%{http_code} %{size_download}' --max-time 40 "$SITE$BASE/$pdfname")
+echo "      GET $BASE/$pdfname = $pdf"
 pc=$(printf '%s' "$pdf" | cut -d' ' -f1); psz=$(printf '%s' "$pdf" | cut -d' ' -f2)
 chk 200 "$pc" "PDF 状态码"
 head -c 5 /tmp/vm.pdf | grep -q '%PDF-' && echo "ok    PDF 魔数正确（是真 PDF 不是错误页）" || { echo "FAIL  返回的不是 PDF"; fail=$((fail+1)); }
-if [ -n "$REF" ] && [ -f "$(dirname "$REF")/ming-portfolio-20261017.pdf" ]; then
-  pm=$(md5sum < "$(dirname "$REF")/ming-portfolio-20261017.pdf" | cut -c1-12)
+if [ -n "$REF" ] && [ -f "$(dirname "$REF")/$pdfname" ]; then
+  pm=$(md5sum < "$(dirname "$REF")/$pdfname" | cut -c1-12)
   lm=$(md5sum < /tmp/vm.pdf | cut -c1-12)
   if [ "$pm" = "$lm" ]; then echo "ok    PDF 与仓库里那份逐字节一致 (md5=$pm)"; else echo "FAIL  线上 PDF 与仓库不一致 仓库=$pm 线上=$lm"; fail=$((fail+1)); fi
+else
+  [ "$pdfname" = "none" ] || { echo "FAIL  仓库里没有 $pdfname（页面链了一个仓库外的文件）"; fail=$((fail+1)); }
 fi
 if [ -n "$REF" ] && [ -f "$REF" ]; then
   a=$(tr -d '\r' < "$REF" | md5sum | cut -c1-12); b=$(tr -d '\r' < /tmp/vm-ming.html | md5sum | cut -c1-12)

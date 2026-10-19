@@ -1,13 +1,13 @@
 # 发布验证记录
 
-生成时间：2026-10-17 16:03:35Z（UTC）· 生成命令：bash tools/record-verification.sh
+生成时间：2026-10-19 13:39:12Z（UTC）· 生成命令：bash tools/record-verification.sh
 本节全部为命令原始输出，未手工改写。
 
 ## 1. 部署状态
 
 ```text
 $ git rev-parse --short HEAD
-fc798a5
+fac5c90
 $ gh api repos/YuemingHub/ming-portfolio/pages
 {"cname":null,"https_enforced":true,"source":{"branch":"main","path":"/"},"status":"built"}
 ```
@@ -15,13 +15,13 @@ $ gh api repos/YuemingHub/ming-portfolio/pages
 ## 2. 备份面内容与提交内容逐字节一致
 
 ```text
-线上字节=42305  HEAD:index.html 字节=42305
-线上 md5=eb37bb0d4560  HEAD md5=eb37bb0d4560
+线上字节=37343  HEAD:index.html 字节=37343
+线上 md5=ad8edb0b6b9b  HEAD md5=ad8edb0b6b9b
 cmp=完全一致（线上服务的就是这个提交的内容）
 $ curl -sI https://yueminghub.github.io/ming-portfolio/
 Server: GitHub.com
 Content-Type: text/html; charset=utf-8
-Last-Modified: Sat, 17 Oct 2026 15:16:08 GMT
+Last-Modified: Mon, 19 Oct 2026 13:28:30 GMT
 ```
 
 ## 3. 页面内所有外链逐条核实
@@ -41,7 +41,7 @@ ok   200 https://ymai.fun/                                                [World
 ok   200 https://ymai.love/                                               [Ymai — 这里，留给你们家。] 
 ok   200 https://ymai.me/                                                 [Self Space · 这里，留给你自己。] 
 ok   200 https://yueminghub.github.io/ming-portfolio/                     [Ming · 从真实问题出发，把事情做出来] 
-code=200 https://yueminghub.github.io/ming-portfolio/                     bytes=42305
+code=200 https://yueminghub.github.io/ming-portfolio/                     bytes=37343
 ----
 RESULT=ALL_200
 verify-links.sh 退出码=0
@@ -70,13 +70,13 @@ $ gh api repos/YuemingHub/World-Space/commits/main
 ```text
 $ node D:/服务器/repos/ming-portfolio/tools/audit-browser.mjs https://ymai.fun/ming/ 9333 "fun-"
 证据输出目录=D:\服务器\repos\ming-portfolio\evidence\
-desktop 1440x900: scrollW=1425/1440 height=7861 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
-tablet-768 768x1024: scrollW=753/768 height=10845 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
-mobile-390 390x844: scrollW=390/390 height=13439 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
-mobile-320 320x640: scrollW=320/320 height=14552 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
+desktop 1440x900: scrollW=1440/1440 height=7641 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
+tablet-768 768x1024: scrollW=768/768 height=10055 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
+mobile-390 390x844: scrollW=390/390 height=12422 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
+mobile-320 320x640: scrollW=320/320 height=13444 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
 句内链接（豁免项，仅记录）=[{"t":"ming-portfolio","w":81,"h":16,"disp":"inline","exempt":true},{"t":"ymai.fun/ming/","w":85,"h":16,"disp":"inline","exempt":true},{"t":"GitHub Pages","w":75,"h":16,"disp":"inline","exempt":true}]
 键盘 Tab 可达（前 14 次）=14 个不同目标
-打印介质：逐元素 193 项，对比度违规=0，深色区块底色=rgb(255, 255, 255)（应为白，否则白字白底）
+打印介质：逐元素 175 项，对比度违规=0，深色区块底色=rgb(255, 255, 255)（应为白，否则白字白底）
 JS 异常=0
 ----
 RESULT=PASS
@@ -86,13 +86,13 @@ RESULT=PASS
 ```text
 $ node D:/服务器/repos/ming-portfolio/tools/audit-browser.mjs https://yueminghub.github.io/ming-portfolio/ 9333 ""
 证据输出目录=D:\服务器\repos\ming-portfolio\evidence\
-desktop 1440x900: scrollW=1425/1440 height=7861 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
-tablet-768 768x1024: scrollW=753/768 height=10845 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
-mobile-390 390x844: scrollW=390/390 height=13439 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
-mobile-320 320x640: scrollW=320/320 height=14552 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
+desktop 1440x900: scrollW=1440/1440 height=7641 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
+tablet-768 768x1024: scrollW=768/768 height=10055 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
+mobile-390 390x844: scrollW=390/390 height=12422 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
+mobile-320 320x640: scrollW=320/320 height=13444 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
 句内链接（豁免项，仅记录）=[{"t":"ming-portfolio","w":81,"h":16,"disp":"inline","exempt":true},{"t":"ymai.fun/ming/","w":85,"h":16,"disp":"inline","exempt":true},{"t":"GitHub Pages","w":75,"h":16,"disp":"inline","exempt":true}]
 键盘 Tab 可达（前 14 次）=14 个不同目标
-打印介质：逐元素 193 项，对比度违规=0，深色区块底色=rgb(255, 255, 255)（应为白，否则白字白底）
+打印介质：逐元素 175 项，对比度违规=0，深色区块底色=rgb(255, 255, 255)（应为白，否则白字白底）
 JS 异常=0
 ----
 RESULT=PASS
@@ -102,11 +102,15 @@ RESULT=PASS
 ## 6. 交付 PDF 客观参数
 
 ```text
-文件=ming-portfolio-20261017.pdf 字节=622656
+文件=ming-portfolio-20261019.pdf 字节=483402
 页数=7（A4 单页）
-可点链接注释=42
+可点链接注释=22（按 /Subtype /Link 计）
+  对照：/URI token=42（不是链接数，每注释出现多次，只作记录）
+  对照：页面锚点 外部=21 页内=9 PDF=1
+  期望关系：注释数 = 外部 + PDF 相对（页内 # 锚点在纸上没有可跳目标，不进注释）
+  闭合=是
 页面尺寸=/MediaBox [0 0 594.95996 841.91998]（594.96x841.92pt = A4）
-内嵌字体=Georgia MicrosoftYaHei MicrosoftYaHei-Bold SegoeUI SegoeUI-Bold SegoeUI-Semibold 
+内嵌字体=Georgia MicrosoftYaHei MicrosoftYaHei-Bold SegoeUI SegoeUI-Bold 
 ```
 
 ## 7. 两个发布面逐条验收（tools/verify-surface.sh 原始输出）
@@ -123,11 +127,11 @@ ok    正文含「还没解决」
 ok    未被登录页接管（无密码框、非登录页标题）
       GET /ming = 301 https://ymai.fun/ming/
 ok    /ming 规范化跳转到 /ming/
-      GET /ming/ming-portfolio-20261017.pdf = 200 622656
+      GET /ming/ming-portfolio-20261019.pdf = 200 483402
 ok    PDF 状态码 = 200
 ok    PDF 魔数正确（是真 PDF 不是错误页）
-ok    PDF 与仓库里那份逐字节一致 (md5=a7fbda4c29dd)
-ok    /ming/ 内容与本地已验收版本逐字节一致 (md5=eb37bb0d4560)
+ok    PDF 与仓库里那份逐字节一致 (md5=c045b153f3dc)
+ok    /ming/ 内容与本地已验收版本逐字节一致 (md5=ad8edb0b6b9b)
 ---- 既有系统回归（不跟随跳转，看原始应答）----
 https://ymai.fun/                              HTTP 302 size=0 redir=https://ymai.fun/login
 https://ymai.fun/login                         HTTP 200 size=847 redir=
@@ -136,7 +140,7 @@ https://ymai.love/                             HTTP 200 size=191524 redir=
 https://ymai.me/                               HTTP 200 size=21177 redir=
 https://mingos.cn/                             HTTP 200 size=13045 redir=
 https://api.ymai.fun/healthz                   HTTP 200 size=29 redir=
-https://yueminghub.github.io/ming-portfolio/   HTTP 200 size=42305 redir=
+https://yueminghub.github.io/ming-portfolio/   HTTP 200 size=37343 redir=
 ---- 生产基线判定（部署 /ming/ 不得改变这三条）----
 ok    https://ymai.fun/ 状态码 = 302
 ok    https://ymai.fun/ 跳转目标 = https://ymai.fun/login
@@ -155,11 +159,11 @@ ok    正文含「Family Space」
 ok    正文含「Public Evidence」
 ok    正文含「还没解决」
 ok    未被登录页接管（无密码框、非登录页标题）
-      GET /ming-portfolio/ming-portfolio-20261017.pdf = 200 622656
+      GET /ming-portfolio/ming-portfolio-20261019.pdf = 200 483402
 ok    PDF 状态码 = 200
 ok    PDF 魔数正确（是真 PDF 不是错误页）
-ok    PDF 与仓库里那份逐字节一致 (md5=a7fbda4c29dd)
-ok    /ming/ 内容与本地已验收版本逐字节一致 (md5=eb37bb0d4560)
+ok    PDF 与仓库里那份逐字节一致 (md5=c045b153f3dc)
+ok    /ming/ 内容与本地已验收版本逐字节一致 (md5=ad8edb0b6b9b)
 ---- 既有系统回归（不跟随跳转，看原始应答）----
 https://yueminghub.github.io/                  HTTP 404 size=9115 redir=
 https://yueminghub.github.io/login             HTTP 404 size=9115 redir=
@@ -168,7 +172,7 @@ https://ymai.love/                             HTTP 200 size=191524 redir=
 https://ymai.me/                               HTTP 200 size=21177 redir=
 https://mingos.cn/                             HTTP 200 size=13045 redir=
 https://api.ymai.fun/healthz                   HTTP 200 size=29 redir=
-https://yueminghub.github.io/ming-portfolio/   HTTP 200 size=42305 redir=
+https://yueminghub.github.io/ming-portfolio/   HTTP 200 size=37343 redir=
 ----
 RESULT=PASS
 退出码=0
