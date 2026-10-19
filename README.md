@@ -70,7 +70,10 @@ bash tools/record-verification.sh
 
 ## 生成 PDF
 
-页面内置 A4 打印样式（`@media print`），PDF 必须从**线上地址**打印，才能确认交付的是发布版本：
+页面内置 A4 打印样式（`@media print`），PDF 必须从**线上地址**打印，才能确认交付的是发布版本。
+
+顺序有讲究：**先把页面里的下载链接改到新文件名并 push、等 Pages 出新版，再从线上打印**。
+反过来做，PDF 里那条"下载这一页的 PDF"链接会指回上一版文件（2026-10-19 这轮踩过，重打了一次）。
 
 ```bash
 chrome --headless --disable-gpu --no-pdf-header-footer \
@@ -78,7 +81,16 @@ chrome --headless --disable-gpu --no-pdf-header-footer \
   "https://yueminghub.github.io/ming-portfolio/"
 ```
 
-`evidence/ming-portfolio-20261017.pdf` 是这样产出的第一份：7 页 A4、42 个可点链接注释、字体已内嵌子集。
+两份交付件的实测参数：
+
+| 文件 | 对应页面 | 字节 | 页数 | 可点链接注释 |
+|---|---|---|---|---|
+| `ming-portfolio-20261017.pdf` | 双发布面首版 | 622656 | 7 | 22 |
+| `ming-portfolio-20261019.pdf` | 收掉四处观感问题之后 | 483402 | 7 | 22 |
+
+可点链接数按 `/Subtype /Link` 计。**不要拿 `/URI` 的 token 数当链接数**——它在每个注释里出现多次，
+上一版 README 写的"42 个可点链接"就是这么数出来的，实际注释是 22 个（= 页面 21 个外部链接 + 1 个 PDF 相对链接；
+9 个页内 `#` 锚点在纸上没有可跳目标，不进注释）。字体已内嵌子集。
 两个发布面的 `index.html` 逐字节一致（md5 见 `evidence/VERIFICATION.md`），所以从任一面打印得到的都是同一份内容。
 重新生成时按日期另存，不要覆盖旧文件——它是那一版网页的交付凭据。
 
