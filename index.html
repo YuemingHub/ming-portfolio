@@ -47,38 +47,18 @@
   .toc a{padding:4px 0}
 
   /* ---------- hero ---------- */
-  .hero{padding:78px 0 62px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(240px,.65fr);gap:44px;align-items:center}
+  .hero{padding:86px 0 76px}
   .kicker{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--leaf);display:flex;align-items:center;gap:11px}
   .kicker::before{content:"";width:24px;height:2px;background:var(--mark)}
-  h1{font-size:clamp(38px,5.4vw,68px);line-height:1.24;letter-spacing:-.045em;font-weight:700;margin:26px 0 22px;text-wrap:balance}
+  h1{font-size:clamp(38px,5.4vw,68px);line-height:1.24;letter-spacing:-.045em;font-weight:700;margin:26px 0 22px;max-width:22ch}
   h1 .accent{color:var(--leaf)}
   .lede{font-size:17.5px;line-height:1.95;color:var(--soft);max-width:34rem}
   .lede + .lede{margin-top:14px}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:30px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:34px}
   .cta{display:inline-flex;align-items:center;gap:9px;background:var(--deep);color:#fff;padding:13px 19px;border-radius:4px;font-size:14.5px;font-weight:600}
   .cta:hover{background:var(--deep-2);color:#fff}
   .cta svg{width:15px;height:15px}
   .ghost{font-size:14.5px;font-weight:600;color:var(--soft);border-bottom:1px solid #b6bfb4;padding-bottom:2px}
-
-  .vessel{position:relative;min-height:330px;border:1px solid #aeb9a9;border-radius:200px 200px 14px 14px;overflow:hidden;background:linear-gradient(150deg,#e0e8d5,#b3c1a6)}
-  .ring{position:absolute;left:50%;aspect-ratio:1;border:1px solid rgba(24,52,38,.34);border-radius:50%;transform:translateX(-50%)}
-  .r1{width:360px;top:16px;background:radial-gradient(circle at 58% 38%,#e7f7c9 0%,#9db799 52%,#42685d 100%);box-shadow:inset 12px -16px 40px rgba(81,110,101,.36)}
-  .r2{width:272px;top:60px;border-color:#d3e7c4;opacity:.82}
-  .r3{width:172px;top:110px;border-color:#e9f4d7;opacity:.72}
-  .vessel .word{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-size:12px;font-weight:600;letter-spacing:.2em}
-  .vessel .word i{font-style:normal;background:rgba(243,249,230,.82);color:#16332a;padding:5px 11px;border-radius:3px}
-  .vessel .stamp{position:absolute;left:22px;right:22px;bottom:18px;display:flex;justify-content:space-between;align-items:flex-end;color:#152f27;font-size:11.5px;letter-spacing:.05em;line-height:1.6}
-  .vessel .stamp b{font-family:Georgia,serif;font-weight:400;font-size:44px;line-height:1;letter-spacing:-.05em}
-
-  /* ---------- index strip ---------- */
-  .index{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#eeefe6}
-  .index ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
-  .index li{padding:22px 22px 21px;border-right:1px solid #d9dcd2}
-  .index li:first-child{padding-left:0}
-  .index li:last-child{border-right:0}
-  .index .n{display:block;font-family:Georgia,serif;font-size:12px;color:var(--leaf);letter-spacing:.08em}
-  .index b{display:block;font-size:15px;font-weight:700;margin:3px 0 2px;letter-spacing:-.01em}
-  .index span.t{display:block;font-size:12.5px;color:var(--faint);line-height:1.6}
 
   /* ---------- sections ---------- */
   .sect{padding:96px 0 0}
@@ -118,7 +98,6 @@
   .fields dt{font-size:12.5px;font-weight:700;color:var(--leaf);letter-spacing:.02em;padding-top:1px}
   .fields dd{margin:0;font-size:15px;line-height:1.85;color:var(--soft)}
   .fields .todo dd{color:#5b5145}
-  .caveat{margin-top:26px;font-size:13.5px;color:var(--faint);max-width:46rem}
 
   /* ---------- workflow ---------- */
   .loop{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:50px;align-items:start}
@@ -128,13 +107,12 @@
   .step .sid{font:400 15px/1.7 Georgia,serif;color:#5c7255}
   .step b{display:block;font-size:15.5px;font-weight:700;margin-bottom:3px}
   .step p{font-size:14px;color:var(--soft);line-height:1.8}
-  .say{font-size:clamp(21px,2.1vw,29px);line-height:1.7;letter-spacing:-.025em;font-weight:650}
-  .say strong{background:linear-gradient(transparent 62%,#d8eda9 62%);font-weight:650}
+  .say{font-size:15px;line-height:1.85;color:var(--soft)}
+  .say strong{font-weight:650;color:var(--ink)}
   .tools{margin-top:24px;border:1px solid var(--line);border-radius:9px;background:var(--surface);padding:22px 24px}
   .tools h4{font-size:14px;font-weight:700;margin-bottom:8px}
   .tools p{font-size:14px;color:var(--soft);line-height:1.85}
   .tools p+p{margin-top:9px}
-  .honest{margin-top:24px;font-size:14px;color:var(--soft);max-width:46rem;border-left:2px solid var(--mark);padding-left:18px}
 
   /* ---------- research ---------- */
   .research{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:46px;align-items:start}
@@ -178,15 +156,9 @@
 
   /* ---------- responsive ---------- */
   @media (max-width:940px){
-    .hero{grid-template-columns:1fr;gap:34px;padding:54px 0 46px}
-    .vessel{min-height:250px;max-height:270px;border-radius:150px 150px 12px 12px}
-    .r1{width:280px;top:-10px}.r2{width:212px;top:36px}.r3{width:134px;top:74px}
+    .hero{padding:56px 0 48px}
     .about,.loop,.research,.notlisted{grid-template-columns:1fr;gap:30px}
     .work{grid-template-columns:1fr;gap:20px}
-    .index ul{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .index li{border-bottom:1px solid #d9dcd2}
-    .index li:nth-child(2n){border-right:0;padding-right:0}
-    .index li:nth-child(odd){padding-left:0}
     .ev-row{grid-template-columns:1fr;gap:6px;padding:17px 0}
     .ev-row .ok{text-align:left}
   }
@@ -205,11 +177,6 @@
   }
   @media (max-width:400px){
     .wrap{padding:0 16px}
-    .index ul{grid-template-columns:1fr}
-    .index li{border-right:0;padding:16px 0}
-    .index li:first-child{padding-top:18px}
-    .vessel{min-height:210px}
-    .r1{width:230px}.r2{width:176px}.r3{width:112px}
     .work .foot a{padding:11px 14px}
     .step{grid-template-columns:28px minmax(0,1fr);gap:10px}
   }
@@ -228,16 +195,10 @@
     .toc{display:none}
     .sigil{width:26px;height:26px;flex-basis:26px;font-size:14px}
     .ident{font-size:15pt}
-    .hero{padding:20pt 0 14pt;grid-template-columns:minmax(0,1.5fr) minmax(0,.5fr);gap:16pt}
-    .vessel{min-height:150px;max-height:150px;border-radius:90px 90px 8px 8px}
-    .r1{width:180px;top:6px}.r2{width:136px;top:28px}.r3{width:86px;top:52px}
-    .vessel .stamp b{font-size:30pt}
+    .hero{padding:16pt 0 13pt}
     h1{font-size:26pt;line-height:1.22;margin:10pt 0 8pt}
     .lede{font-size:10.5pt;max-width:none}
     .hero-cta{display:none}
-    .index ul{grid-template-columns:repeat(4,minmax(0,1fr))}
-    .index li{padding:8pt 9pt;border-right:.5pt solid #c3cbc1}
-    .index b{font-size:10pt}.index span.t{font-size:8pt}.index .n{font-size:8pt}
     .sect{padding-top:20pt}
     .head{grid-template-columns:100px minmax(0,1fr);gap:14pt;padding-top:9pt;margin-bottom:11pt;border-top:.6pt solid #9aa79a;break-after:avoid;break-inside:avoid}
     h2{font-size:16pt;margin-bottom:6pt}.intro{font-size:9.5pt}
@@ -246,10 +207,9 @@
     .fields div{grid-template-columns:62px minmax(0,1fr);gap:9pt;padding:6pt 0;border-bottom:.4pt solid #dfe3da}
     .fields dt{font-size:8.5pt}.fields dd{font-size:9.5pt;line-height:1.6}
     .work .foot a,.work .foot .none{font-size:8.5pt;padding:4px 8px;border:.5pt solid #b6c0b3}
-    .caveat{font-size:8.5pt;margin-top:9pt}
-    .loop{gap:18pt}.say{font-size:12.5pt}.step{padding:7pt 0;border-bottom:.4pt solid #dfe3da}
+    .loop{gap:18pt}.say{font-size:9.5pt;line-height:1.7}.step{padding:7pt 0;border-bottom:.4pt solid #dfe3da}
     .step b{font-size:10pt}.step p{font-size:9pt}.tools{padding:11pt;margin-top:11pt;break-inside:avoid}
-    .tools p,.tools h4{font-size:9.5pt}.honest{font-size:9pt;margin-top:11pt}
+    .tools p,.tools h4{font-size:9.5pt}
     .research{gap:18pt}.qlist p{font-size:9pt}.qlist li{padding:7pt 0}
     .ev-row{grid-template-columns:110px minmax(0,1.2fr) minmax(0,1fr) 70pt;gap:9pt;padding:7pt 0;break-inside:avoid;border-bottom:.4pt solid #dfe3da}
     .ev-row .label{font-size:9.5pt}.ev-row .label small{font-size:8pt}
@@ -293,23 +253,7 @@
         <a class="ghost" href="#method">我的创造方式 ↗</a>
       </div>
     </div>
-    <figure class="vessel" aria-label="抽象图形：从现实延伸到行动的同心圆">
-      <span class="ring r1" aria-hidden="true"></span><span class="ring r2" aria-hidden="true"></span><span class="ring r3" aria-hidden="true"></span>
-      <figcaption class="word" aria-hidden="true"><i>REALITY → ACTION</i></figcaption>
-      <span class="stamp" aria-hidden="true"><span>现实在前<br>工具在后</span><b>M.</b></span>
-    </figure>
   </section>
-
-  <div class="index" aria-label="本页概览">
-    <div class="wrap">
-      <ul>
-        <li><span class="n">01</span><b>关于 Ming</b><span class="t">一线实践 · 跨界创造 · 价值取向</span></li>
-        <li><span class="n">02</span><b>真实作品</b><span class="t">六个项目，含状态与未解决问题</span></li>
-        <li><span class="n">03</span><b>工作与思考</b><span class="t">AI 协作回路 · 研究方向</span></li>
-        <li><span class="n">04</span><b>证据与联系</b><span class="t">可直接核实的公开链接</span></li>
-      </ul>
-    </div>
-  </div>
 
   <section class="wrap sect" id="about">
     <div class="head"><div class="num">01 / About</div><div><h2>我不是技术人员，<br>但我对“做成”负责。</h2><p class="intro">多年在家庭教育现场，我习惯处理的不是代码，而是关系、节奏和反复出现的真实困难。AI 能力成熟之后，我第一次有机会把这些年里看清的问题亲手做成能用、能验证、能被纠正的东西。</p></div></div>
@@ -425,8 +369,6 @@
         <div class="todo"><dt>还没解决</dt><dd>还没有形成可公开验证的成果。所以这一项在这里只作为研究方向出现，不算作成绩。</dd></div>
       </dl>
     </article>
-
-    <p class="caveat">说明：已上线的产品、公开的仓库、私有研发中的项目和研究方向是四种不同的状态，本页按各自证据强度分别标注，不把后面几种写成已经交付的成果。</p>
   </section>
 
   <section class="wrap sect" id="method">
@@ -439,7 +381,6 @@
           <p>执行环节会按任务选用 Qoder、Codex 等不同的 AI 开发环境，也会用到各种现成的模型能力与开源组件。这些是能力来源，不是这一页的作者，也不是某一家厂商的展示位。</p>
           <p>我的复用优先级是先找世界上已有的优秀能力，其次才考虑自己写。现阶段不重建 Agent 运行时、不做工作流引擎、不造工具市场。</p>
         </div>
-        <p class="honest">这一页上的每一个链接，都在 2026 年 10 月 17 日被重新访问和核对过；核对方式写在最后一节，你也可以自己跑一遍。</p>
       </div>
       <ul class="steps" aria-label="工作方式五个环节">
         <li class="step"><span class="sid">01</span><div><b>提出意图和验收标准</b><p>说清谁遇到了什么问题、要做成什么算数、哪些数据和哪些目录不能碰。</p></div></li>
@@ -472,7 +413,7 @@
     <div class="ev">
       <div class="ev-row"><div class="label">Family Space<small>公开入口</small></div><div class="url"><a target="_blank" rel="noopener noreferrer" href="https://ymai.love/">https://ymai.love/</a></div><div class="state">“Ymai — 这里，留给你们家。”</div><div class="ok">可访问</div></div>
       <div class="ev-row"><div class="label">Self Space<small>公开介绍页</small></div><div class="url"><a target="_blank" rel="noopener noreferrer" href="https://ymai.me/">https://ymai.me/</a></div><div class="state">“Self Space · 这里，留给你自己。”</div><div class="ok">可访问</div></div>
-      <div class="ev-row"><div class="label">World Space<small>在线实例</small></div><div class="url"><a target="_blank" rel="noopener noreferrer" href="https://ymai.fun/">https://ymai.fun/</a></div><div class=”state”>标题「World Space · 进入」，首页未登录转登录页；本作品集这一页不经过那道门</div><div class="ok">可访问</div></div>
+      <div class="ev-row"><div class="label">World Space<small>在线实例</small></div><div class="url"><a target="_blank" rel="noopener noreferrer" href="https://ymai.fun/">https://ymai.fun/</a></div><div class="state">标题「World Space · 进入」，首页未登录转登录页；本作品集这一页不经过那道门</div><div class="ok">可访问</div></div>
       <div class="ev-row"><div class="label">MingOS<small>理念站</small></div><div class="url"><a target="_blank" rel="noopener noreferrer" href="https://mingos.cn/">https://mingos.cn/</a></div><div class="state">“MingOS — 当 AI 越来越强，人在哪里”</div><div class="ok">可访问</div></div>
       <div class="ev-row"><div class="label">World Space<small>公开源码</small></div><div class="url"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/World-Space">github.com/YuemingHub/World-Space</a></div><div class="state">产品契约、推荐逻辑与页面实现</div><div class="ok">公开仓库</div></div>
       <div class="ev-row"><div class="label">MingOS<small>公开仓库</small></div><div class="url"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/MingOS">github.com/YuemingHub/MingOS</a></div><div class="state">空间的创建、记忆、授权与演化</div><div class="ok">公开仓库</div></div>
@@ -526,7 +467,6 @@
       </div>
       <div class="colophon">
         <p>© 2026 Ming · 独立个人作品集。这一页的源码在 GitHub 仓库 <a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/ming-portfolio">ming-portfolio</a>，正式地址是 <a href="https://ymai.fun/ming/">ymai.fun/ming/</a>，同一份内容另在 <a target="_blank" rel="noopener noreferrer" href="https://yueminghub.github.io/ming-portfolio/">GitHub Pages</a> 保留一个入口；不属于任何产品仓库，也不依赖付费服务。</p>
-        <p>链接与项目状态核实于 2026-10-17 · 作品集长期只维护这一份，随项目真实进展更新。</p>
       </div>
     </div>
   </section>
