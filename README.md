@@ -88,6 +88,10 @@ chrome --headless --disable-gpu --no-pdf-header-footer \
 | `ming-portfolio-20261017.pdf` | 双发布面首版 | 622656 | 7 | 22 |
 | `ming-portfolio-20261019.pdf` | 收掉四处观感问题之后 | 483402 | 7 | 22 |
 | `ming-portfolio-2026102401.pdf` | 补齐分享/识别标准件（favicon、og 分享卡、JSON-LD）+ 核实日期刷新 | 483903 | 7 | 22 |
+| `ming-portfolio-2026102402.pdf` | 整页换装 D1 档案台账（宋体标题/明字章/印章状态徽/台账证据表，内容逐句保真） | 755005 | 7 | 23 |
+
+> 注：`2026102402` 版的 23 = 22 个锚点注释 + 1 处长链接换行被 Chrome 拆成的第二个注释（锚点数未变）。
+> 2026-10-24 起，页面视觉制式经 Owner 从三方向初稿中选定 **D1 档案台账**（技能 huashu-design 的三方向门流程）。
 
 > 2026-10-23/24 排查记录（未关闭）：本轮多个新 PDF 路径（`ming-portfolio-20261023.pdf`、
 > `ming-portfolio-20261024.pdf`、`ming-portfolio-2026102401.pdf`）在 GitHub Pages 备份面上出现服务异常：
