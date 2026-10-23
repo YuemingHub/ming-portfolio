@@ -87,6 +87,7 @@ chrome --headless --disable-gpu --no-pdf-header-footer \
 |---|---|---|---|---|
 | `ming-portfolio-20261017.pdf` | 双发布面首版 | 622656 | 7 | 22 |
 | `ming-portfolio-20261019.pdf` | 收掉四处观感问题之后 | 483402 | 7 | 22 |
+| `ming-portfolio-20261023.pdf` | 补齐分享/识别标准件（favicon、og 分享卡、JSON-LD）+ 核实日期刷新 | 483978 | 7 | 22 |
 
 可点链接数按 `/Subtype /Link` 计。**不要拿 `/URI` 的 token 数当链接数**——它在每个注释里出现多次，
 上一版 README 写的"42 个可点链接"就是这么数出来的，实际注释是 22 个（= 页面 21 个外部链接 + 1 个 PDF 相对链接；
