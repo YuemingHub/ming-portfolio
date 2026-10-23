@@ -87,7 +87,7 @@ chrome --headless --disable-gpu --no-pdf-header-footer \
 |---|---|---|---|---|
 | `ming-portfolio-20261017.pdf` | 双发布面首版 | 622656 | 7 | 22 |
 | `ming-portfolio-20261019.pdf` | 收掉四处观感问题之后 | 483402 | 7 | 22 |
-| `ming-portfolio-2026102401.pdf` | 补齐分享/识别标准件（favicon、og 分享卡、JSON-LD）+ 核实日期刷新 | 483901 | 7 | 22 |
+| `ming-portfolio-2026102401.pdf` | 补齐分享/识别标准件（favicon、og 分享卡、JSON-LD）+ 核实日期刷新 | 483903 | 7 | 22 |
 
 > 2026-10-23/24 排查记录：本轮两个 PDF 路径（`ming-portfolio-20261023.pdf`、`ming-portfolio-20261024.pdf`）
 > 先后在 GitHub Pages 备份面上出现服务异常——git 仓库与构建产物里都有该文件、部署状态 success、
