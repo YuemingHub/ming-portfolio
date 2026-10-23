@@ -65,10 +65,10 @@
   .lede{font-size:17.5px;line-height:1.95;color:var(--soft);max-width:34rem}
   .lede + .lede{margin-top:14px}
   .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:34px}
-  .cta{display:inline-flex;align-items:center;gap:9px;background:var(--deep);color:#fff;padding:13px 19px;border-radius:4px;font-size:14.5px;font-weight:600}
+  .cta{display:inline-flex;align-items:center;gap:9px;background:var(--deep);color:#fff;padding:13px 19px;border-radius:4px;font-size:14px;font-weight:600}
   .cta:hover{background:var(--deep-2);color:#fff}
   .cta svg{width:15px;height:15px}
-  .ghost{font-size:14.5px;font-weight:600;color:var(--soft);border-bottom:1px solid #b6bfb4;padding-bottom:2px}
+  .ghost{font-size:14px;font-weight:600;color:var(--soft);border-bottom:1px solid #b6bfb4;padding-bottom:2px}
 
   /* ---------- sections ---------- */
   .sect{padding:96px 0 0}
@@ -99,14 +99,17 @@
   .pill.gate{background:#f0e6d2;color:#5c4a24}
   .pill.priv{background:#e4e5e0;color:#4f5750}
   .work .foot{margin-top:16px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
-  .work .foot a{font-size:13.5px;font-weight:650;border:1px solid #c8d1c4;border-radius:5px;padding:8px 13px;background:var(--surface)}
+  .work .foot a{font-size:14px;font-weight:650;border:1px solid #c8d1c4;border-radius:5px;padding:8px 13px;background:var(--surface)}
   .work .foot a:hover{background:#eef3e9;border-color:#b3c1ab}
-  .work .foot .none{font-size:13px;color:var(--faint)}
+  .work .foot .none{font-size:14px;color:var(--faint)}
   .fields div{display:grid;grid-template-columns:88px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--line-soft)}
   .fields div:first-child{padding-top:0}
   .fields div:last-child{border-bottom:0}
   .fields dt{font-size:12.5px;font-weight:700;color:var(--leaf);letter-spacing:.02em;padding-top:1px}
   .fields dd{margin:0;font-size:15px;line-height:1.85;color:var(--soft)}
+  .fields .todo{position:relative}
+  .fields .todo::before{content:"";position:absolute;left:-12px;top:13px;bottom:13px;width:3px;background:var(--mark);border-radius:2px}
+  .fields .todo dt{color:var(--mark)}
   .fields .todo dd{color:#5b5145}
 
   /* ---------- workflow ---------- */
@@ -136,8 +139,8 @@
   .ev-row{display:grid;grid-template-columns:180px minmax(0,1.05fr) minmax(0,1fr) 96px;gap:18px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line)}
   .ev-row .label{font-size:14px;font-weight:700}
   .ev-row .label small{display:block;font-weight:400;font-size:12px;color:var(--faint);margin-top:2px}
-  .ev-row .url{font-size:13px;overflow-wrap:anywhere}
-  .ev-row .url a{display:inline-block;padding:5px 0;font-size:13px;line-height:1.5;text-decoration:underline;text-underline-offset:3px;color:var(--leaf)}
+  .ev-row .url{font-size:14px;overflow-wrap:anywhere}
+  .ev-row .url a{display:inline-block;padding:5px 0;font-size:14px;line-height:1.5;text-decoration:underline;text-underline-offset:3px;color:var(--leaf)}
   .ev-row .url a:hover{color:var(--mark)}
   .ev-row .state{font-size:12.5px;color:var(--faint)}
   .ev-row .ok{font-size:12px;font-weight:700;color:var(--leaf);text-align:right;white-space:nowrap}
