@@ -1,13 +1,13 @@
 # 发布验证记录
 
-生成时间：2026-10-23 18:44:09Z（UTC）· 生成命令：bash tools/record-verification.sh
+生成时间：2026-10-23 18:49:58Z（UTC）· 生成命令：bash tools/record-verification.sh
 本节全部为命令原始输出，未手工改写。
 
 ## 1. 部署状态
 
 ```text
 $ git rev-parse --short HEAD
-cb8827b
+c6ecbd4
 $ gh api repos/YuemingHub/ming-portfolio/pages
 {"cname":null,"https_enforced":true,"source":{"branch":"main","path":"/"},"status":"built"}
 ```
@@ -15,13 +15,13 @@ $ gh api repos/YuemingHub/ming-portfolio/pages
 ## 2. 备份面内容与提交内容逐字节一致
 
 ```text
-线上字节=38320  HEAD:index.html 字节=38320
-线上 md5=4f3eca0bccef  HEAD md5=4f3eca0bccef
+线上字节=38697  HEAD:index.html 字节=38697
+线上 md5=fdafe03a1982  HEAD md5=fdafe03a1982
 cmp=完全一致（线上服务的就是这个提交的内容）
 $ curl -sI https://yueminghub.github.io/ming-portfolio/
 Server: GitHub.com
 Content-Type: text/html; charset=utf-8
-Last-Modified: Fri, 23 Oct 2026 18:43:27 GMT
+Last-Modified: Fri, 23 Oct 2026 18:49:08 GMT
 ```
 
 ## 3. 页面内所有外链逐条核实
@@ -41,7 +41,7 @@ ok   200 https://ymai.fun/                                                [World
 ok   200 https://ymai.love/                                               [Ymai — 这里，留给你们家。] 
 ok   200 https://ymai.me/                                                 [Self Space · 这里，留给你自己。] 
 ok   200 https://yueminghub.github.io/ming-portfolio/                     [Ming · 从真实问题出发，把事情做出来] 
-code=200 https://yueminghub.github.io/ming-portfolio/                     bytes=38320
+code=200 https://yueminghub.github.io/ming-portfolio/                     bytes=38697
 ----
 RESULT=ALL_200
 verify-links.sh 退出码=0
@@ -131,7 +131,7 @@ ok    /ming 规范化跳转到 /ming/
 ok    PDF 状态码 = 200
 ok    PDF 魔数正确（是真 PDF 不是错误页）
 ok    PDF 与仓库里那份逐字节一致 (md5=ae30a88338e9)
-ok    /ming/ 内容与本地已验收版本逐字节一致 (md5=4f3eca0bccef)
+ok    /ming/ 内容与本地已验收版本逐字节一致 (md5=fdafe03a1982)
 ---- 既有系统回归（不跟随跳转，看原始应答）----
 https://ymai.fun/                              HTTP 302 size=0 redir=https://ymai.fun/login
 https://ymai.fun/login                         HTTP 200 size=847 redir=
@@ -140,7 +140,7 @@ https://ymai.love/                             HTTP 200 size=191524 redir=
 https://ymai.me/                               HTTP 200 size=21177 redir=
 https://mingos.cn/                             HTTP 200 size=13045 redir=
 https://api.ymai.fun/healthz                   HTTP 200 size=29 redir=
-https://yueminghub.github.io/ming-portfolio/   HTTP 200 size=38320 redir=
+https://yueminghub.github.io/ming-portfolio/   HTTP 200 size=38697 redir=
 ---- 生产基线判定（部署 /ming/ 不得改变这三条）----
 ok    https://ymai.fun/ 状态码 = 302
 ok    https://ymai.fun/ 跳转目标 = https://ymai.fun/login
@@ -163,7 +163,7 @@ ok    未被登录页接管（无密码框、非登录页标题）
 FAIL  PDF 状态码 期望=200 实际=404
 FAIL  返回的不是 PDF
 FAIL  线上 PDF 与仓库不一致 仓库=ae30a88338e9 线上=c1f9838a6456
-ok    /ming/ 内容与本地已验收版本逐字节一致 (md5=4f3eca0bccef)
+ok    /ming/ 内容与本地已验收版本逐字节一致 (md5=fdafe03a1982)
 ---- 既有系统回归（不跟随跳转，看原始应答）----
 https://yueminghub.github.io/                  HTTP 404 size=9115 redir=
 https://yueminghub.github.io/login             HTTP 404 size=9115 redir=
@@ -172,7 +172,7 @@ https://ymai.love/                             HTTP 200 size=191524 redir=
 https://ymai.me/                               HTTP 200 size=21177 redir=
 https://mingos.cn/                             HTTP 200 size=13045 redir=
 https://api.ymai.fun/healthz                   HTTP 200 size=29 redir=
-https://yueminghub.github.io/ming-portfolio/   HTTP 200 size=38320 redir=
+https://yueminghub.github.io/ming-portfolio/   HTTP 200 size=38697 redir=
 ----
 RESULT=FAIL(3)
 退出码=1
