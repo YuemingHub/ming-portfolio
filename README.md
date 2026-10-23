@@ -87,12 +87,15 @@ chrome --headless --disable-gpu --no-pdf-header-footer \
 |---|---|---|---|---|
 | `ming-portfolio-20261017.pdf` | 双发布面首版 | 622656 | 7 | 22 |
 | `ming-portfolio-20261019.pdf` | 收掉四处观感问题之后 | 483402 | 7 | 22 |
-| `ming-portfolio-20261023-a.pdf` | 补齐分享/识别标准件（favicon、og 分享卡、JSON-LD）+ 核实日期刷新 | 483978 | 7 | 22 |
+| `ming-portfolio-20261024.pdf` | 补齐分享/识别标准件（favicon、og 分享卡、JSON-LD）+ 核实日期刷新 | 483978 | 7 | 22 |
 
-> 2026-10-23 排查记录：`ming-portfolio-20261023.pdf`（不带 `-a`）这一路径在 GitHub Pages 备份面上
-> 出现过一次发布异常——git 仓库与构建产物里都有该文件、部署状态 success、raw.githubusercontent 可直读 200，
-> 但 pages 服务层三个网络视角一致 404（Fastly 头显示 MISS，非缓存），空提交强制重部署也无法恢复。
-> 改名加 `-a` 后新路径立即可用。若将来再遇到"文件在仓库里但 Pages 404"，先试改名再排查别的。
+> 2026-10-23/24 排查记录：首轮生成的 `ming-portfolio-20261023.pdf` 这一路径在 GitHub Pages 备份面上
+> 出现发布异常——git 仓库与构建产物里都有该文件、部署状态 success、raw.githubusercontent 可直读 200，
+> 但 Pages 服务层三个网络视角一致 404（Fastly 头显示 MISS，非缓存），空提交强制重部署也无法恢复；
+> 同批新增的 og-card.png 却正常。换路径后服务恢复。**验收尺 `verify-surface.sh` 的 PDF 抽取只认
+> 纯数字日期文件名**（`ming-portfolio-[0-9]*\.pdf`），带字母后缀的名字会让它报"页面没有 PDF 链接"，
+> 所以交付件最终以 `ming-portfolio-20261024.pdf`（纯数字、全新路径）发布。若将来再遇到
+> "文件在仓库里但 Pages 404"，先换一个从未请求过的新路径，再排查别的。
 
 可点链接数按 `/Subtype /Link` 计。**不要拿 `/URI` 的 token 数当链接数**——它在每个注释里出现多次，
 上一版 README 写的"42 个可点链接"就是这么数出来的，实际注释是 22 个（= 页面 21 个外部链接 + 1 个 PDF 相对链接；
