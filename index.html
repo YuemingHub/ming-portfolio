@@ -6,8 +6,8 @@
 <meta name="description" content="Ming（月明）的独立个人作品集：从家庭教育一线出发，借助 AI Agent 把真实需求推进为可运行、可验证的产品。含真实作品、工作方式、研究方向与可核实证据。">
 <meta name="color-scheme" content="light">
 <meta name="author" content="Ming">
-<meta name="theme-color" content="#f5f2eb">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Ccircle%20cx='32'%20cy='32'%20r='32'%20fill='%231c2a26'/%3E%3Ctext%20x='32'%20y='44'%20font-family='Georgia,serif'%20font-size='36'%20fill='%23d5f69b'%20text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#f6f3ea">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20x='5'%20y='5'%20width='54'%20height='54'%20rx='4'%20fill='none'%20stroke='%23b03a2e'%20stroke-width='5'/%3E%3Ctext%20x='32'%20y='46'%20font-family='serif'%20font-size='36'%20fill='%23b03a2e'%20text-anchor='middle'%3E%E6%98%8E%3C/text%3E%3C/svg%3E">
 <link rel="canonical" href="https://ymai.fun/ming/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ming · 从真实问题出发，把事情做出来">
@@ -25,220 +25,236 @@
 <title>Ming · 从真实问题出发，把事情做出来</title>
 <style>
   :root{
-    --paper:#f5f2eb; --surface:#fffdf7; --ink:#1d211e; --soft:#4e554e; --faint:#5f665b;
-    --line:#d5d6ce; --line-soft:#e2e3db;
-    --deep:#1c2a26; --deep-2:#283831; --lime:#d5f69b; --on-deep:#eef2e8; --on-deep-soft:#c2cfc2;
-    --mark:#a94a27; --leaf:#4a6b45; --chip:#e7ebdf; --chip-ink:#3f5741;
+    --paper:#f6f3ea; --card:#fbf8f0; --ink:#22201b; --soft:#4c4a42; --faint:#635f54;
+    --seal:#b03a2e; --sage:#2f5d50; --line:#cfc9b8; --line-soft:#ddd8c8;
+    --mono:"Courier New","SFMono-Regular",ui-monospace,monospace;
+    --serif:"Noto Serif SC","Songti SC","STSong","SimSun",serif;
     --measure:38rem;
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  body{
-    margin:0;background:var(--paper);color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
-    font-size:16px;line-height:1.85;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-  }
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:16px;line-height:1.85;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   a{color:inherit;text-decoration:none}
-  a:hover{color:var(--mark)}
-  :focus-visible{outline:2px solid var(--mark);outline-offset:3px;border-radius:2px}
+  a:hover{color:var(--seal)}
+  :focus-visible{outline:2px solid var(--seal);outline-offset:3px;border-radius:2px}
   h1,h2,h3,h4,p,ul,dl,figure{margin:0}
   ul{padding:0;list-style:none}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 30px}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 32px}
   .col{max-width:var(--measure)}
+  h1,h2,h3{font-family:var(--serif)}
 
-  /* ---------- header ---------- */
-  .masthead{border-bottom:1px solid var(--line);background:var(--paper)}
-  .masthead .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px;flex-wrap:wrap}
-  .ident{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:-.01em;font-size:19px}
-  .sigil{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center;border-radius:50%;background:var(--deep);color:var(--lime);font-family:Georgia,"Times New Roman",serif;font-size:18px;font-weight:400}
-  .ident .role{font-weight:400;color:var(--faint);font-size:15px}
-  .toc{display:flex;gap:22px;font-size:13.5px;color:var(--soft);flex-wrap:wrap}
+  /* ---------- 卷宗页眉：双线脊 ---------- */
+  .mast{border-bottom:1px solid var(--ink);position:relative;background:var(--paper)}
+  .mast::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--ink)}
+  .mast .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px 22px;min-height:78px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+  .ident{display:flex;align-items:center;gap:13px;font-weight:700;font-size:19px}
+  .chop{width:38px;height:38px;flex:0 0 38px;border:2px solid var(--seal);color:var(--seal);display:grid;place-items:center;
+    font-family:var(--serif);font-size:20px;border-radius:3px;transform:rotate(-3deg)}
+  .ident .role{font-weight:400;color:var(--faint);font-size:14px}
+  .toc{display:flex;gap:20px;font-size:13.5px;color:var(--soft);flex-wrap:wrap}
   .toc a{padding:4px 0}
+  .vol{font-family:var(--mono);font-size:12.5px;color:var(--faint);white-space:nowrap}
 
-  /* ---------- hero ---------- */
-  .hero{padding:86px 0 76px}
-  .kicker{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--leaf);display:flex;align-items:center;gap:11px}
-  .kicker::before{content:"";width:24px;height:2px;background:var(--mark)}
-  h1{font-size:clamp(38px,5.4vw,68px);line-height:1.24;letter-spacing:-.045em;font-weight:700;margin:26px 0 22px;max-width:22ch}
-  h1 .accent{color:var(--leaf)}
-  .lede{font-size:17.5px;line-height:1.95;color:var(--soft);max-width:34rem}
-  .lede + .lede{margin-top:14px}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:34px}
-  .cta{display:inline-flex;align-items:center;gap:9px;background:var(--deep);color:#fff;padding:13px 19px;border-radius:4px;font-size:14px;font-weight:600}
-  .cta:hover{background:var(--deep-2);color:#fff}
-  .cta svg{width:15px;height:15px}
-  .ghost{font-size:14px;font-weight:600;color:var(--soft);border-bottom:1px solid #b6bfb4;padding-bottom:2px}
+  /* ---------- 英雄区 ---------- */
+  .hero{padding:84px 0 70px;position:relative;overflow:hidden}
+  .sealmark{position:absolute;right:2%;top:34%;width:190px;height:190px;border:3px double var(--seal);border-radius:50%;
+    display:grid;place-items:center;color:var(--seal);font-family:var(--serif);font-size:44px;letter-spacing:6px;
+    transform:rotate(-14deg);opacity:.08;pointer-events:none}
+  .kicker{font-family:var(--mono);font-size:13px;color:var(--seal)}
+  h1{font-size:clamp(40px,5vw,60px);line-height:1.3;font-weight:700;letter-spacing:.01em;margin:22px 0 24px;max-width:24ch}
+  h1 .accent{color:var(--sage)}
+  .lede{max-width:33rem;color:var(--soft);font-size:17px}
+  .lede+.lede{margin-top:12px}
+  .cta-row{margin-top:32px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .cta{display:inline-block;border:1.5px solid var(--seal);color:var(--seal);padding:11px 20px;font-weight:700;font-size:14.5px;border-radius:2px}
+  .cta:hover{background:var(--seal);color:#f9f4ec}
+  .ghostlink{font-size:14px;color:var(--soft);border-bottom:1px solid var(--line);padding-bottom:2px}
 
-  /* ---------- sections ---------- */
-  .sect{padding:96px 0 0}
-  .head{display:grid;grid-template-columns:170px minmax(0,1fr);gap:26px;border-top:1px solid var(--line);padding-top:20px;margin-bottom:34px}
-  .head .num{font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--leaf)}
-  h2{font-size:clamp(27px,3vw,41px);line-height:1.34;letter-spacing:-.035em;font-weight:700;margin-bottom:13px;text-wrap:balance}
-  .intro{max-width:44rem;color:var(--soft);font-size:15.5px}
-  h3{font-size:19px;letter-spacing:-.015em;font-weight:700;line-height:1.5}
+  /* ---------- 章节与卷宗卡 ---------- */
+  .sect{padding:72px 0 0}
+  .sect-head{border-top:2px solid var(--ink);padding-top:16px;margin-bottom:8px}
+  .sect-head .no{font-family:var(--mono);font-size:13px;color:var(--seal)}
+  h2{font-size:clamp(27px,3vw,34px);letter-spacing:.02em;line-height:1.4;margin-top:6px;text-wrap:balance}
+  .intro{max-width:44rem;color:var(--soft);font-size:15.5px;margin-top:10px}
+  h3{font-size:25px;letter-spacing:.01em;line-height:1.4}
   p.body{color:var(--soft)}
-  p.body + p.body{margin-top:13px}
+  p.body+p.body{margin-top:13px}
 
-  /* ---------- about ---------- */
-  .about{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:48px;align-items:start}
-  .creed{border-left:2px solid var(--line);padding:2px 0 2px 22px}
-  .creed li{font-size:14.5px;color:var(--soft);padding:11px 0;border-bottom:1px solid var(--line-soft)}
+  /* ---------- 01 关于 ---------- */
+  .about{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:46px;align-items:start;margin-top:24px}
+  .creed{border:1px solid var(--line);background:var(--card);padding:20px 24px}
+  .creed li{padding:12px 0;border-bottom:1px dashed var(--line-soft);font-size:14.5px;color:var(--soft)}
   .creed li:last-child{border-bottom:0}
-  .creed em{font-style:normal;font-weight:700;color:var(--ink);display:block;font-size:15px;margin-bottom:2px}
+  .creed em{font-style:normal;font-weight:700;color:var(--ink);display:block;font-size:15px;margin-bottom:2px;font-family:var(--serif)}
 
-  /* ---------- works ---------- */
-  .work{border-top:1px solid var(--line);padding:30px 0 32px;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:34px}
-  .work:last-of-type{border-bottom:1px solid var(--line)}
-  .work-id{display:flex;align-items:baseline;gap:12px}
-  .work-id .no{font:400 26px/1 Georgia,serif;color:#71876a;letter-spacing:-.04em;flex:0 0 auto}
-  .work h3{font-size:26px;letter-spacing:-.03em;line-height:1.25}
-  .work .sub{margin-top:7px;font-size:13.5px;color:var(--faint);letter-spacing:.01em}
-  .pill{display:inline-block;margin-top:13px;background:var(--chip);color:var(--chip-ink);font-size:12px;font-weight:700;padding:5px 11px;border-radius:100px;white-space:nowrap}
-  .pill.open{background:#dcecd3;color:#2f4a2c}
-  .pill.gate{background:#f0e6d2;color:#5c4a24}
-  .pill.priv{background:#e4e5e0;color:#4f5750}
-  .work .foot{margin-top:16px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
-  .work .foot a{font-size:14px;font-weight:650;border:1px solid #c8d1c4;border-radius:5px;padding:8px 13px;background:var(--surface)}
-  .work .foot a:hover{background:#eef3e9;border-color:#b3c1ab}
-  .work .foot .none{font-size:14px;color:var(--faint)}
-  .fields div{display:grid;grid-template-columns:88px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--line-soft)}
+  /* ---------- 02 作品卷宗卡 ---------- */
+  .card{border:1px solid var(--line);background:var(--card);margin:26px 0 0;padding:26px 30px;position:relative}
+  .card-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .archno{font-family:var(--mono);font-size:12.5px;color:var(--seal);letter-spacing:.06em;flex:0 0 auto}
+  .card h3{font-size:25px}
+  .stamp{margin-left:auto;border:1.5px solid var(--sage);color:var(--sage);font-size:12px;font-weight:700;
+    padding:6px 12px;border-radius:2px;transform:rotate(-2deg);white-space:nowrap}
+  .stamp.priv{border-color:var(--seal);color:var(--seal)}
+  .card .sub{font-family:var(--mono);font-size:12.5px;color:var(--faint);margin-top:8px}
+  .fields{margin-top:16px}
+  .fields div{display:grid;grid-template-columns:92px 1fr;gap:16px;padding:11px 0;border-bottom:1px dashed var(--line-soft)}
   .fields div:first-child{padding-top:0}
   .fields div:last-child{border-bottom:0}
-  .fields dt{font-size:12.5px;font-weight:700;color:var(--leaf);letter-spacing:.02em;padding-top:1px}
+  .fields dt{font-weight:700;font-size:13px;color:var(--faint);padding-top:1px}
   .fields dd{margin:0;font-size:15px;line-height:1.85;color:var(--soft)}
   .fields .todo{position:relative}
-  .fields .todo::before{content:"";position:absolute;left:-12px;top:13px;bottom:13px;width:3px;background:var(--mark);border-radius:2px}
-  .fields .todo dt{color:var(--mark)}
-  .fields .todo dd{color:#5b5145}
+  .fields .todo::before{content:"";position:absolute;left:-30px;top:13px;bottom:13px;width:3px;background:var(--seal)}
+  .fields .todo dt{color:var(--seal)}
+  .foot{margin-top:16px;font-family:var(--mono);font-size:14px;color:var(--faint);display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+  .foot a{border-bottom:1px solid var(--sage);color:var(--sage);padding-bottom:1px}
+  .foot a:hover{color:var(--seal);border-color:var(--seal)}
 
-  /* ---------- workflow ---------- */
-  .loop{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:50px;align-items:start}
+  /* ---------- 03 工作方式 ---------- */
+  .loop{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:46px;align-items:start;margin-top:24px}
   .loop .steps{counter-reset:s}
-  .step{display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
-  .step:first-child{border-top:1px solid var(--line)}
-  .step .sid{font:400 15px/1.7 Georgia,serif;color:#5c7255}
+  .step{display:grid;grid-template-columns:36px 1fr;gap:14px;padding:15px 0;border-bottom:1px dashed var(--line-soft)}
+  .step .sid{font-family:var(--mono);font-size:14px;color:var(--seal)}
   .step b{display:block;font-size:15.5px;font-weight:700;margin-bottom:3px}
   .step p{font-size:14px;color:var(--soft);line-height:1.8}
   .say{font-size:15px;line-height:1.85;color:var(--soft)}
   .say strong{font-weight:650;color:var(--ink)}
-  .tools{margin-top:24px;border:1px solid var(--line);border-radius:9px;background:var(--surface);padding:22px 24px}
-  .tools h3{font-size:14px;font-weight:700;margin-bottom:8px}
+  .tools{margin-top:22px;border:1px solid var(--line);background:var(--card);padding:20px 24px}
+  .tools h3{font-family:var(--mono);font-size:13px;color:var(--seal);letter-spacing:.04em;margin-bottom:8px}
   .tools p{font-size:14px;color:var(--soft);line-height:1.85}
   .tools p+p{margin-top:9px}
 
-  /* ---------- research ---------- */
-  .research{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:46px;align-items:start}
-  .qlist li{padding:15px 0 15px;border-bottom:1px solid var(--line)}
-  .qlist li:first-child{border-top:1px solid var(--line)}
-  .qlist .q{font-size:12.5px;font-weight:700;color:var(--leaf);letter-spacing:.06em;text-transform:uppercase}
+  /* ---------- 04 研究 ---------- */
+  .research{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:44px;align-items:start;margin-top:24px}
+  .qlist li{padding:14px 0;border-bottom:1px dashed var(--line-soft)}
+  .qlist .q{font-family:var(--mono);font-size:12px;color:var(--seal);letter-spacing:.06em}
   .qlist p{font-size:14.5px;color:var(--soft);margin-top:4px;line-height:1.85}
 
-  /* ---------- evidence ---------- */
-  .ev{border-top:1px solid var(--line)}
-  .ev-row{display:grid;grid-template-columns:180px minmax(0,1.05fr) minmax(0,1fr) 96px;gap:18px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line)}
-  .ev-row .label{font-size:14px;font-weight:700}
-  .ev-row .label small{display:block;font-weight:400;font-size:12px;color:var(--faint);margin-top:2px}
-  .ev-row .url{font-size:14px;overflow-wrap:anywhere}
-  .ev-row .url a{display:inline-block;padding:5px 0;font-size:14px;line-height:1.5;text-decoration:underline;text-underline-offset:3px;color:var(--leaf)}
-  .ev-row .url a:hover{color:var(--mark)}
-  .ev-row .state{font-size:12.5px;color:var(--faint)}
-  .ev-row .ok{font-size:12px;font-weight:700;color:var(--leaf);text-align:right;white-space:nowrap}
-  .notlisted{margin-top:26px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px}
-  .notlisted .box{background:#e8eee1;border-radius:10px;padding:24px 26px}
-  .notlisted h3{font-size:15px;font-weight:700;margin-bottom:10px}
-  .notlisted li{font-size:14px;color:#41513f;padding:5px 0 5px 18px;position:relative;line-height:1.75}
-  .notlisted li::before{content:"—";position:absolute;left:0;color:var(--leaf)}
-  .notlisted li a.dl{display:inline-block;margin:4px 0;padding:7px 12px;border:1px solid #b3c3a8;border-radius:5px;background:var(--surface);color:var(--chip-ink);font-weight:650;font-size:14px;line-height:1.4}
-  .notlisted li a.dl:hover{background:#eef3e9;border-color:#93a887;color:var(--ink)}
-  .notlisted .box.plain{background:var(--surface);border:1px solid var(--line)}
+  /* ---------- 05 台账证据 ---------- */
+  .ledger{border-top:3px double var(--ink);border-bottom:3px double var(--ink);margin-top:22px}
+  .lrow{display:grid;grid-template-columns:44px minmax(0,1.05fr) minmax(0,1fr) 150px;gap:14px;padding:13px 4px;border-bottom:1px solid var(--line);align-items:baseline}
+  .lrow:last-child{border-bottom:0}
+  .lno{font-family:var(--mono);font-size:12.5px;color:var(--seal)}
+  .lname{font-size:14.5px;font-weight:700}
+  .lname small{display:block;font-weight:400;font-size:12px;color:var(--faint);margin-top:2px;line-height:1.6}
+  .lurl{font-family:var(--mono);font-size:13px;overflow-wrap:anywhere}
+  .lurl a{border-bottom:1px solid var(--line);padding-bottom:1px}
+  .lurl a:hover{color:var(--seal);border-color:var(--seal)}
+  .lok{font-family:var(--mono);font-size:12.5px;color:var(--sage);text-align:right;white-space:nowrap}
+  .notlisted{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .nbox{border:1px solid var(--line);background:var(--card);padding:20px 24px}
+  .nbox h3{font-family:var(--mono);font-size:13px;color:var(--seal);letter-spacing:.04em;margin-bottom:10px}
+  .nbox li{font-size:14px;color:var(--soft);padding:5px 0 5px 18px;position:relative;line-height:1.75}
+  .nbox li::before{content:"—";position:absolute;left:0;color:var(--sage)}
+  .nbox li a.dl{display:inline-block;margin:4px 0;padding:7px 13px;border:1.5px solid var(--seal);border-radius:2px;background:var(--paper);color:var(--seal);font-weight:700;font-size:14px;line-height:1.4}
+  .nbox li a.dl:hover{background:var(--seal);color:#f9f4ec}
 
-  /* ---------- contact ---------- */
-  .final{background:var(--deep);color:var(--on-deep);margin-top:96px;padding:78px 0 40px}
-  .final .kicker{color:#a9c79c}
-  .final .kicker::before{background:var(--lime)}
-  .final h2{color:#fff;max-width:24rem;margin:22px 0 18px}
-  .final .lede{color:var(--on-deep-soft)}
-  .ways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:34px 0 30px}
-  .way{border:1px solid #4a5c50;border-radius:8px;padding:20px 22px;background:#22332d}
-  .way b{display:block;font-size:15px;margin-bottom:5px;color:#f2f6ec}
-  .way p{font-size:13.5px;color:var(--on-deep-soft);line-height:1.75}
-  .way a{display:inline-block;margin-top:9px;padding:5px 0;font-size:13px;line-height:1.5;font-weight:650;color:var(--lime);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
-  .colophon{border-top:1px solid #3f5247;margin-top:26px;padding-top:20px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12.5px;color:#9fb0a0}
-  .colophon a{text-decoration:underline;text-underline-offset:3px}
+  /* ---------- 06 联系 ---------- */
+  .final{margin-top:84px;border-top:2px solid var(--ink);padding:44px 0 56px}
+  .final h2{font-size:30px;margin-bottom:10px}
+  .final .lede{font-size:15.5px}
+  .ways{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+  .way{border:1px solid var(--line);background:var(--card);padding:18px 20px}
+  .way b{font-family:var(--mono);font-size:12px;color:var(--seal);letter-spacing:.06em;display:block;margin-bottom:6px}
+  .way p{font-size:13.5px;color:var(--soft);line-height:1.75}
+  .way a{display:inline-block;margin-top:8px;border-bottom:1px solid var(--sage);color:var(--sage);padding-bottom:1px;font-size:13.5px;overflow-wrap:anywhere}
+  .colophon{margin-top:32px;font-family:var(--mono);font-size:12px;color:var(--faint);line-height:1.9}
+  .colophon a{border-bottom:1px solid var(--line)}
 
-  /* ---------- responsive ---------- */
+  /* ---------- 响应式 ---------- */
   @media (max-width:940px){
-    .hero{padding:56px 0 48px}
-    .about,.loop,.research,.notlisted{grid-template-columns:1fr;gap:30px}
-    .work{grid-template-columns:1fr;gap:20px}
-    .ev-row{grid-template-columns:1fr;gap:6px;padding:17px 0}
-    .ev-row .ok{text-align:left}
+    .hero{padding:56px 0 50px}
+    .sealmark{width:120px;height:120px;font-size:28px;right:14px;top:16%}
+    .about,.loop,.research,.notlisted{grid-template-columns:1fr;gap:28px}
   }
   @media (max-width:760px){
     .wrap{padding:0 20px}
     .toc{display:none}
-    .sect{padding-top:66px}
-    .head{grid-template-columns:1fr;gap:6px;margin-bottom:24px}
-    .work h3{font-size:23px}
-    .fields div{grid-template-columns:1fr;gap:4px;padding:13px 0}
+    .sect{padding-top:56px}
+    .card{padding:20px 18px}
+    .card-top{align-items:flex-start}
+    .stamp{margin-left:0;transform:rotate(-1deg)}
+    .fields div{grid-template-columns:1fr;gap:3px;padding:12px 0}
     .fields dt{padding-top:0}
+    .fields .todo::before{left:-20px;width:3px}
+    .lrow{grid-template-columns:36px 1fr;gap:2px 12px;padding:13px 2px}
+    .lok{text-align:left;grid-column:2;white-space:normal}
+    .lurl{grid-column:2}
     .ways{grid-template-columns:1fr}
-    .final{padding:56px 0 34px}
-    h1{letter-spacing:-.035em}
-    .lede{font-size:16.5px}
+    .hero{padding:48px 0 42px}
+    h1{letter-spacing:.005em}
   }
   @media (max-width:400px){
     .wrap{padding:0 16px}
-    .work .foot a{padding:11px 14px}
-    .step{grid-template-columns:28px minmax(0,1fr);gap:10px}
+    .cta{padding:11px 16px}
+    .step{grid-template-columns:28px 1fr;gap:10px}
   }
-  /* 320px 一档内容宽只有 288px，38px 字号会把「从真实问题出发，」折成两截 */
   @media (max-width:360px){
-    h1{font-size:34px;line-height:1.3}
+    h1{font-size:34px;line-height:1.32}
   }
 
-  /* ---------- print / PDF ---------- */
+  /* ---------- 打印 / PDF ---------- */
   @media print{
-    @page{size:A4;margin:14mm 14mm 14mm 14mm}
-    html,body{background:#fff;color:#15190f;font-size:10.5pt;line-height:1.62;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    @page{size:A4;margin:14mm}
+    html,body{background:#fff;color:#1c1a15;font-size:10.5pt;line-height:1.62;-webkit-print-color-adjust:exact;print-color-adjust:exact}
     .wrap{max-width:none;padding:0}
-    .masthead{border-bottom:.6pt solid #9aa79a;min-height:0}
-    .masthead .wrap{min-height:0;display:block}
+    .mast{min-height:0}
+    .mast .wrap{min-height:0;display:block}
     .toc{display:none}
-    .sigil{width:26px;height:26px;flex-basis:26px;font-size:14px}
     .ident{font-size:15pt}
-    .hero{padding:16pt 0 13pt}
-    h1{font-size:26pt;line-height:1.22;margin:10pt 0 8pt}
+    .chop{width:26px;height:26px;flex-basis:26px;font-size:14px;border-width:1.5px}
+    .vol{font-size:8.5pt}
+    .hero{padding:16pt 0 12pt}
+    .sealmark{display:none}
+    h1{font-size:26pt;line-height:1.25;margin:10pt 0 8pt}
     .lede{font-size:10.5pt;max-width:none}
-    .hero-cta{display:none}
+    .cta-row{display:none}
     .sect{padding-top:20pt}
-    .head{grid-template-columns:100px minmax(0,1fr);gap:14pt;padding-top:9pt;margin-bottom:11pt;border-top:.6pt solid #9aa79a;break-after:avoid;break-inside:avoid}
-    h2{font-size:16pt;margin-bottom:6pt}.intro{font-size:9.5pt}
-    .work{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:16pt;padding:11pt 0 12pt;break-inside:avoid;border-top:.5pt solid #b6c0b3}
-    .work h3{font-size:13pt}.work .sub{font-size:8.5pt}.pill{font-size:7.5pt;margin-top:6pt;padding:3px 8px}
-    .fields div{grid-template-columns:62px minmax(0,1fr);gap:9pt;padding:6pt 0;border-bottom:.4pt solid #dfe3da}
-    .fields dt{font-size:8.5pt}.fields dd{font-size:9.5pt;line-height:1.6}
-    .work .foot a,.work .foot .none{font-size:8.5pt;padding:4px 8px;border:.5pt solid #b6c0b3}
-    .loop{gap:18pt}.say{font-size:9.5pt;line-height:1.7}.step{padding:7pt 0;border-bottom:.4pt solid #dfe3da}
-    .step b{font-size:10pt}.step p{font-size:9pt}.tools{padding:11pt;margin-top:11pt;break-inside:avoid}
+    .sect-head{padding-top:9pt;margin-bottom:10pt;break-after:avoid;break-inside:avoid}
+    h2{font-size:16pt;margin-top:4pt}
+    .intro{font-size:9.5pt}
+    .about{gap:14pt;margin-top:10pt}
+    .card{break-inside:avoid;margin-top:10pt;padding:10pt 12pt}
+    .card-top{gap:10pt}
+    .archno{font-size:8.5pt}
+    h3{font-size:13pt}
+    .stamp{font-size:7.5pt;padding:2.5pt 6pt;transform:rotate(-1deg)}
+    .card .sub{font-size:8.5pt;margin-top:4pt}
+    .fields div{grid-template-columns:64pt 1fr;gap:9pt;padding:5pt 0}
+    .fields dt{font-size:8.5pt}
+    .fields dd{font-size:9.5pt;line-height:1.6}
+    .fields .todo::before{left:-12pt;top:6pt;bottom:6pt;width:2pt}
+    .foot{font-size:8.5pt;margin-top:8pt}
+    .loop{gap:16pt;margin-top:10pt}
+    .say{font-size:9.5pt;line-height:1.7}
+    .step{padding:6pt 0;grid-template-columns:22pt 1fr}
+    .step b{font-size:10pt}
+    .step p{font-size:9pt}
+    .tools{padding:9pt;margin-top:9pt;break-inside:avoid}
     .tools p,.tools h3{font-size:9.5pt}
-    .research{gap:18pt}.qlist p{font-size:9pt}.qlist li{padding:7pt 0}
-    .ev-row{grid-template-columns:110px minmax(0,1.2fr) minmax(0,1fr) 70pt;gap:9pt;padding:7pt 0;break-inside:avoid;border-bottom:.4pt solid #dfe3da}
-    .ev-row .label{font-size:9.5pt}.ev-row .label small{font-size:8pt}
-    .ev-row .url{font-size:8.5pt}.ev-row .state{font-size:8pt}.ev-row .ok{font-size:8pt}
-    .notlisted{margin-top:11pt}.notlisted .box{padding:11pt 13pt;break-inside:avoid}
-    .notlisted h3{font-size:10pt}.notlisted li{font-size:9pt}
-    .final{margin-top:22pt;padding:16pt 0 8pt;background:#fff;color:#15190f;border-top:1.2pt solid #1c2a26}
-    .final h2,.final .kicker{color:#15190f}.final .lede{color:#3d4740;font-size:10pt}
-    .ways{grid-template-columns:repeat(3,minmax(0,1fr));gap:9pt;margin:11pt 0}
-    .way{background:#f2f4ee;border:.5pt solid #c3cbc1;padding:9pt 11pt;break-inside:avoid}
-    .way b{font-size:10pt;color:#15190f}.way p{font-size:8.5pt;color:#3d4740}
-    .way a{font-size:8pt;color:#2f4a2c;margin-top:5pt}
-    .colophon{border-top:.5pt solid #b6c0b3;font-size:8pt;color:#4e574c;margin-top:9pt;padding-top:8pt;display:block}
-    .colophon p+p{margin-top:4pt}
-    a{text-decoration:none}
-    .final .kicker::before{background:#1c2a26}
+    .research{gap:16pt;margin-top:10pt}
+    .qlist li{padding:6pt 0}
+    .qlist p{font-size:9pt}
+    .ledger{margin-top:9pt}
+    .lrow{grid-template-columns:24pt minmax(0,1.15fr) minmax(0,1fr) 62pt;gap:8pt;padding:6pt 2pt;break-inside:avoid}
+    .lname{font-size:9.5pt}.lname small{font-size:8pt}
+    .lurl{font-size:8.5pt}.lok{font-size:8pt}
+    .notlisted{margin-top:10pt;gap:10pt}
+    .nbox{padding:9pt 11pt;break-inside:avoid}
+    .nbox h3{font-size:9.5pt}
+    .nbox li{font-size:9pt}
+    .nbox li a.dl{font-size:9pt;padding:4pt 8pt}
+    .final{margin-top:18pt;border-top-width:1.5pt;padding:14pt 0 8pt;break-inside:avoid}
+    .final h2{font-size:16pt}
+    .final .lede{font-size:10pt}
+    .ways{grid-template-columns:repeat(3,1fr);gap:9pt;margin-top:10pt}
+    .way{padding:8pt 10pt;break-inside:avoid}
+    .way b{font-size:8.5pt}
+    .way p{font-size:8.5pt}
+    .colophon{font-size:8pt;margin-top:9pt}
+    a{border-bottom-color:#9aa79a}
   }
 </style>
 <script type="application/ld+json">
@@ -247,32 +263,33 @@
 </head>
 <body>
 
-<header class="masthead">
+<header class="mast">
   <div class="wrap">
-    <a class="ident" href="#top"><span class="sigil" aria-hidden="true">M</span><span>Ming<span class="role"> · 个人作品集</span></span></a>
+    <a class="ident" href="#top"><span class="chop" aria-hidden="true">明</span><span>Ming<span class="role"> · 个人作品集</span></span></a>
     <nav class="toc" aria-label="页面导航">
       <a href="#about">关于</a><a href="#works">作品</a><a href="#method">工作方式</a><a href="#research">研究</a><a href="#evidence">公开证据</a><a href="#contact">联系</a>
     </nav>
+    <div class="vol">卷宗号 MY-2026 · 核验更新 2026-10-24</div>
   </div>
 </header>
 
 <main id="top">
 
   <section class="wrap hero" aria-label="自我介绍">
-    <div>
-      <p class="kicker">Ming / Selected Work · 2026</p>
-      <h1>从真实问题出发，<br>把事情<span class="accent">做出来</span>。</h1>
-      <p class="lede">我是月明（Ming），在家庭教育一线工作了多年，也是一名非计算机背景的 AI 产品创造者。我不从技术开始，我从一个人、一个家庭、一件确实需要完成的事情开始。</p>
-      <p class="lede">我想做成的一件事：让普通人用尽可能小的成本，借到世界上已经存在的优秀 AI 能力，把自己生活里真想做的事做完。</p>
-      <div class="hero-cta">
-        <a class="cta" href="#works">看我真实做过的项目 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
-        <a class="ghost" href="#method">我的创造方式 ↗</a>
-      </div>
+    <div class="sealmark" aria-hidden="true">验讫</div>
+    <p class="kicker">MING / SELECTED WORK · 2026</p>
+    <h1>从真实问题出发，<br>把事情<span class="accent">做出来</span>。</h1>
+    <p class="lede">我是月明（Ming），在家庭教育一线工作了多年，也是一名非计算机背景的 AI 产品创造者。我不从技术开始，我从一个人、一个家庭、一件确实需要完成的事情开始。</p>
+    <p class="lede">我想做成的一件事：让普通人用尽可能小的成本，借到世界上已经存在的优秀 AI 能力，把自己生活里真想做的事做完。</p>
+    <div class="cta-row">
+      <a class="cta" href="#works">看我真实做过的项目 →</a>
+      <a class="ghostlink" href="#method">我的创造方式 ↗</a>
     </div>
   </section>
 
   <section class="wrap sect" id="about">
-    <div class="head"><div class="num">01 / About</div><div><h2>我不是技术人员，<br>但我对“做成”负责。</h2><p class="intro">多年在家庭教育现场，我习惯处理的不是代码，而是关系、节奏和反复出现的真实困难。AI 能力成熟之后，我第一次有机会把这些年里看清的问题亲手做成能用、能验证、能被纠正的东西。</p></div></div>
+    <div class="sect-head"><span class="no">案卷 01 · About</span><h2>我不是技术人员，<br>但我对“做成”负责。</h2></div>
+    <p class="intro">多年在家庭教育现场，我习惯处理的不是代码，而是关系、节奏和反复出现的真实困难。AI 能力成熟之后，我第一次有机会把这些年里看清的问题亲手做成能用、能验证、能被纠正的东西。</p>
     <div class="about">
       <div class="col">
         <p class="body">我做的所有项目都从同一个起点开始：某个人、某个家庭，有一件具体的事卡住了。可能是家里的事情留不住，可能是想做一个页面却不知道第一步点哪里，也可能是一个人生活失序之后不知道怎么把节奏重新长回来。</p>
@@ -288,107 +305,91 @@
   </section>
 
   <section class="wrap sect" id="works">
-    <div class="head"><div class="num">02 / Selected Work</div><div><h2>六个项目，<br>状态各不相同。</h2><p class="intro">每一项都写清四件事：为什么做、为谁解决、现在实际做到了什么、以及还没解决什么。涉及真实家庭的原始资料一律不作为展示材料。</p></div></div>
+    <div class="sect-head"><span class="no">案卷 02 · Selected Work</span><h2>六个项目，状态各不相同。</h2></div>
+    <p class="intro">每一项都写清四件事：为什么做、为谁解决、现在实际做到了什么、以及还没解决什么。涉及真实家庭的原始资料一律不作为展示材料。</p>
 
-    <article class="work">
-      <div>
-        <div class="work-id"><span class="no">01</span><h3>Family Space</h3></div>
-        <p class="sub">我和家庭 · ymai.love</p>
-        <span class="pill open">公开入口已上线 · 产品需账号</span>
-        <div class="foot"><a target="_blank" rel="noopener noreferrer" href="https://ymai.love/">ymai.love ↗</a><span class="none">源码与家庭数据不公开</span></div>
-      </div>
+    <article class="card">
+      <div class="card-top"><span class="archno">卷宗 NO.01</span><h3>Family Space</h3><span class="stamp">公开入口已上线 · 产品需账号</span></div>
+      <p class="sub">我和家庭 · ymai.love</p>
       <dl class="fields">
         <div><dt>为什么做</dt><dd>家里的事情散在聊天记录、相册和亲友群里，过两年想找一条当时很重要的记录就找不到了。更麻烦的是，工具把家庭情况理解错了，人没有地方纠正它。</dd></div>
         <div><dt>为谁解决</dt><dd>先是我家自己；然后是像我家一样、需要长期留住事情但没有任何专门工具的普通家庭。</dd></div>
         <div><dt>现在做到</dt><dd>公开入口已上线，说明这个空间要做成什么样；家庭内部使用需要账号。它是最早接受真实世界检验的产品，也是其他几个空间需求的最初来源。</dd></div>
         <div class="todo"><dt>还没解决</dt><dd>长期记录的可信纠错还需要更长时间的真实使用来验证；源码私有，外部只能核实入口和产品方向，不能核实内部实现。</dd></div>
       </dl>
+      <div class="foot"><a target="_blank" rel="noopener noreferrer" href="https://ymai.love/">ymai.love ↗</a><span>源码与家庭数据不公开</span></div>
     </article>
 
-    <article class="work">
-      <div>
-        <div class="work-id"><span class="no">02</span><h3>World Space</h3></div>
-        <p class="sub">我和世界 · ymai.fun</p>
-        <span class="pill open">源码公开 · 在线实例有登录门</span>
-        <div class="foot">
-          <a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/World-Space">github.com/YuemingHub/World-Space ↗</a>
-          <a target="_blank" rel="noopener noreferrer" href="https://ymai.fun/">ymai.fun（进入需要账号）↗</a>
-        </div>
-      </div>
+    <article class="card">
+      <div class="card-top"><span class="archno">卷宗 NO.02</span><h3>World Space</h3><span class="stamp">源码公开 · 在线实例有登录门</span></div>
+      <p class="sub">我和世界 · ymai.fun</p>
       <dl class="fields">
         <div><dt>为什么做</dt><dd>普通人缺的不是一堆工具，是一句话：“这件事现在从哪里进去、第一步点哪里、第一段话怎么说。” 而打开一个工具，并不等于现实已经被改变。</dd></div>
         <div><dt>为谁解决</dt><dd>想做成一件事、没有技术背景、也不打算先为它付钱的人。</dd></div>
         <div><dt>现在做到</dt><dd>产品定义、筛选逻辑与实现全部放在公开仓库里，可以直接读；每个推荐都带“第一步做什么、卡住怎么办、什么时候重新核查”。全程免费起步。</dd></div>
         <div class="todo"><dt>还没解决</dt><dd>推荐清单里的每一项都有保质期，靠人工按周期重核，成本还没降下来；线上实例目前设了访问门，公开体验路径尚未放开。</dd></div>
       </dl>
+      <div class="foot">
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/World-Space">github.com/YuemingHub/World-Space ↗</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://ymai.fun/">ymai.fun（进入需要账号）↗</a>
+      </div>
     </article>
 
-    <article class="work">
-      <div>
-        <div class="work-id"><span class="no">03</span><h3>MingOS</h3></div>
-        <p class="sub">数字生活空间的边界与原则 · mingos.cn</p>
-        <span class="pill open">理念站已上线 · 仓库公开</span>
-        <div class="foot">
-          <a target="_blank" rel="noopener noreferrer" href="https://mingos.cn/">mingos.cn ↗</a>
-          <a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/MingOS">github.com/YuemingHub/MingOS ↗</a>
-        </div>
-      </div>
+    <article class="card">
+      <div class="card-top"><span class="archno">卷宗 NO.03</span><h3>MingOS</h3><span class="stamp">理念站已上线 · 仓库公开</span></div>
+      <p class="sub">数字生活空间的边界与原则 · mingos.cn</p>
       <dl class="fields">
         <div><dt>为什么做</dt><dd>上面几个空间需要一个共同的下层：什么东西可以被记住、谁有权改、出错了怎么撤回、AI 的权限边界到哪里为止。</dd></div>
         <div><dt>为谁解决</dt><dd>需要在长期尺度上安排自己数字生活的个人和家庭，以及要为此写约束的人。</dd></div>
         <div><dt>现在做到</dt><dd>公开的理念站点在回答一个问题：当 AI 越来越强，人在哪里。仓库公开，沉淀了三个空间的共同约束与交接协议。</dd></div>
         <div class="todo"><dt>还没解决</dt><dd>它是理念和约束的框架，不是一套已经打包好、可以直接安装使用的软件。这一区别我不含糊过去。</dd></div>
       </dl>
+      <div class="foot">
+        <a target="_blank" rel="noopener noreferrer" href="https://mingos.cn/">mingos.cn ↗</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/MingOS">github.com/YuemingHub/MingOS ↗</a>
+      </div>
     </article>
 
-    <article class="work">
-      <div>
-        <div class="work-id"><span class="no">04</span><h3>Self Space</h3></div>
-        <p class="sub">我和自己 · ymai.me</p>
-        <span class="pill priv">公开介绍页已上线 · 产品与仓库私有</span>
-        <div class="foot"><a target="_blank" rel="noopener noreferrer" href="https://ymai.me/">ymai.me ↗</a></div>
-      </div>
+    <article class="card">
+      <div class="card-top"><span class="archno">卷宗 NO.04</span><h3>Self Space</h3><span class="stamp priv">公开介绍页已上线 · 产品与仓库私有</span></div>
+      <p class="sub">我和自己 · ymai.me</p>
       <dl class="fields">
         <div><dt>为什么做</dt><dd>家庭之外，一个人对自己的理解同样没有连续性：想法、尝试、反复和结论，每次重新想一遍，就像没有发生过。</dd></div>
         <div><dt>为谁解决</dt><dd>个体自己 —— 而不是以家庭为单位的场景。</dd></div>
         <div><dt>现在做到</dt><dd>公开介绍页已上线（“这里，留给你自己。”），把这一空间要提供的三件事说清楚。</dd></div>
         <div class="todo"><dt>还没解决</dt><dd>个人数据的归属、可撤回和拒绝被理解的边界仍在设计里；因此这一项只写方向，不写成已经交付的产品。</dd></div>
       </dl>
+      <div class="foot"><a target="_blank" rel="noopener noreferrer" href="https://ymai.me/">ymai.me ↗</a></div>
     </article>
 
-    <article class="work">
-      <div>
-        <div class="work-id"><span class="no">05</span><h3>Agent Space</h3></div>
-        <p class="sub">多 Agent 工作与工程治理</p>
-        <span class="pill priv">私有仓库 · 在真实项目中使用</span>
-        <div class="foot"><span class="none">架构与工作流可以交流，暂不提供源码</span></div>
-      </div>
+    <article class="card">
+      <div class="card-top"><span class="archno">卷宗 NO.05</span><h3>Agent Space</h3><span class="stamp priv">私有仓库 · 在真实项目中使用</span></div>
+      <p class="sub">多 Agent 工作与工程治理</p>
       <dl class="fields">
         <div><dt>为什么做</dt><dd>多个 Agent 同时工作时，聊天记录代替不了工程状态。任务边界、授权范围、测试结果和真实故障如果没有留下证据，交接就会失真，后面每一步都建在假的进展上。</dd></div>
         <div><dt>为谁解决</dt><dd>像我一样要把好几个项目同时往前推、但身边没有工程团队的非科班创造者和小团队。</dd></div>
         <div><dt>现在做到</dt><dd>已经在日常真实项目里使用：意图变成带验收标准的任务合同，执行与测试分开，复核由另一个会话重新判一遍。<b>本作品集从核实现状到发布验收，就是按这套流程产出的。</b></dd></div>
         <div class="todo"><dt>还没解决</dt><dd>仓库私有，外部无法直接核实；协议仍在改动，还没有稳定到可以让别人照着复用。</dd></div>
       </dl>
+      <div class="foot"><span>架构与工作流可以交流，暂不提供源码</span></div>
     </article>
 
-    <article class="work">
-      <div>
-        <div class="work-id"><span class="no">06</span><h3>LRDF</h3></div>
-        <p class="sub">生命恢复与发展体系 · 研究</p>
-        <span class="pill priv">研究中 · 私有仓库</span>
-        <div class="foot"><span class="none">方法与理念可以交流，暂无公开成果</span></div>
-      </div>
+    <article class="card">
+      <div class="card-top"><span class="archno">卷宗 NO.06</span><h3>LRDF</h3><span class="stamp priv">研究中 · 私有仓库</span></div>
+      <p class="sub">生命恢复与发展体系 · 研究</p>
       <dl class="fields">
         <div><dt>为什么做</dt><dd>一线实践里反复出现的一些事情，现成的教育或心理框架解释不了 —— 比如一个人在生活失序之后，节奏是怎么重新长回来的，中间哪些是必要条件。</dd></div>
         <div><dt>为谁解决</dt><dd>处在失序或重建期的人和家庭，以及需要一套不越过事实的说法来处理这类问题的实践者。</dd></div>
         <div><dt>现在做到</dt><dd>研究方向与写作在持续推进，方法上坚持区分事实、推测与证据，不把理论放在人之前。</dd></div>
         <div class="todo"><dt>还没解决</dt><dd>还没有形成可公开验证的成果。所以这一项在这里只作为研究方向出现，不算作成绩。</dd></div>
       </dl>
+      <div class="foot"><span>方法与理念可以交流，暂无公开成果</span></div>
     </article>
   </section>
 
   <section class="wrap sect" id="method">
-    <div class="head"><div class="num">03 / How I Build</div><div><h2>我如何与 AI Agent<br>一起把事情做出来。</h2><p class="intro">我不把 AI 当成“按一下就把事情全自动做完”的魔法。真正决定成败的是三件很朴素的事：任务边界写清楚没有、结果能不能被独立检查、错了能不能退回并重做。</p></div></div>
+    <div class="sect-head"><span class="no">案卷 03 · How I Build</span><h2>我如何与 AI Agent<br>一起把事情做出来。</h2></div>
+    <p class="intro">我不把 AI 当成“按一下就把事情全自动做完”的魔法。真正决定成败的是三件很朴素的事：任务边界写清楚没有、结果能不能被独立检查、错了能不能退回并重做。</p>
     <div class="loop">
       <div>
         <p class="say">我提出的是<strong>真实问题和验收标准</strong>。工程执行借用成熟的 AI Agent 能力，而对人的判断、纠错和最终决策，我没有打算让出去。</p>
@@ -409,7 +410,8 @@
   </section>
 
   <section class="wrap sect" id="research">
-    <div class="head"><div class="num">04 / Research</div><div><h2>家庭教育与 AI 创造，<br>其实是同一个问题。</h2><p class="intro">看起来是两份工作，问的都是一件事：一个人怎么把对他真正重要的事情做成 —— 以及在做的过程中，怎么保住他自己的判断和选择。</p></div></div>
+    <div class="sect-head"><span class="no">案卷 04 · Research</span><h2>家庭教育与 AI 创造，<br>其实是同一个问题。</h2></div>
+    <p class="intro">看起来是两份工作，问的都是一件事：一个人怎么把对他真正重要的事情做成 —— 以及在做的过程中，怎么保住他自己的判断和选择。</p>
     <div class="research">
       <div class="col">
         <p class="body">教育那一侧靠的是关系、节奏，和允许出错：讲一遍不会，必须给他自己撞的机会。做产品这一侧靠的是边界、验证，和允许返工：说一遍不算，必须让它跑起来被检查。两边都不接受“我以为已经好了”。</p>
@@ -425,20 +427,21 @@
   </section>
 
   <section class="wrap sect" id="evidence">
-    <div class="head"><div class="num">05 / Public Evidence</div><div><h2>可以直接核实的部分。</h2><p class="intro">下列链接均在 2026-10-24 由本页面作者核实可访问。核实方法很简单：从公网请求每个地址，记下返回状态与页面标题；私有项目不做任何在线声称。</p></div></div>
-    <div class="ev">
-      <div class="ev-row"><div class="label">Family Space<small>公开入口</small></div><div class="url"><a target="_blank" rel="noopener noreferrer" href="https://ymai.love/">https://ymai.love/</a></div><div class="state">“Ymai — 这里，留给你们家。”</div><div class="ok">可访问</div></div>
-      <div class="ev-row"><div class="label">Self Space<small>公开介绍页</small></div><div class="url"><a target="_blank" rel="noopener noreferrer" href="https://ymai.me/">https://ymai.me/</a></div><div class="state">“Self Space · 这里，留给你自己。”</div><div class="ok">可访问</div></div>
-      <div class="ev-row"><div class="label">World Space<small>在线实例</small></div><div class="url"><a target="_blank" rel="noopener noreferrer" href="https://ymai.fun/">https://ymai.fun/</a></div><div class="state">标题“World Space · 进入”，首页未登录转登录页；本作品集这一页不经过那道门</div><div class="ok">可访问</div></div>
-      <div class="ev-row"><div class="label">MingOS<small>理念站</small></div><div class="url"><a target="_blank" rel="noopener noreferrer" href="https://mingos.cn/">https://mingos.cn/</a></div><div class="state">“MingOS — 当 AI 越来越强，人在哪里”</div><div class="ok">可访问</div></div>
-      <div class="ev-row"><div class="label">World Space<small>公开源码</small></div><div class="url"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/World-Space">github.com/YuemingHub/World-Space</a></div><div class="state">产品契约、推荐逻辑与页面实现</div><div class="ok">公开仓库</div></div>
-      <div class="ev-row"><div class="label">MingOS<small>公开仓库</small></div><div class="url"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/MingOS">github.com/YuemingHub/MingOS</a></div><div class="state">空间的创建、记忆、授权与演化</div><div class="ok">公开仓库</div></div>
-      <div class="ev-row"><div class="label">Ming-Gateway<small>工程件</small></div><div class="url"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/Ming-Gateway">github.com/YuemingHub/Ming-Gateway</a></div><div class="state">零依赖 Node.js 模型网关：分组路由与故障轮换</div><div class="ok">公开仓库</div></div>
-      <div class="ev-row"><div class="label">AAOP<small>协议草案</small></div><div class="url"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/Adaptive-Agent-Orchestration-Protocol">github.com/YuemingHub/Adaptive-Agent-Orchestration-Protocol</a></div><div class="state">跨 AI 开发环境的智能体编排协议</div><div class="ok">公开仓库</div></div>
-      <div class="ev-row"><div class="label">全部公开仓库<small>账号入口</small></div><div class="url"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub">github.com/YuemingHub</a></div><div class="state">公开仓库 9 个（2026-10-24 经 GitHub API 核实），公开与私有的可见性以 GitHub 页面为准</div><div class="ok">公开账号</div></div>
+    <div class="sect-head"><span class="no">案卷 05 · Public Evidence</span><h2>可以直接核实的部分。</h2></div>
+    <p class="intro">下列链接均在 2026-10-24 由本页面作者核实可访问。核实方法很简单：从公网请求每个地址，记下返回状态与页面标题；私有项目不做任何在线声称。</p>
+    <div class="ledger">
+      <div class="lrow"><span class="lno">01</span><span class="lname">Family Space 公开入口<small>“Ymai — 这里，留给你们家。”</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://ymai.love/">ymai.love</a></span><span class="lok">核讫 · 2026-10-24</span></div>
+      <div class="lrow"><span class="lno">02</span><span class="lname">Self Space 公开介绍页<small>“Self Space · 这里，留给你自己。”</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://ymai.me/">ymai.me</a></span><span class="lok">核讫 · 2026-10-24</span></div>
+      <div class="lrow"><span class="lno">03</span><span class="lname">World Space 在线实例<small>标题“World Space · 进入”，首页未登录转登录页；本作品集这一页不经过那道门</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://ymai.fun/">ymai.fun</a></span><span class="lok">核讫 · 2026-10-24</span></div>
+      <div class="lrow"><span class="lno">04</span><span class="lname">MingOS 理念站<small>“MingOS — 当 AI 越来越强，人在哪里”</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://mingos.cn/">mingos.cn</a></span><span class="lok">核讫 · 2026-10-24</span></div>
+      <div class="lrow"><span class="lno">05</span><span class="lname">World Space 公开源码<small>产品契约、推荐逻辑与页面实现</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/World-Space">github.com/YuemingHub/World-Space</a></span><span class="lok">公开仓库</span></div>
+      <div class="lrow"><span class="lno">06</span><span class="lname">MingOS 公开仓库<small>空间的创建、记忆、授权与演化</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/MingOS">github.com/YuemingHub/MingOS</a></span><span class="lok">公开仓库</span></div>
+      <div class="lrow"><span class="lno">07</span><span class="lname">Ming-Gateway 工程件<small>零依赖 Node.js 模型网关：分组路由与故障轮换</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/Ming-Gateway">github.com/YuemingHub/Ming-Gateway</a></span><span class="lok">公开仓库</span></div>
+      <div class="lrow"><span class="lno">08</span><span class="lname">AAOP 协议草案<small>跨 AI 开发环境的智能体编排协议</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/Adaptive-Agent-Orchestration-Protocol">github.com/YuemingHub/Adaptive-Agent-Orchestration-Protocol</a></span><span class="lok">公开仓库</span></div>
+      <div class="lrow"><span class="lno">09</span><span class="lname">全部公开仓库 账号入口<small>公开仓库 9 个（2026-10-24 经 GitHub API 核实），公开与私有的可见性以 GitHub 页面为准</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub">github.com/YuemingHub</a></span><span class="lok">公开账号</span></div>
     </div>
     <div class="notlisted">
-      <div class="box plain">
+      <div class="nbox">
         <h3>不提供、也不声称的内容</h3>
         <ul>
           <li>私有仓库源码（Family Space、Self Space、Agent Space、LRDF 等）</li>
@@ -447,44 +450,39 @@
           <li>用户数量、留存、收入等没有核实过的数字</li>
         </ul>
       </div>
-      <div class="box">
+      <div class="nbox">
         <h3>如果你想自己核实</h3>
         <ul>
           <li>访问地址：直接点开上面的链接，看标题与状态是否一致。</li>
           <li>看代码：公开仓库可逐文件阅读，包括产品定义与提交历史。</li>
           <li>问未解决的：本页每个项目都写了“还没解决”，欢迎据此提问。</li>
           <li>这个作品集本身：源码与提交历史在 <b>ming-portfolio</b> 仓库里。</li>
-          <li>要离线版：<a class="dl" href="ming-portfolio-2026102401.pdf">下载这一页的 A4 打印版 PDF</a>（7 页，可直接投递）。</li>
+          <li>要离线版：<a class="dl" href="ming-portfolio-2026102402.pdf">下载这一页的 A4 打印版 PDF</a>（7 页，可直接投递）。</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="final" id="contact">
-    <div class="wrap">
-      <p class="kicker">06 / Contact</p>
-      <h2>创造不该只属于少数人。</h2>
-      <p class="lede">我想继续做的是：让更多普通人能用到世界已有的 AI 能力，把自己在乎的事情真正开始、完成、并改善。如果你的问题在这一条线上，我们可以聊聊。</p>
-      <div class="ways">
-        <div class="way">
-          <b>GitHub</b>
-          <p>目前唯一可核实的公开身份入口，公开仓库都在这里。</p>
-          <a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub">github.com/YuemingHub ↗</a>
-        </div>
-        <div class="way">
-          <b>直接开一个 Issue</b>
-          <p>求职、合作、分享邀请或项目讨论，都可以在这个作品集仓库留言，我会回复。</p>
-          <a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/ming-portfolio/issues/new">ming-portfolio/issues/new ↗</a>
-        </div>
-        <div class="way">
-          <b>关于联系方式</b>
-          <p>本页不放置未经核实的邮箱或社交账号。需要私聊请在 Issue 中提出，我再给出可核实的方式。</p>
-        </div>
+  <section class="wrap final" id="contact">
+    <h2>创造不该只属于少数人。</h2>
+    <p class="lede">我想继续做的是：让更多普通人能用到世界已有的 AI 能力，把自己在乎的事情真正开始、完成、并改善。如果你的问题在这一条线上，我们可以聊聊。</p>
+    <div class="ways">
+      <div class="way">
+        <b>GitHub</b>
+        <p>目前唯一可核实的公开身份入口，公开仓库都在这里。</p>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub">github.com/YuemingHub ↗</a>
       </div>
-      <div class="colophon">
-        <p>© 2026 Ming · 独立个人作品集，本页最后更新 2026-10-24。这一页的源码在 GitHub 仓库 <a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/ming-portfolio">ming-portfolio</a>，正式地址是 <a href="https://ymai.fun/ming/">ymai.fun/ming/</a>，同一份内容另在 <a target="_blank" rel="noopener noreferrer" href="https://yueminghub.github.io/ming-portfolio/">GitHub Pages</a> 保留一个入口；不属于任何产品仓库，也不依赖付费服务。</p>
+      <div class="way">
+        <b>直接开一个 ISSUE</b>
+        <p>求职、合作、分享邀请或项目讨论，都可以在这个作品集仓库留言，我会回复。</p>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/ming-portfolio/issues/new">ming-portfolio/issues/new ↗</a>
+      </div>
+      <div class="way">
+        <b>关于联系方式</b>
+        <p>本页不放置未经核实的邮箱或社交账号。需要私聊请在 Issue 中提出，我再给出可核实的方式。</p>
       </div>
     </div>
+    <p class="colophon">© 2026 Ming · 独立个人作品集，本页最后更新 2026-10-24。<br>这一页的源码在 GitHub 仓库 <a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/ming-portfolio">ming-portfolio</a>，正式地址是 <a href="https://ymai.fun/ming/">ymai.fun/ming/</a>，同一份内容另在 <a target="_blank" rel="noopener noreferrer" href="https://yueminghub.github.io/ming-portfolio/">GitHub Pages</a> 保留一个入口；不属于任何产品仓库，也不依赖付费服务。</p>
   </section>
 
 </main>
