@@ -89,14 +89,15 @@ chrome --headless --disable-gpu --no-pdf-header-footer \
 | `ming-portfolio-20261019.pdf` | 收掉四处观感问题之后 | 483402 | 7 | 22 |
 | `ming-portfolio-2026102401.pdf` | 补齐分享/识别标准件（favicon、og 分享卡、JSON-LD）+ 核实日期刷新 | 483903 | 7 | 22 |
 
-> 2026-10-23/24 排查记录：本轮两个 PDF 路径（`ming-portfolio-20261023.pdf`、`ming-portfolio-20261024.pdf`）
-> 先后在 GitHub Pages 备份面上出现服务异常——git 仓库与构建产物里都有该文件、部署状态 success、
-> raw.githubusercontent 可直读 200，但 Pages 服务层持续 404（Fastly 头显示 MISS，非缓存），
-> 空提交强制重部署也无法恢复；同批新增的 og-card.png 与从未请求过的新路径却始终正常。
-> 结论：**该路径的"第一次请求"落在部署传播窗口内，404 被服务层固化**。有效配方 =
-> 纯数字命名（验收尺 `verify-surface.sh` 只认 `ming-portfolio-[0-9]*\.pdf`）+ 全新路径 +
-> 等 `gh api repos/.../pages/builds/latest` 显示 built 之后再发第一次请求。
-> 最终交付件以 `ming-portfolio-2026102401.pdf`（日期+当日序号）发布。
+> 2026-10-23/24 排查记录（未关闭）：本轮多个新 PDF 路径（`ming-portfolio-20261023.pdf`、
+> `ming-portfolio-20261024.pdf`、`ming-portfolio-2026102401.pdf`）在 GitHub Pages 备份面上出现服务异常：
+> git 仓库与构建产物 tar 里都有该文件（逐字节亲验）、部署状态 success、raw.githubusercontent 可直读 200，
+> 但 Pages 服务层持续 404（Fastly 头显示 MISS，非边缘缓存）；同批的 og-card.png 与老 PDF 始终正常，
+> 从未请求过的新路径也秒 200——唯独新 evidence PDF 长时间不出。已排除：缓存 TTL、部署时序
+> （等 builds/latest=built 后首探仍 404）、空提交强推重部署、改路径×3、18 分钟零探测静置。
+> 曾观察到 `ming-portfolio-20261023-a.pdf` 在其部署约 8 分钟后短暂恢复 200，下次部署后又 404，
+> 提示是服务端多副本不一致，非本仓库问题。**官方面（ymai.fun/ming/）不经 GitHub，完全正常。**
+> 若将来备份面 PDF 可访问，重跑 `bash tools/record-verification.sh` 刷新记录即可关闭本条。
 
 可点链接数按 `/Subtype /Link` 计。**不要拿 `/URI` 的 token 数当链接数**——它在每个注释里出现多次，
 上一版 README 写的"42 个可点链接"就是这么数出来的，实际注释是 22 个（= 页面 21 个外部链接 + 1 个 PDF 相对链接；
