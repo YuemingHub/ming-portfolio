@@ -140,7 +140,7 @@
   .lname{font-size:14.5px;font-weight:700}
   .lname small{display:block;font-weight:400;font-size:12px;color:var(--faint);margin-top:2px;line-height:1.6}
   .lurl{font-family:var(--mono);font-size:13px;overflow-wrap:anywhere}
-  .lurl a{border-bottom:1px solid var(--line);padding-bottom:1px}
+  .lurl a{display:inline-block;padding:6px 0;border-bottom:1px solid var(--line)}
   .lurl a:hover{color:var(--seal);border-color:var(--seal)}
   .lok{font-family:var(--mono);font-size:12.5px;color:var(--sage);text-align:right;white-space:nowrap}
   .notlisted{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -159,9 +159,9 @@
   .way{border:1px solid var(--line);background:var(--card);padding:18px 20px}
   .way b{font-family:var(--mono);font-size:12px;color:var(--seal);letter-spacing:.06em;display:block;margin-bottom:6px}
   .way p{font-size:13.5px;color:var(--soft);line-height:1.75}
-  .way a{display:inline-block;margin-top:8px;border-bottom:1px solid var(--sage);color:var(--sage);padding-bottom:1px;font-size:13.5px;overflow-wrap:anywhere}
+  .way a{display:inline-block;margin-top:8px;padding:4px 0;border-bottom:1px solid var(--sage);color:var(--sage);font-size:13.5px;overflow-wrap:anywhere}
   .colophon{margin-top:32px;font-family:var(--mono);font-size:12px;color:var(--faint);line-height:1.9}
-  .colophon a{border-bottom:1px solid var(--line)}
+  .colophon a{display:inline-block;padding:2px 0;border-bottom:1px solid var(--line)}
 
   /* ---------- 响应式 ---------- */
   @media (max-width:940px){
@@ -199,6 +199,7 @@
   @media print{
     @page{size:A4;margin:14mm}
     html,body{background:#fff;color:#1c1a15;font-size:10.5pt;line-height:1.62;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .final{background:#fff}
     .wrap{max-width:none;padding:0}
     .mast{min-height:0}
     .mast .wrap{min-height:0;display:block}
