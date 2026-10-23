@@ -1,13 +1,13 @@
 # 发布验证记录
 
-生成时间：2026-10-23 17:27:14Z（UTC）· 生成命令：bash tools/record-verification.sh
+生成时间：2026-10-23 18:44:09Z（UTC）· 生成命令：bash tools/record-verification.sh
 本节全部为命令原始输出，未手工改写。
 
 ## 1. 部署状态
 
 ```text
 $ git rev-parse --short HEAD
-c73ab71
+cb8827b
 $ gh api repos/YuemingHub/ming-portfolio/pages
 {"cname":null,"https_enforced":true,"source":{"branch":"main","path":"/"},"status":"built"}
 ```
@@ -15,13 +15,13 @@ $ gh api repos/YuemingHub/ming-portfolio/pages
 ## 2. 备份面内容与提交内容逐字节一致
 
 ```text
-线上字节=38834  HEAD:index.html 字节=38834
-线上 md5=bb5c9be377ca  HEAD md5=bb5c9be377ca
+线上字节=38320  HEAD:index.html 字节=38320
+线上 md5=4f3eca0bccef  HEAD md5=4f3eca0bccef
 cmp=完全一致（线上服务的就是这个提交的内容）
 $ curl -sI https://yueminghub.github.io/ming-portfolio/
 Server: GitHub.com
 Content-Type: text/html; charset=utf-8
-Last-Modified: Fri, 23 Oct 2026 17:08:07 GMT
+Last-Modified: Fri, 23 Oct 2026 18:43:27 GMT
 ```
 
 ## 3. 页面内所有外链逐条核实
@@ -41,7 +41,7 @@ ok   200 https://ymai.fun/                                                [World
 ok   200 https://ymai.love/                                               [Ymai — 这里，留给你们家。] 
 ok   200 https://ymai.me/                                                 [Self Space · 这里，留给你自己。] 
 ok   200 https://yueminghub.github.io/ming-portfolio/                     [Ming · 从真实问题出发，把事情做出来] 
-code=200 https://yueminghub.github.io/ming-portfolio/                     bytes=38834
+code=200 https://yueminghub.github.io/ming-portfolio/                     bytes=38320
 ----
 RESULT=ALL_200
 verify-links.sh 退出码=0
@@ -68,15 +68,15 @@ $ gh api repos/YuemingHub/World-Space/commits/main
 量的是公网渲染结果而非本地文件。截图见同目录各 png（正式面前缀 fun-，备份面无前缀）。
 
 ```text
-$ node D:/openAI/agent-space/ming-polish-20261023/repo/tools/audit-browser.mjs https://ymai.fun/ming/ 9333 "fun-"
+$ node D:/openAI/agent-space/ming-polish-20261023/repo/tools/audit-browser.mjs https://ymai.fun/ming/ 9445 "fun-"
 证据输出目录=D:\openAI\agent-space\ming-polish-20261023\repo\evidence\
-desktop 1440x900: scrollW=1425/1440 height=7641 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
-tablet-768 768x1024: scrollW=753/768 height=10112 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
-mobile-390 390x844: scrollW=390/390 height=12445 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
-mobile-320 320x640: scrollW=320/320 height=13467 溢出=false 截断=0 命中区<24px=2 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
-句内链接（豁免项，仅记录）=[{"t":"ymai.fun/ming/","w":85,"h":16,"disp":"inline","exempt":true},{"t":"GitHub Pages","w":75,"h":16,"disp":"inline","exempt":true}]
+desktop 1440x900: scrollW=1425/1440 height=7679 溢出=false 截断=0 命中区<24px=0 失效锚点=0 外链=20 项目块=0 标题="Ming · 从真实问题出发，把事情做出来"
+tablet-768 768x1024: scrollW=753/768 height=8813 溢出=false 截断=0 命中区<24px=0 失效锚点=0 外链=20 项目块=0 标题="Ming · 从真实问题出发，把事情做出来"
+mobile-390 390x844: scrollW=390/390 height=11902 溢出=false 截断=0 命中区<24px=0 失效锚点=0 外链=20 项目块=0 标题="Ming · 从真实问题出发，把事情做出来"
+mobile-320 320x640: scrollW=320/320 height=13409 溢出=false 截断=0 命中区<24px=0 失效锚点=0 外链=20 项目块=0 标题="Ming · 从真实问题出发，把事情做出来"
+句内链接（豁免项，仅记录）=[]
 键盘 Tab 可达（前 14 次）=14 个不同目标
-打印介质：逐元素 175 项，对比度违规=0，深色区块底色=rgb(255, 255, 255)（应为白，否则白字白底）
+打印介质：逐元素 206 项，对比度违规=0，深色区块底色=rgb(255, 255, 255)（应为白，否则白字白底）
 JS 异常=0
 ----
 RESULT=PASS
@@ -84,15 +84,15 @@ RESULT=PASS
 ```
 
 ```text
-$ node D:/openAI/agent-space/ming-polish-20261023/repo/tools/audit-browser.mjs https://yueminghub.github.io/ming-portfolio/ 9333 ""
+$ node D:/openAI/agent-space/ming-polish-20261023/repo/tools/audit-browser.mjs https://yueminghub.github.io/ming-portfolio/ 9445 ""
 证据输出目录=D:\openAI\agent-space\ming-polish-20261023\repo\evidence\
-desktop 1440x900: scrollW=1425/1440 height=7641 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
-tablet-768 768x1024: scrollW=753/768 height=10112 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
-mobile-390 390x844: scrollW=390/390 height=12445 溢出=false 截断=0 命中区<24px=3 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
-mobile-320 320x640: scrollW=320/320 height=13467 溢出=false 截断=0 命中区<24px=2 失效锚点=0 外链=20 项目块=6 标题="Ming · 从真实问题出发，把事情做出来"
-句内链接（豁免项，仅记录）=[{"t":"ymai.fun/ming/","w":85,"h":16,"disp":"inline","exempt":true},{"t":"GitHub Pages","w":75,"h":16,"disp":"inline","exempt":true}]
+desktop 1440x900: scrollW=1425/1440 height=7679 溢出=false 截断=0 命中区<24px=0 失效锚点=0 外链=20 项目块=0 标题="Ming · 从真实问题出发，把事情做出来"
+tablet-768 768x1024: scrollW=753/768 height=8813 溢出=false 截断=0 命中区<24px=0 失效锚点=0 外链=20 项目块=0 标题="Ming · 从真实问题出发，把事情做出来"
+mobile-390 390x844: scrollW=390/390 height=11902 溢出=false 截断=0 命中区<24px=0 失效锚点=0 外链=20 项目块=0 标题="Ming · 从真实问题出发，把事情做出来"
+mobile-320 320x640: scrollW=320/320 height=13409 溢出=false 截断=0 命中区<24px=0 失效锚点=0 外链=20 项目块=0 标题="Ming · 从真实问题出发，把事情做出来"
+句内链接（豁免项，仅记录）=[]
 键盘 Tab 可达（前 14 次）=14 个不同目标
-打印介质：逐元素 175 项，对比度违规=0，深色区块底色=rgb(255, 255, 255)（应为白，否则白字白底）
+打印介质：逐元素 206 项，对比度违规=0，深色区块底色=rgb(255, 255, 255)（应为白，否则白字白底）
 JS 异常=0
 ----
 RESULT=PASS
@@ -102,15 +102,15 @@ RESULT=PASS
 ## 6. 交付 PDF 客观参数
 
 ```text
-文件=ming-portfolio-2026102401.pdf 字节=483903
+文件=ming-portfolio-2026102402.pdf 字节=755005
 页数=7（A4 单页）
-可点链接注释=22（按 /Subtype /Link 计）
-  对照：/URI token=42（不是链接数，每注释出现多次，只作记录）
+可点链接注释=23（按 /Subtype /Link 计）
+  对照：/URI token=44（不是链接数，每注释出现多次，只作记录）
   对照：页面锚点 外部=21 页内=9 PDF=1
   期望关系：注释数 = 外部 + PDF 相对（页内 # 锚点在纸上没有可跳目标，不进注释）
-  闭合=是
+  闭合=否（23 ≠ 21+1），这把尺或那把尺有问题，先查再引用
 页面尺寸=/MediaBox [0 0 594.95996 841.91998]（594.96x841.92pt = A4）
-内嵌字体=Georgia MicrosoftYaHei MicrosoftYaHei-Bold SegoeUI SegoeUI-Bold 
+内嵌字体=CourierNewPS-BoldMT CourierNewPSMT MicrosoftYaHei MicrosoftYaHei-Bold NSimSun SegoeUI SegoeUI-Bold 
 ```
 
 ## 7. 两个发布面逐条验收（tools/verify-surface.sh 原始输出）
@@ -127,11 +127,11 @@ ok    正文含「还没解决」
 ok    未被登录页接管（无密码框、非登录页标题）
       GET /ming = 301 https://ymai.fun/ming/
 ok    /ming 规范化跳转到 /ming/
-      GET /ming/ming-portfolio-2026102401.pdf = 200 483903
+      GET /ming/ming-portfolio-2026102402.pdf = 200 755005
 ok    PDF 状态码 = 200
 ok    PDF 魔数正确（是真 PDF 不是错误页）
-ok    PDF 与仓库里那份逐字节一致 (md5=5a2e9150ffa8)
-ok    /ming/ 内容与本地已验收版本逐字节一致 (md5=bb5c9be377ca)
+ok    PDF 与仓库里那份逐字节一致 (md5=ae30a88338e9)
+ok    /ming/ 内容与本地已验收版本逐字节一致 (md5=4f3eca0bccef)
 ---- 既有系统回归（不跟随跳转，看原始应答）----
 https://ymai.fun/                              HTTP 302 size=0 redir=https://ymai.fun/login
 https://ymai.fun/login                         HTTP 200 size=847 redir=
@@ -140,7 +140,7 @@ https://ymai.love/                             HTTP 200 size=191524 redir=
 https://ymai.me/                               HTTP 200 size=21177 redir=
 https://mingos.cn/                             HTTP 200 size=13045 redir=
 https://api.ymai.fun/healthz                   HTTP 200 size=29 redir=
-https://yueminghub.github.io/ming-portfolio/   HTTP 200 size=38834 redir=
+https://yueminghub.github.io/ming-portfolio/   HTTP 200 size=38320 redir=
 ---- 生产基线判定（部署 /ming/ 不得改变这三条）----
 ok    https://ymai.fun/ 状态码 = 302
 ok    https://ymai.fun/ 跳转目标 = https://ymai.fun/login
@@ -159,11 +159,11 @@ ok    正文含「Family Space」
 ok    正文含「Public Evidence」
 ok    正文含「还没解决」
 ok    未被登录页接管（无密码框、非登录页标题）
-      GET /ming-portfolio/ming-portfolio-2026102401.pdf = 404 9379
+      GET /ming-portfolio/ming-portfolio-2026102402.pdf = 404 9379
 FAIL  PDF 状态码 期望=200 实际=404
 FAIL  返回的不是 PDF
-FAIL  线上 PDF 与仓库不一致 仓库=5a2e9150ffa8 线上=c1f9838a6456
-ok    /ming/ 内容与本地已验收版本逐字节一致 (md5=bb5c9be377ca)
+FAIL  线上 PDF 与仓库不一致 仓库=ae30a88338e9 线上=c1f9838a6456
+ok    /ming/ 内容与本地已验收版本逐字节一致 (md5=4f3eca0bccef)
 ---- 既有系统回归（不跟随跳转，看原始应答）----
 https://yueminghub.github.io/                  HTTP 404 size=9115 redir=
 https://yueminghub.github.io/login             HTTP 404 size=9115 redir=
@@ -172,7 +172,7 @@ https://ymai.love/                             HTTP 200 size=191524 redir=
 https://ymai.me/                               HTTP 200 size=21177 redir=
 https://mingos.cn/                             HTTP 200 size=13045 redir=
 https://api.ymai.fun/healthz                   HTTP 200 size=29 redir=
-https://yueminghub.github.io/ming-portfolio/   HTTP 200 size=38834 redir=
+https://yueminghub.github.io/ming-portfolio/   HTTP 200 size=38320 redir=
 ----
 RESULT=FAIL(3)
 退出码=1
@@ -194,6 +194,6 @@ README.md .VERIFICATION.tmp index.html audit-browser.mjs verify-links.sh verify-
 ## 9. 本装置汇总判定（由上面各段退出码推导）
 
 ```text
-浏览器量测未通过的面数=0  链接/发布面/正式面判据未通过数=1  敏感自检命中=0
+浏览器量测未通过的面数=0  链接/发布面/正式面判据未通过数=1  敏感自检命中=1
 总判定=有判据未通过，见对应段落
 ```

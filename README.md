@@ -94,7 +94,7 @@ chrome --headless --disable-gpu --no-pdf-header-footer \
 > 2026-10-24 起，页面视觉制式经 Owner 从三方向初稿中选定 **D1 档案台账**（技能 huashu-design 的三方向门流程）。
 
 > 2026-10-23/24 排查记录（未关闭）：本轮多个新 PDF 路径（`ming-portfolio-20261023.pdf`、
-> `ming-portfolio-20261024.pdf`、`ming-portfolio-2026102401.pdf`）在 GitHub Pages 备份面上出现服务异常：
+> `ming-portfolio-20261024.pdf`、`ming-portfolio-2026102401.pdf`、`ming-portfolio-2026102402.pdf`）在 GitHub Pages 备份面上出现服务异常：
 > git 仓库与构建产物 tar 里都有该文件（逐字节亲验）、部署状态 success、raw.githubusercontent 可直读 200，
 > 但 Pages 服务层持续 404（Fastly 头显示 MISS，非边缘缓存）；同批的 og-card.png 与老 PDF 始终正常，
 > 从未请求过的新路径也秒 200——唯独新 evidence PDF 长时间不出。已排除：缓存 TTL、部署时序
