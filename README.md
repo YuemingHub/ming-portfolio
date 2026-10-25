@@ -26,6 +26,12 @@ Ming（月明）的独立个人作品集网站。
 5. **不为每次申请另建一个网站。** 求职、合作、分享、创造者计划都用这一份，持续更新。
 6. **改完跑客观量测。** `node tools/audit-browser.mjs` 会用真实浏览器量线上页：横向溢出、文字截断、
    点击命中区、失效锚点、外部依赖、键盘可达性，以及打印介质下的隐形文字（白字白底）。退出码非 0 就是没过。
+7. **已退役的东西不当现行证据。** 案卷 05 只列当前还在成立、且能点开核实的项目；仓库一旦在 GitHub 上被归档
+   （`isArchived=true`）或产品线地图判定退役，就要从证据表里撤下来。2026-10-25 据此移除了 AAOP 一行
+   （该仓库 2026-09-25 已归档）。公开仓库总数仍按 API 实测写，并注明其中几个是归档件。
+8. **页面链到的 PDF 必须在仓库根目录。** 两个发布面都是"根目录原样发布"，PDF 只放在 `evidence/` 会让
+   备份面 404（2026-10-25 实测：正式面 200、Pages 面 404）。新 PDF 落库时根目录与 `evidence/` 各放一份，
+   两份逐字节一致。
 
 ## 两个发布面，改完要同步两处
 
@@ -93,7 +99,15 @@ chrome --headless --disable-gpu --no-pdf-header-footer \
 > 注：`2026102402` 版的 23 = 22 个锚点注释 + 1 处长链接换行被 Chrome 拆成的第二个注释（锚点数未变）。
 > 2026-10-24 起，页面视觉制式经 Owner 从三方向初稿中选定 **D1 档案台账**（技能 huashu-design 的三方向门流程）。
 
-> 2026-10-23/24 排查记录（未关闭）：本轮多个新 PDF 路径（`ming-portfolio-20261023.pdf`、
+> **2026-10-25 更正（署名：本轮 Owner Agent）：下面这条"GitHub Pages 服务端异常"的旧结论是错的，特此作废。**
+> 实测反证：`https://yueminghub.github.io/ming-portfolio/evidence/ming-portfolio-2026102402.pdf` 返回 **200 / 755005 字节**，
+> 而页面链的根路径 `.../ming-portfolio-2026102402.pdf` 返回 404 —— 因为 2026-10-23 起新 PDF 只被加进了 `evidence/`，
+> 从来没有进过仓库根目录（`git log --diff-filter=A -- 'ming-portfolio-*.pdf'` 实测：根目录只有 20261017 与 20261019 两份）。
+> 也就是说备份面 404 是**本仓库自己的路径问题**，不是 GitHub 的服务异常；当时"构建产物 tar 里有该文件"验的正是 `evidence/` 那个路径，
+> 所以怎么等都不会好。官方面一直正常，是因为 `deploy-ming.sh` 把 PDF 装进了静态根目录。
+> 修法见维护规则第 8 条；本轮起新 PDF 根目录与 `evidence/` 各一份。
+
+> 2026-10-23/24 排查记录（**已被上面的更正关闭**）：本轮多个新 PDF 路径（`ming-portfolio-20261023.pdf`、
 > `ming-portfolio-20261024.pdf`、`ming-portfolio-2026102401.pdf`、`ming-portfolio-2026102402.pdf`）在 GitHub Pages 备份面上出现服务异常：
 > git 仓库与构建产物 tar 里都有该文件（逐字节亲验）、部署状态 success、raw.githubusercontent 可直读 200，
 > 但 Pages 服务层持续 404（Fastly 头显示 MISS，非边缘缓存）；同批的 og-card.png 与老 PDF 始终正常，
@@ -117,5 +131,6 @@ chrome --headless --disable-gpu --no-pdf-header-footer \
 | 02 Selected Work | Family Space / World Space / MingOS / Self Space / Agent Space / LRDF，每项含「为什么做 · 为谁解决 · 现在做到 · 还没解决」 |
 | 03 How I Build | 意图与验收标准 → 任务合同 → Agent 执行 → 独立复核 → 回到真实使用 |
 | 04 Research | LRDF 方向与三个仍在研究的问题 |
+| 附卷 LRDF Public Framework | `#lrdf`：LRDF 的普通人版三步框架（先接住 → 再动起来 → 学会长大）+ 最看重的几句话 + 它不是什么 + 安全边界。文本据 LRDF 私有仓 `framework/public/zh-CN/`（家长与公众版 V1）整理，遵守其 `governance/02_对外禁用与谨慎表述.md`；结尾如实写明"概念框架 ≠ 可公开验证的成果" |
 | 05 Public Evidence | 可核实链接清单 + 明确不提供的东西 |
 | 06 Contact | 可核实的公开联系渠道 |
