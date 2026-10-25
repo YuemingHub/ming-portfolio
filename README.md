@@ -9,7 +9,9 @@ Ming（月明）的独立个人作品集网站。
 
 ## 这个仓库是什么
 
-- 一个自包含的静态站点：`index.html` 单文件，内联样式，零依赖、零构建、零外部字体请求。
+- 一个自包含的静态站点：`index.html`（作品集正文）+ `lrdf.html`（LRDF 家长版附卷）+ `site.css`
+  （两页共用的 D1 档案台账样式，2026-10-25 从内联样式抽出来，避免两份样式各自漂移）。
+  零依赖、零构建、零外部字体与 CDN 请求；改样式只改 `site.css` 一处。
 - 仓库自身由 GitHub Pages（GitHub 免费静态托管）发布，分支 `main`，根目录；正式面另由
   `ymai.fun` 所在服务器的 nginx 从独立静态目录提供同一份文件（见下表）。
 - **不属于任何产品**。它不是 Family Space / Self Space / World Space 的一部分，也不是 Qoder 的资产。
@@ -37,7 +39,7 @@ Ming（月明）的独立个人作品集网站。
 
 | 面 | 地址 | 怎么更新 |
 |---|---|---|
-| 正式 | https://ymai.fun/ming/ | push 之后，还要把同一份 `index.html` 与 PDF 同步到服务器静态目录并重载 nginx |
+| 正式 | https://ymai.fun/ming/ | push 之后，还要把同一份 `index.html`、`lrdf.html`、`site.css` 与 PDF 同步到服务器静态目录并重载 nginx |
 | 备份入口 | https://yueminghub.github.io/ming-portfolio/ | `git push origin main` 即自动发布 |
 
 同步命令与服务器内部路径**不写进本仓库**（公开仓库不放生产布局），在运维侧的
