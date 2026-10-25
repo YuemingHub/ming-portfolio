@@ -5,11 +5,12 @@
 #   bash tools/verify-links.sh https://发布地址/      # 额外检查已部署页面本身
 set -uo pipefail
 
-PAGE="$(cd "$(dirname "$0")/.." && pwd)/index.html"
-[ -f "$PAGE" ] || { echo "找不到 index.html: $PAGE"; exit 2; }
+R="$(cd "$(dirname "$0")/.." && pwd)"
+PAGES=("$R"/*.html)
+[ "${#PAGES[@]}" -ge 1 ] || { echo "找不到页面文件: $R/*.html"; exit 2; }
 
 extract() {
-  grep -oE 'href="https?://[^"]+"' "$PAGE" | sed -E 's/^href="//; s/"$//' | grep -v 'ymai.fun/ming/' | sort -u
+  grep -hoE 'href="https?://[^"]+"' "${PAGES[@]}" | sed -E 's/^href="//; s/"$//' | grep -v 'ymai.fun/ming/' | sort -u
 }
 
 fail=0

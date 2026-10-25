@@ -75,19 +75,21 @@ AUD="node $(cygpath -m "$R/tools/audit-browser.mjs" 2>/dev/null || echo "$R/tool
   fi
   echo "> 旧页面：World-Space 仓库 main 分支上的历史文件未删除；该域名此前对 /ming/ 的 404 由其应用自己答，与作品集仓库无关。"
   echo
-  echo "## 5. 真实浏览器量测（tools/audit-browser.mjs 原始输出，两个发布面各跑一遍）"
+  echo "## 5. 真实浏览器量测（tools/audit-browser.mjs 原始输出，两个发布面 × 两个页面）"
   echo
   echo "外部浏览器连接器（Qoder Browser Connector）本机未就绪，改用本机 Chrome 无头 + CDP 驱动线上地址，"
-  echo "量的是公网渲染结果而非本地文件。截图见同目录各 png（正式面前缀 fun-，备份面无前缀）。"
+  echo "量的是公网渲染结果而非本地文件。截图见同目录各 png（正式面前缀 fun-，家长版第二页含 lrdf-）。"
   echo
-  for pre in "fun-" ""; do
-    url="$SITE"; [ "$pre" = "fun-" ] && url="$FUN"
+  for spec in "fun:fun-:" "fun:fun-lrdf-:lrdf.html" "pages::" "pages:lrdf-:lrdf.html"; do
+    face=${spec%%:*}; rest=${spec#*:}; pre=${rest%%:*}; pg=${rest#*:}
+    base="$SITE"; [ "$face" = "fun" ] && base="$FUN"
+    url="$base$pg"
     echo '```text'
     echo "\$ $AUD $url $CDP_PORT \"$pre\""
     ab=$(node "$(cygpath -m "$R/tools/audit-browser.mjs" 2>/dev/null || echo "$R/tools/audit-browser.mjs")" "$url" "$CDP_PORT" "$pre" 2>&1); rc=$?
     printf '%s\n' "$ab"
     echo "退出码=$rc"
-    [ "$rc" = 0 ] || { echo "结论=该面量测未通过，见上"; AUDIT_FAIL=$((AUDIT_FAIL+1)); }
+    [ "$rc" = 0 ] || { echo "结论=该页面量测未通过，见上"; AUDIT_FAIL=$((AUDIT_FAIL+1)); }
     echo '```'
     echo
   done
@@ -141,7 +143,7 @@ AUD="node $(cygpath -m "$R/tools/audit-browser.mjs" 2>/dev/null || echo "$R/tool
   echo "## 8. 敏感信息自检（扫的是上面刚生成的这份待发布文件，含它自己）"
   echo
   echo '```text'
-  ALL="$R/index.html $R/README.md $TMP $R/tools/verify-links.sh $R/tools/verify-surface.sh $R/tools/audit-browser.mjs"
+  ALL="$R/index.html $R/lrdf.html $R/site.css $R/README.md $TMP $R/tools/verify-links.sh $R/tools/verify-surface.sh $R/tools/audit-browser.mjs $R/tools/pdf-links.mjs"
   scan=$(ls -1 $ALL 2>/dev/null)
   echo "扫描文件（$(printf '%s\n' "$scan" | grep -c .) 个，逐个点名）："
   printf '%s\n' "$scan" | sed 's|.*/||' | tr '\n' ' '; echo

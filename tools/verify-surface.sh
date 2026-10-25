@@ -58,6 +58,27 @@ if [ -n "$REF" ] && [ -f "$REF" ]; then
   if [ "$a" = "$b" ]; then echo "ok    /ming/ 内容与本地已验收版本逐字节一致 (md5=$a)"; else echo "FAIL  线上与本地版本不一致 本地=$a 线上=$b"; fail=$((fail+1)); fi
 fi
 
+echo "---- 第二页与共用样式"
+for p in lrdf.html site.css; do
+  pc=$(curl -s -o /dev/null -w '%{http_code}' --max-time 25 "$SITE$BASE/$p")
+  chk 200 "$pc" "GET $BASE/$p"
+done
+if curl -s --max-time 25 "$SITE$BASE/lrdf.html" | grep -q '先接住'; then
+  echo "ok    lrdf.html 正文是家长版（含「先接住」）"
+else
+  echo "FAIL  lrdf.html 正文里没有家长版内容"; fail=$((fail+1))
+fi
+if grep -q 'href="lrdf.html"' /tmp/vm-ming.html; then
+  echo "ok    首页有指向 lrdf.html 的链接"
+else
+  echo "FAIL  首页没有指向 lrdf.html 的链接"; fail=$((fail+1))
+fi
+if grep -q 'href="site.css"' /tmp/vm-ming.html; then
+  echo "ok    首页引用共用样式 site.css"
+else
+  echo "FAIL  首页没有引用 site.css（样式应两页共用一份）"; fail=$((fail+1))
+fi
+
 echo "---- 既有系统回归（不跟随跳转，看原始应答）----"
 for u in "$SITE/" "$SITE/login" "$SITE/healthz" https://ymai.love/ https://ymai.me/ https://mingos.cn/ https://api.ymai.fun/healthz https://yueminghub.github.io/ming-portfolio/; do
   printf '%-46s %s\n' "$u" "$(curl -s -o /dev/null -w 'HTTP %{http_code} size=%{size_download} redir=%{redirect_url}' --max-time 25 "$u")"
