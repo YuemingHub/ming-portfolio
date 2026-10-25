@@ -98,6 +98,13 @@ chrome --headless --disable-gpu --no-pdf-header-footer \
 | `ming-portfolio-2026102401.pdf` | 补齐分享/识别标准件（favicon、og 分享卡、JSON-LD）+ 核实日期刷新 | 483903 | 7 | 22 |
 | `ming-portfolio-2026102402.pdf` | 整页换装 D1 档案台账（宋体标题/明字章/印章状态徽/台账证据表，内容逐句保真） | 755005 | 7 | 23 |
 | `ming-portfolio-20261025.pdf` | 补 LRDF 普通人版框架附卷（`#lrdf`）+ 撤下已归档的 AAOP + 核验日期刷新 10-25 | 909308 | 9 | 24 |
+| `ming-portfolio-2026102502.pdf` | 全站文案通读改写 + 新增家长版第二页 `lrdf.html` + 样式抽出 `site.css` | 902474 | 9 | 26 |
+
+> `2026102502` 版 26 个注释 = **22 个带 `/URI`** + **4 个带页内 `/Dest`**（`#top`、`#lrdf`×2、`#works`）。
+> 22 个 URI 注释的构成是 **19 条站外 `<a>` + 1 条指向本 PDF + 2 条相对页链接（`lrdf.html`）**。
+> 那两条相对链接是本轮新加的第二页入口 —— Chrome 会把它们解析成绝对 URL 再写进注释，
+> 所以判据的期望式必须含「相对页」这一类（本轮实测：漏算时判据报"偏大 22 > 20"，补上后闭合）。
+> 复测：`node tools/pdf-links.mjs ming-portfolio-2026102502.pdf`。
 
 > `20261025` 版的 24 个注释实测构成：**20 个带 `/URI`**（19 条站外 `<a>` + 1 条指向本 PDF 自己的下载链接）
 > + **4 个带页内 `/Dest`**（目标分别是 `#top`、`#lrdf`、`#lrdf`、`#works`）。页面里一共 13 个 `#` 锚点，
@@ -150,3 +157,9 @@ chrome --headless --disable-gpu --no-pdf-header-footer \
 | 附卷 LRDF Public Framework | `#lrdf`：LRDF 的普通人版三步框架（先接住 → 再动起来 → 学会长大）+ 最看重的几句话 + 它不是什么 + 安全边界。文本据 LRDF 私有仓 `framework/public/zh-CN/`（家长与公众版 V1）整理，遵守其 `governance/02_对外禁用与谨慎表述.md`；结尾如实写明"概念框架 ≠ 可公开验证的成果" |
 | 05 Public Evidence | 可核实链接清单 + 明确不提供的东西 |
 | 06 Contact | 可核实的公开联系渠道 |
+
+**第二页 `lrdf.html`（LRDF 家长版附卷）**：三步地图的具体用法（先判断接住还是推进 → 七种"不动"→
+定下一步前三个问题 → 别立刻加码 → 七个观察维度）、六个家长常见问题、安全边界与三条红线。
+文本据 LRDF 私有仓 `framework/public/zh-CN/01_家长怎么用_三步地图.md` 与 `02_家长FAQ与边界.md` 改写，
+遵守 `governance/02_对外禁用与谨慎表述.md`（不诊断、不风险分级、不承诺时限、不写疗效数字）。
+两页共用 `site.css`；PDF 交付件只打印 `index.html`。

@@ -106,16 +106,20 @@ AUD="node $(cygpath -m "$R/tools/audit-browser.mjs" 2>/dev/null || echo "$R/tool
     nuri=$(printf '%s\n' "$pl"  | sed -n 's/^Link=\([0-9]*\) URI=\([0-9]*\) Dest=\([0-9]*\).*/\2/p')
     ndest=$(printf '%s\n' "$pl" | sed -n 's/^Link=\([0-9]*\) URI=\([0-9]*\) Dest=\([0-9]*\).*/\3/p')
     echo "可点链接注释=$nlink（按 /Subtype /Link 计）；其中带 URI=$nuri、带页内 Dest=$ndest"
-    # 只数 <a> 的 href：<link rel="canonical"> 也带 href="http…"，但它不产生注释。
+    # 只数 <a> 的 href，并按四类分开：<link rel="canonical"> 也带 href="http…"，但它不产生注释。
     # 旧尺子把它算进期望值，又假定"页内锚点不进注释"，两个错互相抵掉才看起来闭合（2026-10-25 更正）。
-    next=$(grep -oE '<a [^>]*href="https?://[^"]*"' "$R/index.html" | wc -l)
-    npdf=$(grep -oE '<a [^>]*href="ming-portfolio[^"]*"' "$R/index.html" | wc -l)
-    nhash=$(grep -oE '<a [^>]*href="#[^"]*"' "$R/index.html" | wc -l)
-    echo "  对照：页面 <a> 锚点 站外=$next PDF=$npdf 页内=$nhash（导航条与英雄区 CTA 在打印时被 display:none，不进注释）"
-    echo "  期望关系：带 URI 的注释数 = 站外 <a> + PDF <a>；带页内 Dest 的注释数 ≤ 页内 <a> 数"
-    if [ "$nuri" = "$((next + npdf))" ]; then echo "  闭合=是";
-    elif [ "$nuri" -gt "$((next + npdf))" ]; then echo "  闭合=偏大（$nuri > $((next + npdf))）：超长 URL 在纸上换行会被拆成第二个注释（2026102402 版实测过 1 次），人工核对后再引用";
-    else echo "  红=注释比锚点少（$nuri < $((next + npdf))）：有链接在交付件里丢了，先查再发布"; LEAK_FAIL=1; fi
+    ahrefs=$(grep -oE '<a [^>]*href="[^"]*"' "$R/index.html" | sed -E 's/.*href="//; s/"$//')
+    next=$(printf '%s\n' "$ahrefs" | grep -cE '^https?://')
+    npdf=$(printf '%s\n' "$ahrefs" | grep -cE '^ming-portfolio[0-9A-Za-z.-]*\.pdf$')
+    nhash=$(printf '%s\n' "$ahrefs" | grep -cE '^#')
+    nrel=$(printf '%s\n' "$ahrefs" | grep -vE '^https?://|^#|^ming-portfolio[0-9A-Za-z.-]*\.pdf$' | grep -c .)
+    echo "  对照：<a> 锚点分四类 站外=$next PDF=$npdf 相对页=$nrel 页内#=$nhash（合计 $(printf '%s\n' "$ahrefs" | grep -c .)）"
+    echo "  对照：导航条与英雄区 CTA 在打印时被 display:none，页内 # 不进注释"
+    want=$((next + npdf + nrel))
+    echo "  期望关系：带 URI 的注释数 = 站外 + PDF + 相对页（=$want）；带页内 Dest 的注释数 ≤ 页内 # 数"
+    if [ "$nuri" = "$want" ]; then echo "  闭合=是";
+    elif [ "$nuri" -gt "$want" ]; then echo "  闭合=偏大（$nuri > $want）：先查是不是超长 URL 在纸上换行被拆成第二个注释（2026102402 版实测过 1 次），再查有没有漏数的锚点类别；人工核对后再引用";
+    else echo "  红=注释比锚点少（$nuri < $want）：有链接在交付件里丢了，先查再发布"; LEAK_FAIL=1; fi
     if [ "$ndest" -le "$nhash" ]; then echo "  页内注释上限自检=过（$ndest ≤ $nhash）"; else echo "  红=页内注释多于页内 <a>（$ndest > $nhash）"; LEAK_FAIL=1; fi
     echo "页面尺寸=$(grep -ao '/MediaBox \[[^]]*\]' "$pdf" | head -1)（594.96x841.92pt = A4）"
     echo "内嵌字体=$(grep -ao '/BaseFont /[A-Za-z0-9+-]*' "$pdf" | sed 's|/BaseFont */||; s/^[A-Z]*+//' | sort -u | tr '\n' ' ')"
