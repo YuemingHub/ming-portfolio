@@ -63,11 +63,19 @@ for p in lrdf.html site.css; do
   pc=$(curl -s -o /dev/null -w '%{http_code}' --max-time 25 "$SITE$BASE/$p")
   chk 200 "$pc" "GET $BASE/$p"
 done
-if curl -s --max-time 25 "$SITE$BASE/lrdf.html" | grep -q '先接住'; then
+# 先证明尺吃到了载荷再判内容：curl 失败时正文是空的，直接 grep 会把网络问题报成"内容缺失"（假红）。
+lb=$(curl -s -o /tmp/vm-lrdf.html -w '%{http_code} %{size_download}' --max-time 25 "$SITE$BASE/lrdf.html")
+lcode=${lb%% *}; lbytes=${lb##* }
+echo "      lrdf.html 取到 http=$lcode bytes=$lbytes"
+if [ "${lbytes:-0}" -lt 5000 ]; then
+  echo "FAIL  lrdf.html 载荷只有 $lbytes 字节 —— 这是取不到正文（网络/服务），不能据此判内容"
+  fail=$((fail+1))
+elif grep -q '先接住' /tmp/vm-lrdf.html; then
   echo "ok    lrdf.html 正文是家长版（含「先接住」）"
 else
-  echo "FAIL  lrdf.html 正文里没有家长版内容"; fail=$((fail+1))
+  echo "FAIL  lrdf.html 载荷完整（$lbytes 字节）但正文里没有「先接住」"; fail=$((fail+1))
 fi
+rm -f /tmp/vm-lrdf.html
 if grep -q 'href="lrdf.html"' /tmp/vm-ming.html; then
   echo "ok    首页有指向 lrdf.html 的链接"
 else
