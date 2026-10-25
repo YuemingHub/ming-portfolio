@@ -97,11 +97,10 @@ chrome --headless --disable-gpu --no-pdf-header-footer \
 | `ming-portfolio-2026102402.pdf` | 整页换装 D1 档案台账（宋体标题/明字章/印章状态徽/台账证据表，内容逐句保真） | 755005 | 7 | 23 |
 | `ming-portfolio-20261025.pdf` | 补 LRDF 普通人版框架附卷（`#lrdf`）+ 撤下已归档的 AAOP + 核验日期刷新 10-25 | 909308 | 9 | 24 |
 
-> `20261025` 版的 24 个注释实测构成：**20 个带 `/URI`**（19 条站外链 + 1 条指向本 PDF 自己的下载链接）
-> + **4 个带页内 `/Dest`**（`#top`、`#lrdf` ×2、`#works`）。页内锚点这次能进注释，是因为它们的目标元素在纸上真实存在；
-> 导航条 `.toc` 的 6 个 `#` 链接在打印时被 `display:none`，不产生注释。这一版起 LRDF 的跳转在纸上也是可点的。
-> 复测命令（对任意一版 PDF 都能跑）：
-> `node -e "const s=require('fs').readFileSync(process.argv[1]).toString('latin1');const d=[...s.matchAll(/<<((?:[^<>]|<<[^<>]*>>){0,600}?)>>/g)].map(m=>m[1]).filter(x=>/\/Subtype\s*\/Link/.test(x));console.log('Link='+d.length,'URI='+d.filter(x=>/\/URI/.test(x)).length,'Dest='+d.filter(x=>/\/Dest/.test(x)).length)" ming-portfolio-20261025.pdf`
+> `20261025` 版的 24 个注释实测构成：**20 个带 `/URI`**（19 条站外 `<a>` + 1 条指向本 PDF 自己的下载链接）
+> + **4 个带页内 `/Dest`**（目标分别是 `#top`、`#lrdf`、`#lrdf`、`#works`）。页面里一共 13 个 `#` 锚点，
+> 只有这 4 个进了注释：其余 9 个（导航条 7 个 + 英雄区 2 个）在打印样式里被 `display:none` 掉了。
+> 这一版起 LRDF 的跳转在纸上也是可点的。复测命令：`node tools/pdf-links.mjs ming-portfolio-20261025.pdf`。
 
 > 注：`2026102402` 版的 23 = 22 个锚点注释 + 1 处长链接换行被 Chrome 拆成的第二个注释（锚点数未变）。
 > 2026-10-24 起，页面视觉制式经 Owner 从三方向初稿中选定 **D1 档案台账**（技能 huashu-design 的三方向门流程）。
@@ -125,8 +124,16 @@ chrome --headless --disable-gpu --no-pdf-header-footer \
 > 若将来备份面 PDF 可访问，重跑 `bash tools/record-verification.sh` 刷新记录即可关闭本条。
 
 可点链接数按 `/Subtype /Link` 计。**不要拿 `/URI` 的 token 数当链接数**——它在每个注释里出现多次，
-上一版 README 写的"42 个可点链接"就是这么数出来的，实际注释是 22 个（= 页面 21 个外部链接 + 1 个 PDF 相对链接；
-9 个页内 `#` 锚点在纸上没有可跳目标，不进注释）。字体已内嵌子集。
+上一版 README 写的"42 个可点链接"就是这么数出来的（`20261025` 版实测 `/URI` token=40、注释只有 24 个）。
+字体已内嵌子集。
+
+> **2026-10-25 更正（署名：本轮 Owner Agent）：这一段旧解释里"9 个页内 `#` 锚点在纸上没有可跳目标，不进注释"是错的，特此作废。**
+> 拿同一把尺（`tools/pdf-links.mjs`）回头量历史四版：`20261017 / 20261019 / 2026102401` 都是
+> **22 个注释 = 21 个带 `/URI`（20 条站外 `<a>` + 1 条 PDF 链接）+ 1 个带页内 `/Dest`（`#top`）**，
+> 也就是说 9 个页内锚点里 **有 1 个一直是进注释的**；其余 8 个不进，真正原因是打印样式把
+> `.toc` 与 `.cta-row` 整块 `display:none` 掉了，跟"没有可跳目标"无关。
+> 旧文字把 22 写成"21 个外部链接 + 1 个 PDF 相对链接"，实测站外 `<a>` 是 20 条（第 21 个 `href="http…"` 是
+> `<link rel="canonical">`，它不是注释；当时两个错互相抵了才让判据看起来闭合）。
 两个发布面的 `index.html` 逐字节一致（md5 见 `evidence/VERIFICATION.md`），所以从任一面打印得到的都是同一份内容。
 重新生成时按日期另存，不要覆盖旧文件——它是那一版网页的交付凭据。
 

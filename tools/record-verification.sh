@@ -94,27 +94,31 @@ AUD="node $(cygpath -m "$R/tools/audit-browser.mjs" 2>/dev/null || echo "$R/tool
   echo "## 6. 交付 PDF 客观参数"
   echo
   echo '```text'
-  pdf=$(ls "$R"/evidence/ming-portfolio-*.pdf 2>/dev/null | tail -1)
-  if [ -n "$pdf" ]; then
+  linked=$(sed -n 's/.*href="\(ming-portfolio-[0-9]*\.pdf\)".*/\1/p' "$R/index.html" | head -1)
+  pdf="$R/evidence/$linked"; [ -f "$pdf" ] || pdf="$R/$linked"
+  if [ -n "$linked" ] && [ -f "$pdf" ]; then
     # 五个计数先算进变量：写在 echo 的双引号里会让正则被转义吃掉（上一版就是这样报出"外部=0"）
-    nlink=$(grep -ao '/Subtype /Link' "$pdf" | wc -l)
-    nuri=$(grep -ao '/URI' "$pdf" | wc -l)
-    next=$(grep -oE 'href="https?://[^"]*"' "$R/index.html" | wc -l)
-    nhash=$(grep -oE 'href="#[^"]*"' "$R/index.html" | wc -l)
-    npdf=$(grep -oE 'href="ming-portfolio[^"]*"' "$R/index.html" | wc -l)
-    echo "文件=$(basename "$pdf") 字节=$(wc -c < "$pdf")"
-    echo "页数=$(grep -ao '/MediaBox' "$pdf" | wc -l)（A4 单页）"
-    # 可点链接数按 /Subtype /Link 数，不按 /URI —— /URI 这个 token 在每个注释里出现不止一次，
-    # 上一版拿它当"可点链接数"报过 42，实际注释只有 22 个（同页锚点数对不上就是这个原因）
-    echo "可点链接注释=$nlink（按 /Subtype /Link 计）"
-    echo "  对照：/URI token=$nuri（不是链接数，每注释出现多次，只作记录）"
-    echo "  对照：页面锚点 外部=$next 页内=$nhash PDF=$npdf"
-    echo "  期望关系：注释数 = 外部 + PDF 相对（页内 # 锚点在纸上没有可跳目标，不进注释）"
-    if [ "$nlink" = "$((next + npdf))" ]; then echo "  闭合=是"; else echo "  闭合=否（$nlink ≠ $next+$npdf），这把尺或那把尺有问题，先查再引用"; LEAK_FAIL=1; fi
+    pl=$(node "$(cygpath -m "$R/tools/pdf-links.mjs" 2>/dev/null || echo "$R/tools/pdf-links.mjs")" "$(cygpath -m "$pdf" 2>/dev/null || echo "$pdf")")
+    printf '%s\n' "$pl"
+    nlink=$(printf '%s\n' "$pl" | sed -n 's/^Link=\([0-9]*\) URI=\([0-9]*\) Dest=\([0-9]*\).*/\1/p')
+    nuri=$(printf '%s\n' "$pl"  | sed -n 's/^Link=\([0-9]*\) URI=\([0-9]*\) Dest=\([0-9]*\).*/\2/p')
+    ndest=$(printf '%s\n' "$pl" | sed -n 's/^Link=\([0-9]*\) URI=\([0-9]*\) Dest=\([0-9]*\).*/\3/p')
+    echo "可点链接注释=$nlink（按 /Subtype /Link 计）；其中带 URI=$nuri、带页内 Dest=$ndest"
+    # 只数 <a> 的 href：<link rel="canonical"> 也带 href="http…"，但它不产生注释。
+    # 旧尺子把它算进期望值，又假定"页内锚点不进注释"，两个错互相抵掉才看起来闭合（2026-10-25 更正）。
+    next=$(grep -oE '<a [^>]*href="https?://[^"]*"' "$R/index.html" | wc -l)
+    npdf=$(grep -oE '<a [^>]*href="ming-portfolio[^"]*"' "$R/index.html" | wc -l)
+    nhash=$(grep -oE '<a [^>]*href="#[^"]*"' "$R/index.html" | wc -l)
+    echo "  对照：页面 <a> 锚点 站外=$next PDF=$npdf 页内=$nhash（导航条与英雄区 CTA 在打印时被 display:none，不进注释）"
+    echo "  期望关系：带 URI 的注释数 = 站外 <a> + PDF <a>；带页内 Dest 的注释数 ≤ 页内 <a> 数"
+    if [ "$nuri" = "$((next + npdf))" ]; then echo "  闭合=是";
+    elif [ "$nuri" -gt "$((next + npdf))" ]; then echo "  闭合=偏大（$nuri > $((next + npdf))）：超长 URL 在纸上换行会被拆成第二个注释（2026102402 版实测过 1 次），人工核对后再引用";
+    else echo "  红=注释比锚点少（$nuri < $((next + npdf))）：有链接在交付件里丢了，先查再发布"; LEAK_FAIL=1; fi
+    if [ "$ndest" -le "$nhash" ]; then echo "  页内注释上限自检=过（$ndest ≤ $nhash）"; else echo "  红=页内注释多于页内 <a>（$ndest > $nhash）"; LEAK_FAIL=1; fi
     echo "页面尺寸=$(grep -ao '/MediaBox \[[^]]*\]' "$pdf" | head -1)（594.96x841.92pt = A4）"
     echo "内嵌字体=$(grep -ao '/BaseFont /[A-Za-z0-9+-]*' "$pdf" | sed 's|/BaseFont */||; s/^[A-Z]*+//' | sort -u | tr '\n' ' ')"
   else
-    echo "evidence/ 下没有 ming-portfolio-*.pdf，跳过（PDF 由线上地址打印生成，不重复入库）"
+    echo "页面链的交付件「${linked:-（页面里没有 PDF 链接）}」在 evidence/ 与仓库根目录都没有 —— 交付件缺位（2026-10-25 起 PDF 必须两处各一份）"; LEAK_FAIL=1
   fi
   echo '```'
   echo
