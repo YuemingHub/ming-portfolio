@@ -132,6 +132,30 @@
   .qlist .q{font-family:var(--mono);font-size:12px;color:var(--seal);letter-spacing:.06em}
   .qlist p{font-size:14.5px;color:var(--soft);margin-top:4px;line-height:1.85}
 
+  /* ---------- 04b LRDF 公开框架（附卷） ---------- */
+  .lrdf-frame{margin-top:24px;border:1px solid var(--line);background:var(--card);padding:28px 32px}
+  .lrdf-lead p{font-size:15.5px;color:var(--soft);line-height:1.85}
+  .lrdf-steps{list-style:none;margin:22px 0 0;padding:0;border-top:1px solid var(--line)}
+  .lrdf-steps li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;padding:22px 0;border-bottom:1px dashed var(--line-soft)}
+  .lrdf-steps .n{font-family:var(--mono);font-size:13px;color:var(--seal);padding-top:6px}
+  .lrdf-steps h3{font-size:21px;margin-bottom:8px}
+  .lrdf-steps p{font-size:14.5px;color:var(--soft);line-height:1.85}
+  .lrdf-steps p+p{margin-top:8px}
+  .lrdf-steps .one-line{color:var(--ink);font-weight:650;border-left:2px solid var(--sage);padding-left:12px}
+  .lrdf-creed{margin-top:22px;border-top:1px solid var(--line);padding-top:18px}
+  .lrdf-creed h3,.lrdf-not h3{font-family:var(--mono);font-size:13px;color:var(--seal);letter-spacing:.04em;margin-bottom:8px}
+  .lrdf-creed p{font-size:14.5px;color:var(--soft);line-height:1.85}
+  .lrdf-creed p+p{margin-top:5px}
+  .lrdf-not{margin-top:22px;border-top:1px dashed var(--line-soft);padding-top:18px}
+  .lrdf-not p{font-size:14px;color:var(--soft);line-height:1.85}
+  .lrdf-not p+p{margin-top:8px}
+  .lrdf-status{margin-top:22px;border-top:1px solid var(--line);padding-top:16px;font-family:var(--mono);font-size:12.5px;color:var(--faint);line-height:1.8}
+  .lrdf-back{margin-top:18px;font-family:var(--mono);font-size:13px}
+  .lrdf-back a{display:inline-block;padding:6px 0;border-bottom:1px solid var(--sage);color:var(--sage)}
+  .lrdf-back a:hover{color:var(--seal);border-color:var(--seal)}
+  .jump{display:inline-block;padding:6px 0;border-bottom:1px solid var(--sage);color:var(--sage);font-weight:700}
+  .jump:hover{color:var(--seal);border-color:var(--seal)}
+
   /* ---------- 05 台账证据 ---------- */
   .ledger{border-top:3px double var(--ink);border-bottom:3px double var(--ink);margin-top:22px}
   .lrow{display:grid;grid-template-columns:44px minmax(0,1.05fr) minmax(0,1fr) 150px;gap:14px;padding:13px 4px;border-bottom:1px solid var(--line);align-items:baseline}
@@ -184,6 +208,9 @@
     .lurl{grid-column:2}
     .ways{grid-template-columns:1fr}
     .hero{padding:48px 0 42px}
+    .lrdf-frame{padding:20px 18px}
+    .lrdf-steps li{grid-template-columns:1fr;gap:4px}
+    .lrdf-steps .n{padding-top:0}
     h1{letter-spacing:.005em}
   }
   @media (max-width:400px){
@@ -238,6 +265,15 @@
     .research{gap:16pt;margin-top:10pt}
     .qlist li{padding:6pt 0}
     .qlist p{font-size:9pt}
+    .lrdf-frame{margin-top:9pt;padding:9pt 11pt}
+    .lrdf-lead p,.lrdf-steps p,.lrdf-creed p,.lrdf-not p{font-size:9pt;line-height:1.6}
+    .lrdf-steps{margin-top:8pt}
+    .lrdf-steps li{grid-template-columns:22pt 1fr;gap:8pt;padding:6pt 0;break-inside:avoid}
+    .lrdf-steps h3{font-size:11pt;margin-bottom:3pt}
+    .lrdf-creed,.lrdf-not{margin-top:8pt;padding-top:6pt}
+    .lrdf-creed h3,.lrdf-not h3{font-size:9.5pt;margin-bottom:4pt}
+    .lrdf-status{font-size:8pt;margin-top:8pt;padding-top:6pt}
+    .lrdf-back{font-size:8pt;margin-top:6pt}
     .ledger{margin-top:9pt}
     .lrow{grid-template-columns:24pt minmax(0,1.15fr) minmax(0,1fr) 62pt;gap:8pt;padding:6pt 2pt;break-inside:avoid}
     .lname{font-size:9.5pt}.lname small{font-size:8pt}
@@ -268,9 +304,9 @@
   <div class="wrap">
     <a class="ident" href="#top"><span class="chop" aria-hidden="true">明</span><span>Ming<span class="role"> · 个人作品集</span></span></a>
     <nav class="toc" aria-label="页面导航">
-      <a href="#about">关于</a><a href="#works">作品</a><a href="#method">工作方式</a><a href="#research">研究</a><a href="#evidence">公开证据</a><a href="#contact">联系</a>
+      <a href="#about">关于</a><a href="#works">作品</a><a href="#method">工作方式</a><a href="#research">研究</a><a href="#lrdf">LRDF 框架</a><a href="#evidence">公开证据</a><a href="#contact">联系</a>
     </nav>
-    <div class="vol">卷宗号 MY-2026 · 核验更新 2026-10-24</div>
+    <div class="vol">卷宗号 MY-2026 · 核验更新 2026-10-25</div>
   </div>
 </header>
 
@@ -376,15 +412,15 @@
     </article>
 
     <article class="card">
-      <div class="card-top"><span class="archno">卷宗 NO.06</span><h3>LRDF</h3><span class="stamp priv">研究中 · 私有仓库</span></div>
+      <div class="card-top"><span class="archno">卷宗 NO.06</span><h3>LRDF</h3><span class="stamp priv">概念框架已公开 · 研究记录私有</span></div>
       <p class="sub">生命恢复与发展体系 · 研究</p>
       <dl class="fields">
         <div><dt>为什么做</dt><dd>一线实践里反复出现的一些事情，现成的教育或心理框架解释不了 —— 比如一个人在生活失序之后，节奏是怎么重新长回来的，中间哪些是必要条件。</dd></div>
         <div><dt>为谁解决</dt><dd>处在失序或重建期的人和家庭，以及需要一套不越过事实的说法来处理这类问题的实践者。</dd></div>
-        <div><dt>现在做到</dt><dd>研究方向与写作在持续推进，方法上坚持区分事实、推测与证据，不把理论放在人之前。</dd></div>
-        <div class="todo"><dt>还没解决</dt><dd>还没有形成可公开验证的成果。所以这一项在这里只作为研究方向出现，不算作成绩。</dd></div>
+        <div><dt>现在做到</dt><dd>已经整理出一份面向普通人的三步框架：先接住、再动起来、学会长大。它讲的是观察顺序和行动边界，不是疗效结论；内部研究、证据等级与反例仍在私有仓库持续推进。</dd></div>
+        <div class="todo"><dt>还没解决</dt><dd>仍没有经过公开验证的疗效结论，也没有可引用的数字。公开的只是概念框架，所以这一项在这里仍作为研究方向出现，不算成绩。</dd></div>
       </dl>
-      <div class="foot"><span>方法与理念可以交流，暂无公开成果</span></div>
+      <div class="foot"><a href="#lrdf">读普通人版框架 ↓</a><span>研究记录与证据仍在私有仓库</span></div>
     </article>
   </section>
 
@@ -418,6 +454,7 @@
         <p class="body">教育那一侧靠的是关系、节奏，和允许出错：讲一遍不会，必须给他自己撞的机会。做产品这一侧靠的是边界、验证，和允许返工：说一遍不算，必须让它跑起来被检查。两边都不接受“我以为已经好了”。</p>
         <p class="body">LRDF（生命恢复与发展体系）就是我在这两层之间反复搬运出来的研究方向：它关心一个人在生活失序之后，如何把日常重新组织起来，并把“事实、推测、证据”分开处理 —— 这套纪律同样是我要求 AI 工作回路遵守的。</p>
         <p class="body">它现在还是研究，不是产品，也没有可以引用的成效数字。我在这一页上把它单列出来，正是为了不让它借旁边几个项目的可信度往上抬自己。</p>
+        <p class="body"><a class="jump" href="#lrdf">它怎么看“一个人卡住之后怎么重新长回来” —— 读普通人版框架 ↓</a></p>
       </div>
       <ul class="qlist" aria-label="三个仍在研究的问题">
         <li><span class="q">问题一</span><p>非科班的创造者借用成熟 AI 能力，可靠路径长什么样？中间必须保留哪些属于人自己的判断，才能不把项目交给一个自己看不懂的系统。</p></li>
@@ -427,19 +464,71 @@
     </div>
   </section>
 
+  <section class="wrap sect" id="lrdf">
+    <div class="sect-head"><span class="no">附卷 · LRDF Public Framework</span><h2>一个人卡住之后，<br>生活怎么重新长回来。</h2></div>
+    <p class="intro">这是 LRDF（生命恢复与发展体系）的对外概念框架，用普通人的语言说明它怎么看待“失序之后的重建”。它讲的是一套看问题和动手的顺序，不是诊断，也不是疗效证明。</p>
+    <div class="lrdf-frame">
+      <div class="lrdf-lead">
+        <p><b>先把顺序排对，而不是先加力。</b>很多家庭最难的时候，会卡在同一句话里：明明知道不能再这样下去了，可越催越不动；不催，又怕自己是在纵容。这套框架做的第一件事，是把“先做什么、后做什么”重新排一遍。</p>
+      </div>
+      <ol class="lrdf-steps" aria-label="三步框架">
+        <li>
+          <span class="n">第一步</span>
+          <div>
+            <h3>先接住</h3>
+            <p>当一个人已经被压力、失败、冲突、身体状态或长期消耗压得很低时，先不要急着证明他应该做到什么。</p>
+            <p>先看四件事：有没有安全问题；身体和基本生活是不是已经乱掉；每一次和家里人接触，是不是都意味着被问、被评、被催；家里哪些做法正在让事情越来越紧。</p>
+            <p class="one-line">先别让生命继续被耗。</p>
+            <p>这不等于没有边界。人的价值不需要靠成绩换，但共同生活依然要有边界。</p>
+          </div>
+        </li>
+        <li>
+          <span class="n">第二步</span>
+          <div>
+            <h3>再动起来</h3>
+            <p>“他为什么就是不动？”这句话不能只用“懒”“没动力”回答。有人是真的累；有人是害怕；有人不知道从哪里开始；有人已经觉得“反正做什么都没用”；有人会做，但不想继续被控制；有人真正卡在学校、同伴或现实环境里。不同原因，做法完全不同。</p>
+            <p>所以先不催一个“大动作”。先找一个他现在能够参与的真实下一步，用它来分辨：到底卡在哪里。小行动不是为了完成任务，而是让一个人重新感觉 —— 这是我参与选择的，我做一点，现实真的会有一点变化。</p>
+            <p class="one-line">让行动重新属于他。</p>
+          </div>
+        </li>
+        <li>
+          <span class="n">第三步</span>
+          <div>
+            <h3>学会长大</h3>
+            <p>恢复不是重新听话，也不只是重新上学。更远的目标是：慢慢能够照顾自己、处理情绪和困难、学东西、做决定、和别人合作、尊重边界、为自己的选择负责、做错以后修复、遇到不会的知道求助，并慢慢知道自己是谁、什么对自己重要、想怎样生活。</p>
+            <p class="one-line">把生活一点点交回他自己手里。</p>
+          </div>
+        </li>
+      </ol>
+      <div class="lrdf-creed">
+        <h3>这套框架最看重的几句话</h3>
+        <p>尊严不调参，要求要调参。</p>
+        <p>不动不是原因。</p>
+        <p>人被接住，行为被负责。</p>
+        <p>支持不是替他活，而是帮助他越来越能理解、选择并调用支持 —— 该撤的支架逐步撤掉，仍然有用的支持不必消失。</p>
+      </div>
+      <div class="lrdf-not">
+        <h3>它不是什么</h3>
+        <p>不是医疗诊断，也不替代医疗与心理治疗；不是“九步让孩子复学”；不是“父母只要接纳，一切自然会好”；不是不立规则；不是让父母无限牺牲；也不是让每个孩子最后长成同一种样子。</p>
+        <p><b>安全边界：</b>如果出现明显的自伤或自杀表达与行为、严重暴力、急性精神异常、严重拒食或脱水、持续明显的身体异常，或者家庭已经无法保障基本安全，应优先寻求当地医疗、心理或危机支持，而不是先套用这套框架。</p>
+      </div>
+      <p class="lrdf-status">这一份是对外概念框架，据 LRDF《家长与公众版 V1》整理，可以公开阅读与交流。内部研究、证据等级、反例与未解决项仍在私有仓库，且当前所有原创概念的现实语料状态多为“信息不足”。<b>这里没有可公开引用的疗效数字，也没有经过公开验证的成果。</b></p>
+      <p class="lrdf-back"><a href="#works">← 回到作品卷宗</a></p>
+    </div>
+  </section>
+
   <section class="wrap sect" id="evidence">
     <div class="sect-head"><span class="no">案卷 05 · Public Evidence</span><h2>可以直接核实的部分。</h2></div>
-    <p class="intro">下列链接均在 2026-10-24 由本页面作者核实可访问。核实方法很简单：从公网请求每个地址，记下返回状态与页面标题；私有项目不做任何在线声称。</p>
+    <p class="intro">下列链接均在 2026-10-25 由本页面作者核实可访问。核实方法很简单：从公网请求每个地址，记下返回状态与页面标题；私有项目不做任何在线声称。</p>
     <div class="ledger">
-      <div class="lrow"><span class="lno">01</span><span class="lname">Family Space 公开入口<small>“Ymai — 这里，留给你们家。”</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://ymai.love/">ymai.love</a></span><span class="lok">核讫 · 2026-10-24</span></div>
-      <div class="lrow"><span class="lno">02</span><span class="lname">Self Space 公开介绍页<small>“Self Space · 这里，留给你自己。”</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://ymai.me/">ymai.me</a></span><span class="lok">核讫 · 2026-10-24</span></div>
-      <div class="lrow"><span class="lno">03</span><span class="lname">World Space 在线实例<small>标题“World Space · 进入”，首页未登录转登录页；本作品集这一页不经过那道门</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://ymai.fun/">ymai.fun</a></span><span class="lok">核讫 · 2026-10-24</span></div>
-      <div class="lrow"><span class="lno">04</span><span class="lname">MingOS 理念站<small>“MingOS — 当 AI 越来越强，人在哪里”</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://mingos.cn/">mingos.cn</a></span><span class="lok">核讫 · 2026-10-24</span></div>
+      <div class="lrow"><span class="lno">01</span><span class="lname">Family Space 公开入口<small>“Ymai — 这里，留给你们家。”</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://ymai.love/">ymai.love</a></span><span class="lok">核讫 · 2026-10-25</span></div>
+      <div class="lrow"><span class="lno">02</span><span class="lname">Self Space 公开介绍页<small>“Self Space · 这里，留给你自己。”</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://ymai.me/">ymai.me</a></span><span class="lok">核讫 · 2026-10-25</span></div>
+      <div class="lrow"><span class="lno">03</span><span class="lname">World Space 在线实例<small>标题“World Space · 进入”，首页未登录转登录页；本作品集这一页不经过那道门</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://ymai.fun/">ymai.fun</a></span><span class="lok">核讫 · 2026-10-25</span></div>
+      <div class="lrow"><span class="lno">04</span><span class="lname">MingOS 理念站<small>“MingOS — 当 AI 越来越强，人在哪里”</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://mingos.cn/">mingos.cn</a></span><span class="lok">核讫 · 2026-10-25</span></div>
       <div class="lrow"><span class="lno">05</span><span class="lname">World Space 公开源码<small>产品契约、推荐逻辑与页面实现</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/World-Space">github.com/YuemingHub/World-Space</a></span><span class="lok">公开仓库</span></div>
       <div class="lrow"><span class="lno">06</span><span class="lname">MingOS 公开仓库<small>空间的创建、记忆、授权与演化</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/MingOS">github.com/YuemingHub/MingOS</a></span><span class="lok">公开仓库</span></div>
       <div class="lrow"><span class="lno">07</span><span class="lname">Ming-Gateway 工程件<small>零依赖 Node.js 模型网关：分组路由与故障轮换</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/Ming-Gateway">github.com/YuemingHub/Ming-Gateway</a></span><span class="lok">公开仓库</span></div>
-      <div class="lrow"><span class="lno">08</span><span class="lname">AAOP 协议草案<small>跨 AI 开发环境的智能体编排协议</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/Adaptive-Agent-Orchestration-Protocol">github.com/YuemingHub/Adaptive-Agent-Orchestration-Protocol</a></span><span class="lok">公开仓库</span></div>
-      <div class="lrow"><span class="lno">09</span><span class="lname">全部公开仓库 账号入口<small>公开仓库 9 个（2026-10-24 经 GitHub API 核实），公开与私有的可见性以 GitHub 页面为准</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub">github.com/YuemingHub</a></span><span class="lok">公开账号</span></div>
+      <div class="lrow"><span class="lno">08</span><span class="lname">全部公开仓库 账号入口<small>公开仓库 9 个（2026-10-25 经 GitHub API 核实；其中 4 个是 2026-09-25 起已归档的退役项目，本页不把它们作为现行证据）</small></span><span class="lurl"><a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub">github.com/YuemingHub</a></span><span class="lok">公开账号</span></div>
     </div>
     <div class="notlisted">
       <div class="nbox">
@@ -449,6 +538,7 @@
           <li>真实家庭的记录、咨询资料与任何可识别个人的内容</li>
           <li>账号、密钥、服务器与部署配置</li>
           <li>用户数量、留存、收入等没有核实过的数字</li>
+          <li>LRDF 附卷只是对外概念框架，不作为疗效或成效证据；它背后的研究记录不公开</li>
         </ul>
       </div>
       <div class="nbox">
@@ -483,7 +573,7 @@
         <p>本页不放置未经核实的邮箱或社交账号。需要私聊请在 Issue 中提出，我再给出可核实的方式。</p>
       </div>
     </div>
-    <p class="colophon">© 2026 Ming · 独立个人作品集，本页最后更新 2026-10-24。<br>这一页的源码在 GitHub 仓库 <a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/ming-portfolio">ming-portfolio</a>，正式地址是 <a href="https://ymai.fun/ming/">ymai.fun/ming/</a>，同一份内容另在 <a target="_blank" rel="noopener noreferrer" href="https://yueminghub.github.io/ming-portfolio/">GitHub Pages</a> 保留一个入口；不属于任何产品仓库，也不依赖付费服务。</p>
+    <p class="colophon">© 2026 Ming · 独立个人作品集，本页最后更新 2026-10-25。<br>这一页的源码在 GitHub 仓库 <a target="_blank" rel="noopener noreferrer" href="https://github.com/YuemingHub/ming-portfolio">ming-portfolio</a>，正式地址是 <a href="https://ymai.fun/ming/">ymai.fun/ming/</a>，同一份内容另在 <a target="_blank" rel="noopener noreferrer" href="https://yueminghub.github.io/ming-portfolio/">GitHub Pages</a> 保留一个入口；不属于任何产品仓库，也不依赖付费服务。</p>
   </section>
 
 </main>
