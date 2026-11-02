@@ -78,7 +78,7 @@ const STATUS_NOTES: Record<Status, string> = {
 
 export function HomePage() {
   const counts = STATUS_COUNTS;
-  const inBuild = counts.CODE_ACCEPTED + counts.PROTOTYPE + counts.VALIDATION;
+  const inBuild = counts.CODE_ACCEPTED + counts.PROTOTYPE + counts.VALIDATION + counts.PLANNED;
 
   return (
     <>
@@ -116,7 +116,7 @@ export function HomePage() {
         <div className="shell hero-facts">
           <span><b>{PROJECT_COUNT}</b> 条项目记录</span>
           <span><b>{counts.LIVE_VERIFIED}</b> 个公开入口已核验</span>
-          <span><b>{inBuild}</b> 项在建设或验证</span>
+          <span><b>{inBuild}</b> 项在建设、验证或规划</span>
           <span><b>{counts.RESEARCH}</b> 项研究资产</span>
           <span className="hero-facts-note">状态核验日期 2026-11-02</span>
         </div>
