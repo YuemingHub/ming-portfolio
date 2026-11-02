@@ -1,2 +1,16 @@
 # 部署脚本含服务器内部路径，不入公开仓库
 .deploy/
+
+# 依赖与构建缓存
+node_modules/
+site/node_modules/
+site/dist/
+*.tsbuildinfo
+
+# 本地配置
+.env
+.env.*
+!.env.example
+.DS_Store
+.qoder-sites/
+.qoder-sites.json
