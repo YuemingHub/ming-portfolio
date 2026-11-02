@@ -57,7 +57,7 @@ export function SpacesPage() {
 
           <div className="detail-visual">
             <BrowserFrame
-              src="/evidence/ymai-love.png"
+              src="/media/ymai-love.png"
               alt="Family Space 公开首页实拍：深色暖调页面，标题为「这里，留给你们家。」"
               url="ymai.love"
               caption="公开首页实拍 · 2026-11-02。登录后的家庭页面与真实家庭数据不在本站展示；任何家庭记录、对话或记忆内容都不对外公开。"
@@ -143,7 +143,7 @@ export function SpacesPage() {
 
           <div className="detail-visual">
             <BrowserFrame
-              src="/evidence/ymai-fun.png"
+              src="/media/ymai-fun.png"
               alt="World Space 公开首页实拍：深色首屏，标题为「不懂技术，也能从 0 开始连接 AI 与世界」，右侧是预写样例演示。"
               url="ymai.fun"
               caption="公开首页首屏实拍 · 2026-11-02。7 个目标入口在下方；推荐的是第三方工具，其可用性、价格与名额不由本站保证。"

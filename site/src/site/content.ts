@@ -94,7 +94,7 @@ export const PROJECTS: Project[] = [
     evidence: [
       { label: "ymai.love 公开页", kind: "public", href: "https://ymai.love" },
       { label: "公开页文字核验：今天 / 我家 / 回望 / 我的", kind: "measurement" },
-      { label: "桌面端实拍截图", kind: "screenshot", href: "/evidence/ymai-love.png" },
+      { label: "桌面端实拍截图", kind: "screenshot", href: "/media/ymai-love.png" },
       { label: "部署与运行身份核验（内部记录，不公开）", kind: "private-doc" },
     ],
     verified: "2026-11-02",
@@ -131,7 +131,7 @@ export const PROJECTS: Project[] = [
     evidence: [
       { label: "ymai.fun 公开页", kind: "public", href: "https://ymai.fun" },
       { label: "公开页文字核验：7 个目标 + 三步上手", kind: "measurement" },
-      { label: "桌面端实拍截图", kind: "screenshot", href: "/evidence/ymai-fun.png" },
+      { label: "桌面端实拍截图", kind: "screenshot", href: "/media/ymai-fun.png" },
       { label: "产品契约与行动—现实回路记录（内部记录，不公开）", kind: "private-doc" },
     ],
     verified: "2026-11-02",
@@ -149,7 +149,7 @@ export const PROJECTS: Project[] = [
     evidence: [
       { label: "mingos.cn 公开页", kind: "public", href: "https://mingos.cn" },
       { label: "公开页文字核验：三种关系 + 三个入口", kind: "measurement" },
-      { label: "桌面端实拍截图", kind: "screenshot", href: "/evidence/mingos-cn.png" },
+      { label: "桌面端实拍截图", kind: "screenshot", href: "/media/mingos-cn.png" },
     ],
     verified: "2026-11-02",
     limits: "公开站是理念与导航层，不是运行时。三个空间目前没有统一登录、共享数据或共享记忆。",

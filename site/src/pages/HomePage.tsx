@@ -18,7 +18,7 @@ const SPACES = [
     status: "LIVE_VERIFIED" as const,
     visual: (
       <BrowserFrame
-        src="/evidence/ymai-love.png"
+        src="/media/ymai-love.png"
         alt="Family Space 公开首页实拍：深色暖调页面，标题为「这里，留给你们家。」"
         url="ymai.love"
         caption="公开首页实拍 · 2026-11-02 · 登录后页面不在本站展示"
@@ -55,7 +55,7 @@ const SPACES = [
     status: "LIVE_VERIFIED" as const,
     visual: (
       <BrowserFrame
-        src="/evidence/ymai-fun.png"
+        src="/media/ymai-fun.png"
         alt="World Space 公开首页实拍：深色首屏，标题为「不懂技术，也能从 0 开始连接 AI 与世界」。"
         url="ymai.fun"
         caption="公开首页首屏实拍 · 2026-11-02 · 第三方工具可用性不由本站保证"

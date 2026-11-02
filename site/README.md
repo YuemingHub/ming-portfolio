@@ -34,7 +34,7 @@ npm run build
 - `src/site/`：站点内容、状态、证据、关系图与路由数据
 - `src/pages/`：8 个页面
 - `src/components/`：页面框架、体系图与状态组件
-- `public/evidence/`：公开页截图
+- `public/media/`：公开页截图
 - `public/og-card.png`：分享卡片
 
 ## 数据边界
