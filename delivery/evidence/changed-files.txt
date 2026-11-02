@@ -1,6 +1,7 @@
-# changed files: merge-base 8866ae5 -> a2047d5
-# generated: 2026-11-02
-# columns: status<TAB>path
+# changed files: merge-base 8866ae5 -> delivery candidate (211 files)
+# generated: 2026-11-03
+# columns: status<TAB>path (R100: old<TAB>new)
+A	.github/workflows/ci.yml
 M	.gitignore
 M	README.md
 A	archive/pre-qoder-2026-11-02/README.md
@@ -62,12 +63,38 @@ R100	tools/verify-links.sh	archive/pre-qoder-2026-11-02/tools/verify-links.sh
 R100	tools/verify-surface.sh	archive/pre-qoder-2026-11-02/tools/verify-surface.sh
 A	assets/index-ChYGt_r1.js
 A	assets/index-kOZbdEg7.css
+A	delivery/00-交付索引.md
+A	delivery/01-内容真实性审计.md
+A	delivery/02-公开仓库安全审计.md
+A	delivery/03-测试结果.md
+A	delivery/04-独立复核报告.md
+A	delivery/05-nginx部署方案.md
+A	delivery/06-回滚方案.md
+A	delivery/07-人工验收待办.md
+A	delivery/08-文件变更审计.md
+A	delivery/09-用户旅程与真人测试卡片.md
+A	delivery/evidence/changed-files.txt
+A	delivery/evidence/deploy-scripts-output.txt
+A	delivery/evidence/journey-1-institution.png
+A	delivery/evidence/journey-2-technical.png
+A	delivery/evidence/journey-3-family.png
+A	delivery/evidence/journey-4-research.png
+A	delivery/evidence/nginx-test-output.txt
+A	delivery/evidence/playwright-full.txt
+A	deploy/README.md
+A	deploy/verify.mjs
 A	favicon.svg
 M	index.html
 A	media/mingos-cn.png
 A	media/ymai-fun.png
 A	media/ymai-love.png
+A	nginx-test/README.md
+A	nginx-test/fixtures/selfspace/index.html
+A	nginx-test/nginx.conf.template
+A	nginx-test/run.sh
+A	nginx-test/verify.mjs
 M	og-card.png
+A	scripts/audit-repo.mjs
 A	site/.gitignore
 A	site/PROVENANCE.md
 A	site/README.md
@@ -141,6 +168,7 @@ A	site/index.html
 A	site/lib/utils.ts
 A	site/package-lock.json
 A	site/package.json
+A	site/playwright.config.ts
 A	site/postcss.config.mjs
 A	site/public/favicon.svg
 A	site/public/media/mingos-cn.png
@@ -171,12 +199,18 @@ A	site/src/site/nav.ts
 A	site/src/site/router.tsx
 A	site/src/site/types.ts
 A	site/src/vite-env.d.ts
+A	site/tests/a11y.spec.ts
+A	site/tests/address.spec.ts
+A	site/tests/journeys.spec.ts
+A	site/tests/keyboard.spec.ts
+A	site/tests/mobile.spec.ts
+A	site/tests/render-check.mjs
+A	site/tests/routes.spec.ts
+A	site/tests/routes.ts
+A	site/tests/server.mjs
 A	site/tsconfig.json
 A	site/vendor/shadcn-tailwind-4.13.0.LICENSE.md
 A	site/vendor/shadcn-tailwind-4.13.0.css
 A	site/vite.config.ts
 
-# summary
-A 116
-R100 54
-M 4
+# summary: 153 A, 4 M, 54 R100, 0 D; 211 total

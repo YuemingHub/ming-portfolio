@@ -2,10 +2,11 @@
 // 部署前基线 / 部署后验收。只发 HTTP 请求，不登录服务器、不修改任何配置。
 //
 //   node deploy/verify.mjs pre  --base https://ymai.me --prefix /ming --out .deploy-baseline
-//   node deploy/verify.mjs post --base https://ymai.me --prefix /ming --baseline .deploy-baseline
+//   node deploy/verify.mjs post --base https://ymai.me --prefix /ming --baseline .deploy-baseline --expect-index ./index.html
 //
 // pre 记录根站、/ming/、一个 /gui/_next/ 资源的字节与 sha256。
 // post 复测同一组字节，并检查路由、canonical、资源 MIME、缺失文件 404 与隔离。
+// post 必须给出预期 index.html；否则无法证明线上字节属于这一次 release。
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -19,9 +20,15 @@ const PREFIX = (args.get("prefix") || "/ming").replace(/\/$/, "");
 const CANONICAL_BASE = (args.get("canonical-base") || BASE).replace(/\/$/, "");
 const OUT = args.get("out") || ".deploy-baseline";
 const BASELINE = args.get("baseline") || ".deploy-baseline";
+const EXPECT_INDEX = args.get("expect-index") || "";
 
 if (mode !== "pre" && mode !== "post") {
   console.error("用法：node deploy/verify.mjs pre|post --base https://ymai.me --prefix /ming");
+  process.exit(2);
+}
+
+if (mode === "post" && !EXPECT_INDEX) {
+  console.error("post 必须提供 --expect-index <path/to/index.html>，用于把线上字节绑定到预期发布产物");
   process.exit(2);
 }
 
@@ -98,6 +105,14 @@ async function record() {
 
 async function verify() {
   const manifest = JSON.parse(readFileSync(join(BASELINE, "manifest.json"), "utf8"));
+  let expected;
+  try {
+    expected = readFileSync(EXPECT_INDEX);
+  } catch {
+    console.error(`无法读取预期发布产物：${EXPECT_INDEX}`);
+    process.exit(2);
+  }
+  const expectedSha = sha(expected);
   check("基线格式", manifest.base === BASE && manifest.prefix === PREFIX, `${manifest.base}${manifest.prefix}`);
 
   const root = await get("/");
@@ -111,6 +126,11 @@ async function verify() {
     `${PREFIX}/ 返回 200 HTML`,
     ming.status === 200 && ming.type.includes("text/html"),
     `${ming.status} ${ming.type} ${ming.body.length}B`,
+  );
+  check(
+    `${PREFIX}/ 与预期发布产物字节一致`,
+    ming.sha === expectedSha && ming.body.length === expected.length,
+    `${ming.body.length}B ${ming.sha.slice(0, 12)} vs ${expected.length}B ${expectedSha.slice(0, 12)}`,
   );
 
   if (manifest.gui) {

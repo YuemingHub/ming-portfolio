@@ -1,5 +1,5 @@
-$ node deploy/verify.mjs pre --base http://127.0.0.1:4173 --prefix /ming --out /tmp/ming-baseline-final
-已记录基线：/tmp/ming-baseline-final
+$ MSYS_NO_PATHCONV=1 node deploy/verify.mjs pre --base http://127.0.0.1:4173 --prefix /ming --out /tmp/ming-baseline-final3
+已记录基线：/tmp/ming-baseline-final3
   /            200 140B c7f5211d5f6a
   /ming/        200 2644B b68c8cf88650
   gui           未在根站找到 /gui/_next/ 资源
@@ -7,10 +7,11 @@ PASS  根站可访问  200
 
 基线已记录
 
-$ node deploy/verify.mjs post --base http://127.0.0.1:4173 --prefix /ming --baseline /tmp/ming-baseline-final --canonical-base https://ymai.me
+$ MSYS_NO_PATHCONV=1 node deploy/verify.mjs post --base http://127.0.0.1:4173 --prefix /ming --baseline /tmp/ming-baseline-final3 --expect-index index.html --canonical-base https://ymai.me
 PASS  基线格式  http://127.0.0.1:4173/ming
 PASS  根站字节未变化  200 140B c7f5211d5f6a
 PASS  /ming/ 返回 200 HTML  200 text/html; charset=utf-8 2644B
+PASS  /ming/ 与预期发布产物字节一致  2644B b68c8cf88650 vs 2644B b68c8cf88650
 SKIP  根站未引用 /gui/_next/ 资源，隔离判据仅使用根站字节
 PASS  路由 /ming/ 与 /ming/ 字节一致  200 2644B b68c8cf88650
 PASS  路由 /ming/ecosystem 与 /ming/ 字节一致  200 2644B b68c8cf88650
@@ -39,7 +40,7 @@ PASS  资源 assets/index-kOZbdEg7.css  200 text/css; charset=utf-8
 
 全部通过
 
-$ node site/tests/render-check.mjs --base http://127.0.0.1:4173 --prefix /ming --canonical-base https://ymai.me
+$ MSYS_NO_PATHCONV=1 node site/tests/render-check.mjs --base http://127.0.0.1:4173 --prefix /ming --canonical-base https://ymai.me
 PASS  渲染 http://127.0.0.1:4173/ming/  200 title=让生命与世界更好地连接 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/ 图片失败=0 console=0 request=0
 PASS  渲染 http://127.0.0.1:4173/ming/ecosystem  200 title=体系总览 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/ecosystem 图片失败=0 console=0 request=0
 PASS  渲染 http://127.0.0.1:4173/ming/spaces  200 title=三个空间 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/spaces 图片失败=0 console=0 request=0
@@ -51,3 +52,48 @@ PASS  渲染 http://127.0.0.1:4173/ming/cooperation  200 title=联系与合作 �
 PASS  手机 390 首页无横向溢出  溢出 0px
 
 全部通过
+
+# 负向验证：预期产物被改动一个字节，后置门必须变红
+$ node deploy/verify.mjs post ... --expect-index <修改过的 index.html>
+PASS  基线格式  http://127.0.0.1:4173/ming
+PASS  根站字节未变化  200 140B c7f5211d5f6a
+PASS  /ming/ 返回 200 HTML  200 text/html; charset=utf-8 2644B
+FAIL  /ming/ 与预期发布产物字节一致  2644B b68c8cf88650 vs 2645B 9c4910094e4c
+SKIP  根站未引用 /gui/_next/ 资源，隔离判据仅使用根站字节
+PASS  路由 /ming/ 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/ecosystem 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/spaces 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/institution 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/expert-and-research 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/agent-space 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/evidence 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/cooperation 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  首页 canonical  https://ymai.me/ming/
+PASS  首页引用相对 JS  found
+PASS  尾斜杠 /ming/ecosystem/  301 -> /ming/ecosystem
+PASS  尾斜杠 /ming/spaces/  301 -> /ming/spaces
+PASS  尾斜杠 /ming/institution/  301 -> /ming/institution
+PASS  尾斜杠 /ming/expert-and-research/  301 -> /ming/expert-and-research
+PASS  尾斜杠 /ming/agent-space/  301 -> /ming/agent-space
+PASS  尾斜杠 /ming/evidence/  301 -> /ming/evidence
+PASS  尾斜杠 /ming/cooperation/  301 -> /ming/cooperation
+PASS  /ming 无尾斜杠  301 -> /ming/
+PASS  未知路径回退与 index.html 字节一致  200 2644B b68c8cf88650
+PASS  缺失资源 /ming/missing.js -> 404  404
+PASS  缺失资源 /ming/media/not-found.png -> 404  404
+PASS  页面引用相对资源  assets/index-ChYGt_r1.js, assets/index-kOZbdEg7.css
+PASS  资源 assets/index-ChYGt_r1.js  200 application/javascript; charset=utf-8
+PASS  资源 assets/index-kOZbdEg7.css  200 text/css; charset=utf-8
+
+1 项失败
+exit=1
+
+# 负向验证：缺少 --expect-index 必须拒绝执行
+$ node deploy/verify.mjs post ... (no --expect-index)
+post 必须提供 --expect-index <path/to/index.html>，用于把线上字节绑定到预期发布产物
+exit=2
+
+# 负向验证：预期产物文件不存在必须拒绝执行
+$ node deploy/verify.mjs post ... --expect-index <不存在>
+无法读取预期发布产物：/no/such/index.html
+exit=2

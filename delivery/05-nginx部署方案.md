@@ -49,6 +49,7 @@ cp -a /etc/nginx <BACKUP_DIR>/nginx-backup
 | --- | --- | --- |
 | `<PORTFOLIO_PARENT>` | 作品集发布根目录 | 运维会话选定 |
 | `<RELEASE_ID>` | 本次发布标识 | 建议 `<日期>-<提交前 7 位>` |
+| `<RELEASE_DIR>` | 本次发布的产物目录 | 通常为 `<PORTFOLIO_PARENT>/releases/<RELEASE_ID>` |
 | `<SNIPPET_PATH>` | nginx 片段路径 | 随现有配置结构决定 |
 | `<BACKUP_DIR>` | 配置与基线备份目录 | 运维会话选定 |
 
@@ -91,7 +92,7 @@ mv -Tf <PORTFOLIO_PARENT>/current.next <PORTFOLIO_PARENT>/current
 
 ## 4. nginx 片段
 
-与 [`nginx-test/nginx.conf.template`](../nginx-test/nginx.conf.template) 的主 server 规则一致：
+与 [`nginx-test/nginx.conf.template`](../nginx-test/nginx.conf.template) 的主 server 规则**行为等价，但 `root` 的位置不同**：模板把 `root __WWW__` 放在 server 级，`run.sh` 把产物复制到 `www/ming/`，所以 `location ^~ /ming/` 内不再声明；上线片段必须在该 location 内显式写 `root <PORTFOLIO_PARENT>/current;` 与 `index index.html;`，不能沿用生产主站点 server 级的 `root`，否则 `/ming/` 会指向主站目录。片段里的这两行不是重复声明，不要删除。
 
 ```nginx
 location = /ming {
@@ -166,11 +167,12 @@ node deploy/verify.mjs pre --base https://ymai.me --prefix /ming --out <BACKUP_D
 ### 7.1 HTTP 与隔离
 
 ```bash
-node deploy/verify.mjs post --base https://ymai.me --prefix /ming --baseline <BACKUP_DIR>/baseline
+node deploy/verify.mjs post --base https://ymai.me --prefix /ming --baseline <BACKUP_DIR>/baseline --expect-index <RELEASE_DIR>/index.html
 ```
 
 检查项：
 
+- `/ming/` 的字节与本次 release 的 `index.html` 完全一致；仅在 `/ming/` 与自身比较通过、但没有绑定预期产物时，不能算通过。
 - 根站 `/` 字节与基线完全一致。
 - 若基线记录了 `/gui/_next/` 资源，其字节与基线与现状一致。
 - 8 条路由均 200，且内容与同一份 `index.html` 一致（SPA fallback）。
@@ -180,6 +182,8 @@ node deploy/verify.mjs post --base https://ymai.me --prefix /ming --baseline <BA
 - 首页 canonical 为 `https://ymai.me/ming/`。
 
 找不到 `/gui/_next/` 引用时脚本如实记录 SKIP，不伪造通过。
+
+`--expect-index` 为必填：缺少时脚本以 exit 2 拒绝执行；预期文件被改动一个字节时，`/ming/ 与预期发布产物字节一致` 会 FAIL 并以 exit 1 结束。回滚验证则把预期文件换成 `<BACKUP_DIR>/baseline/ming.html`（部署前基线），见 `06`。
 
 ### 7.2 渲染层
 

@@ -96,10 +96,10 @@ node deploy/verify.mjs pre --base https://ymai.me --prefix /ming --out <BACKUP_D
 6. 立即执行：
 
 ```bash
-node deploy/verify.mjs post --base https://ymai.me --prefix /ming --baseline <BACKUP_DIR>/baseline
+node deploy/verify.mjs post --base https://ymai.me --prefix /ming --baseline <BACKUP_DIR>/baseline --expect-index <RELEASE_DIR>/index.html
 ```
 
-`post` 会检查：根站与 `/gui/_next/` 字节未变化、8 条路由回退到同一份 `index.html`、尾斜杠 301、`/ming` 301、未知路径回退、缺失资源 404、相对 JS/CSS 可加载、首页 canonical。
+`post` 会检查：`/ming/` 与本次 release 的 `index.html` 字节一致、根站与 `/gui/_next/` 字节未变化、8 条路由回退到同一份 `index.html`、尾斜杠 301、`/ming` 301、未知路径回退、缺失资源 404、相对 JS/CSS 可加载、首页 canonical。`--expect-index` 是必填项：没有它，旧 release 或上传错包也会与 `/ming/` 自身一致而全项通过。
 
 SPA 的标题、H1、canonical 由浏览器运行时写入，再用渲染层复查：
 

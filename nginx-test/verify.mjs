@@ -235,9 +235,10 @@ if (process.platform === "win32") {
 }
 
 {
-  const { status, sha: bodySha } = await rawRequest(ORIGIN, "/ming/../");
-  const ok = (status === 200 && bodySha === sentinelSha) || status === 301;
-  check("raw traversal /ming/../ does not serve portfolio", ok, String(status));
+  const { status, sha: bodySha, head } = await rawRequest(ORIGIN, "/ming/../");
+  const loc = (head.match(/\r\nlocation:\s*([^\r\n]+)/i) || [])[1] || "";
+  const ok = (status === 200 && bodySha === sentinelSha) || (status === 301 && !loc.startsWith("/ming"));
+  check("raw traversal /ming/../ does not serve portfolio", ok, `${status}${loc ? ` -> ${loc}` : ""}`);
 }
 
 {
