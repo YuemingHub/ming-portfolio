@@ -84,7 +84,7 @@ location ^~ /ming/ {
 node deploy/verify.mjs pre --base https://ymai.me --prefix /ming --out <BACKUP_DIR>/baseline
 ```
 
-记录根站 `/`、`/ming/` 与根站实际引用的一个 `/gui/_next/` 资源的字节和 sha256。**必须**在改动前执行。
+记录根站 `/`、`/ming/` 的字节和 sha256；若根站实际引用了 `/gui/_next/` 资源，再记录其中一个。**必须**在改动前执行。未引用时脚本记为 SKIP，不冒充通过。
 
 ## 6. 上线
 

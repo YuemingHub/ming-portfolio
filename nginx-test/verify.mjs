@@ -115,6 +115,8 @@ for (const route of routes.slice(1)) {
 const discovered = [...portfolioHtml.matchAll(/(?:src|href)="\.\/(assets\/[^"]+)"/g)].map((m) => m[1]);
 const jsAsset = discovered.find((p) => p.endsWith(".js"));
 const cssAsset = discovered.find((p) => p.endsWith(".css"));
+check("build emits JS asset", Boolean(jsAsset), jsAsset || "missing");
+check("build emits CSS asset", Boolean(cssAsset), cssAsset || "missing");
 
 const assets = [
   jsAsset && [jsAsset, /javascript/],

@@ -143,7 +143,7 @@ node deploy/verify.mjs pre --base https://ymai.me --prefix /ming --out <BACKUP_D
 
 - 根站 `/` 的状态码、字节数、`Content-Type` 与 sha256。
 - `/ming/` 部署前的响应（当前应为 Self Space 的 SPA fallback）。
-- 至少一个根站实际引用的 `/gui/_next/` 资源及其字节；若找到，同时记录它的现状。
+- 若根站实际引用了 `/gui/_next/` 资源，至少记录一个资源及其字节；未引用时如实记为 SKIP，不能用 SKIP 冒充通过。
 - 部署时间、nginx 版本、配置备份位置。
 
 基线必须在任何写入之前完成。缺少基线时停止部署。
@@ -225,7 +225,7 @@ node tests/render-check.mjs --base https://ymai.me --prefix /ming
 
 ## 10. 本地已验证的范围
 
-- `nginx-test/run.sh` 在本地 nginx 1.28.0 上执行 52 项检查：51 通过、1 项仅因 Windows 大小写不敏感跳过。
+- `nginx-test/run.sh` 在本地 nginx 1.28.0 上执行 54 项检查：53 通过、1 项仅因 Windows 大小写不敏感跳过。
 - 回滚目标 server（不含 `/ming/` 规则）验证：移除规则后 `/ming/`、`/ming/ecosystem`、`/` 均回到根站哨兵页面。
 - 部署前后脚本与本机渲染检查通过，详见 [`03-测试结果`](03-测试结果.md) 与 [`evidence/`](evidence/)。
 

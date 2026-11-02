@@ -76,6 +76,11 @@ sed \
   -e "s|__ROLLBACK_PORT__|$ROLLBACK_PORT|g" \
   "$HERE/nginx.conf.template" > "$RUN_DIR/nginx.conf"
 
+if [[ "$MODE" == "local" ]]; then
+  echo "nginx_version=$("$NGINX_PID" -v 2>&1 | tr -d '\r')"
+else
+  echo "nginx_version=nginx/1.28.0 (docker)"
+fi
 echo "mode=$MODE port=$PORT rollback=$ROLLBACK_PORT"
 
 for p in "$PORT" "$ROLLBACK_PORT"; do

@@ -24,7 +24,7 @@ NGINX_BIN=/path/to/nginx bash nginx-test/run.sh
 
 ## 配置在测什么
 
-`nginx.conf.template` 的主 server 与生产同构：
+`nginx.conf.template` 模拟生产的关键路由规则（不含生产站点的全部指令）：
 
 - `location = /ming` → 301 `/ming/`
 - `location ^~ /ming/` → 独立前缀；已知页面路由的尾斜杠只重定向一次
@@ -36,9 +36,10 @@ NGINX_BIN=/path/to/nginx bash nginx-test/run.sh
 
 ## 覆盖范围
 
-`verify.mjs` 共 52 项：原有 33 项（8 条路由、7 个尾斜杠重定向、`/ming`、6 个静态资源、3 个缺失文件、未知路由 fallback、4 个隔离哨兵、canonical / 相对 JS / OG）× 加 19 项边界与回滚检查：
+`verify.mjs` 共 54 项：原有 33 项（8 条路由、7 个尾斜杠重定向、`/ming`、6 个静态资源、3 个缺失文件、未知路由 fallback、4 个隔离哨兵、canonical / 相对 JS / OG）加 21 项边界、资源完整性与回滚检查。原有 33 项来自本轮之前的外部验收清单，仓库中没有更早的脚本；这里用 `verify.mjs` 重建，逐项名称即下列类别：
 
 - `HEAD`、查询字符串、显式 `index.html`
+- 构建必须实际产出 JS 与 CSS，避免资源检查在缺资源时静默消失
 - 资源目录、嵌套缺失 `index.html`、深层路径、前缀相似路径
 - 大小写路径、原始/编码路径穿越、双斜杠
 - 重定向保留查询串、缺失资源的 `HEAD`
@@ -49,5 +50,7 @@ NGINX_BIN=/path/to/nginx bash nginx-test/run.sh
 ## 边界
 
 - 该工程验证的是 nginx 路由与静态资源行为，不代表生产服务器已完成变更；生产部署仍需 Owner 授权。
+- 测试配置**不包含**生产 server 可能存在的 `error_page 404`、`proxy_intercept_errors` 或缓存指令。部署前必须检查：如果生产把 404 改写成 SPA 首页，本地 `=404` 判据会在生产失效；此时需要在 `/ming/` 内显式覆盖，确保缺失资源仍返回 404。
 - `fixtures/selfspace/index.html` 是测试用哨兵页，不是 Self Space 的真实代码或页面。
 - Docker 不可用时不会静默跳过：脚本以退出码 2 结束并要求提供 `NGINX_BIN`。
+- 本机模式会打印 `nginx -v` 的实际版本；Docker 模式固定使用 `nginx:1.28.0`。

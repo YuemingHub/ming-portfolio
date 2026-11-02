@@ -65,6 +65,8 @@ for (const route of ROUTES) {
     expect(hrefs.length, "link count").toBeGreaterThan(5);
 
     const origin = "http://127.0.0.1:4173";
+    const rootAbsolute = hrefs.filter((href) => href.startsWith("/") && !href.startsWith("/ming"));
+    expect(rootAbsolute, "root-absolute internal links").toEqual([]);
     for (const href of hrefs) {
       if (!href.startsWith("/ming") && !href.startsWith("#")) continue;
       const target = new URL(href, `${origin}${URL_FOR(route.path)}`);
@@ -73,7 +75,10 @@ for (const route of ROUTES) {
       if (target.hash) {
         const id = decodeURIComponent(target.hash.slice(1));
         await page.goto(target.origin + target.pathname, { waitUntil: "domcontentloaded" });
-        expect(await page.locator(`#${id}`).count(), `anchor ${href}`).toBeGreaterThan(0);
+        await expect.poll(() => page.locator(`#${id}`).count(), {
+          timeout: 10_000,
+          message: `anchor ${href}`,
+        }).toBeGreaterThan(0);
       }
     }
 

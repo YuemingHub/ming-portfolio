@@ -2,13 +2,9 @@ import { existsSync, readFileSync } from "node:fs";
 import { test, expect } from "@playwright/test";
 
 function readRepoFile(relative: string): string {
-  const candidates = [
-    new URL(`../../${relative}`, import.meta.url),
-    new URL(`../../_local/old-repo/${relative}`, import.meta.url),
-  ];
-  const found = candidates.find((url) => existsSync(url));
-  if (!found) throw new Error(`repo file not found: ${relative}`);
-  return readFileSync(found, "utf8");
+  const url = new URL(`../../${relative}`, import.meta.url);
+  if (!existsSync(url)) throw new Error(`repo file not found: ${relative}`);
+  return readFileSync(url, "utf8");
 }
 
 test("地址、OG、JSON-LD 与旧入口引用", async ({ page }) => {
@@ -69,7 +65,9 @@ test("子路径跳转与未知路径", async ({ request }) => {
   expect(await unknown.text()).toContain('id="root"');
 });
 
-test("根站与 /gui/、/_next/ 不被作品集接管", async ({ request }) => {
+// 这个用例只证明本机测试服务器没有把根站路径交给作品集；
+// 生产 nginx 的隔离由 nginx-test/verify.mjs 用字节对比判断。
+test("测试服务器根站隔离哨兵", async ({ request }) => {
   for (const path of ["/", "/gui/_next/static/chunks/x.js", "/_next/static/x.js", "/some/other/path"]) {
     const response = await request.get(path);
     expect(response.status(), path).toBe(200);

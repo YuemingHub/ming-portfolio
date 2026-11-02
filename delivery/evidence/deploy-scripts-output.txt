@@ -1,12 +1,13 @@
-$ node deploy/verify.mjs pre --base http://127.0.0.1:4173 --prefix /ming --out /tmp/ming-baseline-rerun
-已记录基线：/tmp/ming-baseline-rerun
+$ node deploy/verify.mjs pre --base http://127.0.0.1:4173 --prefix /ming --out /tmp/ming-baseline-rerun2
+已记录基线：/tmp/ming-baseline-rerun2
   /            200 140B c7f5211d5f6a
   /ming/        200 2644B b68c8cf88650
   gui           未在根站找到 /gui/_next/ 资源
+PASS  根站可访问  200
 
-全部通过
+基线已记录
 
-$ node deploy/verify.mjs post --base http://127.0.0.1:4173 --prefix /ming --baseline /tmp/ming-baseline-rerun --canonical-base https://ymai.me
+$ node deploy/verify.mjs post --base http://127.0.0.1:4173 --prefix /ming --baseline /tmp/ming-baseline-rerun2 --canonical-base https://ymai.me
 PASS  基线格式  http://127.0.0.1:4173/ming
 PASS  根站字节未变化  200 140B c7f5211d5f6a
 PASS  /ming/ 已返回作品集  200 text/html; charset=utf-8 2644B
@@ -29,7 +30,7 @@ PASS  尾斜杠 /ming/agent-space/  301 -> /ming/agent-space
 PASS  尾斜杠 /ming/evidence/  301 -> /ming/evidence
 PASS  尾斜杠 /ming/cooperation/  301 -> /ming/cooperation
 PASS  /ming 无尾斜杠  301 -> /ming/
-PASS  未知路径回退 index.html  200 -> 
+PASS  未知路径回退 index.html  200 2644B b68c8cf88650
 PASS  缺失资源 /ming/missing.js -> 404  404
 PASS  缺失资源 /ming/media/not-found.png -> 404  404
 PASS  页面引用相对资源  assets/index-ChYGt_r1.js, assets/index-kOZbdEg7.css

@@ -93,6 +93,7 @@ async function record() {
   console.log(`  /            ${root.status} ${root.body.length}B ${root.sha.slice(0, 12)}`);
   console.log(`  ${PREFIX}/        ${ming.status} ${ming.body.length}B ${ming.sha.slice(0, 12)}`);
   console.log(`  gui           ${gui ? `${gui.status} ${gui.body.length}B ${gui.sha.slice(0, 12)}` : "未在根站找到 /gui/_next/ 资源"}`);
+  check("根站可访问", root.status === 200, String(root.status));
 }
 
 async function verify() {
@@ -153,8 +154,12 @@ async function verify() {
   }
 
   {
-    const { status, loc } = await get(`${PREFIX}/no-such-route`);
-    check("未知路径回退 index.html", status === 200, `${status} -> ${loc}`);
+    const unknown = await get(`${PREFIX}/no-such-route`);
+    check(
+      "未知路径回退 index.html",
+      unknown.status === 200 && unknown.type.includes("text/html") && unknown.sha === ming.sha,
+      `${unknown.status} ${unknown.body.length}B ${unknown.sha.slice(0, 12)}`,
+    );
   }
 
   for (const path of [`${PREFIX}/missing.js`, `${PREFIX}/media/not-found.png`]) {
@@ -177,5 +182,7 @@ async function verify() {
 if (mode === "pre") await record();
 else await verify();
 
-console.log(`\n${findings.length === 0 ? "全部通过" : `${findings.length} 项失败`}`);
+console.log(
+  `\n${findings.length > 0 ? `${findings.length} 项失败` : mode === "pre" ? "基线已记录" : "全部通过"}`,
+);
 process.exitCode = findings.length === 0 ? 0 : 1;

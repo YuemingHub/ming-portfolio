@@ -21,7 +21,9 @@ test("旅程 1 · 机构合作方：先看机构服务，再生成一页简报",
 
   await page.context().grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.getByRole("button", { name: "复制这份简报" }).click();
-  await expect(page.locator(".brief-status")).toContainText(/已复制|无法自动复制/);
+  await expect(page.locator(".brief-status")).toContainText("已复制");
+  const copied = await page.evaluate(() => navigator.clipboard.readText());
+  expect(copied.replace(/\r\n/g, "\n")).toBe(preview.replace(/\r\n/g, "\n"));
 
   await page.screenshot({ path: testInfo.outputPath("journey-1-institution.png"), fullPage: false });
 });
