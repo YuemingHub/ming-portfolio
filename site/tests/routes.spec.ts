@@ -64,7 +64,7 @@ for (const route of ROUTES) {
     );
     expect(hrefs.length, "link count").toBeGreaterThan(5);
 
-    const origin = "http://127.0.0.1:4173";
+    const origin = new URL(page.url()).origin;
     const rootAbsolute = hrefs.filter((href) => href.startsWith("/") && !href.startsWith("/ming"));
     expect(rootAbsolute, "root-absolute internal links").toEqual([]);
     for (const href of hrefs) {

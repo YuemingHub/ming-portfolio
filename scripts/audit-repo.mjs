@@ -48,6 +48,7 @@ const contentRules = [
   [/C:\\\\Users/i, "本机绝对路径（Windows）"],
   [/C:\/Users/i, "本机绝对路径（Windows）"],
   [/(^|[\s"'(/])_local\//, "工作区内部路径"],
+  [/\\_local\\/, "工作区内部路径（反斜杠）"],
   [/\/home\/[A-Za-z0-9._-]+\//, "本机绝对路径（Linux）"],
   [/\/root\//, "本机绝对路径（root）"],
   [/-----BEGIN [A-Z ]*PRIVATE KEY-----/, "私钥"],

@@ -108,7 +108,7 @@ async function verify() {
     `${root.status} ${root.body.length}B ${root.sha.slice(0, 12)}`,
   );
   check(
-    `${PREFIX}/ 已返回作品集`,
+    `${PREFIX}/ 返回 200 HTML`,
     ming.status === 200 && ming.type.includes("text/html"),
     `${ming.status} ${ming.type} ${ming.body.length}B`,
   );
@@ -130,7 +130,7 @@ async function verify() {
     const path = `${PREFIX}${route || "/"}`;
     const { status, type, sha: bodySha, body } = await get(path);
     check(
-      `路由 ${path}`,
+      `路由 ${path} 与 ${PREFIX}/ 字节一致`,
       status === 200 && type.includes("text/html") && bodySha === ming.sha,
       `${status} ${body.length}B ${bodySha.slice(0, 12)}`,
     );
@@ -140,7 +140,7 @@ async function verify() {
     const html = ming.body.toString("utf8");
     const canonical = (html.match(/rel="canonical" href="([^"]+)"/) || [])[1] || "";
     check("首页 canonical", canonical === `${CANONICAL_BASE}${PREFIX}/`, canonical || "无");
-    check("首页引用相对 JS", html.includes('src="./assets/'), "found");
+    check("首页引用相对 JS", html.includes('src="./assets/'), html.includes('src="./assets/') ? "found" : "missing");
   }
 
   for (const route of routes.slice(1)) {
@@ -156,7 +156,7 @@ async function verify() {
   {
     const unknown = await get(`${PREFIX}/no-such-route`);
     check(
-      "未知路径回退 index.html",
+      "未知路径回退与 index.html 字节一致",
       unknown.status === 200 && unknown.type.includes("text/html") && unknown.sha === ming.sha,
       `${unknown.status} ${unknown.body.length}B ${unknown.sha.slice(0, 12)}`,
     );

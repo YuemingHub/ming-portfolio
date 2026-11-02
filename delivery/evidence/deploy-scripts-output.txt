@@ -1,5 +1,5 @@
-$ node deploy/verify.mjs pre --base http://127.0.0.1:4173 --prefix /ming --out /tmp/ming-baseline-rerun2
-已记录基线：/tmp/ming-baseline-rerun2
+$ node deploy/verify.mjs pre --base http://127.0.0.1:4173 --prefix /ming --out /tmp/ming-baseline-final
+已记录基线：/tmp/ming-baseline-final
   /            200 140B c7f5211d5f6a
   /ming/        200 2644B b68c8cf88650
   gui           未在根站找到 /gui/_next/ 资源
@@ -7,19 +7,19 @@ PASS  根站可访问  200
 
 基线已记录
 
-$ node deploy/verify.mjs post --base http://127.0.0.1:4173 --prefix /ming --baseline /tmp/ming-baseline-rerun2 --canonical-base https://ymai.me
+$ node deploy/verify.mjs post --base http://127.0.0.1:4173 --prefix /ming --baseline /tmp/ming-baseline-final --canonical-base https://ymai.me
 PASS  基线格式  http://127.0.0.1:4173/ming
 PASS  根站字节未变化  200 140B c7f5211d5f6a
-PASS  /ming/ 已返回作品集  200 text/html; charset=utf-8 2644B
+PASS  /ming/ 返回 200 HTML  200 text/html; charset=utf-8 2644B
 SKIP  根站未引用 /gui/_next/ 资源，隔离判据仅使用根站字节
-PASS  路由 /ming/  200 2644B b68c8cf88650
-PASS  路由 /ming/ecosystem  200 2644B b68c8cf88650
-PASS  路由 /ming/spaces  200 2644B b68c8cf88650
-PASS  路由 /ming/institution  200 2644B b68c8cf88650
-PASS  路由 /ming/expert-and-research  200 2644B b68c8cf88650
-PASS  路由 /ming/agent-space  200 2644B b68c8cf88650
-PASS  路由 /ming/evidence  200 2644B b68c8cf88650
-PASS  路由 /ming/cooperation  200 2644B b68c8cf88650
+PASS  路由 /ming/ 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/ecosystem 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/spaces 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/institution 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/expert-and-research 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/agent-space 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/evidence 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/cooperation 与 /ming/ 字节一致  200 2644B b68c8cf88650
 PASS  首页 canonical  https://ymai.me/ming/
 PASS  首页引用相对 JS  found
 PASS  尾斜杠 /ming/ecosystem/  301 -> /ming/ecosystem
@@ -30,7 +30,7 @@ PASS  尾斜杠 /ming/agent-space/  301 -> /ming/agent-space
 PASS  尾斜杠 /ming/evidence/  301 -> /ming/evidence
 PASS  尾斜杠 /ming/cooperation/  301 -> /ming/cooperation
 PASS  /ming 无尾斜杠  301 -> /ming/
-PASS  未知路径回退 index.html  200 2644B b68c8cf88650
+PASS  未知路径回退与 index.html 字节一致  200 2644B b68c8cf88650
 PASS  缺失资源 /ming/missing.js -> 404  404
 PASS  缺失资源 /ming/media/not-found.png -> 404  404
 PASS  页面引用相对资源  assets/index-ChYGt_r1.js, assets/index-kOZbdEg7.css
