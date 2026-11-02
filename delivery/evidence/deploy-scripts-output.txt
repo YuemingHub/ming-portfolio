@@ -1,0 +1,52 @@
+$ node deploy/verify.mjs pre --base http://127.0.0.1:4173 --prefix /ming --out /tmp/ming-baseline-rerun
+已记录基线：/tmp/ming-baseline-rerun
+  /            200 140B c7f5211d5f6a
+  /ming/        200 2644B b68c8cf88650
+  gui           未在根站找到 /gui/_next/ 资源
+
+全部通过
+
+$ node deploy/verify.mjs post --base http://127.0.0.1:4173 --prefix /ming --baseline /tmp/ming-baseline-rerun --canonical-base https://ymai.me
+PASS  基线格式  http://127.0.0.1:4173/ming
+PASS  根站字节未变化  200 140B c7f5211d5f6a
+PASS  /ming/ 已返回作品集  200 text/html; charset=utf-8 2644B
+SKIP  根站未引用 /gui/_next/ 资源，隔离判据仅使用根站字节
+PASS  路由 /ming/  200 2644B b68c8cf88650
+PASS  路由 /ming/ecosystem  200 2644B b68c8cf88650
+PASS  路由 /ming/spaces  200 2644B b68c8cf88650
+PASS  路由 /ming/institution  200 2644B b68c8cf88650
+PASS  路由 /ming/expert-and-research  200 2644B b68c8cf88650
+PASS  路由 /ming/agent-space  200 2644B b68c8cf88650
+PASS  路由 /ming/evidence  200 2644B b68c8cf88650
+PASS  路由 /ming/cooperation  200 2644B b68c8cf88650
+PASS  首页 canonical  https://ymai.me/ming/
+PASS  首页引用相对 JS  found
+PASS  尾斜杠 /ming/ecosystem/  301 -> /ming/ecosystem
+PASS  尾斜杠 /ming/spaces/  301 -> /ming/spaces
+PASS  尾斜杠 /ming/institution/  301 -> /ming/institution
+PASS  尾斜杠 /ming/expert-and-research/  301 -> /ming/expert-and-research
+PASS  尾斜杠 /ming/agent-space/  301 -> /ming/agent-space
+PASS  尾斜杠 /ming/evidence/  301 -> /ming/evidence
+PASS  尾斜杠 /ming/cooperation/  301 -> /ming/cooperation
+PASS  /ming 无尾斜杠  301 -> /ming/
+PASS  未知路径回退 index.html  200 -> 
+PASS  缺失资源 /ming/missing.js -> 404  404
+PASS  缺失资源 /ming/media/not-found.png -> 404  404
+PASS  页面引用相对资源  assets/index-ChYGt_r1.js, assets/index-kOZbdEg7.css
+PASS  资源 assets/index-ChYGt_r1.js  200 application/javascript; charset=utf-8
+PASS  资源 assets/index-kOZbdEg7.css  200 text/css; charset=utf-8
+
+全部通过
+
+$ node site/tests/render-check.mjs --base http://127.0.0.1:4173 --prefix /ming --canonical-base https://ymai.me
+PASS  渲染 http://127.0.0.1:4173/ming/  200 title=让生命与世界更好地连接 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/ 图片失败=0 console=0 request=0
+PASS  渲染 http://127.0.0.1:4173/ming/ecosystem  200 title=体系总览 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/ecosystem 图片失败=0 console=0 request=0
+PASS  渲染 http://127.0.0.1:4173/ming/spaces  200 title=三个空间 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/spaces 图片失败=0 console=0 request=0
+PASS  渲染 http://127.0.0.1:4173/ming/institution  200 title=机构服务 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/institution 图片失败=0 console=0 request=0
+PASS  渲染 http://127.0.0.1:4173/ming/expert-and-research  200 title=专业与研究 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/expert-and-research 图片失败=0 console=0 request=0
+PASS  渲染 http://127.0.0.1:4173/ming/agent-space  200 title=Agent Space · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/agent-space 图片失败=0 console=0 request=0
+PASS  渲染 http://127.0.0.1:4173/ming/evidence  200 title=证据与进展 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/evidence 图片失败=0 console=0 request=0
+PASS  渲染 http://127.0.0.1:4173/ming/cooperation  200 title=联系与合作 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/cooperation 图片失败=0 console=0 request=0
+PASS  手机 390 首页无横向溢出  溢出 0px
+
+全部通过

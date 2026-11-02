@@ -1,0 +1,61 @@
+worker_processes  1;
+error_log  __TMP__/error.log  warn;
+pid        __TMP__/nginx.pid;
+
+events {
+    worker_connections  128;
+}
+
+http {
+    include       __MIME__;
+    default_type  text/html;
+    access_log    __TMP__/access.log;
+    sendfile      on;
+
+    # 回滚目标态：部署前的 Self Space 行为，不含任何 /ming/ 规则。
+    # 这里保留一个独立 server，用来证明“撤掉前缀规则后 /ming/ 不会接管根站”。
+    server {
+        listen       __ROLLBACK_PORT__;
+        server_name  localhost;
+
+        root   __ROLLBACK_ROOT__;
+        index  index.html;
+
+        location / {
+            try_files $uri $uri/ /index.html;
+        }
+    }
+
+    server {
+        listen       __PORT__;
+        server_name  localhost;
+
+        # 模拟现有站点根目录：根路径与 SPA fallback 归 Self Space。
+        root   __WWW__;
+        index  index.html;
+
+        location / {
+            try_files $uri $uri/ /index.html;
+        }
+
+        # 作品集独立前缀（候选部署规则）。
+        location = /ming {
+            absolute_redirect off;
+            return 301 /ming/;
+        }
+
+        location ^~ /ming/ {
+            absolute_redirect off;
+
+            # 只规范化已知页面路由，避免与目录路径形成 301 循环。
+            rewrite ^/ming/(ecosystem|spaces|institution|expert-and-research|agent-space|evidence|cooperation)/$ /ming/$1 permanent;
+
+            # 带扩展名的缺失文件必须 404，不能被 SPA fallback 伪装成 HTML 200。
+            location ~ ^/ming/.*\.[A-Za-z0-9]+$ {
+                try_files $uri =404;
+            }
+
+            try_files $uri $uri/ /ming/index.html;
+        }
+    }
+}

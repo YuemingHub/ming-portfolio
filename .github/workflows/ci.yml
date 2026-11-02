@@ -1,0 +1,71 @@
+name: portfolio-ci
+
+on:
+  push:
+    branches:
+      - integration/qoder-site-2026-11-02
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-browser:
+    name: Build + Playwright（Chromium / Firefox / WebKit / 手机）
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium firefox webkit
+      - run: npx playwright test
+      - name: 保存失败现场
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-results
+          path: |
+            site/test-results
+            site/playwright-report
+          retention-days: 7
+
+  nginx-prefix:
+    name: nginx 1.28.0 子路径与回滚目标
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - run: npm ci --no-audit --no-fund
+        working-directory: site
+      - run: npm run build
+        working-directory: site
+      - name: 运行 nginx 测试工程
+        run: bash nginx-test/run.sh
+
+  repo-audit:
+    name: 公开仓库体检
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node scripts/audit-repo.mjs

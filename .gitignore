@@ -7,6 +7,12 @@ site/node_modules/
 site/dist/
 *.tsbuildinfo
 
+# 测试产物
+site/test-results/
+site/playwright-report/
+nginx-test/.run/
+.deploy-baseline/
+
 # 本地配置
 .env
 .env.*
