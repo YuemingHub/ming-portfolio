@@ -82,7 +82,7 @@ async function record() {
   const space = await get("/gui/space/");
   const health = await get("/health");
   const ming = await get("/ming/");
-  const guiAssetUrl = findGuiAsset(root.body.toString("utf8"));
+  const guiAssetUrl = findGuiAsset(gui.body.toString("utf8"));
   const guiAsset = guiAssetUrl ? await get(guiAssetUrl) : null;
 
   writeFileSync(join(OUT, "root.html"), root.body);

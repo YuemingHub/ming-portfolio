@@ -52,7 +52,7 @@ PASS  未知路径回退与根 index 字节一致  200 2619B
 PASS  缺失资源 /assets/does-not-exist.js -> 404  404
 PASS  缺失资源 /media/does-not-exist.png -> 404  404
 
-全部通过（35/35）
+全部通过（34/34）
 
 ## 2. site/tests/render-check.mjs（生产根路径）
 

@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 import { ArrowLink, PageHeader, SectionHeading } from "@/components/Chrome";
 import { navigate } from "@/site/router";
+import { assetUrl } from "@/site/base";
 import { CONTACT, PARTNER_TYPES } from "@/site/content";
 
 const PRINCIPLES = [
@@ -33,7 +34,7 @@ export function CooperationPage() {
       "",
       "我希望先看到：产品入口 / 当前状态 / 证据与限制 / 合作边界。",
       "",
-      "说明：本简报由本站本地生成，未发送、未保存；请通过已确认的公开通道（GitHub Issues）发送。",
+      "说明：本简报由本站本地生成，未发送、未保存；请通过本页公开通道（邮箱 / 抖音 / 公众号）或 GitHub Issues 发送。",
     ];
     return lines.join("\n");
   }, [active, problem, next]);
@@ -63,15 +64,63 @@ export function CooperationPage() {
           <div className="contact-panel">
             <div>
               <p className="section-kicker"><span className="section-index">00</span>PUBLIC CHANNEL</p>
-              <h2>一个已确认的公开联系通道。</h2>
+              <h2>三条公开联系与交流通道。</h2>
               <p>{CONTACT.note}</p>
             </div>
             <div className="contact-actions">
-              <a className="btn btn-primary" href={CONTACT.url} target="_blank" rel="noreferrer noopener">
-                {CONTACT.channel} <span aria-hidden="true">↗</span>
+              <a className="btn btn-primary" href={`mailto:${CONTACT.email}`}>
+                写邮件 <span aria-hidden="true">↗</span>
               </a>
-              <span>不公布未核实的邮箱、微信或社交账号。</span>
+              <span>
+                合作议题也可以走{" "}
+                <a href={CONTACT.url} target="_blank" rel="noreferrer noopener">{CONTACT.channel}</a>。
+              </span>
             </div>
+          </div>
+
+          <div className="contact-channels">
+            <article className="contact-channel">
+              <figure className="contact-channel-figure">
+                <img
+                  src={assetUrl(CONTACT.douyin.image)}
+                  alt={`抖音账号 ${CONTACT.douyin.name}（${CONTACT.douyin.id}）的主页分享卡片`}
+                  width="1219"
+                  height="1820"
+                  loading="lazy"
+                />
+              </figure>
+              <div className="contact-channel-body">
+                <p className="contact-channel-label">抖音</p>
+                <h3>{CONTACT.douyin.name}</h3>
+                <p className="contact-channel-meta">抖音号 <strong>{CONTACT.douyin.id}</strong></p>
+              </div>
+            </article>
+
+            <article className="contact-channel">
+              <figure className="contact-channel-figure">
+                <img
+                  src={assetUrl(CONTACT.wechat.image)}
+                  alt="微信公众号二维码"
+                  width="430"
+                  height="430"
+                  loading="lazy"
+                />
+              </figure>
+              <div className="contact-channel-body">
+                <p className="contact-channel-label">公众号</p>
+                <h3>微信扫码关注</h3>
+                <p className="contact-channel-meta">用微信扫一扫，查看文章与更新。</p>
+              </div>
+            </article>
+
+            <article className="contact-channel">
+              <div className="contact-channel-figure is-glyph" aria-hidden="true">@</div>
+              <div className="contact-channel-body">
+                <p className="contact-channel-label">邮箱</p>
+                <h3><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></h3>
+                <p className="contact-channel-meta">适合合作、采访与正式沟通。点击地址即可写信。</p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -149,7 +198,7 @@ export function CooperationPage() {
             index="03"
             kicker="LOCAL BRIEF BUILDER"
             title={<>先写一页合作简报。</>}
-            lede="不要求先留下联系方式。你可以在这里把问题与期望写成一页文字，复制后通过本页上方已确认的 GitHub Issues 通道发送。本站不收集、不上传、不保存。"
+            lede="不要求先留下联系方式。你可以在这里把问题与期望写成一页文字，复制后通过本页上方的邮箱、抖音、公众号或 GitHub Issues 发送。本站不收集、不上传、不保存。"
           />
 
           <div className="brief-layout">

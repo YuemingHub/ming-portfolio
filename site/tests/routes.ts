@@ -53,7 +53,7 @@ export const ROUTES = [
     title: "联系与合作 · YUE MING ECOSYSTEM",
     h1: "先看真实资产，再谈一起做什么。",
     canonical: "https://ymai.me/cooperation",
-    images: 0,
+    images: 2,
   },
 ] as const;
 

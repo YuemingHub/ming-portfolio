@@ -309,7 +309,7 @@ export function HomePage() {
             </div>
             <div className="cooperation-actions">
               <Link to="/cooperation" className="btn btn-primary">联系与交流 <Arrow /></Link>
-              <span>公开联系通道：<a href={CONTACT.url} target="_blank" rel="noreferrer noopener">{CONTACT.channel}</a></span>
+              <span>公开联系通道：<a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></span>
             </div>
           </div>
         </div>

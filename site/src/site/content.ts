@@ -13,9 +13,12 @@ export const SITE = {
 };
 
 export const CONTACT = {
+  email: "mingos2026@163.com",
+  douyin: { name: "Ming", id: "YMHomeLink", image: "/media/contact-douyin.png" },
+  wechat: { image: "/media/contact-wechat.jpg" },
   channel: "GitHub Issues",
   url: "https://github.com/YuemingHub/ming-portfolio/issues/new",
-  note: "这是目前唯一确认可用的公开联系通道。本站不收集联系信息，也不公布未核实的邮箱、微信或社交账号。",
+  note: "当前公开联系与交流通道：抖音、公众号与邮箱。合作议题也可以走 GitHub Issues。本站不收集联系信息。",
 };
 
 export const KNOWN_INCIDENTS = [

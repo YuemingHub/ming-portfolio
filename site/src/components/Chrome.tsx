@@ -131,7 +131,7 @@ export function SiteFooter() {
             <a href={SITE.canonical}>正式入口 ymai.me</a>
             <a href={SITE.selfSpace}>Self Space（原 ymai.me）</a>
             <a href={SITE.legacy}>旧入口 ymai.fun/ming（历史兼容）</a>
-            <a href={CONTACT.url} target="_blank" rel="noreferrer">公开联系通道 ↗</a>
+            <a href={`mailto:${CONTACT.email}`}>邮箱 {CONTACT.email}</a>
           </p>
           <p className="footer-small">© 2026 YUE MING ECOSYSTEM · 公开作品集</p>
         </div>

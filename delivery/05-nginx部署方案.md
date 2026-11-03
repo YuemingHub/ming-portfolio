@@ -312,7 +312,7 @@ node tests/render-check.mjs --base https://ymai.me --prefix /ming
 
 ### 12.4 结果
 
-- `deploy/verify-root.mjs post`：35/35 `PASS`。根路径与本次产物字节一致；8 路由一致；canonical 为 `https://ymai.me/`；`/gui/` 首页字节与基线一致；`/gui/space/` 命中 11117B 真实页；`/gui/_next/` CSS 返回 `text/css` 85631B；`/ming` 系列 301 正确；未知路径回退；缺失资源 404。
+- `deploy/verify-root.mjs post`：34/34 `PASS`。根路径与本次产物字节一致；8 路由一致；canonical 为 `https://ymai.me/`；`/gui/` 首页字节与基线一致；`/gui/space/` 命中 11117B 真实页；`/gui/_next/` CSS 返回 `text/css` 85631B；`/ming` 系列 301 正确；未知路径回退；缺失资源 404。
 - `render-check.mjs`：根路径 8 路由 + 手机 390 宽共 9/9 `PASS`。
 - Self Space：4 个入口链接；点击落到 `/gui/`；标题与 45px MingOS Serif 样式生效；`/gui/` 的 12 个、`/gui/space/` 的 11 个 `/gui/_next/` 资源均非 HTML；`/gui/` console error 0、失败请求 0；`/gui/space/` 正常渲染（唯一失败请求是未登录时的 `/api/me` 401，属预期）；入口可键盘聚焦。
 - 首次切换后发现 Spaces 页仍写着 Self Space 资源故障待修；修正该表述、重新构建并重跑全量测试后，以 `20261103-root-0956` 重发。随后 Linux CI 发现 `site/index.html` 的 CRLF 使本机与 CI 产物字节不一致，统一为 LF 后再次重建、重跑全量测试（93 / 24），以 `20261103-root-1040` 发布；nginx 始终未再改动，历史 release 与旧 JS 均保留。
@@ -323,3 +323,65 @@ node tests/render-check.mjs --base https://ymai.me --prefix /ming
 ### 12.5 回滚
 
 见 [`06-回滚方案`](06-回滚方案.md) §8：恢复 server 块与旧片段、切回上一 release、reload，即可回到 `/ming/` 子路径方案；旧 release 与 Self Space 产物均未删除。
+
+## 13. `www.ymai.me` 修复与联系通道发布（2026-11-03）
+
+### 13.1 根因
+
+`www.ymai.me` 打不开不是单点故障，而是三层同时缺失：
+
+| 层 | 修复前 | 结果 |
+| --- | --- | --- |
+| DNS | `www` 的 CNAME 指向 `ms8qmmdpyy.coze-dns-01.com`（Coze 托管） | HTTP 被 302 到 `https://webblock.volcengine.com`，HTTPS 连接被重置 |
+| nginx | 没有 `server_name www.ymai.me` 的 server 块 | 即使解析到服务器，也没有规则接住 |
+| 证书 | `ymai.me` 证书 SAN 只有 `ymai.me`、`ymai.love` | `https://www...` 会证书不匹配 |
+
+### 13.2 变更
+
+1. **DNS**：`www` CNAME 改为 `ymai.me`，TTL 600。变更前记录已备份。
+2. **nginx**：新增以下两个 server 块；只 `systemctl reload nginx`，未 restart。
+
+```nginx
+server {
+  listen 80;
+  server_name www.ymai.me;
+  location / { return 301 https://ymai.me$request_uri; }
+}
+
+server {
+  listen 443 ssl;
+  server_name www.ymai.me;
+  ssl_certificate     /etc/letsencrypt/live/ymai.me/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/ymai.me/privkey.pem;
+  include /etc/letsencrypt/options-ssl-nginx.conf;
+  ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+  return 301 https://ymai.me$request_uri;
+}
+```
+
+3. **证书**：`certbot --nginx --cert-name ymai.me --expand`，把 `www.ymai.me` 加入 SAN；`certbot renew --dry-run` 通过。
+4. **联系通道**：站点新增联系与合作页的三条通道，构建发布为 `20261103-contact-1209`；nginx 根路径规则、Self Space 与 `/ming` 跳转未改。
+
+### 13.3 验证
+
+| 检查 | 读数 |
+| --- | --- |
+| 公共 DNS | `www.ymai.me CNAME ymai.me`；与根域名同一 A 记录 |
+| `http://www.ymai.me/` | 301，`Location: https://ymai.me/` |
+| `https://www.ymai.me/` | 301，`Location: https://ymai.me/` |
+| `https://www.ymai.me/cooperation` | 跟随跳转后 200，最终地址 `https://ymai.me/cooperation` |
+| 证书 | 2026-11-03 至 2027-02-01；SAN `www.ymai.me, ymai.love, ymai.me` |
+| 真实 Chromium | HTTP、HTTPS、`/cooperation` 三次均落到根域名；联系页 3 个通道、2 张图加载完成、错误 0 |
+| 生产产物 | 根 `index.html` 2619B / `31ddffafb678`；JS `index-CbCwha_U.js` 317280B / `5316e00af435`；CSS `index-CEkBwN0k.css` 177608B / `f79890fa6236`；与本地构建逐字节一致 |
+| 回归 | `verify-root.mjs post` 34/34；`render-check` 9/9；旧构建资源仍 200 |
+
+完整输出见 [`evidence/production-contact-www-20261103.txt`](evidence/production-contact-www-20261103.txt)。
+
+### 13.4 回滚点
+
+- DNS：把 `www` 的 CNAME 恢复为 `ms8qmmdpyy.coze-dns-01.com`，TTL 600。
+- nginx：删除 `www.ymai.me` 的 80/443 server 块，`nginx -t` 后 reload。
+- 内容：把 `current` 切回 `20261103-root-1040`；旧 release 与旧构建资源均保留。
+- 证书不回滚：新增 `www` SAN 不影响 `ymai.me` 与 `ymai.love` 的现有访问。
+
+详见 [`06-回滚方案`](06-回滚方案.md) §13。

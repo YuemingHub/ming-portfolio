@@ -13,7 +13,7 @@
 3. 保留 Self Space 的 `/gui/` 映射与 `/ming` 历史 301。
 4. 原子切换 `current` 软链接。
 
-不做：不改 `/api/`、`/health`、`/api/wechat`，不改 Self Space 代码或其 release，不改 DNS/证书，不重启服务器（只 reload nginx），不执行旧域名 301，不删除任何历史文件或旧 release。
+默认不做：不改 `/api/`、`/health`、`/api/wechat`，不改 Self Space 代码或其 release，不改 DNS/证书，不重启服务器（只 reload nginx），不执行旧域名 301，不删除任何历史文件或旧 release。2026-11-03 的 `www.ymai.me` 修复是 Owner 单独授权后的例外，记录见 §8。
 
 ## 2. 前置只读检查（服务器上执行，由运维会话完成）
 
@@ -114,3 +114,29 @@ node tests/render-check.mjs --base https://ymai.me
 | 4 | 生产基线已记录 | 已完成（2026-11-03 根路径切换前） |
 | 5 | 生产 nginx 备份与回滚命令已核对 | 已完成 |
 | 6 | Self Space 原生 `/gui/` 映射已确认 | 已确认并经生产复核 |
+
+## 8. `www.ymai.me`（2026-11-03 追加）
+
+修复前 `www` 的 CNAME 仍指向 Coze，nginx 没有 `www` server 块，证书也不含 `www` SAN。三项同时修复后才可用：
+
+1. DNS：`www` CNAME → `ymai.me`，TTL 600。
+2. nginx：新增 `www.ymai.me` 的 80 与 443 server 块，均 301 到 `https://ymai.me$request_uri`；`nginx -t` 后 `systemctl reload nginx`。
+3. 证书：`certbot --nginx --cert-name ymai.me --expand`，把 `www.ymai.me` 加入 SAN；之后跑一次 `certbot renew --dry-run`。
+
+验证：
+
+```bash
+nslookup www.ymai.me 1.1.1.1
+curl --noproxy '*' -sSI http://www.ymai.me/  | sed -n '1,8p'
+curl --noproxy '*' -sSI https://www.ymai.me/ | sed -n '1,8p'
+curl --noproxy '*' -sS -L -o /dev/null -w '%{http_code} %{url_effective}
+' https://www.ymai.me/cooperation
+```
+
+预期：公共解析显示 `www.ymai.me` 是 `ymai.me` 的别名；HTTP 与 HTTPS 均 301；联系页最终 200 且地址为 `https://ymai.me/cooperation`。
+
+只回滚 www：删除 `www` server 块并 reload；DNS 可保持 CNAME 或恢复为修复前的 Coze 目标。连同内容回滚：把 `current` 切回 `20261103-root-1040`。详见 [`../delivery/06-回滚方案.md`](../delivery/06-回滚方案.md) §13。
+
+## 9. 本轮发现并修复的验收脚本缺陷
+
+`deploy/verify-root.mjs` 的 Self Space `_next` 资源检查原先从根站 `root.body` 中找资源 URL；根站是作品集 HTML，里面没有 `/gui/_next/`，所以即使 Self Space 正常也会报“未找到资源 URL”。已改为从 `gui.body` 中找。改后同一份生产基线跑出 34/34，而不是靠放宽断言。
