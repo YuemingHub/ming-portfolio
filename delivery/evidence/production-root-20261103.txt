@@ -1,33 +1,33 @@
 ymai.me 根路径部署验收 · 2026-11-03
-最终发布：20261103-root-0956（内容修正后重发）
-执行时间（UTC）：2026-11-03 01:56–02:00
+最终发布：20261103-root-1040（内容修正 + 行尾统一后重发）
+执行时间（UTC）：2026-11-03 02:36–02:39
 
 ## 0. 本次发布与产物
 
 | 项目 | 值 |
 | --- | --- |
-| current 软链接 | `/opt/ming-portfolio/current -> /opt/ming-portfolio/releases/20261103-root-0956` |
-| index.html | 2674B，sha256 `3c96787d4166665a68bc58bc9e728a9c9e35ebfd8ea1d51ed54965742f534350` |
+| current 软链接 | `/opt/ming-portfolio/current -> /opt/ming-portfolio/releases/20261103-root-1040` |
+| index.html | 2619B，sha256 `ac081d8cc5b40f47eb3451e03bd3f97c60635ef48dbc92038d46a41404b78a6b` |
 | JS | `assets/index-D5GhRATr.js` 315432B，sha256 `27d7e28910640f9587a2b22d2f53a52eb01fbf10fb73215fe07a17d57b68489f` |
 | CSS | `assets/index-kOZbdEg7.css` 176211B，sha256 `da77527609397beee0c2ff32ed4dc9193aaf794ac8dc98768595304246f53aef` |
 | 保留的上一版 JS | `assets/index-C7Q5qiSQ.js` 315312B（服务已缓存旧 index.html 的客户端） |
 | nginx | 配置未改动；未 reload；`NRestarts=0` |
 
-前一发布 `20261103-root-0945` 保留未删。本次仅修正 Self Space 资源故障已修复的表述，构建与测试结果见 `delivery/03-测试结果.md` §10。
+发布链：`20261103-root-0945`（首次根路径）→ `20261103-root-0956`（修正 Spaces 页过时表述）→ `20261103-root-1040`（把 `site/index.html` 统一为 LF，使本机 Windows 构建与 Linux CI 产物字节一致）。三个 release 均保留未删。
 
 ## 1. deploy/verify-root.mjs post
 
 PASS  基线格式  https://ymai.me
-PASS  根路径 200 HTML 且与预期发布产物字节一致  200 text/html 2674B 3c96787d4166 vs 2674B 3c96787d4166
-PASS  根路径已不是 Self Space 首页  root=3c96787d4166 self-space=564a76ed4b5c
-PASS  路由 / 与根 index 字节一致  200 2674B 3c96787d4166
-PASS  路由 /ecosystem 与根 index 字节一致  200 2674B 3c96787d4166
-PASS  路由 /spaces 与根 index 字节一致  200 2674B 3c96787d4166
-PASS  路由 /institution 与根 index 字节一致  200 2674B 3c96787d4166
-PASS  路由 /expert-and-research 与根 index 字节一致  200 2674B 3c96787d4166
-PASS  路由 /agent-space 与根 index 字节一致  200 2674B 3c96787d4166
-PASS  路由 /evidence 与根 index 字节一致  200 2674B 3c96787d4166
-PASS  路由 /cooperation 与根 index 字节一致  200 2674B 3c96787d4166
+PASS  根路径 200 HTML 且与预期发布产物字节一致  200 text/html 2619B ac081d8cc5b4 vs 2619B ac081d8cc5b4
+PASS  根路径已不是 Self Space 首页  root=ac081d8cc5b4 self-space=564a76ed4b5c
+PASS  路由 / 与根 index 字节一致  200 2619B ac081d8cc5b4
+PASS  路由 /ecosystem 与根 index 字节一致  200 2619B ac081d8cc5b4
+PASS  路由 /spaces 与根 index 字节一致  200 2619B ac081d8cc5b4
+PASS  路由 /institution 与根 index 字节一致  200 2619B ac081d8cc5b4
+PASS  路由 /expert-and-research 与根 index 字节一致  200 2619B ac081d8cc5b4
+PASS  路由 /agent-space 与根 index 字节一致  200 2619B ac081d8cc5b4
+PASS  路由 /evidence 与根 index 字节一致  200 2619B ac081d8cc5b4
+PASS  路由 /cooperation 与根 index 字节一致  200 2619B ac081d8cc5b4
 PASS  首页 canonical 为根路径  https://ymai.me/
 PASS  首页引用相对 JS  found
 PASS  首页引用相对资源  assets/index-D5GhRATr.js, assets/index-kOZbdEg7.css
@@ -48,7 +48,7 @@ PASS  尾斜杠 /expert-and-research/  301 -> /expert-and-research
 PASS  尾斜杠 /agent-space/  301 -> /agent-space
 PASS  尾斜杠 /evidence/  301 -> /evidence
 PASS  尾斜杠 /cooperation/  301 -> /cooperation
-PASS  未知路径回退与根 index 字节一致  200 2674B
+PASS  未知路径回退与根 index 字节一致  200 2619B
 PASS  缺失资源 /assets/does-not-exist.js -> 404  404
 PASS  缺失资源 /media/does-not-exist.png -> 404  404
 
@@ -153,16 +153,16 @@ https://api.ymai.fun/healthz             200 application/json; charset=utf-8
 每 5 分钟复测 `/`、`/ecosystem`、`/gui/`、`/health`，共 7 个样本（UTC 时间）：
 
 ```
-2026-11-03T01:59:58Z sample=0 root=200/2674/3c96787d4166 ecosystem=200 gui=200/21361 health=200
-2026-11-03T02:05:00Z sample=1 root=200/2674/3c96787d4166 ecosystem=200 gui=200/21361 health=200
-2026-11-03T02:10:01Z sample=2 root=200/2674/3c96787d4166 ecosystem=200 gui=200/21361 health=200
-2026-11-03T02:15:03Z sample=3 root=200/2674/3c96787d4166 ecosystem=200 gui=200/21361 health=200
-2026-11-03T02:20:05Z sample=4 root=200/2674/3c96787d4166 ecosystem=200 gui=200/21361 health=200
-2026-11-03T02:25:07Z sample=5 root=200/2674/3c96787d4166 ecosystem=200 gui=200/21361 health=200
-2026-11-03T02:30:08Z sample=6 root=200/2674/3c96787d4166 ecosystem=200 gui=200/21361 health=200
-done 2026-11-03T02:30:09Z
+2026-11-03T02:39:05Z sample=0 root=200/2619/ac081d8cc5b4 ecosystem=200 gui=200/21361 health=200
+2026-11-03T02:44:06Z sample=1 root=200/2619/ac081d8cc5b4 ecosystem=200 gui=200/21361 health=200
+2026-11-03T02:49:07Z sample=2 root=200/2619/ac081d8cc5b4 ecosystem=200 gui=200/21361 health=200
+2026-11-03T02:54:08Z sample=3 root=200/2619/ac081d8cc5b4 ecosystem=200 gui=200/21361 health=200
+2026-11-03T02:59:09Z sample=4 root=200/2619/ac081d8cc5b4 ecosystem=200 gui=200/21361 health=200
+2026-11-03T03:04:10Z sample=5 root=200/2619/ac081d8cc5b4 ecosystem=200 gui=200/21361 health=200
+2026-11-03T03:09:12Z sample=6 root=200/2619/ac081d8cc5b4 ecosystem=200 gui=200/21361 health=200
+done 2026-11-03T03:09:13Z
 ```
 
-7/7 样本正常：`/` 始终 200、2674B，sha256 `3c96787d4166`；Self Space `/gui/` 始终 200、21361B；`/health` 与 `/ecosystem` 始终 200。
+7/7 样本正常：`/` 始终 200、2619B，sha256 `ac081d8cc5b4`；Self Space `/gui/` 始终 200、21361B；`/health` 与 `/ecosystem` 始终 200。
 
-同一窗口（服务器本地时间 09:56–10:31）访问日志：共 355 条，200×297、301×40、304×6、401×5、404×4、444×3，`5xx=0`；error log 无与 `/ming`、`/gui` 相关的报错。
+同一窗口（服务器本地时间 10:36–11:10）访问日志：共 208 条，200×129、301×15、304×4、400×38、401×1、404×2、444×19，`5xx=0`。400 为扫描器发来的畸形请求（如把 TLS 握手字节发到 HTTP 端口），与本轮变更无关；error log 无与 `/ming`、`/gui` 相关的报错。

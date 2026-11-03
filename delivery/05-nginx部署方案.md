@@ -315,10 +315,10 @@ node tests/render-check.mjs --base https://ymai.me --prefix /ming
 - `deploy/verify-root.mjs post`：35/35 `PASS`。根路径与本次产物字节一致；8 路由一致；canonical 为 `https://ymai.me/`；`/gui/` 首页字节与基线一致；`/gui/space/` 命中 11117B 真实页；`/gui/_next/` CSS 返回 `text/css` 85631B；`/ming` 系列 301 正确；未知路径回退；缺失资源 404。
 - `render-check.mjs`：根路径 8 路由 + 手机 390 宽共 9/9 `PASS`。
 - Self Space：4 个入口链接；点击落到 `/gui/`；标题与 45px MingOS Serif 样式生效；`/gui/` 的 12 个、`/gui/space/` 的 11 个 `/gui/_next/` 资源均非 HTML；`/gui/` console error 0、失败请求 0；`/gui/space/` 正常渲染（唯一失败请求是未登录时的 `/api/me` 401，属预期）；入口可键盘聚焦。
-- 首次切换后发现 Spaces 页仍写着 Self Space 资源故障待修；修正该表述、重新构建并重跑全量测试后，以 `20261103-root-0956` 重发，nginx 未再改动。上一 release 与其 JS 均保留。
+- 首次切换后发现 Spaces 页仍写着 Self Space 资源故障待修；修正该表述、重新构建并重跑全量测试后，以 `20261103-root-0956` 重发。随后 Linux CI 发现 `site/index.html` 的 CRLF 使本机与 CI 产物字节不一致，统一为 LF 后再次重建、重跑全量测试（93 / 24），以 `20261103-root-1040` 发布；nginx 始终未再改动，历史 release 与旧 JS 均保留。
 - 相邻站点：`ymai.me/health`、`ymai.fun/`、`ymai.fun/ming/`、`ymai.love/`、`mingos.cn/`、`api.ymai.fun/healthz` 均 200。
-- 日志：观察窗口（09:56–10:31）访问日志共 355 条，`5xx=0`；error log 无 `/ming` / `/gui` 报错。
-- 30 分钟 7/7 样本正常：`/` 2674B / `3c96787d4166`、`/gui/` 21361B、`/health` 与 `/ecosystem` 均 200，见 [`03` §10](03-测试结果.md)。
+- 日志：观察窗口（10:36–11:10）访问日志共 208 条，`5xx=0`；error log 无 `/ming` / `/gui` 报错。
+- 30 分钟 7/7 样本正常：`/` 2619B / `ac081d8cc5b4`、`/gui/` 21361B、`/health` 与 `/ecosystem` 均 200，见 [`03` §10](03-测试结果.md)。
 
 ### 12.5 回滚
 

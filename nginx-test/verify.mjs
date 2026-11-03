@@ -177,9 +177,9 @@ for (const path of ["/", "/gui/_next/static/chunks/0~1ut8j7t4w5..css", "/_next/s
   );
 }
 
-check("canonical", portfolioHtml.includes('rel="canonical" href="https://ymai.me/ming/"'), portfolioHtml.includes('rel="canonical" href="https://ymai.me/ming/"') ? "found" : "missing");
+check("canonical", portfolioHtml.includes('rel="canonical" href="https://ymai.me/"'), portfolioHtml.includes('rel="canonical" href="https://ymai.me/"') ? "found" : "missing");
 check("relative js", portfolioHtml.includes('src="./assets/'), portfolioHtml.includes('src="./assets/') ? "found" : "missing");
-check("og url", portfolioHtml.includes('property="og:url" content="https://ymai.me/ming/"'), portfolioHtml.includes('property="og:url" content="https://ymai.me/ming/"') ? "found" : "missing");
+check("og url", portfolioHtml.includes('property="og:url" content="https://ymai.me/"'), portfolioHtml.includes('property="og:url" content="https://ymai.me/"') ? "found" : "missing");
 
 // ——— 边界测试（在基线项之后追加） ———
 
