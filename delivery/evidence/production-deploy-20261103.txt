@@ -1,0 +1,94 @@
+# 生产部署证据 · 2026-11-03
+
+- 正式入口：https://ymai.me/ming/
+- 发布提交：e44b48f（merge commit；tree 与 4b271f0 相同）
+- 发布标识：20261103-4b271f0
+- 构建产物 index.html：2644B，sha256 b68c8cf88650333437aa446601b64c249c47476abb62fb0d9f1c729128101b5a
+- 部署前基线：根站与 /ming/ 均为 21361B，sha256 564a76ed4b5c92769a98711aef556f54ebd6f271aef29bcbc742b235fc082206
+- nginx：nginx/1.18.0 (Ubuntu)，systemd，reload 后 NRestarts=0
+- 配置变更：目标 server 块仅新增一行 include；根站 location / 与 /gui/_next/ 规则未改
+
+## 1. 部署前基线（verify.mjs pre）
+
+已记录基线：../deploy-evidence/20261103/baseline
+  /            200 21361B 564a76ed4b5c
+  /ming/        200 21361B 564a76ed4b5c
+  gui           200 21361B 564a76ed4b5c
+PASS  根站可访问  200
+
+基线已记录
+
+说明：根站引用的 /gui/_next/ 地址在部署前即回落到同一份 21361B HTML，因此该项记录的是“未变化”，不是“资源本身可用”。
+
+## 2. 部署后 HTTP 与隔离（verify.mjs post）
+
+PASS  基线格式  https://ymai.me/ming
+PASS  根站字节未变化  200 21361B 564a76ed4b5c
+PASS  /ming/ 返回 200 HTML  200 text/html 2644B
+PASS  /ming/ 与预期发布产物字节一致  2644B b68c8cf88650 vs 2644B b68c8cf88650
+PASS  已引用 /gui/_next/ 资源字节未变化  200 21361B 564a76ed4b5c
+PASS  路由 /ming/ 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/ecosystem 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/spaces 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/institution 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/expert-and-research 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/agent-space 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/evidence 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  路由 /ming/cooperation 与 /ming/ 字节一致  200 2644B b68c8cf88650
+PASS  首页 canonical  https://ymai.me/ming/
+PASS  首页引用相对 JS  found
+PASS  尾斜杠 /ming/ecosystem/  301 -> /ming/ecosystem
+PASS  尾斜杠 /ming/spaces/  301 -> /ming/spaces
+PASS  尾斜杠 /ming/institution/  301 -> /ming/institution
+PASS  尾斜杠 /ming/expert-and-research/  301 -> /ming/expert-and-research
+PASS  尾斜杠 /ming/agent-space/  301 -> /ming/agent-space
+PASS  尾斜杠 /ming/evidence/  301 -> /ming/evidence
+PASS  尾斜杠 /ming/cooperation/  301 -> /ming/cooperation
+PASS  /ming 无尾斜杠  301 -> /ming/
+PASS  未知路径回退与 index.html 字节一致  200 2644B b68c8cf88650
+PASS  缺失资源 /ming/missing.js -> 404  404
+PASS  缺失资源 /ming/media/not-found.png -> 404  404
+PASS  页面引用相对资源  assets/index-ChYGt_r1.js, assets/index-kOZbdEg7.css
+PASS  资源 assets/index-ChYGt_r1.js  200 application/javascript
+PASS  资源 assets/index-kOZbdEg7.css  200 text/css
+
+全部通过
+
+## 3. 部署后渲染层（render-check.mjs）
+
+PASS  渲染 https://ymai.me/ming/  200 title=让生命与世界更好地连接 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/ 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/ming/ecosystem  200 title=体系总览 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/ecosystem 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/ming/spaces  200 title=三个空间 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/spaces 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/ming/institution  200 title=机构服务 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/institution 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/ming/expert-and-research  200 title=专业与研究 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/expert-and-research 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/ming/agent-space  200 title=Agent Space · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/agent-space 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/ming/evidence  200 title=证据与进展 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/evidence 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/ming/cooperation  200 title=联系与合作 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ming/cooperation 图片失败=0 console=0 request=0
+PASS  手机 390 首页无横向溢出  溢出 0px
+
+全部通过
+
+## 4. 相邻站点回归
+
+ymai.me/                   200 21361 text/html
+ymai.me/health             200 241 text/html; charset=utf-8
+ymai.me/ming/              200 2644 text/html
+ymai.fun/                  200 75336 text/html; charset=utf-8
+ymai.fun/ming/             200 29892 text/html
+ymai.love/                 200 191524 text/html
+mingos.cn/                 200 13045 text/html
+
+## 5. 服务器现场
+
+- current -> releases/20261103-4b271f0
+- 发布目录文件：index.html、assets/index-ChYGt_r1.js、assets/index-kOZbdEg7.css、favicon.svg、og-card.png、media/（3 张）、.nojekyll
+- 发布目录 index.html sha256：b68c8cf88650333437aa446601b64c249c47476abb62fb0d9f1c729128101b5a
+- 配置 diff：仅包含一行 `include snippets/ming-portfolio-ymai-me.conf;` 与片段文件内容
+- systemctl show nginx：NRestarts=0，未重启
+- error.log reload 后未见与 /ming/ 相关的 5xx
+
+## 6. 未包含的内容
+
+- 服务器真实发布根目录、配置目录、备份目录与备份目录名（保存在内部部署记录）
+- 真人读者、屏幕阅读器、真实 Safari、真实手机结果（未执行）
+- 旧域名 301 与 Self Space 修改（未执行）
