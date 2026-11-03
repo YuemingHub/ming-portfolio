@@ -1,0 +1,13 @@
+
+Running 8 tests using 2 workers
+
+  ok 2 [mobile] › tests\mobile.spec.ts:6:3 › 手机 390 · / (6.9s)
+  ok 1 [mobile] › tests\mobile.spec.ts:6:3 › 手机 390 · /ecosystem (7.0s)
+  ok 3 [mobile] › tests\mobile.spec.ts:6:3 › 手机 390 · /spaces (5.0s)
+  ok 4 [mobile] › tests\mobile.spec.ts:6:3 › 手机 390 · /institution (5.2s)
+  ok 5 [mobile] › tests\mobile.spec.ts:6:3 › 手机 390 · /expert-and-research (4.4s)
+  ok 6 [mobile] › tests\mobile.spec.ts:6:3 › 手机 390 · /agent-space (4.2s)
+  ok 8 [mobile] › tests\mobile.spec.ts:6:3 › 手机 390 · /cooperation (4.4s)
+  ok 7 [mobile] › tests\mobile.spec.ts:6:3 › 手机 390 · /evidence (5.1s)
+
+  8 passed (25.6s)

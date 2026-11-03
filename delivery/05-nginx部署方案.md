@@ -360,7 +360,7 @@ server {
 ```
 
 3. **证书**：`certbot --nginx --cert-name ymai.me --expand`，把 `www.ymai.me` 加入 SAN；`certbot renew --dry-run` 通过。
-4. **联系通道**：站点新增联系与合作页的三条通道，构建发布为 `20261103-contact-1209`；nginx 根路径规则、Self Space 与 `/ming` 跳转未改。
+4. **联系通道**：站点新增联系与合作页的三条通道，首次发布为 `20261103-contact-1209`；Linux CI 发现手机端邮箱链接触控高度不足后修正 CSS，重新构建并发布为 `20261103-contact-1259`。两个 release 都保留，`current` 指向 1259；nginx 根路径规则、Self Space 与 `/ming` 跳转未改。
 
 ### 13.3 验证
 
@@ -372,8 +372,8 @@ server {
 | `https://www.ymai.me/cooperation` | 跟随跳转后 200，最终地址 `https://ymai.me/cooperation` |
 | 证书 | 2026-11-03 至 2027-02-01；SAN `www.ymai.me, ymai.love, ymai.me` |
 | 真实 Chromium | HTTP、HTTPS、`/cooperation` 三次均落到根域名；联系页 3 个通道、2 张图加载完成、错误 0 |
-| 生产产物 | 根 `index.html` 2619B / `31ddffafb678`；JS `index-CbCwha_U.js` 317280B / `5316e00af435`；CSS `index-CEkBwN0k.css` 177608B / `f79890fa6236`；与本地构建逐字节一致 |
-| 回归 | `verify-root.mjs post` 34/34；`render-check` 9/9；旧构建资源仍 200 |
+| 生产产物 | 根 `index.html` 2619B / `17acc1076a34`；JS `index-DaiXV31B.js` 317280B / `5316e00af435`；CSS `index-CXKZg1Yl.css` 177663B / `8fc76d06b752`；与本地构建逐字节一致 |
+| 回归 | `verify-root.mjs post` 34/34；`render-check` 9/9；旧构建资源（含 `CbCwha_U.js`、`CEkBwN0k.css`）仍 200 |
 
 完整输出见 [`evidence/production-contact-www-20261103.txt`](evidence/production-contact-www-20261103.txt)。
 

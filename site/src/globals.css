@@ -4517,6 +4517,9 @@ body.menu-open {
 }
 
 .contact-channel-body h3 a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
   color: inherit;
   text-decoration: underline;
   text-underline-offset: 3px;
