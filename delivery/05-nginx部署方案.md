@@ -1,9 +1,10 @@
 # nginx 部署方案（公开版）
 
 - 编写日期：2026-11-02
-- 对象：`integration/qoder-site-2026-11-02` 的构建产物
-- 状态：方案与本地演练完成；**生产未执行**
-- 边界：`NO_MERGE / NO_DEPLOY`
+- 生产执行：2026-11-03
+- 对象：`integration/qoder-site-2026-11-02` 的构建产物（已合并为 `e44b48f`）
+- 状态：方案、本地演练与生产部署均已完成；生产验证见 [`03` §9](03-测试结果.md)
+- 边界：正式入口 <https://ymai.me/ming/> 已上线；旧域名 301、Self Space 修改、历史资产删除均未执行
 
 > 本文件不写真实服务器路径、账号、备份目录或完整生产配置。公开仓库只保留可参数化的步骤与校验脚本；实际路径由运维会话在授权后填入。
 
@@ -22,7 +23,7 @@
 - 不改 DNS、证书、Self Space 配置。
 - 不重启服务器，只在 `nginx -t` 通过后 reload nginx。
 - 不删除旧站、旧 PDF、旧仓库或任何历史文件。
-- 不合并 `main`，不改 GitHub Pages，不执行旧域名 301。
+- 部署动作本身不合并 `main`（合并已在部署前单独完成，merge commit `e44b48f`）；不改 GitHub Pages，不执行旧域名 301。
 
 ## 2. 部署前只读检查
 
@@ -219,13 +220,13 @@ node tests/render-check.mjs --base https://ymai.me --prefix /ming
 
 | # | 条件 | 当前状态 |
 | --- | --- | --- |
-| 1 | Owner 明确授权部署 | 未授权 |
-| 2 | 合并策略已决定 | 未决定，`NO_MERGE` |
-| 3 | 真人读者测试、屏幕阅读器测试完成或 Owner 豁免 | 未执行 |
-| 4 | 生产基线已保存 | 未执行（未部署） |
-| 5 | nginx 配置备份与回滚命令已核对 | 仅本地演练 |
-| 6 | 已确认 `/ming` 无更具体的现有 location | 待生产只读检查 |
-| 7 | 已确认服务器 nginx 版本与运行方式 | 待生产只读检查 |
+| 1 | Owner 明确授权部署 | 已授权（2026-11-03） |
+| 2 | 合并策略已决定 | 已合并：merge commit `e44b48f` |
+| 3 | 真人读者测试、屏幕阅读器测试完成或 Owner 豁免 | 未执行；Owner 已授权先上线并另行排期（见 `07`） |
+| 4 | 生产基线已保存 | 已完成（根站与 `/ming/` 均为 21361B，sha256 `564a76ed4b5c…`） |
+| 5 | nginx 配置备份与回滚命令已核对 | 已完成；配置备份保存在服务器内部目录 |
+| 6 | 已确认 `/ming` 无更具体的现有 location | 已确认（目标 server 块内无 `/ming` 规则） |
+| 7 | 已确认服务器 nginx 版本与运行方式 | nginx/1.18.0 (Ubuntu) + systemd；reload 不 restart |
 
 ## 10. 本地已验证的范围
 
@@ -233,4 +234,42 @@ node tests/render-check.mjs --base https://ymai.me --prefix /ming
 - 回滚目标 server（不含 `/ming/` 规则）验证：移除规则后 `/ming/`、`/ming/ecosystem`、`/` 均回到根站哨兵页面。
 - 部署前后脚本与本机渲染检查通过，详见 [`03-测试结果`](03-测试结果.md) 与 [`evidence/`](evidence/)。
 
-本地通过不等于生产通过；生产 nginx 的叠加配置、CDN 与真实响应仍需授权后重新验证。
+本地通过不等于生产通过；生产环境已按本方案实际执行并复验，见 §11。
+
+## 11. 生产执行记录（2026-11-03）
+
+### 11.1 实际对象
+
+| 项目 | 值 |
+| --- | --- |
+| 正式入口 | `https://ymai.me/ming/` |
+| 目标 server 块 | `ymai.me` 的独立 server 块（根站为 Self Space） |
+| 发布提交 | `e44b48f`（merge commit；tree 与 `4b271f0` 相同） |
+| 发布标识 | `20261103-4b271f0` |
+| 产物 `index.html` | 2644B，sha256 `b68c8cf88650…` |
+| 部署前 `/ming/` | 回落到根站同一份 21361B HTML（Self Space） |
+| 部署后 `/ming/` | 2644B，与本次产物字节一致 |
+| nginx | 1.18.0 (Ubuntu)，systemd；`NRestarts=0` |
+
+公开仓库不记录服务器真实发布根目录、配置目录与备份目录；这些值保存在运维会话的内部部署记录中。片段内容与第 4 节一致，`root` 指向发布根的 `current`。
+
+### 11.2 执行顺序
+
+1. 从 `e44b48f` 的 tree 构建，确认根目录产物与 `site/dist` 完全一致（`cmp` / `diff -r` 通过）。
+2. 记录部署前基线；备份 nginx 配置与 `nginx -T` 输出。
+3. 上传 6 类产物到新 release 目录，设置目录 755、文件 644。
+4. 原子切换 `current` 软链接；旧 release 保留。
+5. 写入 `ymai.me` 专用片段（未复用 `ymai.fun` 的既有片段）。
+6. 在目标 server 块中加入一行 `include`；与备份做 diff，确认只多这一行。
+7. `nginx -t` 通过后 `systemctl reload nginx`，未 restart。
+
+### 11.3 结果
+
+- `deploy/verify.mjs post`：28/28 `PASS`，包括产物字节绑定、根站字节未变、8 路由、301、404、MIME 与 canonical。
+- `render-check.mjs`：8 路由 + 手机 390 宽共 11/11 `PASS`。
+- 相邻站点回归：`ymai.me/`、`/health`、`ymai.fun/`、`ymai.fun/ming/`（旧版 29892B）、`ymai.love/`、`mingos.cn/` 均 200。
+- 30 分钟观察：每 5 分钟复测 `/ming/`、根站与一条路由，未出现 5xx；记录保存在内部部署证据中。
+
+### 11.4 回滚点
+
+配置备份、`nginx -T` 前后 diff、旧 server 配置副本与本次片段副本均保存在服务器内部备份目录。撤回顺序见 [`06-回滚方案`](06-回滚方案.md) §7。回滚不删除 release 目录，不删除历史资产。
