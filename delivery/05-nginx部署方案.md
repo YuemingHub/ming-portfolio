@@ -268,7 +268,7 @@ node tests/render-check.mjs --base https://ymai.me --prefix /ming
 - `deploy/verify.mjs post`：28/28 `PASS`，包括产物字节绑定、根站字节未变、8 路由、301、404、MIME 与 canonical。
 - `render-check.mjs`：8 路由 + 手机 390 宽共 11/11 `PASS`。
 - 相邻站点回归：`ymai.me/`、`/health`、`ymai.fun/`、`ymai.fun/ming/`（旧版 29892B）、`ymai.love/`、`mingos.cn/` 均 200。
-- 30 分钟观察：每 5 分钟复测 `/ming/`、根站与一条路由，未出现 5xx；记录保存在内部部署证据中。
+- 30 分钟观察：每 5 分钟复测 `/ming/`、根站与一条路由，7/7 个样本正常，未出现 5xx；公开样本表见 [`evidence/production-deploy-20261103.txt`](evidence/production-deploy-20261103.txt) 第 6 节。
 
 ### 11.4 回滚点
 
