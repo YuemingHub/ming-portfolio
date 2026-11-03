@@ -385,3 +385,34 @@ server {
 - 证书不回滚：新增 `www` SAN 不影响 `ymai.me` 与 `ymai.love` 的现有访问。
 
 详见 [`06-回滚方案`](06-回滚方案.md) §13。
+
+## 14. Self Space 截图补拍发布（2026-11-03）
+
+### 14.1 变更范围
+
+只替换站点内容与构建产物：
+
+- 首页 Self Space 卡片由 `EVIDENCE_PENDING` 占位换成公开首页实拍 `media/ymai-self.png`；
+- `/spaces` 的 Self Space 段落新增同一张实拍，并把“截图待补”文字改为已补拍；
+- 历史资源路径故障卡片从 `EVIDENCE_PENDING` 改为 `RESOLVED`。
+
+nginx 配置未改、未 reload、未 restart；Self Space `/gui/`、`/ming` 跳转与 `/api/`、`/health` 代理均未改。
+
+### 14.2 发布与验证
+
+| 项目 | 读数 |
+| --- | --- |
+| 发布 | `20261103-selfshot-1338`，`current` 原子切换；`NRestarts=0` |
+| 生产产物 | 根 `index.html` 2619B / `53af33be4540`；JS `index-Bz18HWsZ.js` 317700B / `80861affca39`；CSS `index-CXKZg1Yl.css` 177663B / `8fc76d06b752`；截图 291089B / `3e8749791c7a` |
+| 回归 | `verify-root.mjs post` 34/34；`render-check` 9/9；手机 390 溢出 0 |
+| 旧资源 | 6 个历史 JS / CSS 文件名在生产均返回 200，供缓存旧 HTML 的客户端使用 |
+
+完整输出见 [`evidence/production-self-shot-20261103.txt`](evidence/production-self-shot-20261103.txt)。
+
+### 14.3 回滚点
+
+- 内容：把 `current` 切回 `20261103-contact-1259`（联系通道轮）或 `20261103-root-1040`（根路径轮）；两个 release 均保留。
+- 不需要 reload nginx。
+- 不删除 `20261103-selfshot-1338` 与任何更早 release。
+
+详见 [`06-回滚方案`](06-回滚方案.md) §14。

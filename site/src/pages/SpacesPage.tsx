@@ -94,12 +94,21 @@ export function SpacesPage() {
             </div>
           </div>
 
+          <div className="detail-visual">
+            <BrowserFrame
+              src="/media/ymai-self.png"
+              alt="Self Space 公开首页实拍：深色页面，标题为「这里，留给你自己。」"
+              url="ymai.me/gui"
+              caption="公开首页实拍 · 2026-11-03。登录后的个人页面与内容不在本站展示。"
+            />
+          </div>
+
           <div className="self-stage">
             <div className="self-stage-copy">
               <p className="self-stage-kicker">A ROOM OF YOUR OWN</p>
               <p className="self-stage-title">这里，留给你自己。</p>
               <p>它不是心理咨询网站，不是人生导师，也不是另一个什么都能答的 AI。你说，它回应；它把你说的话放回你面前，最后怎么解释，还是你说了算。</p>
-              <p className="micro-note">依据 ymai.me 公开页文字（2026-11-02）。2026-11-03 已修正资源路径为 /gui/ 并完成公网复核；真实线上截图仍标记 EVIDENCE_PENDING，待补拍。</p>
+              <p className="micro-note">依据 ymai.me 公开页文字（2026-11-02）。2026-11-03 已修正资源路径为 /gui/ 并完成公网复核、补拍公开首页。登录后的个人页面与内容不在本站展示。</p>
             </div>
             <div className="self-actions">
               {SELF_ACTIONS.map((action) => (
@@ -114,6 +123,7 @@ export function SpacesPage() {
           {KNOWN_INCIDENTS.map((incident) => (
             <EvidencePending
               key={incident.id}
+              resolved
               title={incident.title}
               body={`${incident.impact} ${incident.handling}`}
               meta={`${incident.date} · ${incident.status}`}
@@ -123,7 +133,7 @@ export function SpacesPage() {
           <div className="callout-row">
             <p className="callout"><span>能说话、能留下、能回来，这三件在今天就是真的。</span>剩下的，得靠真实住进来的人慢慢长出来。</p>
             <p className="callout"><span>它不是心理咨询工具。</span>不定义你是谁，不替你决定人生，也不把一次对话变成永久结论。</p>
-            <p className="callout"><span>当前边界。</span>2026-11-02 公开页出现独立资源路径故障；2026-11-03 已修正为 /gui/ 并完成公网复核。对话与长期记忆能力需要登录后核验，本轮未获取账号；真实线上截图仍标记 EVIDENCE_PENDING。</p>
+            <p className="callout"><span>当前边界。</span>2026-11-02 公开页出现独立资源路径故障；2026-11-03 已修正为 /gui/ 并完成公网复核、补拍公开首页。对话与长期记忆能力需要登录后核验，本轮未获取账号；登录后的个人页面不在本站展示。</p>
           </div>
         </div>
       </section>

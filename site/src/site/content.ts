@@ -28,7 +28,7 @@ export const KNOWN_INCIDENTS = [
     date: "2026-11-02",
     status: "RESOLVED · 2026-11-03",
     impact: "ymai.me 的 Next.js 资源请求返回 SPA HTML，首次访问页面缺少样式。",
-    handling: "2026-11-03 将 Self Space 修正到其构建原生路径 /gui/ 并完成公网复核；作品集入口指向 https://ymai.me/gui/ 。真实线上截图仍标记 EVIDENCE_PENDING，待补拍。",
+    handling: "2026-11-03 将 Self Space 修正到其构建原生路径 /gui/ 并完成公网复核；作品集入口指向 https://ymai.me/gui/ 。公开首页截图已于同日补拍。",
   },
 ];
 
@@ -116,12 +116,12 @@ export const PROJECTS: Project[] = [
     evidence: [
       { label: "Self Space 公开页", kind: "public", href: "https://ymai.me/gui/" },
       { label: "公开页文字核验：说出来 / 留下 / 回来", kind: "measurement" },
-      { label: "Self Space 真实线上截图 · EVIDENCE_PENDING（待补拍）", kind: "pending" },
+      { label: "Self Space 真实线上截图（2026-11-03）", kind: "screenshot", href: "/media/ymai-self.png" },
       { label: "生产资源路径故障诊断与修复记录（内部记录，不公开）", kind: "private-doc" },
       { label: "生产部署与回滚记录（内部记录，不公开）", kind: "private-doc" },
     ],
     verified: "2026-11-02",
-    limits: "2026-11-02 生产页面存在独立资源路径故障；2026-11-03 已修正为 /gui/ 并完成公网复核。对话与长期记忆能力需登录后核验；本站未获取账号，因此不宣称登录后体验已验收。真实线上截图仍标记 EVIDENCE_PENDING。",
+    limits: "2026-11-02 生产页面存在独立资源路径故障；2026-11-03 已修正为 /gui/ 并完成公网复核、补拍公开首页。对话与长期记忆能力需登录后核验；本站未获取账号，因此不宣称登录后体验已验收。",
     publicUrl: "https://ymai.me/gui/",
     route: "/spaces#self",
   },

@@ -4,7 +4,7 @@ export const ROUTES = [
     title: "让生命与世界更好地连接 · YUE MING ECOSYSTEM",
     h1: "让生命与世界更好地连接。",
     canonical: "https://ymai.me/",
-    images: 2,
+    images: 3,
   },
   {
     path: "/ecosystem",
@@ -18,7 +18,7 @@ export const ROUTES = [
     title: "三个空间 · YUE MING ECOSYSTEM",
     h1: "人的生活，不是一个单独的问题。",
     canonical: "https://ymai.me/spaces",
-    images: 2,
+    images: 3,
   },
   {
     path: "/institution",

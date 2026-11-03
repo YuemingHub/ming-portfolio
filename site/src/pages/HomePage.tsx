@@ -1,6 +1,5 @@
 import { Atlas } from "@/components/Atlas";
 import { Arrow, ArrowLink, BrowserFrame, SectionHeading, StatusPill } from "@/components/Chrome";
-import { EvidencePending } from "@/components/EvidencePending";
 import { Link } from "@/site/router";
 import { CONTACT, PROJECT_COUNT, PROJECTS, STATUS_COUNTS, STATUS_ORDER, STATUS_META } from "@/site/content";
 import type { Status } from "@/site/types";
@@ -36,10 +35,11 @@ const SPACES = [
     url: "https://ymai.me/gui/",
     status: "LIVE_VERIFIED" as const,
     visual: (
-      <EvidencePending
-        compact
-        body="2026-11-03 已将 Self Space 修正到 /gui/ 并完成公网复核；真实线上截图仍待补拍。"
-        meta="公开页文字已于 2026-11-02 核验 · 截图待补"
+      <BrowserFrame
+        src="/media/ymai-self.png"
+        alt="Self Space 公开首页实拍：深色页面，标题为「这里，留给你自己。」"
+        url="ymai.me/gui"
+        caption="公开首页实拍 · 2026-11-03 · 登录后页面不在本站展示"
       />
     ),
   },

@@ -3,15 +3,17 @@ export function EvidencePending({
   body,
   meta,
   compact = false,
+  resolved = false,
 }: {
   title?: string;
   body: string;
   meta: string;
   compact?: boolean;
+  resolved?: boolean;
 }) {
   return (
-    <div className={compact ? "evidence-pending is-compact" : "evidence-pending"} role="note" aria-label="证据缺口">
-      <p className="evidence-pending-kicker">EVIDENCE_PENDING</p>
+    <div className={compact ? "evidence-pending is-compact" : "evidence-pending"} role="note" aria-label={resolved ? "已解决事件" : "证据缺口"}>
+      <p className="evidence-pending-kicker">{resolved ? "RESOLVED" : "EVIDENCE_PENDING"}</p>
       <p className="evidence-pending-title">{title}</p>
       <p className="evidence-pending-body">{body}</p>
       <p className="evidence-pending-meta">{meta}</p>

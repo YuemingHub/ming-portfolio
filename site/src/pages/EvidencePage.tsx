@@ -92,6 +92,7 @@ export function EvidencePage() {
           {KNOWN_INCIDENTS.map((incident) => (
             <EvidencePending
               key={incident.id}
+              resolved
               title={incident.title}
               body={`${incident.impact} ${incident.handling}`}
               meta={`${incident.date} · ${incident.status}`}
