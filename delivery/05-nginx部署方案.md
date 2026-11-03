@@ -406,6 +406,7 @@ nginx 配置未改、未 reload、未 restart；Self Space `/gui/`、`/ming` 跳
 | 生产产物 | 根 `index.html` 2619B / `53af33be4540`；JS `index-Bz18HWsZ.js` 317700B / `80861affca39`；CSS `index-CXKZg1Yl.css` 177663B / `8fc76d06b752`；截图 291089B / `3e8749791c7a` |
 | 回归 | `verify-root.mjs post` 34/34；`render-check` 9/9；手机 390 溢出 0 |
 | 旧资源 | 6 个历史 JS / CSS 文件名在生产均返回 200，供缓存旧 HTML 的客户端使用 |
+| Linux CI | 提交 `31c7d33` 的 run `41586319973` success；Playwright `93 passed` / `24 skipped`，nginx `54/54` |
 
 完整输出见 [`evidence/production-self-shot-20261103.txt`](evidence/production-self-shot-20261103.txt)。
 
