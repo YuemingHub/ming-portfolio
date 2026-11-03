@@ -1,0 +1,58 @@
+nginx_version=nginx version: nginx/1.28.0
+mode=local port=18089 rollback=18090
+PASS  route /ming/  200 text/html 2644B
+PASS  route /ming/ecosystem  200 text/html 2644B
+PASS  route /ming/spaces  200 text/html 2644B
+PASS  route /ming/institution  200 text/html 2644B
+PASS  route /ming/expert-and-research  200 text/html 2644B
+PASS  route /ming/agent-space  200 text/html 2644B
+PASS  route /ming/evidence  200 text/html 2644B
+PASS  route /ming/cooperation  200 text/html 2644B
+PASS  trailing /ming/ecosystem/  301 -> /ming/ecosystem
+PASS  trailing /ming/spaces/  301 -> /ming/spaces
+PASS  trailing /ming/institution/  301 -> /ming/institution
+PASS  trailing /ming/expert-and-research/  301 -> /ming/expert-and-research
+PASS  trailing /ming/agent-space/  301 -> /ming/agent-space
+PASS  trailing /ming/evidence/  301 -> /ming/evidence
+PASS  trailing /ming/cooperation/  301 -> /ming/cooperation
+PASS  /ming no slash  301 -> /ming/
+PASS  build emits JS asset  assets/index-ChYGt_r1.js
+PASS  build emits CSS asset  assets/index-kOZbdEg7.css
+PASS  asset /ming/assets/index-ChYGt_r1.js  200 application/javascript 314896B
+PASS  asset /ming/assets/index-kOZbdEg7.css  200 text/css 176211B
+PASS  asset /ming/media/ymai-fun.png  200 image/png 393235B
+PASS  asset /ming/media/mingos-cn.png  200 image/png 66828B
+PASS  asset /ming/favicon.svg  200 image/svg+xml 339B
+PASS  asset /ming/og-card.png  200 image/png 107381B
+PASS  asset /ming/media/ymai-love.png  200 image/png
+PASS  missing file /ming/missing.js -> 404  404
+PASS  missing file /ming/media/missing.png -> 404  404
+PASS  missing file /ming/no-such.css -> 404  404
+PASS  unknown route -> SPA fallback  200 text/html
+PASS  isolation /  200 text/html
+PASS  isolation /gui/_next/static/chunks/0~1ut8j7t4w5..css  200 text/html
+PASS  isolation /_next/static/x.js  200 text/html
+PASS  isolation /some/other/path  200 text/html
+PASS  canonical  found
+PASS  relative js  found
+PASS  og url  found
+PASS  HEAD /ming/  200 length=2644 body=0B
+PASS  home with query  200
+PASS  route with query  200
+PASS  explicit index.html  200
+PASS  asset directory is not HTML 200  403 text/html
+PASS  nested missing index.html -> 404  404
+PASS  deep path SPA fallback  200
+PASS  prefix lookalike is not redirected  200
+SKIP  case-sensitive /MING/ stays on root  Windows 文件系统不区分大小写，本地无法复现；由 Linux CI 执行同一检查
+PASS  raw traversal /ming/../ does not serve portfolio  200
+PASS  encoded traversal does not serve portfolio  200
+PASS  double slash resolves  200
+PASS  route subpath SPA fallback  200
+PASS  redirect keeps query  301 -> /ming/ecosystem?a=1 then 200
+PASS  HEAD missing asset -> 404  404
+PASS  rollback /ming/ stays on Self Space  200 text/html
+PASS  rollback /ming/ecosystem stays on Self Space  200 text/html
+PASS  rollback / stays on Self Space  200 text/html
+
+53/53 passed, 1 skipped

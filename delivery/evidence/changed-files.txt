@@ -1,0 +1,216 @@
+# changed files: merge-base 8866ae5 -> delivery candidate (211 files)
+# generated: 2026-11-03
+# columns: status<TAB>path (R100: old<TAB>new)
+A	.github/workflows/ci.yml
+M	.gitignore
+M	README.md
+A	archive/pre-qoder-2026-11-02/README.md
+R100	evidence/VERIFICATION.md	archive/pre-qoder-2026-11-02/evidence/VERIFICATION.md
+R100	evidence/browser-audit.txt	archive/pre-qoder-2026-11-02/evidence/browser-audit.txt
+R100	evidence/desktop-about.png	archive/pre-qoder-2026-11-02/evidence/desktop-about.png
+R100	evidence/desktop-contact.png	archive/pre-qoder-2026-11-02/evidence/desktop-contact.png
+R100	evidence/desktop-evidence.png	archive/pre-qoder-2026-11-02/evidence/desktop-evidence.png
+R100	evidence/desktop-fold.png	archive/pre-qoder-2026-11-02/evidence/desktop-fold.png
+R100	evidence/desktop-full.png	archive/pre-qoder-2026-11-02/evidence/desktop-full.png
+R100	evidence/desktop-method.png	archive/pre-qoder-2026-11-02/evidence/desktop-method.png
+R100	evidence/desktop-research.png	archive/pre-qoder-2026-11-02/evidence/desktop-research.png
+R100	evidence/desktop-works.png	archive/pre-qoder-2026-11-02/evidence/desktop-works.png
+R100	evidence/fun-browser-audit.txt	archive/pre-qoder-2026-11-02/evidence/fun-browser-audit.txt
+R100	evidence/fun-desktop-fold.png	archive/pre-qoder-2026-11-02/evidence/fun-desktop-fold.png
+R100	evidence/fun-lrdf-browser-audit.txt	archive/pre-qoder-2026-11-02/evidence/fun-lrdf-browser-audit.txt
+R100	evidence/fun-lrdf-desktop-fold.png	archive/pre-qoder-2026-11-02/evidence/fun-lrdf-desktop-fold.png
+R100	evidence/fun-lrdf-mobile-320-fold.png	archive/pre-qoder-2026-11-02/evidence/fun-lrdf-mobile-320-fold.png
+R100	evidence/fun-lrdf-mobile-390-fold.png	archive/pre-qoder-2026-11-02/evidence/fun-lrdf-mobile-390-fold.png
+R100	evidence/fun-lrdf-tablet-768-fold.png	archive/pre-qoder-2026-11-02/evidence/fun-lrdf-tablet-768-fold.png
+R100	evidence/fun-mobile-320-fold.png	archive/pre-qoder-2026-11-02/evidence/fun-mobile-320-fold.png
+R100	evidence/fun-mobile-390-fold.png	archive/pre-qoder-2026-11-02/evidence/fun-mobile-390-fold.png
+R100	evidence/fun-tablet-768-fold.png	archive/pre-qoder-2026-11-02/evidence/fun-tablet-768-fold.png
+R100	evidence/lrdf-browser-audit.txt	archive/pre-qoder-2026-11-02/evidence/lrdf-browser-audit.txt
+R100	evidence/lrdf-desktop-fold.png	archive/pre-qoder-2026-11-02/evidence/lrdf-desktop-fold.png
+R100	evidence/lrdf-mobile-320-fold.png	archive/pre-qoder-2026-11-02/evidence/lrdf-mobile-320-fold.png
+R100	evidence/lrdf-mobile-390-fold.png	archive/pre-qoder-2026-11-02/evidence/lrdf-mobile-390-fold.png
+R100	evidence/lrdf-tablet-768-fold.png	archive/pre-qoder-2026-11-02/evidence/lrdf-tablet-768-fold.png
+R100	evidence/ming-portfolio-20261017.pdf	archive/pre-qoder-2026-11-02/evidence/ming-portfolio-20261017.pdf
+R100	evidence/ming-portfolio-20261019.pdf	archive/pre-qoder-2026-11-02/evidence/ming-portfolio-20261019.pdf
+R100	evidence/ming-portfolio-2026102401.pdf	archive/pre-qoder-2026-11-02/evidence/ming-portfolio-2026102401.pdf
+R100	evidence/ming-portfolio-2026102402.pdf	archive/pre-qoder-2026-11-02/evidence/ming-portfolio-2026102402.pdf
+R100	evidence/ming-portfolio-20261025.pdf	archive/pre-qoder-2026-11-02/evidence/ming-portfolio-20261025.pdf
+R100	evidence/ming-portfolio-2026102502.pdf	archive/pre-qoder-2026-11-02/evidence/ming-portfolio-2026102502.pdf
+R100	evidence/mobile-320-fold.png	archive/pre-qoder-2026-11-02/evidence/mobile-320-fold.png
+R100	evidence/mobile-390-about.png	archive/pre-qoder-2026-11-02/evidence/mobile-390-about.png
+R100	evidence/mobile-390-contact.png	archive/pre-qoder-2026-11-02/evidence/mobile-390-contact.png
+R100	evidence/mobile-390-evidence.png	archive/pre-qoder-2026-11-02/evidence/mobile-390-evidence.png
+R100	evidence/mobile-390-fold.png	archive/pre-qoder-2026-11-02/evidence/mobile-390-fold.png
+R100	evidence/mobile-390-method.png	archive/pre-qoder-2026-11-02/evidence/mobile-390-method.png
+R100	evidence/mobile-390-research.png	archive/pre-qoder-2026-11-02/evidence/mobile-390-research.png
+R100	evidence/mobile-390-works.png	archive/pre-qoder-2026-11-02/evidence/mobile-390-works.png
+R100	evidence/print-media-p1-3.png	archive/pre-qoder-2026-11-02/evidence/print-media-p1-3.png
+R100	evidence/print-media-tail.png	archive/pre-qoder-2026-11-02/evidence/print-media-tail.png
+R100	evidence/tablet-768-fold.png	archive/pre-qoder-2026-11-02/evidence/tablet-768-fold.png
+A	archive/pre-qoder-2026-11-02/index.html
+R100	lrdf.html	archive/pre-qoder-2026-11-02/lrdf.html
+R100	ming-portfolio-20261017.pdf	archive/pre-qoder-2026-11-02/ming-portfolio-20261017.pdf
+R100	ming-portfolio-20261019.pdf	archive/pre-qoder-2026-11-02/ming-portfolio-20261019.pdf
+R100	ming-portfolio-2026102402.pdf	archive/pre-qoder-2026-11-02/ming-portfolio-2026102402.pdf
+R100	ming-portfolio-20261025.pdf	archive/pre-qoder-2026-11-02/ming-portfolio-20261025.pdf
+R100	ming-portfolio-2026102502.pdf	archive/pre-qoder-2026-11-02/ming-portfolio-2026102502.pdf
+A	archive/pre-qoder-2026-11-02/og-card.png
+R100	site.css	archive/pre-qoder-2026-11-02/site.css
+R100	tools/audit-browser.mjs	archive/pre-qoder-2026-11-02/tools/audit-browser.mjs
+R100	tools/pdf-links.mjs	archive/pre-qoder-2026-11-02/tools/pdf-links.mjs
+R100	tools/record-verification.sh	archive/pre-qoder-2026-11-02/tools/record-verification.sh
+R100	tools/verify-links.sh	archive/pre-qoder-2026-11-02/tools/verify-links.sh
+R100	tools/verify-surface.sh	archive/pre-qoder-2026-11-02/tools/verify-surface.sh
+A	assets/index-ChYGt_r1.js
+A	assets/index-kOZbdEg7.css
+A	delivery/00-交付索引.md
+A	delivery/01-内容真实性审计.md
+A	delivery/02-公开仓库安全审计.md
+A	delivery/03-测试结果.md
+A	delivery/04-独立复核报告.md
+A	delivery/05-nginx部署方案.md
+A	delivery/06-回滚方案.md
+A	delivery/07-人工验收待办.md
+A	delivery/08-文件变更审计.md
+A	delivery/09-用户旅程与真人测试卡片.md
+A	delivery/evidence/changed-files.txt
+A	delivery/evidence/deploy-scripts-output.txt
+A	delivery/evidence/journey-1-institution.png
+A	delivery/evidence/journey-2-technical.png
+A	delivery/evidence/journey-3-family.png
+A	delivery/evidence/journey-4-research.png
+A	delivery/evidence/nginx-test-output.txt
+A	delivery/evidence/playwright-full.txt
+A	deploy/README.md
+A	deploy/verify.mjs
+A	favicon.svg
+M	index.html
+A	media/mingos-cn.png
+A	media/ymai-fun.png
+A	media/ymai-love.png
+A	nginx-test/README.md
+A	nginx-test/fixtures/selfspace/index.html
+A	nginx-test/nginx.conf.template
+A	nginx-test/run.sh
+A	nginx-test/verify.mjs
+M	og-card.png
+A	scripts/audit-repo.mjs
+A	site/.gitignore
+A	site/PROVENANCE.md
+A	site/README.md
+A	site/components.json
+A	site/components/ui/accordion.tsx
+A	site/components/ui/alert-dialog.tsx
+A	site/components/ui/alert.tsx
+A	site/components/ui/aspect-ratio.tsx
+A	site/components/ui/attachment.tsx
+A	site/components/ui/avatar.tsx
+A	site/components/ui/badge.tsx
+A	site/components/ui/breadcrumb.tsx
+A	site/components/ui/bubble.tsx
+A	site/components/ui/button-group.tsx
+A	site/components/ui/button.tsx
+A	site/components/ui/calendar.tsx
+A	site/components/ui/card.tsx
+A	site/components/ui/carousel.tsx
+A	site/components/ui/chart.tsx
+A	site/components/ui/checkbox.tsx
+A	site/components/ui/collapsible.tsx
+A	site/components/ui/combobox.tsx
+A	site/components/ui/command.tsx
+A	site/components/ui/context-menu.tsx
+A	site/components/ui/dialog.tsx
+A	site/components/ui/direction.tsx
+A	site/components/ui/drawer.tsx
+A	site/components/ui/dropdown-menu.tsx
+A	site/components/ui/empty.tsx
+A	site/components/ui/field.tsx
+A	site/components/ui/form.tsx
+A	site/components/ui/hover-card.tsx
+A	site/components/ui/input-group.tsx
+A	site/components/ui/input-otp.tsx
+A	site/components/ui/input.tsx
+A	site/components/ui/item.tsx
+A	site/components/ui/kbd.tsx
+A	site/components/ui/label.tsx
+A	site/components/ui/marker.tsx
+A	site/components/ui/menubar.tsx
+A	site/components/ui/message-scroller.tsx
+A	site/components/ui/message.tsx
+A	site/components/ui/native-select.tsx
+A	site/components/ui/navigation-menu.tsx
+A	site/components/ui/pagination.tsx
+A	site/components/ui/popover.tsx
+A	site/components/ui/progress.tsx
+A	site/components/ui/radio-group.tsx
+A	site/components/ui/resizable.tsx
+A	site/components/ui/scroll-area.tsx
+A	site/components/ui/select.tsx
+A	site/components/ui/separator.tsx
+A	site/components/ui/sheet.tsx
+A	site/components/ui/sidebar.tsx
+A	site/components/ui/skeleton.tsx
+A	site/components/ui/slider.tsx
+A	site/components/ui/sonner.tsx
+A	site/components/ui/spinner.tsx
+A	site/components/ui/switch.tsx
+A	site/components/ui/table.tsx
+A	site/components/ui/tabs.tsx
+A	site/components/ui/textarea.tsx
+A	site/components/ui/toggle-group.tsx
+A	site/components/ui/toggle.tsx
+A	site/components/ui/tooltip.tsx
+A	site/dev/function-local.ts
+A	site/functions/handler.ts
+A	site/functions/index.ts
+A	site/hooks/use-mobile.ts
+A	site/index.html
+A	site/lib/utils.ts
+A	site/package-lock.json
+A	site/package.json
+A	site/playwright.config.ts
+A	site/postcss.config.mjs
+A	site/public/favicon.svg
+A	site/public/media/mingos-cn.png
+A	site/public/media/ymai-fun.png
+A	site/public/media/ymai-love.png
+A	site/public/og-card.png
+A	site/scripts/build.mjs
+A	site/scripts/check-node.mjs
+A	site/src/App.tsx
+A	site/src/components/Atlas.tsx
+A	site/src/components/Chrome.tsx
+A	site/src/components/EcosystemMap.tsx
+A	site/src/components/EvidencePending.tsx
+A	site/src/globals.css
+A	site/src/main.tsx
+A	site/src/pages/AgentSpacePage.tsx
+A	site/src/pages/CooperationPage.tsx
+A	site/src/pages/EcosystemPage.tsx
+A	site/src/pages/EvidencePage.tsx
+A	site/src/pages/ExpertResearchPage.tsx
+A	site/src/pages/HomePage.tsx
+A	site/src/pages/InstitutionPage.tsx
+A	site/src/pages/NotFoundPage.tsx
+A	site/src/pages/SpacesPage.tsx
+A	site/src/site/base.ts
+A	site/src/site/content.ts
+A	site/src/site/nav.ts
+A	site/src/site/router.tsx
+A	site/src/site/types.ts
+A	site/src/vite-env.d.ts
+A	site/tests/a11y.spec.ts
+A	site/tests/address.spec.ts
+A	site/tests/journeys.spec.ts
+A	site/tests/keyboard.spec.ts
+A	site/tests/mobile.spec.ts
+A	site/tests/render-check.mjs
+A	site/tests/routes.spec.ts
+A	site/tests/routes.ts
+A	site/tests/server.mjs
+A	site/tsconfig.json
+A	site/vendor/shadcn-tailwind-4.13.0.LICENSE.md
+A	site/vendor/shadcn-tailwind-4.13.0.css
+A	site/vite.config.ts
+
+# summary: 153 A, 4 M, 54 R100, 0 D; 211 total

@@ -1,0 +1,123 @@
+
+Running 117 tests using 6 workers
+
+  ok   3 [chromium] › tests\a11y.spec.ts:6:3 › /institution WCAG 2 A/AA (1.8s)
+  ok   4 [chromium] › tests\a11y.spec.ts:6:3 › /ecosystem WCAG 2 A/AA (1.8s)
+  ok   5 [chromium] › tests\a11y.spec.ts:6:3 › /expert-and-research WCAG 2 A/AA (1.8s)
+  ok   6 [chromium] › tests\a11y.spec.ts:6:3 › /agent-space WCAG 2 A/AA (1.7s)
+  ok   1 [chromium] › tests\a11y.spec.ts:6:3 › /spaces WCAG 2 A/AA (2.0s)
+  ok  10 [chromium] › tests\address.spec.ts:51:1 › 子路径跳转与未知路径 (37ms)
+  ok  11 [chromium] › tests\address.spec.ts:70:1 › 测试服务器根站隔离哨兵 (38ms)
+  -   13 [chromium] › tests\keyboard.spec.ts:51:3 › / WebKit 跳转链接可用性
+  ok   2 [chromium] › tests\a11y.spec.ts:6:3 › / WCAG 2 A/AA (2.2s)
+  -   15 [chromium] › tests\keyboard.spec.ts:51:3 › /ecosystem WebKit 跳转链接可用性
+  ok   9 [chromium] › tests\address.spec.ts:10:1 › 地址、OG、JSON-LD 与旧入口引用 (1.0s)
+  -   17 [chromium] › tests\keyboard.spec.ts:51:3 › /spaces WebKit 跳转链接可用性
+  ok   8 [chromium] › tests\a11y.spec.ts:6:3 › /cooperation WCAG 2 A/AA (1.5s)
+  ok  14 [chromium] › tests\keyboard.spec.ts:5:3 › /ecosystem 键盘顺序与焦点可见 (1.3s)
+  -   19 [chromium] › tests\keyboard.spec.ts:51:3 › /institution WebKit 跳转链接可用性
+  ok  16 [chromium] › tests\keyboard.spec.ts:5:3 › /spaces 键盘顺序与焦点可见 (1.3s)
+  ok  12 [chromium] › tests\keyboard.spec.ts:5:3 › / 键盘顺序与焦点可见 (1.7s)
+  ok   7 [chromium] › tests\a11y.spec.ts:6:3 › /evidence WCAG 2 A/AA (1.9s)
+  -   21 [chromium] › tests\keyboard.spec.ts:51:3 › /expert-and-research WebKit 跳转链接可用性
+  -   23 [chromium] › tests\keyboard.spec.ts:51:3 › /agent-space WebKit 跳转链接可用性
+  -   25 [chromium] › tests\keyboard.spec.ts:51:3 › /evidence WebKit 跳转链接可用性
+  -   27 [chromium] › tests\keyboard.spec.ts:51:3 › /cooperation WebKit 跳转链接可用性
+  ok  18 [chromium] › tests\keyboard.spec.ts:5:3 › /institution 键盘顺序与焦点可见 (1.2s)
+  ok  20 [chromium] › tests\keyboard.spec.ts:5:3 › /expert-and-research 键盘顺序与焦点可见 (1.2s)
+  ok  22 [chromium] › tests\keyboard.spec.ts:5:3 › /agent-space 键盘顺序与焦点可见 (1.2s)
+  ok  26 [chromium] › tests\keyboard.spec.ts:5:3 › /cooperation 键盘顺序与焦点可见 (1.3s)
+  ok  24 [chromium] › tests\keyboard.spec.ts:5:3 › /evidence 键盘顺序与焦点可见 (1.5s)
+  ok  29 [chromium] › tests\routes.spec.ts:5:3 › /ecosystem 路由、资源与内部链接 (2.1s)
+  ok  31 [chromium] › tests\routes.spec.ts:5:3 › /institution 路由、资源与内部链接 (2.0s)
+  ok  30 [chromium] › tests\routes.spec.ts:5:3 › /spaces 路由、资源与内部链接 (2.5s)
+  ok  28 [chromium] › tests\routes.spec.ts:5:3 › / 路由、资源与内部链接 (3.2s)
+  ok  33 [chromium] › tests\routes.spec.ts:5:3 › /agent-space 路由、资源与内部链接 (2.0s)
+  ok  32 [chromium] › tests\routes.spec.ts:5:3 › /expert-and-research 路由、资源与内部链接 (2.5s)
+  ok  34 [chromium] › tests\routes.spec.ts:5:3 › /evidence 路由、资源与内部链接 (2.4s)
+  ok  35 [chromium] › tests\routes.spec.ts:5:3 › /cooperation 路由、资源与内部链接 (2.1s)
+  ok  38 [journeys] › tests\journeys.spec.ts:3:1 › 旅程 1 · 机构合作方：先看机构服务，再生成一页简报 (1.3s)
+  ok  39 [journeys] › tests\journeys.spec.ts:31:1 › 旅程 2 · 技术评估者：核对体系关系与验证中状态 (1.7s)
+  ok  36 [webkit] › tests\a11y.spec.ts:6:3 › / WCAG 2 A/AA (2.5s)
+  ok  37 [webkit] › tests\a11y.spec.ts:6:3 › /ecosystem WCAG 2 A/AA (2.5s)
+  ok  40 [journeys] › tests\journeys.spec.ts:46:1 › 旅程 3 · 家庭用户：只走公开入口，不触发登录或数据采集 (1.2s)
+  ok  41 [journeys] › tests\journeys.spec.ts:60:1 › 旅程 4 · 研究/写作者：从专业页进入研究资产与证据 (1.6s)
+  ok  44 [webkit] › tests\a11y.spec.ts:6:3 › /institution WCAG 2 A/AA (2.4s)
+  ok  42 [mobile] › tests\mobile.spec.ts:6:3 › 手机 390 · / (2.7s)
+  ok  43 [webkit] › tests\a11y.spec.ts:6:3 › /spaces WCAG 2 A/AA (2.7s)
+  ok  45 [mobile] › tests\mobile.spec.ts:6:3 › 手机 390 · /ecosystem (2.8s)
+  ok  46 [mobile] › tests\mobile.spec.ts:6:3 › 手机 390 · /spaces (2.9s)
+  ok  47 [mobile] › tests\mobile.spec.ts:6:3 › 手机 390 · /institution (2.8s)
+  ok  48 [webkit] › tests\a11y.spec.ts:6:3 › /expert-and-research WCAG 2 A/AA (2.7s)
+  ok  50 [webkit] › tests\a11y.spec.ts:6:3 › /agent-space WCAG 2 A/AA (2.6s)
+  ok  49 [mobile] › tests\mobile.spec.ts:6:3 › 手机 390 · /expert-and-research (2.9s)
+  ok  51 [mobile] › tests\mobile.spec.ts:6:3 › 手机 390 · /agent-space (2.6s)
+  ok  53 [mobile] › tests\mobile.spec.ts:6:3 › 手机 390 · /cooperation (2.3s)
+  ok  52 [mobile] › tests\mobile.spec.ts:6:3 › 手机 390 · /evidence (3.1s)
+  ok  55 [webkit] › tests\a11y.spec.ts:6:3 › /cooperation WCAG 2 A/AA (2.1s)
+  ok  54 [webkit] › tests\a11y.spec.ts:6:3 › /evidence WCAG 2 A/AA (2.4s)
+  ok  57 [webkit] › tests\address.spec.ts:51:1 › 子路径跳转与未知路径 (32ms)
+  ok  58 [webkit] › tests\address.spec.ts:70:1 › 测试服务器根站隔离哨兵 (20ms)
+  -   59 [webkit] › tests\keyboard.spec.ts:5:3 › / 键盘顺序与焦点可见
+  ok  56 [webkit] › tests\address.spec.ts:10:1 › 地址、OG、JSON-LD 与旧入口引用 (882ms)
+  -   61 [webkit] › tests\keyboard.spec.ts:5:3 › /ecosystem 键盘顺序与焦点可见
+  ok  60 [webkit] › tests\keyboard.spec.ts:51:3 › / WebKit 跳转链接可用性 (1.0s)
+  -   63 [webkit] › tests\keyboard.spec.ts:5:3 › /spaces 键盘顺序与焦点可见
+  ok  62 [webkit] › tests\keyboard.spec.ts:51:3 › /ecosystem WebKit 跳转链接可用性 (1.1s)
+  -   65 [webkit] › tests\keyboard.spec.ts:5:3 › /institution 键盘顺序与焦点可见
+  ok  64 [webkit] › tests\keyboard.spec.ts:51:3 › /spaces WebKit 跳转链接可用性 (1.1s)
+  -   67 [webkit] › tests\keyboard.spec.ts:5:3 › /expert-and-research 键盘顺序与焦点可见
+  ok  66 [webkit] › tests\keyboard.spec.ts:51:3 › /institution WebKit 跳转链接可用性 (1.0s)
+  -   69 [webkit] › tests\keyboard.spec.ts:5:3 › /agent-space 键盘顺序与焦点可见
+  ok  68 [webkit] › tests\keyboard.spec.ts:51:3 › /expert-and-research WebKit 跳转链接可用性 (955ms)
+  -   71 [webkit] › tests\keyboard.spec.ts:5:3 › /evidence 键盘顺序与焦点可见
+  ok  70 [webkit] › tests\keyboard.spec.ts:51:3 › /agent-space WebKit 跳转链接可用性 (1.0s)
+  -   73 [webkit] › tests\keyboard.spec.ts:5:3 › /cooperation 键盘顺序与焦点可见
+  ok  72 [webkit] › tests\keyboard.spec.ts:51:3 › /evidence WebKit 跳转链接可用性 (1.0s)
+  ok  74 [webkit] › tests\keyboard.spec.ts:51:3 › /cooperation WebKit 跳转链接可用性 (945ms)
+  ok  76 [webkit] › tests\routes.spec.ts:5:3 › /ecosystem 路由、资源与内部链接 (2.5s)
+  ok  75 [webkit] › tests\routes.spec.ts:5:3 › / 路由、资源与内部链接 (3.4s)
+  ok  77 [webkit] › tests\routes.spec.ts:5:3 › /spaces 路由、资源与内部链接 (2.6s)
+  ok  78 [webkit] › tests\routes.spec.ts:5:3 › /institution 路由、资源与内部链接 (2.3s)
+  ok  80 [webkit] › tests\routes.spec.ts:5:3 › /agent-space 路由、资源与内部链接 (2.4s)
+  ok  79 [webkit] › tests\routes.spec.ts:5:3 › /expert-and-research 路由、资源与内部链接 (3.3s)
+  ok  81 [webkit] › tests\routes.spec.ts:5:3 › /evidence 路由、资源与内部链接 (2.8s)
+  ok  82 [webkit] › tests\routes.spec.ts:5:3 › /cooperation 路由、资源与内部链接 (2.3s)
+  ok  83 [firefox] › tests\a11y.spec.ts:6:3 › / WCAG 2 A/AA (2.6s)
+  ok  84 [firefox] › tests\a11y.spec.ts:6:3 › /ecosystem WCAG 2 A/AA (1.8s)
+  ok  85 [firefox] › tests\a11y.spec.ts:6:3 › /spaces WCAG 2 A/AA (1.5s)
+  ok  86 [firefox] › tests\a11y.spec.ts:6:3 › /institution WCAG 2 A/AA (1.7s)
+  ok  87 [firefox] › tests\a11y.spec.ts:6:3 › /expert-and-research WCAG 2 A/AA (1.5s)
+  ok  88 [firefox] › tests\a11y.spec.ts:6:3 › /agent-space WCAG 2 A/AA (1.5s)
+  ok  89 [firefox] › tests\a11y.spec.ts:6:3 › /evidence WCAG 2 A/AA (1.9s)
+  ok  90 [firefox] › tests\a11y.spec.ts:6:3 › /cooperation WCAG 2 A/AA (1.5s)
+  ok  91 [firefox] › tests\address.spec.ts:10:1 › 地址、OG、JSON-LD 与旧入口引用 (811ms)
+  ok  92 [firefox] › tests\address.spec.ts:51:1 › 子路径跳转与未知路径 (25ms)
+  ok  93 [firefox] › tests\address.spec.ts:70:1 › 测试服务器根站隔离哨兵 (14ms)
+  ok  94 [firefox] › tests\keyboard.spec.ts:5:3 › / 键盘顺序与焦点可见 (2.2s)
+  -   95 [firefox] › tests\keyboard.spec.ts:51:3 › / WebKit 跳转链接可用性
+  ok  96 [firefox] › tests\keyboard.spec.ts:5:3 › /ecosystem 键盘顺序与焦点可见 (1.4s)
+  -   97 [firefox] › tests\keyboard.spec.ts:51:3 › /ecosystem WebKit 跳转链接可用性
+  ok  98 [firefox] › tests\keyboard.spec.ts:5:3 › /spaces 键盘顺序与焦点可见 (1.2s)
+  -   99 [firefox] › tests\keyboard.spec.ts:51:3 › /spaces WebKit 跳转链接可用性
+  ok 100 [firefox] › tests\keyboard.spec.ts:5:3 › /institution 键盘顺序与焦点可见 (1.2s)
+  -  101 [firefox] › tests\keyboard.spec.ts:51:3 › /institution WebKit 跳转链接可用性
+  ok 102 [firefox] › tests\keyboard.spec.ts:5:3 › /expert-and-research 键盘顺序与焦点可见 (1.3s)
+  -  103 [firefox] › tests\keyboard.spec.ts:51:3 › /expert-and-research WebKit 跳转链接可用性
+  ok 104 [firefox] › tests\keyboard.spec.ts:5:3 › /agent-space 键盘顺序与焦点可见 (1.8s)
+  -  105 [firefox] › tests\keyboard.spec.ts:51:3 › /agent-space WebKit 跳转链接可用性
+  ok 106 [firefox] › tests\keyboard.spec.ts:5:3 › /evidence 键盘顺序与焦点可见 (1.4s)
+  -  107 [firefox] › tests\keyboard.spec.ts:51:3 › /evidence WebKit 跳转链接可用性
+  ok 108 [firefox] › tests\keyboard.spec.ts:5:3 › /cooperation 键盘顺序与焦点可见 (1.2s)
+  -  109 [firefox] › tests\keyboard.spec.ts:51:3 › /cooperation WebKit 跳转链接可用性
+  ok 110 [firefox] › tests\routes.spec.ts:5:3 › / 路由、资源与内部链接 (2.7s)
+  ok 111 [firefox] › tests\routes.spec.ts:5:3 › /ecosystem 路由、资源与内部链接 (2.1s)
+  ok 112 [firefox] › tests\routes.spec.ts:5:3 › /spaces 路由、资源与内部链接 (2.2s)
+  ok 113 [firefox] › tests\routes.spec.ts:5:3 › /institution 路由、资源与内部链接 (2.1s)
+  ok 114 [firefox] › tests\routes.spec.ts:5:3 › /expert-and-research 路由、资源与内部链接 (3.2s)
+  ok 115 [firefox] › tests\routes.spec.ts:5:3 › /agent-space 路由、资源与内部链接 (2.1s)
+  ok 116 [firefox] › tests\routes.spec.ts:5:3 › /evidence 路由、资源与内部链接 (2.4s)
+  ok 117 [firefox] › tests\routes.spec.ts:5:3 › /cooperation 路由、资源与内部链接 (2.1s)
+
+  24 skipped
+  93 passed (1.4m)
