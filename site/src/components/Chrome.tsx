@@ -122,14 +122,14 @@ export function SiteFooter() {
         <div className="footer-meta">
           <p>
             <span>作品集 · {SITE.version}</span>
-            <span>核验日期 {SITE.verifiedAt}</span>
+            <span>项目状态核验日期 {SITE.verifiedAt}</span>
           </p>
           <p>
-            本站不使用分析脚本、不收集访客数据、不加载外部字体或追踪代码。未标注 LIVE_VERIFIED 的能力不视为已上线。
+            本站不使用分析脚本、不投放追踪代码、不加载外部字体；页面不收集、不上传你填写的内容。未标注 LIVE_VERIFIED 的能力不视为已上线；LIVE_VERIFIED 只表示公开页面已核验。
           </p>
           <p className="footer-links">
-            <a href={SITE.canonical}>正式入口 ymai.me</a>
-            <a href={SITE.selfSpace}>Self Space（原 ymai.me）</a>
+            <a href={SITE.canonical}>作品集正式入口 ymai.me</a>
+            <a href={SITE.selfSpace}>Self Space 入口 ymai.me/gui</a>
             <a href={SITE.legacy}>旧入口 ymai.fun/ming（历史兼容）</a>
             <a href={`mailto:${CONTACT.email}`}>邮箱 {CONTACT.email}</a>
           </p>

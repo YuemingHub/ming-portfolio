@@ -1,11 +1,11 @@
 export function EvidencePending({
-  title = "Self Space 真实线上截图待补",
+  title,
   body,
   meta,
   compact = false,
   resolved = false,
 }: {
-  title?: string;
+  title: string;
   body: string;
   meta: string;
   compact?: boolean;

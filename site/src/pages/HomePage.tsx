@@ -64,7 +64,7 @@ const SPACES = [
   },
 ];
 
-const HIGHLIGHTS = ["family-space", "world-space", "family-service-os", "expert-os"];
+const HIGHLIGHTS = ["family-space", "self-space", "world-space", "family-service-os", "expert-os"];
 
 const STATUS_NOTES: Record<Status, string> = {
   LIVE_VERIFIED: "公开入口可访问",
@@ -118,7 +118,7 @@ export function HomePage() {
           <span><b>{counts.LIVE_VERIFIED}</b> 个公开入口已核验</span>
           <span><b>{inBuild}</b> 项在建设、验证或规划</span>
           <span><b>{counts.RESEARCH}</b> 项研究资产</span>
-          <span className="hero-facts-note">状态核验日期 2026-11-02</span>
+          <span className="hero-facts-note">项目状态核验日期 2026-11-02</span>
         </div>
       </section>
 
@@ -308,8 +308,8 @@ export function HomePage() {
               <p>家庭教育机构、专业工作者、技术伙伴、研究伙伴、资源与投资伙伴。合作从具体问题和可验证的小项目开始，而不是先承诺宏大的结果。</p>
             </div>
             <div className="cooperation-actions">
-              <Link to="/cooperation" className="btn btn-primary">联系与交流 <Arrow /></Link>
-              <span>公开联系通道：<a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></span>
+              <Link to="/cooperation" className="btn btn-primary">联系与合作 <Arrow /></Link>
+              <span>公开联系通道：抖音、公众号与<a href={`mailto:${CONTACT.email}`}>邮箱 {CONTACT.email}</a></span>
             </div>
           </div>
         </div>

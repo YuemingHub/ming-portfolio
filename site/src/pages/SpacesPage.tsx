@@ -126,12 +126,12 @@ export function SpacesPage() {
               resolved
               title={incident.title}
               body={`${incident.impact} ${incident.handling}`}
-              meta={`${incident.date} · ${incident.status}`}
+              meta={`发生 ${incident.date} · ${incident.status}`}
             />
           ))}
 
           <div className="callout-row">
-            <p className="callout"><span>能说话、能留下、能回来，这三件在今天就是真的。</span>剩下的，得靠真实住进来的人慢慢长出来。</p>
+            <p className="callout"><span>公开页写道：能说话、能留下、能回来。</span>登录后的实际体验仍需核验；剩下的，得靠真实住进来的人慢慢长出来。</p>
             <p className="callout"><span>它不是心理咨询工具。</span>不定义你是谁，不替你决定人生，也不把一次对话变成永久结论。</p>
             <p className="callout"><span>当前边界。</span>2026-11-02 公开页出现独立资源路径故障；2026-11-03 已修正为 /gui/ 并完成公网复核、补拍公开首页。对话与长期记忆能力需要登录后核验，本轮未获取账号；登录后的个人页面不在本站展示。</p>
           </div>

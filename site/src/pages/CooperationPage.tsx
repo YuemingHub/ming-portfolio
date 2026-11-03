@@ -19,9 +19,11 @@ export function CooperationPage() {
   const active = PARTNER_TYPES.find((item) => item.id === activeId) ?? PARTNER_TYPES[0];
 
   const brief = useMemo(() => {
+    const now = new Date();
+    const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
     const lines = [
       "YUE MING ECOSYSTEM · 合作简报",
-      "生成日期：2026-11-02",
+      `生成日期：${today}`,
       "",
       `合作对象类型：${active.label}`,
       `合作方向：${active.headline}`,
@@ -53,7 +55,7 @@ export function CooperationPage() {
   return (
     <>
       <PageHeader
-        kicker="COOPERATION · 联系与交流"
+        kicker="COOPERATION · 联系与合作"
         title={<>先看真实资产，<br />再谈一起做什么。</>}
         lede="我们愿意和家庭教育机构、专业工作者、技术伙伴、研究伙伴、资源与投资伙伴一起，把真实问题做成可验证的事情。合作入口不是一个宏大的招商页，而是一份可以当面核对现状的简报。"
         meta={["5 类合作对象", "从具体断点开始", "本站不收集联系信息"]}

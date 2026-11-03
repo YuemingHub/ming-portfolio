@@ -111,7 +111,7 @@ export const PROJECTS: Project[] = [
     name: "Self Space",
     en: "自我空间 · ymai.me",
     audience: "个人",
-    capability: "说出来、留下、回来：可以说话，关掉窗口不会丢，以后还能回来。",
+    capability: "公开页描述：说出来、留下、回来——可以说话，关掉窗口不会丢，以后还能回来。",
     status: "LIVE_VERIFIED",
     evidence: [
       { label: "Self Space 公开页", kind: "public", href: "https://ymai.me/gui/" },
@@ -356,7 +356,7 @@ export const MAP_NODES: MapNode[] = [
     audience: "个人",
     problem: "需要一个能整理自己、理解经历、保存经验、持续认识自己的空间。",
     statuses: ["LIVE_VERIFIED"],
-    capabilities: ["说出来", "留下：关掉窗口不会丢", "回来：以后还能看见"],
+    capabilities: ["公开页：说出来", "公开页：留下（关掉窗口不会丢）", "公开页：回来（以后还能看见）"],
     limits: "不是心理咨询网站，也不是人生导师；登录后能力未在本轮公开核验。",
     links: [
       { label: "打开 Self Space", href: "https://ymai.me/gui/" },

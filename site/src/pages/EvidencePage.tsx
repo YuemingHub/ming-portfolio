@@ -41,7 +41,7 @@ export function EvidencePage() {
         kicker="EVIDENCE & PROGRESS · 证据与进展"
         title={<>做到哪里，<br />就写到哪里。</>}
         lede="这一页把每个项目放回同一条尺子上：面向谁、已经有什么能力、当前处于什么状态、证据在哪里、哪天核验、还不能宣称什么。状态不是荣誉榜，而是限制说明。"
-        meta={[`${PROJECTS.length} 条项目记录`, "7 种状态", "核验日期 2026-11-02", "公开版本不含私有链接"]}
+        meta={[`${PROJECTS.length} 条项目记录`, "7 种状态", "项目状态核验日期 2026-11-02", "公开版本不含私有链接"]}
       />
 
       <section className="section section-status">
@@ -95,7 +95,7 @@ export function EvidencePage() {
               resolved
               title={incident.title}
               body={`${incident.impact} ${incident.handling}`}
-              meta={`${incident.date} · ${incident.status}`}
+              meta={`发生 ${incident.date} · ${incident.status}`}
             />
           ))}
         </div>

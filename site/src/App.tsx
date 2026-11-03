@@ -50,7 +50,7 @@ const ROUTES: Record<string, { title: string; description: string; element: () =
   },
   "/cooperation": {
     title: "联系与合作",
-    description: "五类合作对象与三种合作起点；合作简报只在浏览器本地生成，公开联系通道为 GitHub Issues。",
+    description: "五类合作对象与三条合作原则；合作简报只在浏览器本地生成；公开联系与交流通道为抖音、公众号与邮箱，合作议题也可走 GitHub Issues。",
     element: () => <CooperationPage />,
   },
 };
