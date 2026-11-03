@@ -5,10 +5,11 @@ export const SITE = {
   title: "让生命与世界更好地连接",
   version: "2026.11",
   verifiedAt: "2026-11-02",
-  canonical: "https://ymai.me/ming/",
+  canonical: "https://ymai.me/",
+  selfSpace: "https://ymai.me/gui/",
   legacy: "https://ymai.fun/ming/",
   backup: "https://yueminghub.github.io/ming-portfolio/",
-  note: "本页所有状态以 2026-11-02 的公开页面与仓库文档核验为准；未标注 LIVE_VERIFIED 的能力不视为已上线。",
+  note: "本页项目状态以 2026-11-02 的公开页面与仓库文档核验为准；Self Space 的资源路径修复单独标注 2026-11-03。未标注 LIVE_VERIFIED 的能力不视为已上线。",
 };
 
 export const CONTACT = {
@@ -22,9 +23,9 @@ export const KNOWN_INCIDENTS = [
     id: "self-space-assets",
     title: "Self Space 生产资源路径故障",
     date: "2026-11-02",
-    status: "OPEN · 独立修复",
+    status: "RESOLVED · 2026-11-03",
     impact: "ymai.me 的 Next.js 资源请求返回 SPA HTML，首次访问页面缺少样式。",
-    handling: "作品集不以故障态截图作为正常产品证据；真实线上截图标记 EVIDENCE_PENDING，待独立故障修复并完成公网复核后补拍。",
+    handling: "2026-11-03 将 Self Space 修正到其构建原生路径 /gui/ 并完成公网复核；作品集入口指向 https://ymai.me/gui/ 。真实线上截图仍标记 EVIDENCE_PENDING，待补拍。",
   },
 ];
 
@@ -110,15 +111,15 @@ export const PROJECTS: Project[] = [
     capability: "说出来、留下、回来：可以说话，关掉窗口不会丢，以后还能回来。",
     status: "LIVE_VERIFIED",
     evidence: [
-      { label: "ymai.me 公开页", kind: "public", href: "https://ymai.me" },
+      { label: "Self Space 公开页", kind: "public", href: "https://ymai.me/gui/" },
       { label: "公开页文字核验：说出来 / 留下 / 回来", kind: "measurement" },
-      { label: "Self Space 真实线上截图 · EVIDENCE_PENDING（生产资源路径故障，待独立修复后补拍）", kind: "pending" },
-      { label: "生产资源路径故障诊断记录（内部记录，不公开）", kind: "private-doc" },
+      { label: "Self Space 真实线上截图 · EVIDENCE_PENDING（待补拍）", kind: "pending" },
+      { label: "生产资源路径故障诊断与修复记录（内部记录，不公开）", kind: "private-doc" },
       { label: "生产部署与回滚记录（内部记录，不公开）", kind: "private-doc" },
     ],
     verified: "2026-11-02",
-    limits: "2026-11-02 生产页面存在独立资源路径故障，正常视觉状态待修复后复核；真实线上截图标记 EVIDENCE_PENDING。对话与长期记忆能力需登录后核验；本站未获取账号，因此不宣称登录后体验已验收。",
-    publicUrl: "https://ymai.me",
+    limits: "2026-11-02 生产页面存在独立资源路径故障；2026-11-03 已修正为 /gui/ 并完成公网复核。对话与长期记忆能力需登录后核验；本站未获取账号，因此不宣称登录后体验已验收。真实线上截图仍标记 EVIDENCE_PENDING。",
+    publicUrl: "https://ymai.me/gui/",
     route: "/spaces#self",
   },
   {
@@ -355,7 +356,7 @@ export const MAP_NODES: MapNode[] = [
     capabilities: ["说出来", "留下：关掉窗口不会丢", "回来：以后还能看见"],
     limits: "不是心理咨询网站，也不是人生导师；登录后能力未在本轮公开核验。",
     links: [
-      { label: "打开 ymai.me", href: "https://ymai.me" },
+      { label: "打开 Self Space", href: "https://ymai.me/gui/" },
       { label: "看三个空间", internal: "/spaces#self" },
     ],
   },

@@ -4,7 +4,8 @@
 //
 //   cd site
 //   npx playwright install chromium
-//   node tests/render-check.mjs --base https://ymai.me --prefix /ming
+//   node tests/render-check.mjs --base https://ymai.me            # 根路径（正式）
+//   node tests/render-check.mjs --base http://127.0.0.1:4173 --prefix /ming
 import { chromium } from "@playwright/test";
 
 const args = new Map();
@@ -12,7 +13,7 @@ for (let i = 2; i < process.argv.length; i += 2) {
   args.set(process.argv[i].replace(/^--/, ""), process.argv[i + 1]);
 }
 const BASE = (args.get("base") || "https://ymai.me").replace(/\/$/, "");
-const PREFIX = (args.get("prefix") || "/ming").replace(/\/$/, "");
+const PREFIX = (args.has("prefix") ? args.get("prefix") : "").replace(/\/$/, "");
 const CANONICAL_BASE = (args.get("canonical-base") || BASE).replace(/\/$/, "");
 
 const routes = ["", "/ecosystem", "/spaces", "/institution", "/expert-and-research", "/agent-space", "/evidence", "/cooperation"];

@@ -30,22 +30,24 @@ test("地址、OG、JSON-LD 与旧入口引用", async ({ page }) => {
     return { canonical, ogUrl, ogImage, jsonLd, footerLinks };
   });
 
-  expect(meta.canonical).toBe("https://ymai.me/ming/");
-  expect(meta.ogUrl).toBe("https://ymai.me/ming/");
-  expect(meta.ogImage).toBe("https://ymai.me/ming/og-card.png");
+  expect(meta.canonical).toBe("https://ymai.me/");
+  expect(meta.ogUrl).toBe("https://ymai.me/");
+  expect(meta.ogImage).toBe("https://ymai.me/og-card.png");
   expect(meta.jsonLd.length).toBeGreaterThan(0);
-  expect(JSON.stringify(meta.jsonLd)).toContain("https://ymai.me/ming/");
-  expect(meta.footerLinks.some((link) => link.href === "https://ymai.me/ming/")).toBeTruthy();
+  expect(JSON.stringify(meta.jsonLd)).toContain("https://ymai.me/");
+  expect(meta.footerLinks.some((link) => link.href === "https://ymai.me/")).toBeTruthy();
+  expect(meta.footerLinks.some((link) => link.href === "https://ymai.me/gui/")).toBeTruthy();
   expect(meta.footerLinks.some((link) => link.href === "https://ymai.fun/ming/")).toBeTruthy();
 
   const readme = readRepoFile("README.md");
-  expect(readme).toContain("https://ymai.me/ming/");
+  expect(readme).toContain("https://ymai.me/");
+  expect(readme).toContain("https://ymai.me/gui/");
   expect(readme).toContain("https://ymai.fun/ming/");
   expect(readme).toContain("https://yueminghub.github.io/ming-portfolio/");
 
   const content = readFileSync(new URL("../src/site/content.ts", import.meta.url), "utf8");
   expect(content).toContain('"https://ymai.fun"');
-  expect(content).toContain('"https://ymai.me"');
+  expect(content).toContain('"https://ymai.me/gui/"');
 });
 
 test("子路径跳转与未知路径", async ({ request }) => {

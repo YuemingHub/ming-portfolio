@@ -33,13 +33,13 @@ const SPACES = [
     title: "每个人都需要一个能够整理自己、理解经历、保存经验、持续认识自己的空间。",
     body: "不是一个什么都能答的 AI，也不是心理咨询网站。你说，它回应；它把你说的话放回你面前，最后怎么解释，还是你说了算。",
     tags: ["说出来", "留下", "回来"],
-    url: "https://ymai.me",
+    url: "https://ymai.me/gui/",
     status: "LIVE_VERIFIED" as const,
     visual: (
       <EvidencePending
         compact
-        body="2026-11-02 生产页面出现独立资源路径故障。按 Owner 裁定，不将故障态截图作为正常产品证据。"
-        meta="公开页文字已于 2026-11-02 核验 · 修复并完成公网复核后补拍"
+        body="2026-11-03 已将 Self Space 修正到 /gui/ 并完成公网复核；真实线上截图仍待补拍。"
+        meta="公开页文字已于 2026-11-02 核验 · 截图待补"
       />
     ),
   },

@@ -3,8 +3,10 @@
 - 编写日期：2026-11-02
 - 生产执行：2026-11-03
 - 对象：`integration/qoder-site-2026-11-02` 的构建产物（已合并为 `e44b48f`）
-- 状态：方案、本地演练与生产部署均已完成；生产验证见 [`03` §9](03-测试结果.md)
-- 边界：正式入口 <https://ymai.me/ming/> 已上线；旧域名 301、Self Space 修改、历史资产删除均未执行
+- 状态：方案、本地演练与生产部署均已完成；生产验证见 [`03` §9–§10](03-测试结果.md)
+- 边界：正式入口为 <https://ymai.me/>；`/ming` 301 到根路径；Self Space 未改代码，恢复在 `/gui/`；旧域名 301、历史资产删除均未执行
+
+> 2026-11-03 晚些时候 Owner 改变入口方案：作品集从 `/ming/` 切到 `ymai.me` 根路径，Self Space 放回构建原生的 `/gui/`。§1–§11 保留为子路径部署的历史记录；当前结构与执行记录见 §12。
 
 > 本文件不写真实服务器路径、账号、备份目录或完整生产配置。公开仓库只保留可参数化的步骤与校验脚本；实际路径由运维会话在授权后填入。
 
@@ -273,3 +275,51 @@ node tests/render-check.mjs --base https://ymai.me --prefix /ming
 ### 11.4 回滚点
 
 配置备份、`nginx -T` 前后 diff、旧 server 配置副本与本次片段副本均保存在服务器内部备份目录。撤回顺序见 [`06-回滚方案`](06-回滚方案.md) §7。回滚不删除 release 目录，不删除历史资产。
+
+## 12. 根路径切换与 Self Space 恢复（2026-11-03）
+
+### 12.1 变更内容
+
+| 项目 | 变更 |
+| --- | --- |
+| 作品集 | `https://ymai.me/` 直接提供构建产物，不再使用 `/ming/` 作为正式地址 |
+| 旧链接 | `/ming` 与 `/ming/` 301 到 `/`；`/ming/<路由>` 301 到 `/<路由>` |
+| Self Space | 代码与构建产物未改；按 Next.js 导出原生的 `basePath=/gui` 放回 `https://ymai.me/gui/` |
+| 入口 | 桌面导航、移动导航、页脚、首页与「三个空间」页均指向 `https://ymai.me/gui/` |
+| 隔离 | `/api/`、`/health`、`/api/wechat` 保持原样；`/assets/`、`/media/` 缺失返回 404 |
+
+根因：此前根站 `location /` 的 `root` 指向 Self Space 导出的 `gui` 目录，而页面内资源地址是 `/gui/_next/…`，请求被拼成 `<root>/gui/_next/…` 后找不到，回退成 `index.html`。因此 Self Space 在根路径与 `/gui/` 下都只剩 HTML、没有 JS/CSS。
+
+### 12.2 配置结构（公开版）
+
+片段由 `ymai.me` server 块 include，包含：
+
+- `location = /ming`、`location = /ming/` → 301 `/`；`location ^~ /ming/` 保留子路径并 301 到根路径。
+- `location = /gui` → 301 `/gui/`；`location ^~ /gui/` 的 `root` 指向 Self Space 发布父目录，`try_files $uri $uri/ =404`。
+- `location ^~ /assets/`、`/media/`、`= /favicon.svg`、`= /og-card.png` 指向作品集 `current`，缺失即 404。
+- `location /` 指向作品集 `current`，只把 7 条页面的尾斜杠 301 成无尾斜杠，再回退 `index.html`。
+
+完整片段见 [`deploy/nginx-root.conf`](../deploy/nginx-root.conf)；其中不包含任何真实服务器路径以外的凭据或配置。
+
+### 12.3 执行顺序
+
+1. 记录变更前基线：根站与 `/gui/`、`/gui/space/` 均为 21361B（Self Space 首页）；`/gui/_next/` 资源返回 `text/html`，确认故障存在。
+2. 备份 `ymai.me` server 块与片段、`nginx -T` 输出与关键入口状态（保存在服务器内部备份目录）。
+3. 上传新构建到新的 release 目录，`index.html` 与 JS/CSS 的 sha256 与本机产物逐一相等。
+4. 更新片段并删除 server 块中旧的 `location /`（Self Space 根映射），`nginx -t` 通过。
+5. 原子切换 `current` 软链接，`systemctl reload nginx`；未 restart，`NRestarts=0`。
+6. 执行 `deploy/verify-root.mjs post`、`render-check.mjs` 与 Self Space 浏览器复核。
+
+### 12.4 结果
+
+- `deploy/verify-root.mjs post`：35/35 `PASS`。根路径与本次产物字节一致；8 路由一致；canonical 为 `https://ymai.me/`；`/gui/` 首页字节与基线一致；`/gui/space/` 命中 11117B 真实页；`/gui/_next/` CSS 返回 `text/css` 85631B；`/ming` 系列 301 正确；未知路径回退；缺失资源 404。
+- `render-check.mjs`：根路径 8 路由 + 手机 390 宽共 9/9 `PASS`。
+- Self Space：4 个入口链接；点击落到 `/gui/`；标题与 45px MingOS Serif 样式生效；`/gui/` 的 12 个、`/gui/space/` 的 11 个 `/gui/_next/` 资源均非 HTML；`/gui/` console error 0、失败请求 0；`/gui/space/` 正常渲染（唯一失败请求是未登录时的 `/api/me` 401，属预期）；入口可键盘聚焦。
+- 首次切换后发现 Spaces 页仍写着 Self Space 资源故障待修；修正该表述、重新构建并重跑全量测试后，以 `20261103-root-0956` 重发，nginx 未再改动。上一 release 与其 JS 均保留。
+- 相邻站点：`ymai.me/health`、`ymai.fun/`、`ymai.fun/ming/`、`ymai.love/`、`mingos.cn/`、`api.ymai.fun/healthz` 均 200。
+- 日志：观察窗口（09:56–10:31）访问日志共 355 条，`5xx=0`；error log 无 `/ming` / `/gui` 报错。
+- 30 分钟 7/7 样本正常：`/` 2674B / `3c96787d4166`、`/gui/` 21361B、`/health` 与 `/ecosystem` 均 200，见 [`03` §10](03-测试结果.md)。
+
+### 12.5 回滚
+
+见 [`06-回滚方案`](06-回滚方案.md) §8：恢复 server 块与旧片段、切回上一 release、reload，即可回到 `/ming/` 子路径方案；旧 release 与 Self Space 产物均未删除。

@@ -12,6 +12,10 @@ site/test-results/
 site/playwright-report/
 nginx-test/.run/
 .deploy-baseline/
+.deploy-baseline-root/
+
+# 本机证据与临时脚本（不进公开仓库）
+_local/
 
 # 本地配置
 .env

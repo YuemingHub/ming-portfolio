@@ -51,6 +51,9 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
+          <a href={SITE.selfSpace} className="nav-link">
+            Self Space <span aria-hidden="true">↗</span>
+          </a>
         </nav>
 
         <div className="header-actions">
@@ -89,6 +92,10 @@ export function SiteHeader() {
             <span>了解合作</span>
             <span className="mobile-nav-en">COOPERATION</span>
           </Link>
+          <a href={SITE.selfSpace} className="mobile-nav-link">
+            <span>Self Space</span>
+            <span className="mobile-nav-en">SELF SPACE ↗</span>
+          </a>
         </nav>
       </div>
     </header>
@@ -121,7 +128,8 @@ export function SiteFooter() {
             本站不使用分析脚本、不收集访客数据、不加载外部字体或追踪代码。未标注 LIVE_VERIFIED 的能力不视为已上线。
           </p>
           <p className="footer-links">
-            <a href={SITE.canonical}>正式入口 ymai.me/ming</a>
+            <a href={SITE.canonical}>正式入口 ymai.me</a>
+            <a href={SITE.selfSpace}>Self Space（原 ymai.me）</a>
             <a href={SITE.legacy}>旧入口 ymai.fun/ming（历史兼容）</a>
             <a href={CONTACT.url} target="_blank" rel="noreferrer">公开联系通道 ↗</a>
           </p>

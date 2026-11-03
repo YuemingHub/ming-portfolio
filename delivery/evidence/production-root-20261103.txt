@@ -1,0 +1,168 @@
+ymai.me 根路径部署验收 · 2026-11-03
+最终发布：20261103-root-0956（内容修正后重发）
+执行时间（UTC）：2026-11-03 01:56–02:00
+
+## 0. 本次发布与产物
+
+| 项目 | 值 |
+| --- | --- |
+| current 软链接 | `/opt/ming-portfolio/current -> /opt/ming-portfolio/releases/20261103-root-0956` |
+| index.html | 2674B，sha256 `3c96787d4166665a68bc58bc9e728a9c9e35ebfd8ea1d51ed54965742f534350` |
+| JS | `assets/index-D5GhRATr.js` 315432B，sha256 `27d7e28910640f9587a2b22d2f53a52eb01fbf10fb73215fe07a17d57b68489f` |
+| CSS | `assets/index-kOZbdEg7.css` 176211B，sha256 `da77527609397beee0c2ff32ed4dc9193aaf794ac8dc98768595304246f53aef` |
+| 保留的上一版 JS | `assets/index-C7Q5qiSQ.js` 315312B（服务已缓存旧 index.html 的客户端） |
+| nginx | 配置未改动；未 reload；`NRestarts=0` |
+
+前一发布 `20261103-root-0945` 保留未删。本次仅修正 Self Space 资源故障已修复的表述，构建与测试结果见 `delivery/03-测试结果.md` §10。
+
+## 1. deploy/verify-root.mjs post
+
+PASS  基线格式  https://ymai.me
+PASS  根路径 200 HTML 且与预期发布产物字节一致  200 text/html 2674B 3c96787d4166 vs 2674B 3c96787d4166
+PASS  根路径已不是 Self Space 首页  root=3c96787d4166 self-space=564a76ed4b5c
+PASS  路由 / 与根 index 字节一致  200 2674B 3c96787d4166
+PASS  路由 /ecosystem 与根 index 字节一致  200 2674B 3c96787d4166
+PASS  路由 /spaces 与根 index 字节一致  200 2674B 3c96787d4166
+PASS  路由 /institution 与根 index 字节一致  200 2674B 3c96787d4166
+PASS  路由 /expert-and-research 与根 index 字节一致  200 2674B 3c96787d4166
+PASS  路由 /agent-space 与根 index 字节一致  200 2674B 3c96787d4166
+PASS  路由 /evidence 与根 index 字节一致  200 2674B 3c96787d4166
+PASS  路由 /cooperation 与根 index 字节一致  200 2674B 3c96787d4166
+PASS  首页 canonical 为根路径  https://ymai.me/
+PASS  首页引用相对 JS  found
+PASS  首页引用相对资源  assets/index-D5GhRATr.js, assets/index-kOZbdEg7.css
+PASS  资源 assets/index-D5GhRATr.js  200 application/javascript
+PASS  资源 assets/index-kOZbdEg7.css  200 text/css
+PASS  Self Space /gui/ 首页字节与基线一致  200 21361B 564a76ed4b5c
+PASS  Self Space /gui/space/ 命中真实路由页而非首页回退  200 11117B 3fd6452c65a4 vs index 11117B
+PASS  Self Space /gui/_next 资源返回真实 JS/CSS 而非 HTML  200 text/css 85631B
+PASS  /health 与基线一致  200 241B
+PASS  /ming 301 到根  301 -> /
+PASS  /ming/ 301 到根  301 -> /
+PASS  /ming/ecosystem 301 到 /ecosystem  301 -> /ecosystem
+PASS  /ming/ecosystem/ 最终落到 200  301 -> /ecosystem/, final 200
+PASS  尾斜杠 /ecosystem/  301 -> /ecosystem
+PASS  尾斜杠 /spaces/  301 -> /spaces
+PASS  尾斜杠 /institution/  301 -> /institution
+PASS  尾斜杠 /expert-and-research/  301 -> /expert-and-research
+PASS  尾斜杠 /agent-space/  301 -> /agent-space
+PASS  尾斜杠 /evidence/  301 -> /evidence
+PASS  尾斜杠 /cooperation/  301 -> /cooperation
+PASS  未知路径回退与根 index 字节一致  200 2674B
+PASS  缺失资源 /assets/does-not-exist.js -> 404  404
+PASS  缺失资源 /media/does-not-exist.png -> 404  404
+
+全部通过（35/35）
+
+## 2. site/tests/render-check.mjs（生产根路径）
+
+PASS  渲染 https://ymai.me/  200 title=让生命与世界更好地连接 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/ecosystem  200 title=体系总览 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ecosystem 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/spaces  200 title=三个空间 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/spaces 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/institution  200 title=机构服务 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/institution 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/expert-and-research  200 title=专业与研究 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/expert-and-research 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/agent-space  200 title=Agent Space · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/agent-space 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/evidence  200 title=证据与进展 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/evidence 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/cooperation  200 title=联系与合作 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/cooperation 图片失败=0 console=0 request=0
+PASS  手机 390 首页无横向溢出  溢出 0px
+
+全部通过（9/9）
+
+## 3. Self Space 入口与页面（真实 Chromium）
+
+原始输出（节选自 `_local/deploy-evidence/20261103/root-selfspace.json`）：
+
+```json
+{
+  "links": ["https://ymai.me/gui/"],
+  "guiAnchorCount": 4,
+  "entryVisible": true,
+  "entryText": "Self Space ↗",
+  "keyboardFocusHref": "https://ymai.me/gui/",
+  "clickNavigatedTo": "https://ymai.me/gui/",
+  "pages": [
+    {
+      "url": "https://ymai.me/gui/",
+      "status": 200,
+      "title": "Self Space · 这里，留给你自己。",
+      "h1": "这里，留给你自己。",
+      "h1Style": { "fontSize": "45px", "fontFamily": "\"MingOS Serif\", \"Songti SC\", \"Source Han Serif SC\", \"Source ", "color": "rgb(233, 229, 218)" },
+      "bodyLen": 529,
+      "nextResources": { "total": 12, "html": 0, "first": [200, "application/octet-stream", "https://ymai.me/gui/_next/static/media/797e433ab948586e-s.p.08e28id.o-okb.woff2"] },
+      "failedCount": 0,
+      "consoleErrs": []
+    },
+    {
+      "url": "https://ymai.me/gui/space/",
+      "status": 200,
+      "title": "Self Space · 这里，留给你自己。",
+      "h1": "你是谁，就由你自己说。",
+      "h1Style": { "fontSize": "40px", "fontFamily": "Geist, \"Geist Fallback\", sans-serif", "color": "lab(96.5286 -0.0991821 0.36428)" },
+      "bodyLen": 166,
+      "nextResources": { "total": 11, "html": 0, "first": [200, "application/octet-stream", "https://ymai.me/gui/_next/static/media/797e433ab948586e-s.p.08e28id.o-okb.woff2"] },
+      "failedCount": 1,
+      "fails": [["http", 401, "https://ymai.me/api/me"]],
+      "consoleErrs": ["Failed to load resource: the server responded with a status of 401 (Unauthorized)"]
+    }
+  ]
+}
+```
+
+说明：
+
+- 作品集页有 4 处链接指向同一个入口 `https://ymai.me/gui/`，入口可见、可键盘聚焦，点击后真实跳转到该地址。
+- `/gui/` 页面样式生效（h1 45px、MingOS Serif）、无失败请求、无 console error；12 个 `/gui/_next/` 资源中 0 个是 `text/html` 回退。
+- `/gui/space/` 11 个 `/gui/_next/` 资源同样 0 个 HTML 回退，页面渲染真实路由内容。
+- `/gui/space/` 的 401 来自登录态探测接口 `/api/me`（响应体 `{"authenticated":false}`），属于未登录访客的预期行为，不是静态资源或路由故障；`/api/` 反向代理未改动。
+
+## 4. 切换前基线（deploy/verify-root.mjs pre）
+
+```json
+{
+  "recordedAt": "2026-11-03T01:43:20.209Z",
+  "base": "https://ymai.me",
+  "root": { "status": 200, "sha256": "564a76ed4b5c92769a98711aef556f54ebd6f271aef29bcbc742b235fc082206", "bytes": 21361, "type": "text/html" },
+  "gui": { "status": 200, "sha256": "564a76ed4b5c92769a98711aef556f54ebd6f271aef29bcbc742b235fc082206", "bytes": 21361, "type": "text/html" },
+  "space": { "status": 200, "sha256": "564a76ed4b5c92769a98711aef556f54ebd6f271aef29bcbc742b235fc082206", "bytes": 21361, "type": "text/html" },
+  "health": { "status": 200, "sha256": "73e9fd939fc030aae51329d9deb681c40fd2cc7d2503fec9efb2b8f4c1e8d0d5", "bytes": 241, "type": "text/html; charset=utf-8" },
+  "ming": { "status": 200, "sha256": "b68c8cf88650333437aa446601b64c249c47476abb62fb0d9f1c729128101b5a", "bytes": 2644, "type": "text/html" },
+  "guiAsset": { "url": "/gui/_next/static/chunks/0~1ut8j7t4w5..css", "status": 200, "bytes": 21361, "type": "text/html" }
+}
+```
+
+切换前 `/gui/_next/*.css` 返回 21361B HTML（SPA fallback），说明 Self Space 资源路径当时确实故障；切换后同一 URL 返回 85631B `text/css`。
+
+## 5. 相邻入口（切换后）
+
+```
+https://ymai.me/                         200 text/html
+https://ymai.me/gui/                     200 text/html
+https://ymai.me/gui/space/               200 text/html
+https://ymai.me/ming/                    301 text/html
+https://ymai.me/ming/ecosystem           301 text/html
+https://ymai.me/health                   200 text/html; charset=utf-8
+https://ymai.fun/                        200 text/html; charset=utf-8
+https://ymai.fun/ming/                   200 text/html
+https://ymai.love/                       200 text/html
+https://mingos.cn/                       200 text/html
+https://api.ymai.fun/healthz             200 application/json; charset=utf-8
+```
+
+## 6. 30 分钟观察窗口
+
+每 5 分钟复测 `/`、`/ecosystem`、`/gui/`、`/health`，共 7 个样本（UTC 时间）：
+
+```
+2026-11-03T01:59:58Z sample=0 root=200/2674/3c96787d4166 ecosystem=200 gui=200/21361 health=200
+2026-11-03T02:05:00Z sample=1 root=200/2674/3c96787d4166 ecosystem=200 gui=200/21361 health=200
+2026-11-03T02:10:01Z sample=2 root=200/2674/3c96787d4166 ecosystem=200 gui=200/21361 health=200
+2026-11-03T02:15:03Z sample=3 root=200/2674/3c96787d4166 ecosystem=200 gui=200/21361 health=200
+2026-11-03T02:20:05Z sample=4 root=200/2674/3c96787d4166 ecosystem=200 gui=200/21361 health=200
+2026-11-03T02:25:07Z sample=5 root=200/2674/3c96787d4166 ecosystem=200 gui=200/21361 health=200
+2026-11-03T02:30:08Z sample=6 root=200/2674/3c96787d4166 ecosystem=200 gui=200/21361 health=200
+done 2026-11-03T02:30:09Z
+```
+
+7/7 样本正常：`/` 始终 200、2674B，sha256 `3c96787d4166`；Self Space `/gui/` 始终 200、21361B；`/health` 与 `/ecosystem` 始终 200。
+
+同一窗口（服务器本地时间 09:56–10:31）访问日志：共 355 条，200×297、301×40、304×6、401×5、404×4、444×3，`5xx=0`；error log 无与 `/ming`、`/gui` 相关的报错。

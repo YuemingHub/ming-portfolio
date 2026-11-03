@@ -44,6 +44,8 @@ export function assetUrl(path: string): string {
   return toHref(path);
 }
 
+const CANONICAL_ORIGIN = "https://ymai.me";
+
 export function canonicalFor(route: string): string {
-  return route === "/" ? "https://ymai.me/ming/" : `https://ymai.me/ming${route}`;
+  return route === "/" ? `${CANONICAL_ORIGIN}/` : `${CANONICAL_ORIGIN}${route}`;
 }

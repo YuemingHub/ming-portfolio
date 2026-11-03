@@ -90,7 +90,7 @@ export function SpacesPage() {
             </div>
             <div className="detail-head-side">
               <p>人不仅需要处理外部问题，也需要理解自己的经历、想法、变化和选择。Self Space 想为个人提供一个能够持续整理和理解自身经历的空间。</p>
-              <ArrowLink to="https://ymai.me" external>打开 ymai.me</ArrowLink>
+              <ArrowLink to="https://ymai.me/gui/" external>打开 Self Space</ArrowLink>
             </div>
           </div>
 
@@ -99,7 +99,7 @@ export function SpacesPage() {
               <p className="self-stage-kicker">A ROOM OF YOUR OWN</p>
               <p className="self-stage-title">这里，留给你自己。</p>
               <p>它不是心理咨询网站，不是人生导师，也不是另一个什么都能答的 AI。你说，它回应；它把你说的话放回你面前，最后怎么解释，还是你说了算。</p>
-              <p className="micro-note">依据 ymai.me 公开页文字（2026-11-02）。公开页当前存在独立资源路径故障，真实线上截图标记 EVIDENCE_PENDING；本站不以故障态截图冒充正常界面。</p>
+              <p className="micro-note">依据 ymai.me 公开页文字（2026-11-02）。2026-11-03 已修正资源路径为 /gui/ 并完成公网复核；真实线上截图仍标记 EVIDENCE_PENDING，待补拍。</p>
             </div>
             <div className="self-actions">
               {SELF_ACTIONS.map((action) => (
@@ -123,7 +123,7 @@ export function SpacesPage() {
           <div className="callout-row">
             <p className="callout"><span>能说话、能留下、能回来，这三件在今天就是真的。</span>剩下的，得靠真实住进来的人慢慢长出来。</p>
             <p className="callout"><span>它不是心理咨询工具。</span>不定义你是谁，不替你决定人生，也不把一次对话变成永久结论。</p>
-            <p className="callout"><span>当前边界。</span>2026-11-02 公开页出现独立资源路径故障，正常视觉状态待修复后复核；对话与长期记忆能力需要登录后核验，本轮未获取账号。</p>
+            <p className="callout"><span>当前边界。</span>2026-11-02 公开页出现独立资源路径故障；2026-11-03 已修正为 /gui/ 并完成公网复核。对话与长期记忆能力需要登录后核验，本轮未获取账号；真实线上截图仍标记 EVIDENCE_PENDING。</p>
           </div>
         </div>
       </section>
