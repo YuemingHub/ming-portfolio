@@ -42,7 +42,7 @@ export function AgentSpacePage() {
         kicker="AGENT SPACE · 连接与执行"
         title={<>让 AI 与人的真实目标，<br />持续发生作用。</>}
         lede="Agent Space 不是另一个聊天窗口，也不是只有工程师才能进入的工作台。它是一套连接人、AI、工具、知识、技术与现实资源的工作方法，目前是在真实项目里用出来的。"
-        meta={["当前状态 · VALIDATION", "8 项目标能力", "4 个真实工程案例", "不是独立产品"]}
+        meta={["当前状态 · VALIDATION", "8 项目标能力", "4 个真实案例", "不是独立产品"]}
       />
 
       <section className="section">
@@ -51,7 +51,7 @@ export function AgentSpacePage() {
             index="01"
             kicker="WHAT IT IS NOT"
             title={<>先把三个误解拿掉。</>}
-            lede="一个概念如果只能靠宏大叙事成立，就很难被检验。以下三句话，是这个项目明确不主张的。"
+            lede="这三件事，是这个项目明确不主张的。"
           />
           <div className="premise-grid">
             {PREMISES.map((item) => (
@@ -97,7 +97,7 @@ export function AgentSpacePage() {
             index="03"
             kicker="TARGET CAPABILITIES"
             title={<>八项能力，逐项标出做到哪里。</>}
-            lede="“已实践”表示在至少一个真实项目里跑过；「部分实践」表示有做法和局部经验，但还没有变成能重复使用的做法。两者都不等于产品能力已经完成。"
+            lede="「已实践」表示在至少一个真实项目里跑过；「部分实践」表示有做法和局部经验，但还没有变成能重复使用的做法。两者都不等于产品能力已经完成。"
           />
           <div className="capability-table">
             <div className="capability-head" aria-hidden="true">
@@ -125,7 +125,7 @@ export function AgentSpacePage() {
         <div className="shell">
           <SectionHeading
             index="04"
-            kicker="REAL ENGINEERING CASES"
+            kicker="REAL CASES"
             title={<>四个真实案例，<br />每个都从一次失败或断点开始。</>}
             lede="以下案例都来自真实项目里发生过的事。它们记录问题、借用了什么、在哪里失败、怎么改的，以及最后交出了什么；不把「参与了」写成「做成了」。"
           />

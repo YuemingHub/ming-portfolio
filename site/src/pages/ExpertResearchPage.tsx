@@ -54,16 +54,13 @@ export function ExpertResearchPage() {
             </div>
             <div className="detail-head-side">
               <p>它想做的不是替代专业工作者，而是把专业知识、经验和判断方法整理成可以检查、可以修正的辅助。最终判断和专业责任，仍然在人身上。</p>
-              <p className="micro-note">现在还在验证几件事：会不会漏掉该停的地方、换个人用是否稳定、同行能不能用。还不能说它可以独立对外商用。</p>
+              <p className="micro-note">现在还在验证：会不会漏掉该停的地方、换个人用是否稳定、同行能不能用。</p>
             </div>
           </div>
 
           <div className="issue-alert" id="expert-open" role="note" aria-label="未关闭问题">
             <p className="issue-alert-kicker">OPEN ISSUES · 未关闭</p>
-            <p><b>现在还不能对外说 Expert OS 已经可用。</b>可以转给谁、打哪个电话，这份名单还是空的；最后一道质量检查也不完整。同行能不能用、换个案例稳不稳、真实风险场景下会怎样，都还没验证完。下面写的是已经做到哪一步，不是已经做成。</p>
-            <ul>
-              {EXPERT_FIXES.open.map((item) => <li key={item}>{item}</li>)}
-            </ul>
+            <p><b>现在还不能对外说 Expert OS 已经可用。</b>可以转给谁、打哪个电话，这份名单还是空的；最后一道质量检查也不完整。同行能不能用、换个案例稳不稳、真实风险场景下会怎样，都还没验证完。</p>
             <ArrowLink to="/evidence">在证据页看到目前的验证记录和限制</ArrowLink>
           </div>
 
@@ -113,7 +110,7 @@ export function ExpertResearchPage() {
               </ul>
             </div>
             <div className="issue-box issue-open">
-              <h3>还没解决：所以现在还不能对外说可用</h3>
+              <h3>还没解决</h3>
               <ul>
                 {EXPERT_FIXES.open.map((item) => <li key={item}>{item}</li>)}
               </ul>
@@ -121,8 +118,8 @@ export function ExpertResearchPage() {
           </div>
 
           <div className="callout-row">
-            <p className="callout"><span>2026-09-29 的真实形态复合案例。</span>第一次用真实案例跑完整条判断路径，发现风险分级和转介话术会打架，而且安全这一关没有检查标准。这份问题清单，比「结构看起来很完整」更有价值。</p>
-            <p className="callout"><span>测试通过，不等于专业上就能用。</span>F01–F05 通过，只说明这几项已知的检查过了；同行能不能用、换案例稳不稳、真实风险场景下会怎样，都还没做完。</p>
+            <p className="callout"><span>2026-09-29 的真实形态复合案例。</span>第一次用真实案例跑完整条判断路径，发现风险分级和转介话术会打架，而且安全这一关没有检查标准。</p>
+            <p className="callout"><span>安全这一关，是第一次真跑之后补上的。</span>F05 专门检查「看起来很专业、其实该停下来」的情况；在此之前，没有任何检查在看这件事。</p>
             <p className="callout"><span>不替代专业责任。</span>系统要分清：哪些是事实、哪些是家长的理解、哪些是猜测、哪些还不知道。安全处置和转介，最后仍由人负责。</p>
           </div>
         </div>

@@ -95,7 +95,7 @@ export function InstitutionPage() {
             index="03"
             kicker="BEFORE / AFTER"
             title={<>改造前后，变的是服务能不能一直走下去。</>}
-            lede="以下对照表达设计目标，不是已验证的提升比例。我们没有可对外披露的效果数据。"
+            lede="这是设计目标，不是已验证的提升比例。"
           />
           <div className="before-after">
             <div className="ba-column ba-before">
@@ -129,16 +129,16 @@ export function InstitutionPage() {
             <div>
               <p className="kicker"><span>04 / FAMILY SERVICE OS</span><StatusPill status="CODE_ACCEPTED" /></p>
               <h2>机构端的三个工作面。</h2>
-              <p>V0 不做大而全的 CRM，也不做自动高风险外发。它先把咨询师、主管、经营者各自真正需要看见的东西，放回同一个能用的工作面。</p>
+              <p>V0 不做大而全的客户管理系统，也不把高风险的建议自动发出去。它先把咨询师、主管、经营者各自真正需要看见的东西，放回同一个能用的工作面。</p>
             </div>
             <div className="product-status-box">
-              <p><span>代码验收</span><b>ACCEPTED</b></p>
-              <p><span>主分支合并</span><b>NOT MERGED</b></p>
-              <p><span>部署</span><b>NOT DEPLOYED</b></p>
-              <p><span>真实机构数据</span><b>BLOCKED</b></p>
+              <p><span>代码验收</span><b>已通过</b></p>
+              <p><span>主分支合并</span><b>未合并</b></p>
+              <p><span>部署</span><b>未部署</b></p>
+              <p><span>真实机构数据</span><b>未接入</b></p>
             </div>
           </div>
-          <p className="status-asof">这四件事分开记，核对日期 2026-11-02。代码验收用的是模拟数据；一项过了，不能替代另外三项。</p>
+          <p className="status-asof">核对日期 2026-11-02。代码验收用的是模拟数据；一项过了，不能替代另外三项。</p>
 
           <div className="surface-grid">
             <article>
@@ -159,8 +159,8 @@ export function InstitutionPage() {
           </div>
 
           <div className="callout-row">
-            <p className="callout"><span>测试通过不等于机构现场验证。</span>代码验收用的是模拟数据；真实数据和生产使用，仍被内部规定挡着。</p>
-            <p className="callout"><span>代码接受不等于上线。</span>代码评审已在 2026-11-02 通过，但还没合进主线，也还没上线；本站不把机构端写成已经能用的产品。</p>
+            <p className="callout"><span>还没上线，也没接真实数据。</span>代码验收用的是模拟数据；测试通过，不等于在机构现场也成立。</p>
+            <p className="callout"><span>高风险不外发。</span>风险高的情形不自动给出教育建议，交给承担专业责任的人判断。</p>
             <p className="callout"><span>专业责任不外包。</span>系统区分事实、用户解释、假设与未知；新证据可以修正甚至推翻旧理解。</p>
           </div>
         </div>
@@ -179,7 +179,7 @@ export function InstitutionPage() {
               <article className="offer" key={offer.name}>
                 <div className="offer-head">
                   <span>{String(index + 1).padStart(2, "0")}</span>
-                  <em>试销假设</em>
+                  <em>试销中</em>
                 </div>
                 <h3>{offer.name}</h3>
                 <p>{offer.body}</p>

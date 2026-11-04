@@ -58,7 +58,7 @@ export function SpacesPage() {
               src="/media/ymai-love.png"
               alt="Family Space 公开首页实拍：深色暖调页面，标题为「这里，留给你们家。」"
               url="ymai.love"
-              caption="公开首页实拍 · 2026-11-02。登录后的家庭页面与真实家庭数据不在本站展示；任何家庭记录、对话或记忆内容都不对外公开。"
+              caption="公开首页实拍 · 2026-11-02。登录后的家庭页面与真实家庭数据不在本站展示。"
             />
           </div>
 
@@ -74,7 +74,7 @@ export function SpacesPage() {
           <div className="callout-row">
             <p className="callout"><span>重要的事会被记住。</span>愿意留下的事，和后来发生的变化，会慢慢连在一起。以后再回来，不必每次都从头讲起。</p>
             <p className="callout"><span>理解错了，也可以纠正。</span>事实与理解尽量分开；家长明确纠正后的说法，可以推翻系统过去的理解。</p>
-            <p className="callout"><span>当前边界。</span>这次只核对了公开入口。企业微信入口的线上服务群能不能用，这次没有核对；真实家庭内容一律不对外展示。</p>
+            <p className="callout"><span>当前边界。</span>这次只核对了公开入口；企业微信入口的线上服务群能不能用，这次没有核对。</p>
           </div>
         </div>
       </section>
@@ -97,7 +97,7 @@ export function SpacesPage() {
               src="/media/ymai-self.png"
               alt="Self Space 公开首页实拍：深色页面，标题为「这里，留给你自己。」"
               url="ymai.me/gui"
-              caption="公开首页实拍 · 2026-11-03。登录后的个人页面与内容不在本站展示。"
+              caption="公开首页实拍 · 2026-11-03。"
             />
           </div>
 
@@ -105,8 +105,7 @@ export function SpacesPage() {
             <div className="self-stage-copy">
               <p className="self-stage-kicker">A ROOM OF YOUR OWN</p>
               <p className="self-stage-title">这里，留给你自己。</p>
-              <p>它不是心理咨询网站，不是人生导师，也不是另一个什么都能答的 AI。你说，它回应；它把你说的话放回你面前，最后怎么解释，还是你说了算。</p>
-              <p className="micro-note">内容依据 ymai.me 公开页（2026-11-02）；2026-11-03 补拍了公开首页。</p>
+              <p>你说，它回应；它把你说的话放回你面前，最后怎么解释，还是你说了算。</p>
             </div>
             <div className="self-actions">
               {SELF_ACTIONS.map((action) => (
@@ -119,9 +118,9 @@ export function SpacesPage() {
           </div>
 
           <div className="callout-row">
-            <p className="callout"><span>公开页写道：能说话、能留下、能回来。</span>登录之后到底怎么样，还没有核对过；剩下的，得靠真实住进来的人慢慢长出来。</p>
-            <p className="callout"><span>它不是心理咨询工具。</span>不定义你是谁，不替你决定人生，也不把一次对话变成永久结论。</p>
-            <p className="callout"><span>当前边界。</span>对话和长期记忆要登录之后才看得到；我们这次没有账号，所以不对登录后的体验下结论。登录后的个人页面不在本站展示。</p>
+            <p className="callout"><span>它不定义你是谁。</span>不替你决定人生，也不把一次对话变成永久结论。</p>
+            <p className="callout"><span>它不替代专业帮助。</span>需要医疗或心理治疗时，请找相应的人；这里只是给你一个整理自己的地方。</p>
+            <p className="callout"><span>当前边界。</span>对话和长期记忆要登录之后才看得到；这次没有账号，所以不对登录后的体验下结论。</p>
           </div>
         </div>
       </section>
@@ -144,7 +143,7 @@ export function SpacesPage() {
               src="/media/ymai-fun.png"
               alt="World Space 公开首页实拍：深色首屏，标题为「不懂技术，也能从 0 开始连接 AI 与世界」，右侧是预写样例演示。"
               url="ymai.fun"
-              caption="公开首页首屏实拍 · 2026-11-02。7 个目标入口在下方；推荐的是第三方工具，其可用性、价格与名额不由本站保证。"
+              caption="公开首页首屏实拍 · 2026-11-02。7 个目标入口在下方。"
             />
           </div>
 
@@ -154,7 +153,7 @@ export function SpacesPage() {
               <ul className="goal-grid">
                 {WORLD_GOALS.map((goal) => <li key={goal}>{goal}</li>)}
               </ul>
-              <p className="micro-note">每个入口给出一个默认工具、第一步、如实限制与「现实里应该看到什么」。打开工具只是第一步。</p>
+              <p className="micro-note">每个入口给一个默认工具、第一步、限制和「现实里应该看到什么」。打开工具只是第一步。</p>
             </div>
             <div>
               <h3 className="subhead">第一次用 AI：三步上手</h3>
@@ -190,7 +189,7 @@ export function SpacesPage() {
           />
           <div className="boundary-copy">
             <p>三个空间现在各自独立：没有统一登录，也不共享数据、记忆、上下文或运行系统。</p>
-            <p>它们来自同一个关于人的想法。可以讲这层关系，但不能让人误以为它们已经连在一起。</p>
+            <p>它们来自同一个关于人的想法，只是现在还各自独立。</p>
             <div className="boundary-actions">
               <Link to="/ecosystem" className="btn btn-ghost">回到体系图看连接线</Link>
               <Link to="/evidence" className="btn btn-primary">查看状态与证据</Link>

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ArrowLink, PageHeader, SectionHeading, StatusPill } from "@/components/Chrome";
-import { EvidencePending } from "@/components/EvidencePending";
-import { EVIDENCE_LAYERS, EVIDENCE_RULES, KNOWN_INCIDENTS, PROJECTS, STATUS_COUNTS, STATUS_META, STATUS_ORDER } from "@/site/content";
+import { EVIDENCE_LAYERS, EVIDENCE_RULES, PROJECTS, STATUS_COUNTS, STATUS_META, STATUS_ORDER } from "@/site/content";
 import { assetUrl } from "@/site/base";
 import type { Status } from "@/site/types";
 
@@ -50,7 +49,7 @@ export function EvidencePage() {
             index="01"
             kicker="SEVEN STATUSES"
             title={<>七种状态，彼此不能替代。</>}
-            lede="测试通过、代码接受、原型可运行、公开页可访问、研究有假设，都不是同一件事。下面的定义在全站统一使用。"
+            lede="测试通过、代码接受、原型可运行、公开页可访问、研究有假设，都不是同一件事。"
           />
           <div className="status-legend">
             {STATUS_ORDER.map((status) => {
@@ -89,15 +88,6 @@ export function EvidencePage() {
               </article>
             ))}
           </div>
-          {KNOWN_INCIDENTS.map((incident) => (
-            <EvidencePending
-              key={incident.id}
-              resolved
-              title={incident.title}
-              body={`${incident.impact} ${incident.handling}`}
-              meta={`发生 ${incident.date} · ${incident.status}`}
-            />
-          ))}
         </div>
       </section>
 
@@ -233,7 +223,7 @@ export function EvidencePage() {
               index="04"
               kicker="SIX EVIDENCE RULES"
               title={<>六条证据规则。</>}
-              lede="这些规则约束本站如何描述自己，也约束未来对外材料如何使用这些数字。"
+              lede="六条规则，说明每个说法可以被核对到什么程度。"
             />
           </div>
           <ol className="rule-list">

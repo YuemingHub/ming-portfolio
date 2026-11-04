@@ -9,7 +9,7 @@ export const SITE = {
   selfSpace: "https://ymai.me/gui/",
   legacy: "https://ymai.fun/ming/",
   backup: "https://yueminghub.github.io/ming-portfolio/",
-  note: "项目状态以 2026-11-02 核对过的公开页面和仓库记录为准；Self Space 的访问路径修复单独标在 2026-11-03。没有标 LIVE_VERIFIED 的能力，不当作已经上线。",
+  note: "项目状态以 2026-11-02 核对过的公开页面和仓库记录为准。没有标 LIVE_VERIFIED 的能力，不当作已经上线。",
 };
 
 export const CONTACT = {
@@ -18,19 +18,8 @@ export const CONTACT = {
   wechat: { image: "/media/contact-wechat.jpg" },
   channel: "GitHub Issues",
   url: "https://github.com/YuemingHub/ming-portfolio/issues/new",
-  note: "当前公开联系与交流通道：抖音、公众号与邮箱。合作议题也可以走 GitHub Issues。本站不收集联系信息。",
+  note: "抖音、公众号与邮箱都能找到我们。",
 };
-
-export const KNOWN_INCIDENTS = [
-  {
-    id: "self-space-assets",
-    title: "Self Space 首页一度打不开",
-    date: "2026-11-02",
-    status: "已修复",
-    impact: "第一次打开 ymai.me 时样式没有加载，页面显示不正常。",
-    handling: "2026-11-03 把 Self Space 改到它原本的地址 /gui/，重新核对公网访问；作品集里的入口现在指向 https://ymai.me/gui/，公开首页也在同一天补拍。",
-  },
-];
 
 export const STATUS_META: Record<Status, StatusMeta> = {
   LIVE_VERIFIED: {
@@ -93,13 +82,13 @@ export const PROJECTS: Project[] = [
     name: "Family Space",
     en: "家庭空间 · ymai.love",
     audience: "家庭",
-    capability: "今天、我家、回望、我的四个生活入口；家庭记录、重要脉络与纠错机制。",
+    capability: "今天、我家、回望、我的四个生活入口；重要的事记得住，说错了也能改。",
     status: "LIVE_VERIFIED",
     evidence: [
       { label: "ymai.love 公开页", kind: "public", href: "https://ymai.love" },
-      { label: "公开页文字：今天 / 我家 / 回望 / 我的（已核对）", kind: "measurement" },
+      { label: "公开页文字：今天 / 我家 / 回望 / 我的", kind: "measurement" },
       { label: "桌面端实拍截图", kind: "screenshot", href: "/media/ymai-love.png" },
-      { label: "部署对象与线上版本：已核对（内部记录，不公开）", kind: "private-doc" },
+      { label: "部署对象与线上版本：已核对", kind: "private-doc" },
     ],
     verified: "2026-11-02",
     limits: "登录后的家庭页面与真实家庭数据不在本站展示；企业微信入口这次没有核对线上是否可用。",
@@ -115,13 +104,13 @@ export const PROJECTS: Project[] = [
     status: "LIVE_VERIFIED",
     evidence: [
       { label: "Self Space 公开页", kind: "public", href: "https://ymai.me/gui/" },
-      { label: "公开页文字：说出来 / 留下 / 回来（已核对）", kind: "measurement" },
+      { label: "公开页文字：说出来 / 留下 / 回来", kind: "measurement" },
       { label: "Self Space 真实线上截图（2026-11-03）", kind: "screenshot", href: "/media/ymai-self.png" },
-      { label: "Self Space 首页打不开的问题与修复记录（内部记录，不公开）", kind: "private-doc" },
-      { label: "生产部署与回滚记录（内部记录，不公开）", kind: "private-doc" },
+      { label: "公开入口访问问题的修复记录", kind: "private-doc" },
+      { label: "生产部署与回滚记录", kind: "private-doc" },
     ],
     verified: "2026-11-02",
-    limits: "2026-11-02 线上页面的访问路径出过问题；2026-11-03 已改到 /gui/，重新核对后能正常打开，也补拍了首页。登录后的对话和长期记忆还没核对——我们没有账号，所以不说登录后的体验已经验收。",
+    limits: "公开入口在 2026-11-03 重新核对过。登录后的对话和长期记忆这次没有账号，没法核对，所以不对登录后的体验下结论。",
     publicUrl: "https://ymai.me/gui/",
     route: "/spaces#self",
   },
@@ -130,13 +119,13 @@ export const PROJECTS: Project[] = [
     name: "World Space",
     en: "世界空间 · ymai.fun",
     audience: "零基础成人、孩子与家长",
-    capability: "7 个「你想做什么事」目标入口；每个目标给出默认工具、第一步、如实限制与现实结果。",
+    capability: "7 个「你想做什么事」目标入口；每个目标都写清默认工具、第一步、限制，以及现实里应该看到什么。",
     status: "LIVE_VERIFIED",
     evidence: [
       { label: "ymai.fun 公开页", kind: "public", href: "https://ymai.fun" },
-      { label: "公开页文字：7 个目标 + 三步上手（已核对）", kind: "measurement" },
+      { label: "公开页文字：7 个目标 + 三步上手", kind: "measurement" },
       { label: "桌面端实拍截图", kind: "screenshot", href: "/media/ymai-fun.png" },
-      { label: "产品契约与行动—现实回路记录（内部记录，不公开）", kind: "private-doc" },
+      { label: "产品契约与行动—现实回路记录", kind: "private-doc" },
     ],
     verified: "2026-11-02",
     limits: "推荐的是第三方工具；其可用性、价格与名额不由本站保证。资源目录要求 90 天内重新核查。",
@@ -152,7 +141,7 @@ export const PROJECTS: Project[] = [
     status: "LIVE_VERIFIED",
     evidence: [
       { label: "mingos.cn 公开页", kind: "public", href: "https://mingos.cn" },
-      { label: "公开页文字：三种关系 + 三个入口（已核对）", kind: "measurement" },
+      { label: "公开页文字：三种关系 + 三个入口", kind: "measurement" },
       { label: "桌面端实拍截图", kind: "screenshot", href: "/media/mingos-cn.png" },
     ],
     verified: "2026-11-02",
@@ -165,12 +154,12 @@ export const PROJECTS: Project[] = [
     name: "Family Service OS",
     en: "机构服务系统",
     audience: "家庭教育 / 家庭咨询机构的咨询师、主管、经营者",
-    capability: "咨询师个案工作台、主管介入视图、经营者服务健康度；用模拟数据把服务流程完整走通。",
+    capability: "咨询师的家庭工作台、主管今天该介入谁、经营者的整体服务状况；用模拟数据把服务流程跑通。",
     status: "CODE_ACCEPTED",
     evidence: [
-      { label: "代码评审与合成数据验收记录（内部记录，不公开）", kind: "private-doc" },
-      { label: "攻击、权限、生命周期、恢复等多组测试记录（内部记录，不公开）", kind: "private-doc" },
-      { label: "真实数据与生产启用状态：均未放行（内部记录，不公开）", kind: "private-doc" },
+      { label: "代码评审与合成数据验收记录", kind: "private-doc" },
+      { label: "攻击、权限、生命周期、恢复等多组测试记录", kind: "private-doc" },
+      { label: "真实数据与生产使用：都还没有开始", kind: "private-doc" },
     ],
     verified: "2026-11-02",
     limits: "代码审查已通过（用的是模拟数据），但还没部署、没合进主线，也没接真实机构数据。测试通过，不等于在机构现场验证过。",
@@ -184,10 +173,10 @@ export const PROJECTS: Project[] = [
     capability: "15 类场景库、6 个已启用 Agent、6 个 Skill、安全这一关和 F01–F05 检查项。",
     status: "VALIDATION",
     evidence: [
-      { label: "系统结构与真实启用数量：已核对（内部记录，不公开）", kind: "private-doc" },
-      { label: "复合案例真跑记录（2026-09-29，内部记录，不公开）", kind: "private-doc" },
-      { label: "风险分级与安全这一关的问题：已修复（内部记录，不公开）", kind: "private-doc" },
-      { label: "转介资源与最后一道质量检查：仍未解决（内部记录，不公开）", kind: "private-doc" },
+      { label: "系统结构与真实启用数量：已核对", kind: "private-doc" },
+      { label: "复合案例真跑记录（2026-09-29）", kind: "private-doc" },
+      { label: "风险分级与安全这一关的问题：已修复", kind: "private-doc" },
+      { label: "转介资源与最后一道质量检查：仍未解决", kind: "private-doc" },
     ],
     verified: "2026-11-02",
     limits: "还不能独立对外商用；同行能不能用、换案例稳不稳，都还没验证完；它不替代专业判断和责任。",
@@ -201,8 +190,8 @@ export const PROJECTS: Project[] = [
     capability: "在企业微信服务群里 @家明 就能说话；这次聊的、长期记得的事、当下的理解，分三层保存，不混在一起。",
     status: "CODE_ACCEPTED",
     evidence: [
-      { label: "入口定位与三层记忆边界：已核对（内部记录，不公开）", kind: "private-doc" },
-      { label: "服务关系记录：AI 一直在场，真人才是负责的人（内部记录，不公开）", kind: "private-doc" },
+      { label: "入口定位与三层记忆边界：已核对", kind: "private-doc" },
+      { label: "服务关系记录：AI 一直在场，真人才是负责的人", kind: "private-doc" },
     ],
     verified: "2026-11-02",
     limits: "这次没有核对服务群线上能不能用，也没有核对真实家庭是怎么接进来的；任何家庭对话或记忆内容都不公开。",
@@ -215,7 +204,7 @@ export const PROJECTS: Project[] = [
     capability: "生命承接 → 能动恢复 → 生命成熟；整套理论分六层：体系正文、概念、命题、方法、现实研究、治理。",
     status: "RESEARCH",
     evidence: [
-      { label: "六层结构、三种知识来源与依据等级：已核对（内部记录，不公开）", kind: "private-doc" },
+      { label: "六层结构、三种知识来源与依据等级：已核对", kind: "private-doc" },
       { label: "资料治理规则：仓库不保存原始家庭咨询资料", kind: "private-doc" },
     ],
     verified: "2026-11-02",
@@ -230,8 +219,8 @@ export const PROJECTS: Project[] = [
     capability: "把 LRDF 写成家长读得懂的一本书；四部十一章加结语，主线是现在这一版 LRDF，两代理论分开讲。",
     status: "RESEARCH",
     evidence: [
-      { label: "作者审阅稿记录（2026-10-27，内部记录，不公开）", kind: "private-doc" },
-      { label: "读者、边界与「不是什么」记录（内部记录，不公开）", kind: "private-doc" },
+      { label: "作者审阅稿记录（2026-10-27）", kind: "private-doc" },
+      { label: "读者、边界与「不是什么」记录", kind: "private-doc" },
     ],
     verified: "2026-11-02",
     limits: "现在是完整的作者审阅稿，还没出版，作者终审和独立的专业审查都还没做完。文件检查代替不了读者读完之后的检验。",
@@ -261,8 +250,8 @@ export const PROJECTS: Project[] = [
     capability: "四种工作方法：怎么进场、怎么把现实问题拆开、怎么交接上下文、怎么借用外部能力。",
     status: "VALIDATION",
     evidence: [
-      { label: "工作方法边界：四个职责各管什么、不碰什么（内部记录，不公开）", kind: "private-doc" },
-      { label: "真实项目里的多轮执行、独立检查和发布记录（内部记录，不公开）", kind: "private-doc" },
+      { label: "工作方法边界：四个职责各管什么、不碰什么", kind: "private-doc" },
+      { label: "真实项目里的多轮执行、独立检查和发布记录", kind: "private-doc" },
     ],
     verified: "2026-11-02",
     limits: "它不是一个能交付的软件产品，也不是运行平台；这些能力大多还是工作方法和协作习惯，还没有做成产品。",
@@ -276,9 +265,9 @@ export const PROJECTS: Project[] = [
     capability: "七类公共骨架：空间、参与者、上下文账本、意图约定、任务与授权、证据与交接、连续性包。",
     status: "PROTOTYPE",
     evidence: [
-      { label: "v0.1 范围与明确不做（内部记录，不公开）", kind: "private-doc" },
-      { label: "交接包的完整性与恢复记录（内部记录，不公开）", kind: "private-doc" },
-      { label: "版本状态：默认停在这里（2026-09-25，内部记录，不公开）", kind: "private-doc" },
+      { label: "v0.1 范围与明确不做", kind: "private-doc" },
+      { label: "交接包的完整性与恢复记录", kind: "private-doc" },
+      { label: "版本状态：默认停在这里（2026-09-25）", kind: "private-doc" },
     ],
     verified: "2026-11-02",
     limits: "它不是三个空间底下那层运行系统，也没有在真实业务里用过；现在默认停在这里，不再往上加新的平台概念。",
@@ -306,7 +295,6 @@ export const PROJECTS: Project[] = [
     capability: "只是提出了一个方向：同一个人在三个空间之间走来走去，不用把话再讲一遍。",
     status: "PLANNED",
     evidence: [
-      { label: "当前边界：三个空间各自独立（内部记录，不公开）", kind: "private-doc" },
       { label: "没有统一登录，不共享数据，也不共享记忆、上下文或运行系统", kind: "measurement" },
     ],
     verified: "2026-11-02",
@@ -446,7 +434,7 @@ export const MAP_NODES: MapNode[] = [
     audience: "普通人、专业人士、组织",
     problem: "怎样更省力地借用世界上已有的 AI、工具、知识和真实资源。",
     statuses: ["VALIDATION"],
-    capabilities: ["Agent Entry（怎么进场）", "Reality Resolver（把问题拆开）", "Context Broker（交接上下文）", "Capability Gateway（借用外部能力）"],
+    capabilities: ["怎么进场", "把现实问题拆开", "交接上下文", "借用外部能力"],
     limits: "不是软件产品，也不是运行平台；这些能力还没有做成产品。",
     links: [{ label: "了解 Agent Space", internal: "/agent-space" }],
   },
@@ -486,7 +474,7 @@ export const FSO_SCENARIOS = [
   {
     index: "04",
     title: "机构无法清楚看见服务到底发生了什么",
-    body: "经营者看到的是结果和感觉，很难看见过程里的断点、风险和可复用的经验。",
+    body: "经营者看到的是结果和感觉，很难看见过程里的断点、风险，以及以后还能用的经验。",
   },
 ];
 
@@ -526,7 +514,7 @@ export const SERVICE_OFFERS = [
 export const EXPERT_EVIDENCE = [
   { label: "场景库", value: "15 类", note: "场景样本、可以照着说的话、分阶段应对、孩子状态怎么记" },
   { label: "Agent 层", value: "6 + 1 + 2", note: "6 个已启用，1 个做了一半，2 个因为还没内容，想清楚后决定不做" },
-  { label: "Skill", value: "6 个", note: "看风险、分清问题类型、了解家长处境、给干预路径、准备话术、把案例整理成能复用的东西" },
+  { label: "Skill", value: "6 个", note: "看风险、分清问题类型、了解家长处境、给干预路径、准备话术、把案例整理成以后还能用的东西" },
   { label: "检查项", value: "F01–F05", note: "F05 专门检查「这句话该不该说」，不只是「说得好不好」" },
 ];
 
@@ -646,7 +634,7 @@ export const PARTNER_TYPES = [
   {
     id: "professional",
     label: "专业工作者",
-    headline: "一起检验专业判断能不能被复用",
+    headline: "一起检验专业判断能不能被别人接着用",
     body: "把一个真实的判断过程摊开，分清哪些是事实、哪些是推测、哪些还不知道；先用几个小案例试，看别人能不能重复，不把个人经验直接包装成产品。",
     offer: "专业判断过程梳理 / 案例复盘 / 请同行试用",
   },
@@ -701,4 +689,4 @@ export const EVIDENCE_LAYERS = [
 ] as const;
 
 export const MAP_AGGREGATION_NOTE =
-  "体系图收录 10 个节点；证据页收录 14 条项目记录。差异来自：MingOS 公开站与 v0.1 协议骨架合并成 1 个节点；WeCom 入口归进 Family Space；机构服务方案归进 Family Service OS；「统一连续体验」还只是一个方向，没有画成节点。";
+  "体系图按区域展示 10 个节点；证据页按项目列出 14 条记录，有些项目在图上合并成了一个节点。";

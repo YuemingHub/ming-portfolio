@@ -125,12 +125,12 @@ export function SiteFooter() {
             <span>项目状态核对日期 {SITE.verifiedAt}</span>
           </p>
           <p>
-            本站没有统计脚本、追踪代码，也不加载外部字体；你填写的内容不会被收集或上传。没有标 LIVE_VERIFIED 的能力，不当作已经上线；LIVE_VERIFIED 只说明公开页面能打开、内容对得上。
+            本站不加载统计脚本、追踪代码或外部字体；你填写的内容只留在本机，不会被收集或上传。
           </p>
           <p className="footer-links">
             <a href={SITE.canonical}>作品集正式入口 ymai.me</a>
             <a href={SITE.selfSpace}>Self Space 入口 ymai.me/gui</a>
-            <a href={SITE.legacy}>旧入口 ymai.fun/ming（历史兼容）</a>
+            <a href={SITE.legacy}>旧入口 ymai.fun/ming</a>
             <a href={`mailto:${CONTACT.email}`}>邮箱 {CONTACT.email}</a>
           </p>
           <p className="footer-small">© 2026 YUE MING ECOSYSTEM · 公开作品集</p>

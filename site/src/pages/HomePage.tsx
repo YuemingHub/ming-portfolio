@@ -1,7 +1,7 @@
 import { Atlas } from "@/components/Atlas";
 import { Arrow, ArrowLink, BrowserFrame, SectionHeading, StatusPill } from "@/components/Chrome";
 import { Link } from "@/site/router";
-import { CONTACT, PROJECT_COUNT, PROJECTS, STATUS_COUNTS, STATUS_ORDER, STATUS_META } from "@/site/content";
+import { CONTACT, PROJECT_COUNT, PROJECTS, STATUS_COUNTS, STATUS_ORDER } from "@/site/content";
 import type { Status } from "@/site/types";
 
 const SPACES = [
@@ -68,12 +68,12 @@ const HIGHLIGHTS = ["family-space", "self-space", "world-space", "family-service
 
 const STATUS_NOTES: Record<Status, string> = {
   LIVE_VERIFIED: "公开入口可访问",
-  CODE_ACCEPTED: "代码验收通过，不等于上线",
-  PROTOTYPE: "可运行原型，不等于产品",
-  VALIDATION: "正在验证，不等于商用",
-  RESEARCH: "研究假设，不等于结论",
-  HOLD: "有发布阻断，不宣称可用",
-  PLANNED: "只有方向，尚未实现",
+  CODE_ACCEPTED: "代码已验收，未上线",
+  PROTOTYPE: "可运行原型",
+  VALIDATION: "正在验证",
+  RESEARCH: "研究与写作中",
+  HOLD: "暂不发布",
+  PLANNED: "尚未实现",
 };
 
 export function HomePage() {
@@ -141,7 +141,7 @@ export function HomePage() {
               <p className="note-large">不是单一工具问题，而是人与知识、技术、专业服务和现实资源之间的连接问题。</p>
               <div className="note-lines">
                 <span>不是再造一个聊天窗口</span>
-                <span>不是把所有产品合成一个 SaaS</span>
+                <span>不是把所有产品合并成一个系统</span>
                 <span>不是把概念关系画成已实现的数据流</span>
               </div>
             </div>
@@ -189,17 +189,17 @@ export function HomePage() {
             index="03"
             kicker="PROFESSIONAL SYSTEMS"
             title={<>让专业经验，<br />不再只停留在某一个人的头脑里。</>}
-            lede="一套面向机构，一套面向专业工作者。两者都还在建设或验证阶段，本站不会把还没上线的能力写成已经交付。"
+            lede="一套面向机构，一套面向专业工作者。两者都还在建设或验证阶段。"
           />
           <div className="system-rows">
             <article className="system-row">
               <div className="system-row-title">
                 <span className="system-index">B / 01</span>
                 <h3>Family Service OS</h3>
-                <p>面向机构 · 服务经营系统</p>
+                <p>面向机构 · 服务管理系统</p>
               </div>
               <div className="system-row-body">
-                <p>让机构的咨询、课程、导师协作、家庭跟进和服务复盘串成一条能一直走下去的服务。V0 只做三块：咨询师的个案工作台、主管看今天谁需要介入、经营者看整体服务状况。</p>
+                <p>让机构的咨询、课程、导师协作、家庭跟进和服务复盘串成一条能一直走下去的服务。V0 只做三块：咨询师的家庭工作台、主管看今天谁需要介入、经营者看整体服务状况。</p>
                 <ul className="inline-facts">
                   <li>用模拟数据跑通</li>
                   <li>还没上线</li>
@@ -294,7 +294,7 @@ export function HomePage() {
           </div>
           <div className="section-foot">
             <ArrowLink to="/evidence">查看完整项目状态表与证据清单</ArrowLink>
-            <span>{STATUS_META.LIVE_VERIFIED.label} 只说明公开页面能打开、内容对得上，不代表登录之后的功能也验证过。</span>
+            <span>公开页能打开，不代表登录后的功能也都验证过。</span>
           </div>
         </div>
       </section>

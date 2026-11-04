@@ -41,7 +41,7 @@ export function EcosystemPage() {
             index="01"
             kicker="HOW TO READ THE SYSTEM"
             title={<>每个系统为什么需要存在。</>}
-            lede="这不是一张组织架构图，也不是一张已经打通的数据流图。它先把「谁在什么位置、负责什么」讲清楚，再标出哪些连接已经核对过、哪些还只是设计。"
+            lede="它先把「谁在什么位置、负责什么」讲清楚，再标出哪些连接已经核对过、哪些还只是设计。"
           />
           <div className="zone-roles">
             {MAP_ZONES.map((zone) => (

@@ -57,7 +57,7 @@ export function CooperationPage() {
       <PageHeader
         kicker="COOPERATION · 联系与合作"
         title={<>先看真实资产，<br />再谈一起做什么。</>}
-        lede="我们愿意和家庭教育机构、专业工作者、技术伙伴、研究伙伴、资源与投资伙伴一起，把真实问题做成可验证的事情。合作入口不是一个宏大的招商页，而是一份可以当面核对现状的简报。"
+        lede="我们愿意和家庭教育机构、专业工作者、技术伙伴、研究伙伴、资源与投资伙伴一起，把真实问题做成可验证的事情。这一页先写清谁能合作、从哪里开始、不做什么。"
         meta={["5 类合作对象", "从具体断点开始", "本站不收集联系信息"]}
       />
 
@@ -65,7 +65,7 @@ export function CooperationPage() {
         <div className="shell">
           <div className="contact-panel">
             <div>
-              <p className="section-kicker"><span className="section-index">00</span>PUBLIC CHANNEL</p>
+              <p className="section-kicker"><span className="section-index">00</span>联系通道</p>
               <h2>三条公开联系与交流通道。</h2>
               <p>{CONTACT.note}</p>
             </div>
@@ -180,7 +180,7 @@ export function CooperationPage() {
             index="02"
             kicker="HOW WE START"
             title={<>三条合作原则。</>}
-            lede="它们不是摆样子，而是为了避免把一次交流变成兑现不了的承诺。"
+            lede="三条原则，都是为了不把一次交流变成兑现不了的承诺。"
           />
           <div className="principle-grid">
             {PRINCIPLES.map((item, index) => (
@@ -198,9 +198,9 @@ export function CooperationPage() {
         <div className="shell">
           <SectionHeading
             index="03"
-            kicker="LOCAL BRIEF BUILDER"
+            kicker="合作简报"
             title={<>先写一页合作简报。</>}
-            lede="不要求先留下联系方式。你可以在这里把问题与期望写成一页文字，复制后通过本页上方的邮箱、抖音、公众号或 GitHub Issues 发送。本站不收集、不上传、不保存。"
+            lede="不要求先留下联系方式。把问题与期望写成一页文字，复制后通过邮箱、抖音、公众号或 GitHub Issues 发给我们。"
           />
 
           <div className="brief-layout">
@@ -235,7 +235,7 @@ export function CooperationPage() {
             </div>
 
             <div className="brief-output">
-              <p className="panel-kicker">GENERATED LOCALLY</p>
+              <p className="panel-kicker">本地生成，不会上传</p>
               <label className="field">
                 <span>合作简报预览（可编辑）</span>
                 <textarea ref={briefRef} rows={17} value={brief} readOnly />
@@ -278,7 +278,7 @@ export function CooperationPage() {
           <div className="closing-panel">
             <div>
               <h2>如果你也在解决一个真实问题，<br />我们可以从一次具体的核对开始。</h2>
-              <p>带着问题来，不必先接受整套叙事。先看已经做出来的产品、公开入口、状态与限制，再决定是否值得一起做下一步。</p>
+              <p>带着问题来，不必先认同这一整套说法。先看已经做出来的产品、公开入口、状态与限制，再决定是否值得一起做下一步。</p>
             </div>
             <div className="closing-actions">
               <ArrowLink to="/evidence">查看完整证据清单</ArrowLink>
