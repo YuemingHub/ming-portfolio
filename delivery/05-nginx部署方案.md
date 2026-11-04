@@ -417,3 +417,31 @@ nginx 配置未改、未 reload、未 restart；Self Space `/gui/`、`/ming` 跳
 - 不删除 `20261103-selfshot-1338` 与任何更早 release。
 
 详见 [`06-回滚方案`](06-回滚方案.md) §14。
+
+## 15. 对外文案清理发布（2026-11-04）
+
+### 15.1 变更范围
+
+只替换站点内容与构建产物，nginx 配置未改、未 reload、未 restart：
+
+- 去掉页面上的内部审计痕迹：事故记录块、`（内部记录，不公开）` 标签、英文状态注释；
+- 去掉重复免责声明与自我评价句，统一为对外可读的说法；
+- 事实、数字、日期、状态标签与证据条数未变。
+
+### 15.2 发布与验证
+
+| 项目 | 读数 |
+| --- | --- |
+| 提交 | `ba12c25dd9d5`；CI run `41805259006` success（Playwright `93 passed` / `24 skipped`） |
+| 发布 | `20261104-copy-1715`，`current` 原子切换；上传字节与本地构建逐个 sha256 一致 |
+| 生产产物 | 根 `index.html` 2619B / `b92080b5b8bb`；JS `index-bSgg57cy.js` 321742B / `9a80a7c64b97`；CSS `index-Lc3fxW4S.css` 180702B / `99a68e88658d` |
+| 回归 | `verify-root.mjs post` 34/34；`render-check` 9/9；手机 390 溢出 0 |
+| 文案复核 | `/spaces`、`/evidence`、`/institution`、`/cooperation` 新表述已上线；`/expert-and-research` 的“未关闭问题”为事实状态与测试锚点，保留 |
+| Self Space | `/gui/` 与 `/gui/space/` 真实浏览器打开正常，样式生效，路由不是首页回退 |
+
+### 15.3 回滚点
+
+- 内容：把 `current` 切回 `20261103-selfshot-1338`；不需要 reload nginx。
+- 不删除 `20261104-copy-1715` 与任何更早 release。
+
+详见 [`06-回滚方案`](06-回滚方案.md) §15。

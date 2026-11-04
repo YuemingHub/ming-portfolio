@@ -1,0 +1,108 @@
+ymai.me 对外文案清理发布验收 · 2026-11-04
+最终发布：20261104-copy-1715
+
+## 0. 本次发布与产物
+
+| 项目 | 值 |
+| --- | --- |
+| 提交 | `ba12c25dd9d569313d6aa099deeb26052d143d82` |
+| Linux CI | run `41805259006` success；Playwright `93 passed` / `24 skipped`；nginx `54/54`；公开仓库体检通过 |
+| 发布目录 | `<PORTFOLIO_PARENT>/releases/20261104-copy-1715`（`current` 指向它；服务器内部父目录以占位符表示） |
+| index.html | 2619B，sha256 `b92080b5b8bb30e54b88b5772b35c44c164ab191eb55365de7f521dc372b5b10` |
+| JS | `assets/index-bSgg57cy.js` 321742B，sha256 `9a80a7c64b972c5f4b0417bcafade4a7baf5c03674bc9922976b1b4adfa063ba` |
+| CSS | `assets/index-Lc3fxW4S.css` 180702B，sha256 `99a68e88658d730a80dee52cbf8b204e8905c75873678b8e1681f19b1e2856d3` |
+| favicon.svg | 339B，sha256 `d5738520a723d3a0d50473bfe38637e5d0d69786e88f77ce3acc01132ef4972c` |
+| og-card.png | 107381B，sha256 `c3bc0cb356153bbfcc44cd8cddddb80a0468385a5d5e10ded581fef39918ea02` |
+| nginx | 未改配置、未 reload、未 restart；只原子切换 `current` |
+| 上一版 release | `20261103-selfshot-1338` 保留，未删除 |
+
+媒体文件上传后与本地构建逐个 sha256 一致：
+
+```text
+6e84b798377cc50a8e96674fa8c53827a291ad857223a17fb649e8647dba27c8  media/contact-douyin.png
+5800948a937d55968c8ff734ed2064df266b93b5e3c3721f74ead3a9f29cc21b  media/contact-wechat.jpg
+0fe614a7f58ee1b8772750e17600df6654d4b8c3cdd8b1b492421a87cce2a1f8  media/mingos-cn.png
+805f205fe3b47eab3b1090ead61c0a7fd833eed2277239eba8ea796f6724352c  media/ymai-fun.png
+ca85d29948c4ced2284d8c042d7a76b428bd5b894a8e826e51ddcaba0ee1e568  media/ymai-love.png
+3e8749791c7a66749d6a814e3ab85a57a772b1a05e0f80a083a629d5230544b7  media/ymai-self.png
+```
+
+## 1. `verify-root.mjs post`（原样输出）
+
+```text
+PASS  基线格式  https://ymai.me
+PASS  根路径 200 HTML 且与预期发布产物字节一致  200 text/html; charset=utf-8 2619B b92080b5b8bb vs 2619B b92080b5b8bb
+PASS  根路径已不是 Self Space 首页  root=b92080b5b8bb self-space=53af33be4540
+PASS  路由 / 与根 index 字节一致  200 2619B b92080b5b8bb
+PASS  路由 /ecosystem 与根 index 字节一致  200 2619B b92080b5b8bb
+PASS  路由 /spaces 与根 index 字节一致  200 2619B b92080b5b8bb
+PASS  路由 /institution 与根 index 字节一致  200 2619B b92080b5b8bb
+PASS  路由 /expert-and-research 与根 index 字节一致  200 2619B b92080b5b8bb
+PASS  路由 /agent-space 与根 index 字节一致  200 2619B b92080b5b8bb
+PASS  路由 /evidence 与根 index 字节一致  200 2619B b92080b5b8bb
+PASS  路由 /cooperation 与根 index 字节一致  200 2619B b92080b5b8bb
+PASS  首页 canonical 为根路径  https://ymai.me/
+PASS  首页引用相对 JS  found
+PASS  首页引用相对资源  assets/index-bSgg57cy.js, assets/index-Lc3fxW4S.css
+PASS  资源 assets/index-bSgg57cy.js  200 application/javascript; charset=utf-8
+PASS  资源 assets/index-Lc3fxW4S.css  200 text/css
+PASS  Self Space /gui/ 首页字节与基线一致  200 21361B 564a76ed4b5c
+PASS  Self Space /gui/space/ 命中真实路由页而非首页回退  200 11117B 3fd6452c65a4 vs index 11117B
+PASS  Self Space /gui/_next 资源返回真实 JS/CSS 而非 HTML  200 text/css 85631B
+PASS  /health 与基线一致  200 241B
+PASS  /ming 301 到根  301 -> /
+PASS  /ming/ 301 到根  301 -> /
+PASS  /ming/ecosystem 301 到 /ecosystem  301 -> /ecosystem
+PASS  /ming/ecosystem/ 最终落到 200  301 -> /ecosystem/, final 200
+PASS  尾斜杠 /ecosystem/  301 -> /ecosystem
+PASS  尾斜杠 /spaces/  301 -> /spaces
+PASS  尾斜杠 /institution/  301 -> /institution
+PASS  尾斜杠 /expert-and-research/  301 -> /expert-and-research
+PASS  尾斜杠 /agent-space/  301 -> /agent-space
+PASS  尾斜杠 /evidence/  301 -> /evidence
+PASS  尾斜杠 /cooperation/  301 -> /cooperation
+PASS  未知路径回退与根 index 字节一致  200 2619B
+PASS  缺失资源 /assets/does-not-exist.js -> 404  404
+PASS  缺失资源 /media/does-not-exist.png -> 404  404
+
+全部通过
+```
+
+## 2. `render-check.mjs`（原样输出）
+
+```text
+PASS  渲染 https://ymai.me/  200 title=让生命与世界更好地连接 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/ecosystem  200 title=体系总览 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/ecosystem 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/spaces  200 title=三个空间 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/spaces 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/institution  200 title=机构服务 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/institution 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/expert-and-research  200 title=专业与研究 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/expert-and-research 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/agent-space  200 title=Agent Space · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/agent-space 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/evidence  200 title=证据与进展 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/evidence 图片失败=0 console=0 request=0
+PASS  渲染 https://ymai.me/cooperation  200 title=联系与合作 · YUE MING ECOSYSTEM h1=有 canonical=https://ymai.me/cooperation 图片失败=0 console=0 request=0
+PASS  手机 390 首页无横向溢出  溢出 0px
+
+全部通过
+```
+
+## 3. 线上文案复核（原样输出）
+
+```text
+PASS /spaces  
+PASS /evidence  
+PASS /institution  
+PASS /cooperation  
+bad=0
+```
+
+判据：`/spaces` 含“它不替代专业帮助。”“对话和长期记忆要登录之后才看得到”，不含 `RESOLVED`、“生产资源路径故障”、“（内部记录，不公开）”；`/evidence` 含“六条规则，说明每个说法可以被核对到什么程度。”且不含上述内部字串；`/institution` 含 `已通过`、`未合并`、`未部署`、`未接入`，不含“服务经营系统”；`/cooperation` 含“联系通道”，不含 `PUBLIC CHANNEL`。
+
+`/expert-and-research` 的“未关闭问题”是 OPEN ISSUES 的事实状态、页内锚点与测试断言，保留不改。
+
+## 4. Self Space 真实浏览器复核（原样输出）
+
+```text
+/gui/ 200 {"title":"Self Space · 这里，留给你自己。","h1":"这里，留给你自己。","sheets":1,"font":"Geist, \"Geist Fallback\", sans-serif"}
+/gui/space/ 200 {"title":"Self Space · 这里，留给你自己。","h1":"你是谁，就由你自己说。","sheets":1,"font":"Geist, \"Geist Fallback\", sans-serif"}
+```
+
+样式表已加载、字体生效，`/gui/space/` 是真实路由页而非首页回退。

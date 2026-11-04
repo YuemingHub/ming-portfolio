@@ -2,7 +2,7 @@
 
 本目录只放**可执行、可参数化**的验证脚本；真实服务器路径、账号、备份目录属于运维内部信息，不进入公开仓库。
 
-> 当前状态：`DEPLOYED / REAL_TESTS_PENDING`（2026-11-03）。作品集位于 `https://ymai.me/` 根路径；`/ming/*` 301 到根路径；Self Space 位于其构建原生的 `https://ymai.me/gui/`。以下命令只用于已授权的发布。
+> 当前状态：`DEPLOYED / REAL_TESTS_PENDING`（2026-11-04 内容更新）。作品集位于 `https://ymai.me/` 根路径；`/ming/*` 301 到根路径；Self Space 位于其构建原生的 `https://ymai.me/gui/`。以下命令只用于已授权的发布。
 
 ## 1. 边界
 
