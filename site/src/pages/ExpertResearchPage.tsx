@@ -1,12 +1,14 @@
 import { ArrowLink, PageHeader, SectionHeading, StatusPill } from "@/components/Chrome";
 import {
   BOOK_ITEMS,
+  CONTACT,
   EXPERT_EVIDENCE,
   EXPERT_FIXES,
   LAB_STEPS,
   LRDF_LADDER,
   LRDF_LAYERS,
   LRDF_SOURCES,
+  SITE,
 } from "@/site/content";
 
 const EXPERT_LAYERS = [
@@ -206,6 +208,28 @@ export function ExpertResearchPage() {
             <p className="callout"><span>不是诊断系统。</span>不做精神医学诊断，不做风险分级预测，不替代医疗与心理治疗；专业边界之外及时转介。</p>
             <p className="callout"><span>不是固定人生模板。</span>提供生长条件，不提供人生答案；不规定「好孩子应该长成什么样」。</p>
             <p className="callout"><span>数据边界。</span>原始家庭咨询资料不进入公开仓库；只保留脱敏后的研究产物、命题、协议、反例与研究结论。</p>
+          </div>
+
+          <div className="lrdf-split lrdf-rights">
+            <div className="lrdf-panel">
+              <h3>这套体系公开到什么程度</h3>
+              <p className="lrdf-panel-lede">公开层用于理解与讨论，不替代完整研究记录。</p>
+              <div className="lrdf-boundary">
+                <p><b>公开</b><span>定位、三段架构、六层结构名称、证据纪律、适用边界、家长说法。</span></p>
+                <p><b>不公开</b><span>体系正文、命题明细、方法步骤、真实家庭材料、完整书稿。</span></p>
+                <p><b>原因</b><span>理论仍在验证；公开层只呈现可核验的结构与状态，不把未验证内容包装成结论。</span></p>
+              </div>
+            </div>
+            <div className="lrdf-panel">
+              <h3>欢迎引用，请注明出处</h3>
+              <p className="lrdf-panel-lede">本站原创文字与图表由月明保留权利。</p>
+              <p className="lrdf-rights-copy">欢迎在注明作者、标题与来源链接的前提下引用；未经书面许可，不得整段复制、改编、用于商业培训或批量采集。</p>
+              <p className="lrdf-rights-citation">
+                <span>引用格式</span>
+                月明：《LRDF 公开说明》，YUE MING ECOSYSTEM，{SITE.version}，{SITE.canonical}
+              </p>
+              <p className="lrdf-rights-contact">商业合作与授权：<a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></p>
+            </div>
           </div>
         </div>
       </section>

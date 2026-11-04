@@ -134,6 +134,7 @@ export function SiteFooter() {
             <a href={`mailto:${CONTACT.email}`}>邮箱 {CONTACT.email}</a>
           </p>
           <p className="footer-small">© 2026 YUE MING ECOSYSTEM · 公开作品集</p>
+          <p className="footer-small">原创文字与图表保留权利；欢迎注明出处的引用，商业使用与改编需书面许可。</p>
         </div>
       </div>
     </footer>
