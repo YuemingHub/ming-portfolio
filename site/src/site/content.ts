@@ -212,29 +212,29 @@ export const PROJECTS: Project[] = [
     name: "LRDF",
     en: "生命恢复与发展体系",
     audience: "专业者、研究者",
-    capability: "生命承接 → 能动恢复 → 生命成熟；概念、命题、方法、现实研究与治理文件。",
+    capability: "生命承接 → 能动恢复 → 生命成熟；体系正文、概念、命题、方法、现实研究与治理六层。",
     status: "RESEARCH",
     evidence: [
-      { label: "核心架构与边界核验（内部记录，不公开）", kind: "private-doc" },
+      { label: "六层结构、三种知识来源与证据等级核验（内部记录，不公开）", kind: "private-doc" },
       { label: "资料治理规则：仓库不保存原始家庭咨询资料", kind: "private-doc" },
     ],
     verified: "2026-11-02",
-    limits: "理论假设不是科学共识；不是诊断系统，不替代医疗与心理治疗。",
+    limits: "理论仍在验证，不是科学共识；不是诊断系统，不替代医疗与心理治疗。",
     route: "/expert-and-research#lrdf",
   },
   {
     id: "book",
     name: "《先看清，再伸手》",
-    en: "书稿",
+    en: "家长读本",
     audience: "父母、同行、研究者",
-    capability: "四部十一章及结语完整书稿持续修订；以 LRDF 为思想主线，区分两代理论。",
+    capability: "把 LRDF 写成家长能读的读本；四部十一章及结语，以现行 LRDF 为思想主线，区分两代理论。",
     status: "RESEARCH",
     evidence: [
-      { label: "完整书稿记录（2026-10-27，内部记录，不公开）", kind: "private-doc" },
+      { label: "作者审阅稿记录（2026-10-27，内部记录，不公开）", kind: "private-doc" },
       { label: "读者、边界与「不是什么」记录（内部记录，不公开）", kind: "private-doc" },
     ],
     verified: "2026-11-02",
-    limits: "未出版；作者终审、独立专业审查与真人理解验证未完成。文件检查不能代替读者验证。",
+    limits: "完整作者审阅稿；未出版，作者终审与独立专业审查未完成。文件检查不能代替读者验证。",
     route: "/expert-and-research#book",
   },
   {
@@ -410,8 +410,8 @@ export const MAP_NODES: MapNode[] = [
     audience: "专业者、研究者",
     problem: "从真实生活出发，建立能够接受证据检验的判断方法。",
     statuses: ["RESEARCH"],
-    capabilities: ["生命承接 → 能动恢复 → 生命成熟", "概念、命题、方法", "现实研究与治理边界"],
-    limits: "理论假设不是科学共识；不替代医疗与心理治疗。",
+    capabilities: ["生命承接 → 能动恢复 → 生命成熟", "六层结构：正文 / 概念 / 命题 / 方法 / 研究 / 治理", "三种知识来源分开登记"],
+    limits: "理论仍在验证，不是科学共识；不替代医疗与心理治疗。",
     links: [{ label: "读 LRDF", internal: "/expert-and-research#lrdf" }],
   },
   {
@@ -429,14 +429,14 @@ export const MAP_NODES: MapNode[] = [
   {
     id: "book",
     name: "《先看清，再伸手》",
-    en: "书稿",
+    en: "家长读本",
     zone: "knowledge",
     audience: "父母、同行、研究者",
-    problem: "在复杂、不确定的真实生活中，作出有依据、负责任、可修正的下一步选择。",
+    problem: "把 LRDF 的判断方法写成普通家长能读、能用的一本书。",
     statuses: ["RESEARCH"],
-    capabilities: ["四部十一章及结语", "以 LRDF 为思想主线", "区分两代理论", "作者审阅稿持续修订"],
-    limits: "未出版；作者终审与独立专业审查未完成。",
-    links: [{ label: "看书稿", internal: "/expert-and-research#book" }],
+    capabilities: ["家长可读的 LRDF 载体", "四部十一章及结语", "以现行 LRDF 为思想主线", "作者审阅稿持续修订"],
+    limits: "完整作者审阅稿；未出版，作者终审与独立专业审查未完成。",
+    links: [{ label: "看家长读本", internal: "/expert-and-research#book" }],
   },
   {
     id: "agent",
@@ -541,19 +541,32 @@ export const EXPERT_FIXES = {
   ],
 };
 
-export const LRDF_ITEMS = [
-  { title: "理论核心", body: "生命承接 → 能动恢复 → 生命成熟。不是固定阶段，也不是三道必经关口；人可以回退，也可以重新需要承接。" },
-  { title: "研究问题", body: "在真实家庭处境里，什么样的理解与行动能让人重新拥有下一步，而不是先符合某个标准。" },
-  { title: "证据来源", body: "真实实践、心理学与发展科学、教育学、行为科学、精神医学、社会学、哲学与伦理学等持续审查。" },
-  { title: "竞争解释", body: "同一变化可能来自关系、环境、时间或偶然事件；理论必须允许竞争解释，而不是只收集支持自己的材料。" },
-  { title: "待验证假设", body: "概念与命题保留证据状态；不把作者提出的方法写成已被证明的普遍规律。" },
+export const LRDF_LAYERS = [
+  { title: "体系正文", en: "framework", body: "理论正文的唯一真源；其余文件引用它，不另起一套说法。" },
+  { title: "原创概念", en: "concepts", body: "核心概念的定义、边界，以及容易混淆的邻近概念。" },
+  { title: "命题总账", en: "propositions", body: "逐条记录命题、证据状态与不能推出什么；允许被反例推翻。" },
+  { title: "方法", en: "methods", body: "从判断到行动的步骤、适用条件与停止条件。" },
+  { title: "现实研究", en: "reality-research", body: "真实材料、反例、失败干预与现实反馈；现实有权修改理论。" },
+  { title: "治理", en: "governance", body: "证据等级、公开口径、隐私边界与版本规则。" },
+];
+
+export const LRDF_SOURCES = [
+  { title: "科学证据", body: "回答什么比较可能是真的、证据强到哪里、适用于谁。约束我们不要把猜测说成事实。" },
+  { title: "人类智慧", body: "来自哲学、伦理与人文传统，帮助继续思考什么叫人；它是理解人的镜头，不伪装成实验科学。" },
+  { title: "月明现实经验", body: "真实家庭里到底发生了什么：原话、动作、反馈与失败案例。现实有权否决理论套人。" },
+];
+
+export const LRDF_LADDER = [
+  { system: "生命承接", parent: "先接住", body: "先别让生命继续被耗；先看安全、身体和生活有没有乱掉。" },
+  { system: "能动恢复", parent: "再动起来", body: "不动不是原因；先弄清卡在哪里，再找他能参与的下一步。" },
+  { system: "生命成熟", parent: "学会长大", body: "恢复不是重新听话，而是把生活一点点交回他自己手里。" },
 ];
 
 export const BOOK_ITEMS = [
   { title: "为什么写", body: "父母在真实生活里面对的往往不是知识不足，而是看不清当下发生了什么、不知道该不该伸手。" },
   { title: "面向谁", body: "家长、同行与研究者。家长拿到「今天可以试的一件事」，同行看到判断链，研究者看到证据与反例。" },
   { title: "核心问题", body: "先看清：事实、解释、推测与未知分开；再伸手：在边界内做一个可观察、可修正的下一步。" },
-  { title: "理论与实践", body: "以现行 LRDF 为思想主线，同时保留第一代九层的历史原貌；两代理论分开呈现。" },
+  { title: "在体系里的位置", body: "把 LRDF 带到普通家长手里的读本，不是第二套理论；保留第一代九层的历史原貌，两代理论分开呈现。" },
 ];
 
 export const LAB_STEPS = [

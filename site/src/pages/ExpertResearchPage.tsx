@@ -4,7 +4,9 @@ import {
   EXPERT_EVIDENCE,
   EXPERT_FIXES,
   LAB_STEPS,
-  LRDF_ITEMS,
+  LRDF_LADDER,
+  LRDF_LAYERS,
+  LRDF_SOURCES,
 } from "@/site/content";
 
 const EXPERT_LAYERS = [
@@ -29,15 +31,15 @@ export function ExpertResearchPage() {
       <PageHeader
         kicker="EXPERTISE & RESEARCH · 专业与研究"
         title={<>专业判断需要依据，<br />也需要允许修正。</>}
-        lede="专业经验、研究假设与书稿属于三种不同的证据状态。本页把它们分开呈现：正在验证的能力、仍在研究的方法、尚未出版的书稿，不互相冒充。"
-        meta={["Yueming Expert OS · VALIDATION", "LRDF · RESEARCH", "《先看清，再伸手》· RESEARCH", "Family Reality Lab · RESEARCH"]}
+        lede="专业经验、研究假设与家长读本属于三种不同的证据状态。本页把它们分开呈现：正在验证的能力、仍在研究的方法、尚未出版的读本，不互相冒充。"
+        meta={["Yueming Expert OS · VALIDATION", "LRDF · RESEARCH", "《先看清，再伸手》· 家长读本 · RESEARCH", "Family Reality Lab · RESEARCH"]}
       />
 
       <nav className="anchor-nav shell" aria-label="本页章节">
         <a href="#expert-os">Expert OS</a>
         <a href="#expert-open">未关闭问题</a>
         <a href="#lrdf">LRDF</a>
-        <a href="#book">书稿</a>
+        <a href="#book">家长读本</a>
         <a href="#lab">Family Reality Lab</a>
       </nav>
 
@@ -128,12 +130,12 @@ export function ExpertResearchPage() {
         <div className="shell">
           <div className="detail-head">
             <div>
-              <p className="kicker"><span>02 / LRDF</span><StatusPill status="RESEARCH" /></p>
+              <p className="kicker"><span>02 / LRDF · 体系核心</span><StatusPill status="RESEARCH" /></p>
               <h2>从真实生活出发，<br />建立可检验的判断方法。</h2>
             </div>
             <div className="detail-head-side">
-              <p>LRDF 不是一套要求人先符合标准的发展模型。它从真实家庭实践里生长，同时接受心理学、发展科学、教育学、行为科学、精神医学、社会学、哲学与伦理学的持续审查。</p>
-              <p className="micro-note">理论假设不是科学共识；不替代医疗与心理治疗。</p>
+              <p>LRDF 是理论体系的核心，家长读本与相关方法从它派生。它从真实家庭实践里生长，同时接受心理学、发展科学、教育学、行为科学、精神医学、社会学、哲学与伦理学的持续审查。</p>
+              <p className="micro-note">理论仍在验证，不是科学共识；不替代医疗与心理治疗。</p>
             </div>
           </div>
 
@@ -143,11 +145,58 @@ export function ExpertResearchPage() {
               <p>生命承接 <i>→</i> 能动恢复 <i>→</i> 生命成熟</p>
               <small>不是固定阶段，也不是三道必经关口。人可以回退，也可以重新需要承接。</small>
             </div>
-            <div className="lrdf-items">
-              {LRDF_ITEMS.map((item) => (
-                <article key={item.title}>
-                  <h3>{item.title}</h3>
-                  <p>{item.body}</p>
+            <div className="lrdf-layer-grid">
+              {LRDF_LAYERS.map((layer) => (
+                <article key={layer.title}>
+                  <span>{layer.en}</span>
+                  <h3>{layer.title}</h3>
+                  <p>{layer.body}</p>
+                </article>
+              ))}
+            </div>
+            <p className="lrdf-layer-note">六层结构里，体系正文是唯一真源；其余文件各自留痕，不互相替代。</p>
+          </div>
+
+          <div className="lrdf-split">
+            <div className="lrdf-panel">
+              <h3>三种知识不互相冒充</h3>
+              <p className="lrdf-panel-lede">科学、人类智慧与现实经验回答不同问题，分开登记。</p>
+              {LRDF_SOURCES.map((source) => (
+                <div className="lrdf-source" key={source.title}>
+                  <b>{source.title}</b>
+                  <p>{source.body}</p>
+                </div>
+              ))}
+            </div>
+            <div className="lrdf-panel">
+              <h3>两套证据，不合成一个分数</h3>
+              <p className="lrdf-panel-lede">科学证据按等级单独标注；月明实践发现单独记录。</p>
+              <div className="lrdf-levels" aria-label="科学证据等级">
+                {[
+                  ["A", "强依据"],
+                  ["B", "有支持"],
+                  ["C", "工作假设"],
+                  ["D", "实践发现"],
+                  ["X", "当前不支持"],
+                ].map(([level, label]) => (
+                  <span key={level}><b>{level}</b>{label}</span>
+                ))}
+              </div>
+              <p className="lrdf-panel-note">D 不等于低价值，但也不能冒充 A。原创方法往往先是 D；关键是诚实标注。</p>
+            </div>
+          </div>
+
+          <div className="lrdf-ladder-block">
+            <h3>体系命名 ↔ 家长说法</h3>
+            <p className="lrdf-panel-lede">同一套体系，说给专业者听，也说给家长听。</p>
+            <div className="lrdf-ladder">
+              {LRDF_LADDER.map((rung) => (
+                <article key={rung.system}>
+                  <span>体系命名</span>
+                  <b>{rung.system}</b>
+                  <i aria-hidden="true">↓</i>
+                  <strong>{rung.parent}</strong>
+                  <p>{rung.body}</p>
                 </article>
               ))}
             </div>
@@ -165,21 +214,21 @@ export function ExpertResearchPage() {
         <div className="shell">
           <div className="detail-head">
             <div>
-              <p className="kicker"><span>03 / 《先看清，再伸手》</span><StatusPill status="RESEARCH" /></p>
-              <h2>帮助父母在不确定中，<br />作出可修正的下一步选择。</h2>
+              <p className="kicker"><span>03 / 家长读本 · 《先看清，再伸手》</span><StatusPill status="RESEARCH" /></p>
+              <h2>把同一套体系，<br />写成家长能读的书。</h2>
             </div>
             <div className="detail-head-side">
-              <p>它不是一本单纯教父母知识的书，而是帮助父母判断当下发生了什么、该如何行动、如何观察结果并调整。</p>
-              <p className="micro-note">当前为作者审阅稿；未出版，作者终审与独立专业审查未完成。</p>
+              <p>它是 LRDF 的家长载体，不是第二套理论：帮助父母判断当下发生了什么、该如何行动、如何观察结果并调整。</p>
+              <p className="micro-note">完整作者审阅稿 · 作者审阅中 · 未出版。作者终审与独立专业审查未完成。</p>
             </div>
           </div>
 
           <div className="book-layout">
-            <div className="book-cover" aria-label="书稿信息卡">
-              <span className="book-cover-kicker">A BOOK IN PROGRESS</span>
+            <div className="book-cover" aria-label="家长读本信息卡">
+              <span className="book-cover-kicker">LRDF · PARENT EDITION</span>
               <p className="book-cover-title">先看清，<br />再伸手</p>
               <p className="book-cover-sub">在真实生活的凹凸不平里，<br />学习判断、行动与修正。</p>
-              <span className="book-cover-status">RESEARCH · 未出版</span>
+              <span className="book-cover-status">家长读本 · 未出版</span>
             </div>
             <div className="book-items">
               {BOOK_ITEMS.map((item) => (
@@ -189,10 +238,11 @@ export function ExpertResearchPage() {
                 </article>
               ))}
               <div className="book-progress">
-                <p><span>书稿结构</span><b>四部 · 十一章 · 结语</b></p>
-                <p><span>最近记录</span><b>2026-10-27 完整书稿</b></p>
-                <p><span>当前阶段</span><b>作者审阅 / 专业审查未完成</b></p>
-                <p><span>不能宣称</span><b>已出版 · 已获真人理解验证</b></p>
+                <p><span>读本结构</span><b>四部 · 十一章 · 结语《再回到那顿饭》</b></p>
+                <p><span>最近记录</span><b>2026-10-27 作者审阅稿</b></p>
+                <p><span>当前状态</span><b>完整作者审阅稿 · 作者审阅中 · 未出版</b></p>
+                <p><span>未完成</span><b>作者终审 · 独立专业审查</b></p>
+                <p><span>不能宣称</span><b>已定稿 · 已出版 · 已获真人理解验证</b></p>
               </div>
             </div>
           </div>

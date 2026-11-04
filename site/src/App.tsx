@@ -35,7 +35,7 @@ const ROUTES: Record<string, { title: string; description: string; element: () =
   },
   "/expert-and-research": {
     title: "专业与研究",
-    description: "Yueming Expert OS 处于验证中；LRDF、书稿与 Family Reality Lab 属于研究资产，不是已证实结论或已发布产品。",
+    description: "Yueming Expert OS 处于验证中；LRDF、家长读本与 Family Reality Lab 属于研究资产，不是已证实结论或已发布产品。",
     element: () => <ExpertResearchPage />,
   },
   "/agent-space": {

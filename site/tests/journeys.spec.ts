@@ -59,7 +59,7 @@ test("旅程 3 · 家庭用户：只走公开入口，不触发登录或数据�
 
 test("旅程 4 · 研究/写作者：从专业页进入研究资产与证据", async ({ page }, testInfo) => {
   await page.goto("/ming/expert-and-research", { waitUntil: "networkidle" });
-  for (const text of ["Expert OS", "LRDF", "Family Reality Lab", "书稿"]) {
+  for (const text of ["Expert OS", "LRDF", "Family Reality Lab", "家长读本"]) {
     await expect(page.locator("body")).toContainText(text);
   }
   await expect(page.locator("body")).toContainText("未关闭");
