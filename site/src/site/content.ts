@@ -24,9 +24,9 @@ export const CONTACT = {
 export const KNOWN_INCIDENTS = [
   {
     id: "self-space-assets",
-    title: "Self Space 生产资源路径故障",
+    title: "Self Space 首页一度打不开",
     date: "2026-11-02",
-    status: "RESOLVED · 2026-11-03",
+    status: "已修复",
     impact: "第一次打开 ymai.me 时样式没有加载，页面显示不正常。",
     handling: "2026-11-03 把 Self Space 改到它原本的地址 /gui/，重新核对公网访问；作品集里的入口现在指向 https://ymai.me/gui/，公开首页也在同一天补拍。",
   },
@@ -117,7 +117,7 @@ export const PROJECTS: Project[] = [
       { label: "Self Space 公开页", kind: "public", href: "https://ymai.me/gui/" },
       { label: "公开页文字：说出来 / 留下 / 回来（已核对）", kind: "measurement" },
       { label: "Self Space 真实线上截图（2026-11-03）", kind: "screenshot", href: "/media/ymai-self.png" },
-      { label: "生产资源路径故障诊断与修复记录（内部记录，不公开）", kind: "private-doc" },
+      { label: "Self Space 首页打不开的问题与修复记录（内部记录，不公开）", kind: "private-doc" },
       { label: "生产部署与回滚记录（内部记录，不公开）", kind: "private-doc" },
     ],
     verified: "2026-11-02",

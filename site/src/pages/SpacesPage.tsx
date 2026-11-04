@@ -1,6 +1,4 @@
 import { ArrowLink, BrowserFrame, PageHeader, SectionHeading, StatusPill } from "@/components/Chrome";
-import { EvidencePending } from "@/components/EvidencePending";
-import { KNOWN_INCIDENTS } from "@/site/content";
 import { Link } from "@/site/router";
 
 const FAMILY_FEATURES = [
@@ -108,7 +106,7 @@ export function SpacesPage() {
               <p className="self-stage-kicker">A ROOM OF YOUR OWN</p>
               <p className="self-stage-title">这里，留给你自己。</p>
               <p>它不是心理咨询网站，不是人生导师，也不是另一个什么都能答的 AI。你说，它回应；它把你说的话放回你面前，最后怎么解释，还是你说了算。</p>
-              <p className="micro-note">内容依据 ymai.me 公开页（2026-11-02）。2026-11-03 已把路径改回 /gui/，重新确认公网能打开，也补拍了公开首页。登录后的个人页面与内容不在本站展示。</p>
+              <p className="micro-note">内容依据 ymai.me 公开页（2026-11-02）；2026-11-03 补拍了公开首页。</p>
             </div>
             <div className="self-actions">
               {SELF_ACTIONS.map((action) => (
@@ -120,20 +118,10 @@ export function SpacesPage() {
             </div>
           </div>
 
-          {KNOWN_INCIDENTS.map((incident) => (
-            <EvidencePending
-              key={incident.id}
-              resolved
-              title={incident.title}
-              body={`${incident.impact} ${incident.handling}`}
-              meta={`发生 ${incident.date} · ${incident.status}`}
-            />
-          ))}
-
           <div className="callout-row">
             <p className="callout"><span>公开页写道：能说话、能留下、能回来。</span>登录之后到底怎么样，还没有核对过；剩下的，得靠真实住进来的人慢慢长出来。</p>
             <p className="callout"><span>它不是心理咨询工具。</span>不定义你是谁，不替你决定人生，也不把一次对话变成永久结论。</p>
-            <p className="callout"><span>当前边界。</span>2026-11-02 公开页的资源路径出过故障；2026-11-03 已改回 /gui/，重新确认公网能打开，也补拍了公开首页。对话和长期记忆要登录之后才看得到，我们这次没有账号，所以不对登录后的体验下结论；登录后的个人页面不在本站展示。</p>
+            <p className="callout"><span>当前边界。</span>对话和长期记忆要登录之后才看得到；我们这次没有账号，所以不对登录后的体验下结论。登录后的个人页面不在本站展示。</p>
           </div>
         </div>
       </section>
