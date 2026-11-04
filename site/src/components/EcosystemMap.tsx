@@ -39,37 +39,37 @@ const EDGES = [
     number: "02",
     kind: "dashed",
     d: "M790 210 C756 160 560 150 392 140",
-    label: "Family Reality Lab → Family Space：现实问题回流（设计目标，未证明技术集成）",
+    label: "Family Reality Lab → Family Space：现实问题怎么带回来（设计中的关系，还没有技术上的连接）",
   },
   {
     number: "03",
     kind: "dashed",
     d: "M392 490 C420 430 420 240 392 158",
-    label: "Family Service OS ↔ Family Space：家长端关联（设计关系，未证明双向集成）",
+    label: "Family Service OS ↔ Family Space：家长端怎么关联（设计中的关系，两边还没有真正连起来）",
   },
   {
     number: "04",
     kind: "dashed",
     d: "M560 158 C560 330 430 470 392 560",
-    label: "LRDF → Yueming Expert OS：方法来源（文本与规则层，不是运行时调用）",
+    label: "LRDF → Yueming Expert OS：方法来源（只到文字和规则这一层，不是系统之间的调用）",
   },
   {
     number: "05",
     kind: "dashed",
     d: "M860 330 C820 300 806 250 790 220",
-    label: "Agent Space → 研究与知识：协作发生在仓库与项目现场，不是运行时集成",
+    label: "Agent Space → 研究与知识：协作发生在仓库和项目现场，系统之间并没有连起来",
   },
   {
     number: "06",
     kind: "dashed",
     d: "M860 390 C700 500 520 552 392 568",
-    label: "Agent Space → 专业服务系统：协作工作方法，不是产品集成",
+    label: "Agent Space → 专业服务系统：合作的工作方法，不是产品上的集成",
   },
   {
     number: "07",
     kind: "dotted",
     d: "M860 300 C760 70 520 60 392 100",
-    label: "Agent Space → 人与生活空间：协作工作方法（项目现场关系，未实现运行时集成）",
+    label: "Agent Space → 人与生活空间：合作的工作方法（项目现场的关系，系统之间还没连）",
   },
   {
     number: "08",
@@ -104,8 +104,8 @@ export function EcosystemMap() {
   return (
     <div className="map-wrap">
       <div className="map-legend" aria-label="连接线图例">
-        <span><i className="line-sample is-solid" />实线：已核实的公开链接（页面导航，不是数据流）</span>
-        <span><i className="line-sample is-dashed" />虚线：已设计的关系（未证明技术集成）</span>
+        <span><i className="line-sample is-solid" />实线：核对过的公开页面链接（只是页面跳转，不是数据流）</span>
+        <span><i className="line-sample is-dashed" />虚线：设计中的关系（还没有技术上的连接）</span>
         <span><i className="line-sample is-dotted" />点线：工作方法或未来方向（未实现）</span>
         <span className="map-legend-note">公开导航链接不等于数据互通。</span>
       </div>
@@ -216,7 +216,7 @@ export function EcosystemMap() {
             </section>
           ))}
           <p className="map-mobile-note">
-            移动端不绘制连线。关系与限制在下方说明中逐项标注；连线图例同时保留在上方。
+            手机上不画连线。每条关系和限制都在下面的说明里逐条写清；连线图例也保留在上面。
           </p>
         </div>
 

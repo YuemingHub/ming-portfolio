@@ -20,7 +20,7 @@ const ROUTES: Record<string, { title: string; description: string; element: () =
   },
   "/ecosystem": {
     title: "体系总览",
-    description: "用五个区域与十节点关系图，区分已核实的公开入口、设计关系与未来方向；不把概念关系画成已实现的数据流。",
+    description: "用五个区域和十个节点的关系图，分清哪些公开入口已经核对过、哪些关系还在设计、哪些只是未来的方向；不把概念上的关系画成已经打通的数据流。",
     element: () => <EcosystemPage />,
   },
   "/spaces": {
@@ -30,7 +30,7 @@ const ROUTES: Record<string, { title: string; description: string; element: () =
   },
   "/institution": {
     title: "机构服务",
-    description: "Family Service OS 的机构服务设计：代码验收已通过，未合入主线、未部署、未接入真实机构数据。",
+    description: "Family Service OS 的机构服务设计：代码评审已经通过，但还没合进主线、还没上线，也没有接真实机构数据。",
     element: () => <InstitutionPage />,
   },
   "/expert-and-research": {
@@ -40,12 +40,12 @@ const ROUTES: Record<string, { title: string; description: string; element: () =
   },
   "/agent-space": {
     title: "Agent Space",
-    description: "Agent Space 是一套连接人、AI、工具、知识与现实资源的工作方法，目前以真实项目验证，不是独立产品或运行时平台。",
+    description: "Agent Space 是一套连接人、AI、工具、知识与现实资源的工作方法，是在真实项目里用出来的，不是独立产品，也不是运行平台。",
     element: () => <AgentSpacePage />,
   },
   "/evidence": {
     title: "证据与进展",
-    description: "14 条项目记录、7 种状态，证据按公开可核、内部留档、待补三层标注；核验日期与不能宣称的限制同时列出。",
+    description: "14 条项目记录、7 种状态；证据分成公开能核对、内部留档、还缺的三层，哪天核对、哪些话不能说，都一起列出来。",
     element: () => <EvidencePage />,
   },
   "/cooperation": {

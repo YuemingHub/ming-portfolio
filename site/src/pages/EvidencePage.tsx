@@ -9,7 +9,7 @@ const KIND_LABEL = {
   public: "公开页",
   screenshot: "截图",
   "private-doc": "内部留档",
-  measurement: "核验记录",
+  measurement: "核对记录",
   pending: "待补",
 } as const;
 
@@ -40,8 +40,8 @@ export function EvidencePage() {
       <PageHeader
         kicker="EVIDENCE & PROGRESS · 证据与进展"
         title={<>做到哪里，<br />就写到哪里。</>}
-        lede="这一页把每个项目放回同一条尺子上：面向谁、已经有什么能力、当前处于什么状态、证据在哪里、哪天核验、还不能宣称什么。状态不是荣誉榜，而是限制说明。"
-        meta={[`${PROJECTS.length} 条项目记录`, "7 种状态", "项目状态核验日期 2026-11-02", "公开版本不含私有链接"]}
+        lede="这一页把每个项目放回同一把尺子上：面向谁、已经有什么、现在到哪一步、证据在哪里、哪天核对、还有什么不能说。状态不是排名，而是说明限制。"
+        meta={[`${PROJECTS.length} 条项目记录`, "7 种状态", "项目状态核对日期 2026-11-02", "公开版本不含私有链接"]}
       />
 
       <section className="section section-status">
@@ -76,7 +76,7 @@ export function EvidencePage() {
             index="02"
             kicker="EVIDENCE LAYERS"
             title={<>证据分三层：公开可核、内部留档、待补。</>}
-            lede="三层不能互相替代。内部记录只说明存在与结论；拿不到正常证据时，标记为待补，而不是用别的东西补位。"
+            lede="三层不能互相替代。内部记录只说明「有这件事、结论是什么」；拿不出正常证据时，就标成「待补」，不拿别的东西顶上。"
           />
           <div className="evidence-layers">
             {EVIDENCE_LAYERS.map((layer) => (
@@ -107,7 +107,7 @@ export function EvidencePage() {
             index="03"
             kicker="PROJECT STATUS TABLE"
             title={<>项目状态表。</>}
-            lede="筛选只改变显示范围，不改变状态。每条记录都给出限制；公开页可访问不等于登录后能力已验收。"
+            lede="筛选只改变看到哪些，不改变状态。每条记录都写清限制；公开页能打开，不等于登录后的功能也验证过。"
           />
 
           <div className="filter-bar" role="group" aria-label="按状态筛选项目">
@@ -131,7 +131,7 @@ export function EvidencePage() {
               </button>
             ))}
           </div>
-          <p className="filter-note">七个状态全部列出；计数为 0 的状态保留在筛选栏，用来表明当前没有该类记录，而不是只显示有样本的状态。</p>
+          <p className="filter-note">七个状态都会列出来；显示 0 的也保留，说明这一类现在确实没有记录。</p>
 
           <p className="filter-result" aria-live="polite">
             显示 {visible.length} / {PROJECTS.length} 条记录
@@ -147,7 +147,7 @@ export function EvidencePage() {
                   <th scope="col">已有能力</th>
                   <th scope="col">当前状态</th>
                   <th scope="col">证据</th>
-                  <th scope="col">核验日期</th>
+                  <th scope="col">核对日期</th>
                   <th scope="col">限制 / 不能宣称</th>
                 </tr>
               </thead>
@@ -217,7 +217,7 @@ export function EvidencePage() {
                       </ul>
                     </dd>
                   </div>
-                  <div><dt>核验日期</dt><dd>{project.verified}</dd></div>
+                  <div><dt>核对日期</dt><dd>{project.verified}</dd></div>
                   <div><dt>限制 / 不能宣称</dt><dd>{project.limits}</dd></div>
                 </dl>
               </article>

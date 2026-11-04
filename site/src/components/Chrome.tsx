@@ -122,10 +122,10 @@ export function SiteFooter() {
         <div className="footer-meta">
           <p>
             <span>作品集 · {SITE.version}</span>
-            <span>项目状态核验日期 {SITE.verifiedAt}</span>
+            <span>项目状态核对日期 {SITE.verifiedAt}</span>
           </p>
           <p>
-            本站不使用分析脚本、不投放追踪代码、不加载外部字体；页面不收集、不上传你填写的内容。未标注 LIVE_VERIFIED 的能力不视为已上线；LIVE_VERIFIED 只表示公开页面已核验。
+            本站没有统计脚本、追踪代码，也不加载外部字体；你填写的内容不会被收集或上传。没有标 LIVE_VERIFIED 的能力，不当作已经上线；LIVE_VERIFIED 只说明公开页面能打开、内容对得上。
           </p>
           <p className="footer-links">
             <a href={SITE.canonical}>作品集正式入口 ymai.me</a>

@@ -115,10 +115,10 @@ export function HomePage() {
         </div>
         <div className="shell hero-facts">
           <span><b>{PROJECT_COUNT}</b> 条项目记录</span>
-          <span><b>{counts.LIVE_VERIFIED}</b> 个公开入口已核验</span>
+          <span><b>{counts.LIVE_VERIFIED}</b> 个公开入口已确认能打开</span>
           <span><b>{inBuild}</b> 项在建设、验证或规划</span>
           <span><b>{counts.RESEARCH}</b> 项研究资产</span>
-          <span className="hero-facts-note">项目状态核验日期 2026-11-02</span>
+          <span className="hero-facts-note">项目状态核对：2026-11-02</span>
         </div>
       </section>
 
@@ -189,7 +189,7 @@ export function HomePage() {
             index="03"
             kicker="PROFESSIONAL SYSTEMS"
             title={<>让专业经验，<br />不再只停留在某一个人的头脑里。</>}
-            lede="一套面向机构，一套面向专业工作者。两者都还在建设或验证阶段，本站不把未上线能力写成已交付。"
+            lede="一套面向机构，一套面向专业工作者。两者都还在建设或验证阶段，本站不会把还没上线的能力写成已经交付。"
           />
           <div className="system-rows">
             <article className="system-row">
@@ -199,11 +199,11 @@ export function HomePage() {
                 <p>面向机构 · 服务经营系统</p>
               </div>
               <div className="system-row-body">
-                <p>让机构的咨询、课程、导师协作、家庭跟进和服务复盘形成连续的工作体系。V0 只做三个工作面：咨询师个案工作台、主管介入视图、经营者服务健康度。</p>
+                <p>让机构的咨询、课程、导师协作、家庭跟进和服务复盘串成一条能一直走下去的服务。V0 只做三块：咨询师的个案工作台、主管看今天谁需要介入、经营者看整体服务状况。</p>
                 <ul className="inline-facts">
-                  <li>合成数据跑通</li>
-                  <li>未部署</li>
-                  <li>真实数据被阻断</li>
+                  <li>用模拟数据跑通</li>
+                  <li>还没上线</li>
+                  <li>真实数据还没接</li>
                 </ul>
               </div>
               <div className="system-row-aside">
@@ -219,10 +219,10 @@ export function HomePage() {
                 <p>面向专业工作者 · 判断辅助系统</p>
               </div>
               <div className="system-row-body">
-                <p>将专业知识、经验和判断方法转化为可检查、可修正的辅助能力。它辅助专业工作者，而不是替代专业责任；目前仍有安全、可复现性与同行可用性方面的验证任务。</p>
+                <p>将专业知识、经验和判断方法转化为可检查、可修正的辅助能力。它辅助专业工作者，而不是替代专业责任；安全、别人能不能重复、同行能不能上手，这几件事还在验证。</p>
                 <ul className="inline-facts">
                   <li>15 类场景库</li>
-                  <li>F01–F05 判据</li>
+                  <li>F01–F05 五项检查</li>
                   <li>仍有未关闭问题</li>
                 </ul>
               </div>
@@ -260,7 +260,7 @@ export function HomePage() {
             index="05"
             kicker="REAL PROGRESS"
             title={<>已经做出的，和仍在验证的。</>}
-            lede="每一项都对应证据页里的一条记录：面向谁、已经完成什么、当前状态、核验日期与限制。"
+            lede="每一项都对应证据页里的一条记录：面向谁、已经完成什么、现在处于哪一步、哪天核对、还有什么限制。"
           />
           <div className="progress-grid">
             {STATUS_ORDER.map((status) => (
@@ -273,7 +273,7 @@ export function HomePage() {
             ))}
           </div>
           <p className="progress-total">
-            合计 {PROJECT_COUNT} 条项目记录，按七个状态单一计数；同一条记录只属于一个状态，不重复累加。
+            合计 {PROJECT_COUNT} 条项目记录；每条只算一个状态，不重复相加。
           </p>
           <div className="highlight-list">
             {HIGHLIGHTS.map((id) => {
@@ -293,8 +293,8 @@ export function HomePage() {
             })}
           </div>
           <div className="section-foot">
-            <ArrowLink to="/evidence">查看完整项目状态表与证据索引</ArrowLink>
-            <span>{STATUS_META.LIVE_VERIFIED.label} 只表示公开页面已核验，不表示登录后能力已验收。</span>
+            <ArrowLink to="/evidence">查看完整项目状态表与证据清单</ArrowLink>
+            <span>{STATUS_META.LIVE_VERIFIED.label} 只说明公开页面能打开、内容对得上，不代表登录之后的功能也验证过。</span>
           </div>
         </div>
       </section>
@@ -305,7 +305,7 @@ export function HomePage() {
             <div>
               <p className="section-kicker"><span className="section-index">06</span>COOPERATION</p>
               <h2>如果你也在解决真实问题，<br />我们可以一起把事情做出来。</h2>
-              <p>家庭教育机构、专业工作者、技术伙伴、研究伙伴、资源与投资伙伴。合作从具体问题和可验证的小项目开始，而不是先承诺宏大的结果。</p>
+              <p>家庭教育机构、专业工作者、技术伙伴、研究伙伴、资源与投资伙伴。合作从具体问题和小范围试点开始，而不是先承诺宏大的结果。</p>
             </div>
             <div className="cooperation-actions">
               <Link to="/cooperation" className="btn btn-primary">联系与合作 <Arrow /></Link>

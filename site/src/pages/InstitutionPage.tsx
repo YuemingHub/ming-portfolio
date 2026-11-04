@@ -21,7 +21,7 @@ export function InstitutionPage() {
       <PageHeader
         kicker="INSTITUTION · 机构服务"
         title={<>让家庭教育机构拥有<br />真正持续运行的服务体系。</>}
-        lede="机构不缺课程、导师和经验，真正困难的是如何把这些资源组织起来，形成连续、可复核、能够不断改进的家庭服务。"
+        lede="机构不缺课程、导师和经验，真正难的是把它们串起来，变成一条连续、能回头看、也能不断改的家庭服务。"
         meta={["Family Service OS", "当前状态 CODE_ACCEPTED", "未部署 · 未接入真实机构数据"]}
       />
 
@@ -50,7 +50,7 @@ export function InstitutionPage() {
           <SectionHeading
             index="02"
             kicker="TARGET SERVICE LOOP"
-            title={<>一条能被复核的服务闭环。</>}
+            title={<>一条从咨询到复盘的完整服务。</>}
             lede="这是当前设计的目标服务流程，不是已经在所有机构实现的现状。点击任一步，查看它要留下什么。"
           />
 
@@ -84,7 +84,7 @@ export function InstitutionPage() {
               <h3>{step.title}</h3>
               <p>{step.body}</p>
             </div>
-            <p className="loop-detail-note">每一步都应留下可复核的事实、责任人与下一步；具体表单与权限仍属于 Family Service OS 的产品范围。</p>
+            <p className="loop-detail-note">每一步都该留下能回头查的事实、谁负责、下一步是什么；具体表单和权限，属于 Family Service OS 以后的产品范围。</p>
           </div>
         </div>
       </section>
@@ -94,7 +94,7 @@ export function InstitutionPage() {
           <SectionHeading
             index="03"
             kicker="BEFORE / AFTER"
-            title={<>改造前后，变化的是服务的可运行性。</>}
+            title={<>改造前后，变的是服务能不能一直走下去。</>}
             lede="以下对照表达设计目标，不是已验证的提升比例。我们没有可对外披露的效果数据。"
           />
           <div className="before-after">
@@ -116,7 +116,7 @@ export function InstitutionPage() {
                 <li>责任有归属</li>
                 <li>行动有确认</li>
                 <li>服务有连续性</li>
-                <li>过程可复核</li>
+                <li>过程能回头查</li>
               </ul>
             </div>
           </div>
@@ -129,7 +129,7 @@ export function InstitutionPage() {
             <div>
               <p className="kicker"><span>04 / FAMILY SERVICE OS</span><StatusPill status="CODE_ACCEPTED" /></p>
               <h2>机构端的三个工作面。</h2>
-              <p>V0 不做大而全的 CRM，也不做自动高风险外发。它先把咨询师、主管、经营者各自真正需要看见的东西放回一个可运行的工作面。</p>
+              <p>V0 不做大而全的 CRM，也不做自动高风险外发。它先把咨询师、主管、经营者各自真正需要看见的东西，放回同一个能用的工作面。</p>
             </div>
             <div className="product-status-box">
               <p><span>代码验收</span><b>ACCEPTED</b></p>
@@ -138,7 +138,7 @@ export function InstitutionPage() {
               <p><span>真实机构数据</span><b>BLOCKED</b></p>
             </div>
           </div>
-          <p className="status-asof">四个维度分别记录，核验日期 2026-11-02。代码验收使用合成数据；任何一项通过都不能替代另外三项。</p>
+          <p className="status-asof">这四件事分开记，核对日期 2026-11-02。代码验收用的是模拟数据；一项过了，不能替代另外三项。</p>
 
           <div className="surface-grid">
             <article>
@@ -154,13 +154,13 @@ export function InstitutionPage() {
             <article>
               <span>03</span>
               <h3>经营者</h3>
-              <p>经营与服务健康度。看见服务过程里的断点、风险与可复用经验，而不只是结果数字。</p>
+              <p>经营和服务的整体状况。看见服务过程里哪里断了、哪里有风险、什么经验可以再用，而不只是结果数字。</p>
             </article>
           </div>
 
           <div className="callout-row">
-            <p className="callout"><span>测试通过不等于机构现场验证。</span>代码验收使用合成数据；真实数据与生产启用仍被政策门禁阻断。</p>
-            <p className="callout"><span>代码接受不等于上线。</span>代码评审已于 2026-11-02 接受，但尚未合入主线、尚未部署；本站不把机构端写成已可用产品。</p>
+            <p className="callout"><span>测试通过不等于机构现场验证。</span>代码验收用的是模拟数据；真实数据和生产使用，仍被内部规定挡着。</p>
+            <p className="callout"><span>代码接受不等于上线。</span>代码评审已在 2026-11-02 通过，但还没合进主线，也还没上线；本站不把机构端写成已经能用的产品。</p>
             <p className="callout"><span>专业责任不外包。</span>系统区分事实、用户解释、假设与未知；新证据可以修正甚至推翻旧理解。</p>
           </div>
         </div>
@@ -172,7 +172,7 @@ export function InstitutionPage() {
             index="05"
             kicker="SERVICE OFFERS"
             title={<>从具体断点开始的小项目。</>}
-            lede="以下为试销中的服务形式，不是已验证的标准产品。价格与交付范围按机构规模、服务小组与实际问题单独核定，本站不公开报价。"
+            lede="以下为试销中的服务形式，不是已验证的标准产品。价格和交付范围按机构规模、服务小组和实际问题单独谈，本站不公开报价。"
           />
           <div className="offer-grid">
             {SERVICE_OFFERS.map((offer, index) => (
@@ -188,7 +188,7 @@ export function InstitutionPage() {
             ))}
           </div>
           <div className="offer-note">
-            <p><b>价格说明：</b>本站不展示价格。任何价格都属于试销假设或双方实际签约价格，不能混用；机构试点前先对齐交付范围、数据边界与验收方式。</p>
+            <p><b>价格说明：</b>本站不展示价格。这里说的价格都只是试销时的设想，和双方真正签约的价格不能混着讲；试点开始前，先把做什么、哪些数据能用、怎样算做完说清楚。</p>
             <ArrowLink to="/cooperation">讨论机构合作</ArrowLink>
           </div>
         </div>

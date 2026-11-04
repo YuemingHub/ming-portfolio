@@ -4,7 +4,7 @@ import { AGENT_CAPABILITIES, AGENT_CASES } from "@/site/content";
 const CHANNEL = [
   { label: "人", note: "真实目标与限制" },
   { label: "理解", note: "先说清要做什么" },
-  { label: "AI / Agent", note: "拆分、执行、核验" },
+  { label: "AI / Agent", note: "拆分、动手、检查" },
   { label: "工具 · 知识 · 技术", note: "优先借用已有能力" },
   { label: "现实", note: "在生活与业务里发生" },
   { label: "反馈", note: "结果回来，再修改" },
@@ -24,15 +24,15 @@ const PREMISES = [
   {
     index: "03",
     title: "目前还不是产品",
-    body: "Agent Space 现在是一套经过真实项目使用的工作方法。它有流程、案例与验证记录，但没有独立产品界面，也没有和各系统完成运行时集成。",
+    body: "Agent Space 现在是一套经过真实项目使用的工作方法。它有流程、案例和验证记录，但没有独立的产品界面，也没有和各个系统连成一套。",
   },
 ];
 
 const CRITERIA = [
   { title: "真实问题", body: "起点必须是实际发生的目标或困难，而不是为了展示能力而设计的演示任务。" },
   { title: "借用优先", body: "先找世界上已经存在的工具、知识与资源；能借就借，能换就换，不把自建当默认答案。" },
-  { title: "结果发生", body: "以公开入口、可访问页面、可复核记录或现场变化作为完成标准，不以「已生成」代替「已发生」。" },
-  { title: "可被移交", body: "过程要留下判断链、证据与限制，使另一个人能够复核、复用或推翻，而不是只依赖某次对话。" },
+  { title: "结果发生", body: "完成的标准是：入口能打开、页面能看到、记录能复查，或者现场真的变了；不把「生成了」当成「发生了」。" },
+  { title: "可被移交", body: "过程要留下怎么判断的、依据是什么、哪里有限制，让另一个人能复查、能接着用，也能推翻，而不是只靠某一次对话。" },
 ];
 
 export function AgentSpacePage() {
@@ -41,7 +41,7 @@ export function AgentSpacePage() {
       <PageHeader
         kicker="AGENT SPACE · 连接与执行"
         title={<>让 AI 与人的真实目标，<br />持续发生作用。</>}
-        lede="Agent Space 不是另一个聊天窗口，也不是只有工程师才能进入的工作台。它是一套连接人、AI、工具、知识、技术与现实资源的工作方法，目前以真实项目验证。"
+        lede="Agent Space 不是另一个聊天窗口，也不是只有工程师才能进入的工作台。它是一套连接人、AI、工具、知识、技术与现实资源的工作方法，目前是在真实项目里用出来的。"
         meta={["当前状态 · VALIDATION", "8 项目标能力", "4 个真实工程案例", "不是独立产品"]}
       />
 
@@ -85,8 +85,8 @@ export function AgentSpacePage() {
             <p className="channel-return" aria-hidden="true">反馈回到人，重新判断目标与下一步。</p>
           </div>
           <div className="callout-row">
-            <p className="callout"><span>连接不等于集成。</span>Agent Space 在项目现场组织协作，不代表各系统之间已经存在统一运行时或数据接口。</p>
-            <p className="callout"><span>借用不等于依赖。</span>优先使用已有能力，同时记录它的限制、价格与失效条件，避免把第三方工具当成永久基础设施。</p>
+            <p className="callout"><span>连接不等于集成。</span>Agent Space 在项目现场组织协作，不代表各个系统之间已经有同一套运行系统或数据接口。</p>
+            <p className="callout"><span>借用不等于依赖。</span>优先使用已有的能力，同时记下它的限制、价格和什么时候会失效，不把第三方工具当成永远不会变的基础。</p>
           </div>
         </div>
       </section>
@@ -97,7 +97,7 @@ export function AgentSpacePage() {
             index="03"
             kicker="TARGET CAPABILITIES"
             title={<>八项能力，逐项标出做到哪里。</>}
-            lede="“已实践”表示在至少一个真实项目里跑过；“部分实践”表示有做法与局部经验，但还没有形成可复用机制。两者都不等于产品能力已经完成。"
+            lede="“已实践”表示在至少一个真实项目里跑过；「部分实践」表示有做法和局部经验，但还没有变成能重复使用的做法。两者都不等于产品能力已经完成。"
           />
           <div className="capability-table">
             <div className="capability-head" aria-hidden="true">
@@ -127,7 +127,7 @@ export function AgentSpacePage() {
             index="04"
             kicker="REAL ENGINEERING CASES"
             title={<>四个真实案例，<br />每个都从一次失败或断点开始。</>}
-            lede="以下案例来自已经发生的工程过程。它们记录问题、借用了什么、在哪里失败、如何修正，以及最后交付了什么；不把「参与了」写成「做成了」。"
+            lede="以下案例都来自真实项目里发生过的事。它们记录问题、借用了什么、在哪里失败、怎么改的，以及最后交出了什么；不把「参与了」写成「做成了」。"
           />
           <div className="case-list">
             {AGENT_CASES.map((item, index) => (

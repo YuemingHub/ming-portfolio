@@ -76,7 +76,7 @@ export function SpacesPage() {
           <div className="callout-row">
             <p className="callout"><span>重要的事会被记住。</span>愿意留下的事，和后来发生的变化，会慢慢连在一起。以后再回来，不必每次都从头讲起。</p>
             <p className="callout"><span>理解错了，也可以纠正。</span>事实与理解尽量分开；家长明确纠正后的说法，可以推翻系统过去的理解。</p>
-            <p className="callout"><span>当前边界。</span>本轮只核验公开入口。企业微信入口的线上服务群可用性未在本轮验证；真实家庭内容一律不对外展示。</p>
+            <p className="callout"><span>当前边界。</span>这次只核对了公开入口。企业微信入口的线上服务群能不能用，这次没有核对；真实家庭内容一律不对外展示。</p>
           </div>
         </div>
       </section>
@@ -108,7 +108,7 @@ export function SpacesPage() {
               <p className="self-stage-kicker">A ROOM OF YOUR OWN</p>
               <p className="self-stage-title">这里，留给你自己。</p>
               <p>它不是心理咨询网站，不是人生导师，也不是另一个什么都能答的 AI。你说，它回应；它把你说的话放回你面前，最后怎么解释，还是你说了算。</p>
-              <p className="micro-note">依据 ymai.me 公开页文字（2026-11-02）。2026-11-03 已修正资源路径为 /gui/ 并完成公网复核、补拍公开首页。登录后的个人页面与内容不在本站展示。</p>
+              <p className="micro-note">内容依据 ymai.me 公开页（2026-11-02）。2026-11-03 已把路径改回 /gui/，重新确认公网能打开，也补拍了公开首页。登录后的个人页面与内容不在本站展示。</p>
             </div>
             <div className="self-actions">
               {SELF_ACTIONS.map((action) => (
@@ -131,9 +131,9 @@ export function SpacesPage() {
           ))}
 
           <div className="callout-row">
-            <p className="callout"><span>公开页写道：能说话、能留下、能回来。</span>登录后的实际体验仍需核验；剩下的，得靠真实住进来的人慢慢长出来。</p>
+            <p className="callout"><span>公开页写道：能说话、能留下、能回来。</span>登录之后到底怎么样，还没有核对过；剩下的，得靠真实住进来的人慢慢长出来。</p>
             <p className="callout"><span>它不是心理咨询工具。</span>不定义你是谁，不替你决定人生，也不把一次对话变成永久结论。</p>
-            <p className="callout"><span>当前边界。</span>2026-11-02 公开页出现独立资源路径故障；2026-11-03 已修正为 /gui/ 并完成公网复核、补拍公开首页。对话与长期记忆能力需要登录后核验，本轮未获取账号；登录后的个人页面不在本站展示。</p>
+            <p className="callout"><span>当前边界。</span>2026-11-02 公开页的资源路径出过故障；2026-11-03 已改回 /gui/，重新确认公网能打开，也补拍了公开首页。对话和长期记忆要登录之后才看得到，我们这次没有账号，所以不对登录后的体验下结论；登录后的个人页面不在本站展示。</p>
           </div>
         </div>
       </section>
@@ -188,7 +188,7 @@ export function SpacesPage() {
           <div className="callout-row">
             <p className="callout"><span>不是 AI 工具大全。</span>核心不是收藏，而是选一个当前最值得开始的入口，然后真的动手。</p>
             <p className="callout"><span>不是课程平台。</span>它借用世界上已有的免费、中文、手机可用的工具，不要求用户先学会一整套知识。</p>
-            <p className="callout"><span>当前边界。</span>页面是公开可访问的静态入口；第三方工具 90 天内需要重新核查，失效与涨价不由本站控制。</p>
+            <p className="callout"><span>当前边界。</span>这里只是指路的公开页面；第三方工具每 90 天要重新看一次，失效或涨价不由本站控制。</p>
           </div>
         </div>
       </section>
@@ -201,8 +201,8 @@ export function SpacesPage() {
             title={<>三个入口，三种生活方向；<br />目前还不是一套互通系统。</>}
           />
           <div className="boundary-copy">
-            <p>三个空间目前各自独立：没有统一登录、没有共享数据、没有共享记忆、上下文或运行时。</p>
-            <p>它们来自同一个关于人的想法。可以讲这层关系，但不能让普通人误以为它们已经技术互通。</p>
+            <p>三个空间现在各自独立：没有统一登录，也不共享数据、记忆、上下文或运行系统。</p>
+            <p>它们来自同一个关于人的想法。可以讲这层关系，但不能让人误以为它们已经连在一起。</p>
             <div className="boundary-actions">
               <Link to="/ecosystem" className="btn btn-ghost">回到体系图看连接线</Link>
               <Link to="/evidence" className="btn btn-primary">查看状态与证据</Link>

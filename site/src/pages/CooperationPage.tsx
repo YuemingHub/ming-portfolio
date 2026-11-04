@@ -5,7 +5,7 @@ import { assetUrl } from "@/site/base";
 import { CONTACT, PARTNER_TYPES } from "@/site/content";
 
 const PRINCIPLES = [
-  { title: "从具体问题开始", body: "先看一次真实服务断点、一条专业判断链或一个可验证的小任务，不从「全面合作」开始。" },
+  { title: "从具体问题开始", body: "先看一次真实服务断点、一个专业判断的过程，或者一件能试着做的小事，不从「全面合作」开始。" },
   { title: "先看资产与限制", body: "公开入口、项目状态、证据与未完成风险都可以先看；不把还在验证的能力包装成成熟产品。" },
   { title: "小样本先跑通", body: "先做 7 天、30 天或一个小样本试点，用现实反馈决定是否扩大，而不是先承诺长期结果。" },
 ];
@@ -180,7 +180,7 @@ export function CooperationPage() {
             index="02"
             kicker="HOW WE START"
             title={<>三条合作原则。</>}
-            lede="它们不是流程装饰，而是用来避免把一次交流变成无法兑现的承诺。"
+            lede="它们不是摆样子，而是为了避免把一次交流变成兑现不了的承诺。"
           />
           <div className="principle-grid">
             {PRINCIPLES.map((item, index) => (
@@ -268,7 +268,7 @@ export function CooperationPage() {
             <li><span aria-hidden="true">×</span>不把 Expert OS 的验证中能力宣传为成熟商用能力。</li>
             <li><span aria-hidden="true">×</span>不把概念关系说成已完成的技术集成。</li>
             <li><span aria-hidden="true">×</span>不接入或对外展示真实家庭敏感数据。</li>
-            <li><span aria-hidden="true">×</span>不在未对齐范围、数据边界与验收方式前承诺效果数字。</li>
+            <li><span aria-hidden="true">×</span>还没说清做什么、哪些数据能用、怎样算完成之前，不承诺效果数字。</li>
           </ul>
         </div>
       </section>
@@ -281,7 +281,7 @@ export function CooperationPage() {
               <p>带着问题来，不必先接受整套叙事。先看已经做出来的产品、公开入口、状态与限制，再决定是否值得一起做下一步。</p>
             </div>
             <div className="closing-actions">
-              <ArrowLink to="/evidence">查看完整证据索引</ArrowLink>
+              <ArrowLink to="/evidence">查看完整证据清单</ArrowLink>
               <ArrowLink to="/ecosystem">回到体系总览</ArrowLink>
             </div>
           </div>
