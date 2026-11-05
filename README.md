@@ -24,7 +24,7 @@
 - `/institution` 机构服务：问题、工作面、七步闭环与服务形式
 - `/expert-and-research` 专业与研究：Expert OS、LRDF、书稿、Family Reality Lab
 - `/agent-space` Agent Space：协作通道与“连接不等于集成”
-- `/evidence` 证据与进展：14 条记录、41 条分层证据、状态定义
+- `/evidence` 证据与进展：14 条记录、42 条分层证据（公开可核 8 / 内部留档 32 / 待补 2）、状态定义
 - `/cooperation` 联系与合作：五类合作对象与本地简报生成器
 
 ## 源码与构建
@@ -38,6 +38,7 @@ npm run build
 ```
 
 构建产物输出到 `site/dist/`，本仓库根目录保存的是可直接静态托管的构建结果。
+- 核对日期只定义一次：`site/src/site/content.ts` 的 `VERIFIED_AT`。改这个日期等于声明 14 条项目记录都在那天重新核对过；未重核不许改。
 
 部署约束：
 

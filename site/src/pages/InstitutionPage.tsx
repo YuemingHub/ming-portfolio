@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowLink, PageHeader, SectionHeading, StatusPill } from "@/components/Chrome";
-import { FSO_SCENARIOS, SERVICE_LOOP, SERVICE_OFFERS } from "@/site/content";
+import { FSO_SCENARIOS, SERVICE_LOOP, SERVICE_OFFERS, SITE } from "@/site/content";
 
 export function InstitutionPage() {
   const [active, setActive] = useState(0);
@@ -138,7 +138,7 @@ export function InstitutionPage() {
               <p><span>真实机构数据</span><b>未接入</b></p>
             </div>
           </div>
-          <p className="status-asof">核对日期 2026-11-02。代码验收用的是模拟数据；一项过了，不能替代另外三项。</p>
+          <p className="status-asof">核对日期 {SITE.verifiedAt}。代码验收用的是模拟数据；一项过了，不能替代另外三项。</p>
 
           <div className="surface-grid">
             <article>

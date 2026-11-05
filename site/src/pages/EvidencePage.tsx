@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowLink, PageHeader, SectionHeading, StatusPill } from "@/components/Chrome";
-import { EVIDENCE_LAYERS, EVIDENCE_RULES, PROJECTS, STATUS_COUNTS, STATUS_META, STATUS_ORDER } from "@/site/content";
+import { EVIDENCE_LAYERS, EVIDENCE_RULES, PROJECTS, SITE, STATUS_COUNTS, STATUS_META, STATUS_ORDER } from "@/site/content";
 import { assetUrl } from "@/site/base";
 import type { Status } from "@/site/types";
 
@@ -40,7 +40,7 @@ export function EvidencePage() {
         kicker="EVIDENCE & PROGRESS · 证据与进展"
         title={<>做到哪里，<br />就写到哪里。</>}
         lede="这一页把每个项目放回同一把尺子上：面向谁、已经有什么、现在到哪一步、证据在哪里、哪天核对、还有什么不能说。状态不是排名，而是说明限制。"
-        meta={[`${PROJECTS.length} 条项目记录`, "7 种状态", "项目状态核对日期 2026-11-02", "公开版本不含私有链接"]}
+        meta={[`${PROJECTS.length} 条项目记录`, "7 种状态", `项目状态核对日期 ${SITE.verifiedAt}`, "公开版本不含私有链接"]}
       />
 
       <section className="section section-status">

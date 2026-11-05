@@ -1,6 +1,6 @@
 import { EcosystemMap } from "@/components/EcosystemMap";
 import { ArrowLink, PageHeader, SectionHeading, StatusPill } from "@/components/Chrome";
-import { MAP_NODES, MAP_ZONES } from "@/site/content";
+import { MAP_NODES, MAP_ZONES, SITE } from "@/site/content";
 
 const ROLE: Record<string, string> = {
   life: "人每天真实生活的三个入口：家庭、自己、世界。它们各自独立，不是同一个登录下的三个标签页。",
@@ -26,7 +26,7 @@ export function EcosystemPage() {
         kicker="ECOSYSTEM · 体系总览"
         title={<>这些项目不是孤立的，<br />它们共同构成一套体系。</>}
         lede="从人的生活空间，到专业服务、研究与知识、连接与执行、技术探索，五个区域回答不同的问题。点击任一节点，查看它面向谁、解决什么、当前做到哪里、还缺什么。"
-        meta={["10 个节点", "5 个区域", "3 类连接线", "项目状态核对日期 2026-11-02"]}
+        meta={["10 个节点", "5 个区域", "3 类连接线", `项目状态核对日期 ${SITE.verifiedAt}`]}
       />
 
       <section className="section section-map">
