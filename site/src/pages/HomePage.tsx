@@ -1,7 +1,7 @@
 import { Atlas } from "@/components/Atlas";
 import { Arrow, ArrowLink, BrowserFrame, SectionHeading, StatusPill } from "@/components/Chrome";
 import { Link } from "@/site/router";
-import { CONTACT, PROJECT_COUNT, PROJECTS, STATUS_COUNTS, STATUS_ORDER } from "@/site/content";
+import { CONTACT, PROJECT_COUNT, PROJECTS, SITE, STATUS_COUNTS, STATUS_ORDER } from "@/site/content";
 import type { Status } from "@/site/types";
 
 const SPACES = [
@@ -118,7 +118,7 @@ export function HomePage() {
           <span><b>{counts.LIVE_VERIFIED}</b> 个公开入口已确认能打开</span>
           <span><b>{inBuild}</b> 项在建设、验证或规划</span>
           <span><b>{counts.RESEARCH}</b> 项研究资产</span>
-          <span className="hero-facts-note">项目状态核对：2026-11-02</span>
+          <span className="hero-facts-note">项目状态核对：{SITE.verifiedAt}</span>
         </div>
       </section>
 

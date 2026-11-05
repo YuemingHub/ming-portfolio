@@ -1,15 +1,17 @@
 import type { MapNode, MapZone, Project, Status, StatusMeta } from "./types";
 
+const VERIFIED_AT = "2026-11-02";
+
 export const SITE = {
   name: "YUE MING ECOSYSTEM",
   title: "让生命与世界更好地连接",
   version: "2026.11",
-  verifiedAt: "2026-11-02",
+  verifiedAt: VERIFIED_AT,
   canonical: "https://ymai.me/",
   selfSpace: "https://ymai.me/gui/",
   legacy: "https://ymai.fun/ming/",
   backup: "https://yueminghub.github.io/ming-portfolio/",
-  note: "项目状态以 2026-11-02 核对过的公开页面和仓库记录为准。没有标 LIVE_VERIFIED 的能力，不当作已经上线。",
+  note: `项目状态以 ${VERIFIED_AT} 核对过的公开页面和仓库记录为准。没有标 LIVE_VERIFIED 的能力，不当作已经上线。`,
 };
 
 export const CONTACT = {
@@ -192,6 +194,7 @@ export const PROJECTS: Project[] = [
     evidence: [
       { label: "入口定位与三层记忆边界：已核对", kind: "private-doc" },
       { label: "服务关系记录：AI 一直在场，真人才是负责的人", kind: "private-doc" },
+      { label: "服务群线上是否可用、真实家庭怎么接进来：本轮未核对", kind: "pending" },
     ],
     verified: "2026-11-02",
     limits: "这次没有核对服务群线上能不能用，也没有核对真实家庭是怎么接进来的；任何家庭对话或记忆内容都不公开。",
@@ -237,6 +240,7 @@ export const PROJECTS: Project[] = [
       { label: "期数记录 13 份（001–007、009–014）", kind: "private-doc" },
       { label: "问题清单：家长原话、分类、进度与期数", kind: "private-doc" },
       { label: "材料使用规则：原话、提炼和公开评论分开标注", kind: "private-doc" },
+      { label: "各期内容实际公开到哪一步：本轮未核对", kind: "pending" },
     ],
     verified: "2026-11-02",
     limits: "这些内容公开到了哪一步，这次没有核对；原始家庭资料不上网；这项研究不能当作效果证明。",

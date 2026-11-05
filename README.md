@@ -24,7 +24,7 @@
 - `/institution` 机构服务：问题、工作面、七步闭环与服务形式
 - `/expert-and-research` 专业与研究：Expert OS、LRDF、书稿、Family Reality Lab
 - `/agent-space` Agent Space：协作通道与“连接不等于集成”
-- `/evidence` 证据与进展：14 条记录、41 条分层证据、状态定义
+- `/evidence` 证据与进展：14 条记录、42 条分层证据（公开可核 8 / 内部留档 32 / 待补 2）、状态定义
 - `/cooperation` 联系与合作：五类合作对象与本地简报生成器
 
 ## 源码与构建
