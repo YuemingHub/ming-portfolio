@@ -38,6 +38,7 @@ npm run build
 ```
 
 构建产物输出到 `site/dist/`，本仓库根目录保存的是可直接静态托管的构建结果。
+- 核对日期只定义一次：`site/src/site/content.ts` 的 `VERIFIED_AT`。改这个日期等于声明 14 条项目记录都在那天重新核对过；未重核不许改。
 
 部署约束：
 
