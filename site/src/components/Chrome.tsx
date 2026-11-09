@@ -41,25 +41,42 @@ export function SiteHeader() {
         </Link>
 
         <nav className="desktop-nav" aria-label="主导航">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={path === item.path ? "nav-link is-active" : "nav-link"}
-              aria-current={path === item.path ? "page" : undefined}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <a href={SITE.selfSpace} className="nav-link">
-            Self Space <span aria-hidden="true">↗</span>
-          </a>
+          {path === "/" ? (
+            <>
+              <Link to="/spaces" className="nav-link">我在做什么</Link>
+              <a href={SITE.selfSpace} className="nav-link">
+                Self Space <span aria-hidden="true">↗</span>
+              </a>
+            </>
+          ) : (
+            <>
+              {NAV_ITEMS.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={path === item.path ? "nav-link is-active" : "nav-link"}
+                  aria-current={path === item.path ? "page" : undefined}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <a href={SITE.selfSpace} className="nav-link">
+                Self Space <span aria-hidden="true">↗</span>
+              </a>
+            </>
+          )}
         </nav>
 
         <div className="header-actions">
-          <Link to="/cooperation" className="btn btn-primary btn-small header-cta">
-            了解合作
-          </Link>
+          {path === "/" ? (
+            <a href="https://ymai.love" className="btn btn-primary btn-small header-cta">
+              进入 Family Space
+            </a>
+          ) : (
+            <Link to="/cooperation" className="btn btn-primary btn-small header-cta">
+              了解合作
+            </Link>
+          )}
           <button
             type="button"
             className="menu-toggle"
@@ -103,6 +120,20 @@ export function SiteHeader() {
 }
 
 export function SiteFooter() {
+  const { path } = useLocation();
+
+  if (path === "/") {
+    return (
+      <footer className="site-footer facade-footer">
+        <div className="shell facade-footer-inner">
+          <span>YUE MING</span>
+          <span>家庭 · 自己 · 世界</span>
+          <a href="https://ymai.love" target="_blank" rel="noreferrer">进入 Family Space ↗</a>
+        </div>
+      </footer>
+    );
+  }
+
   return (
     <footer className="site-footer">
       <div className="shell footer-grid">
