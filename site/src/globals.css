@@ -5295,3 +5295,45 @@ body.menu-open {
     padding-block: 62px;
   }
 }
+
+
+.facade-footer {
+  background: #171714;
+  color: #aaa69b;
+}
+
+.facade-footer-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: 62px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.facade-footer-inner span:nth-child(2) {
+  color: #77746c;
+}
+
+.facade-footer-inner a {
+  margin-left: auto;
+  color: #e3a77f;
+}
+
+.facade-footer-inner a:hover {
+  color: #f3eee4;
+}
+
+@media (max-width: 520px) {
+  .facade-footer-inner {
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    padding-block: 15px;
+  }
+
+  .facade-footer-inner a {
+    width: 100%;
+    margin-left: 0;
+  }
+}
