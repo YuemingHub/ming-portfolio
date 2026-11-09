@@ -14,8 +14,8 @@ import { useLocation } from "@/site/router";
 
 const ROUTES: Record<string, { title: string; description: string; element: () => ReactNode }> = {
   "/": {
-    title: "让生命与世界更好地连接",
-    description: "YUE MING ECOSYSTEM 作品集：家庭、自己、世界三个生活空间，以及机构服务、专业判断、研究与 Agent Space 的真实状态、证据与限制。",
+    title: "把真实生活里的问题，做成可以继续的事。",
+    description: "月明的个人门户：从家庭和人的真实问题出发，借助 AI 与工具，把想法做成能使用、能验证的产品。",
     element: () => <HomePage />,
   },
   "/ecosystem": {
