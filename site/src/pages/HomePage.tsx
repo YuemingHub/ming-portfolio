@@ -4,7 +4,7 @@ import { assetUrl } from "@/site/base";
 
 export function HomePage() {
   return (
-    <main className="facade">
+    <div className="facade">
       <section className="facade-hero">
         <div className="shell facade-hero-grid">
           <div className="facade-copy">
@@ -84,6 +84,6 @@ export function HomePage() {
           <p>我相信，好的工具应该让人更靠近自己的生活，而不是更远。</p>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
