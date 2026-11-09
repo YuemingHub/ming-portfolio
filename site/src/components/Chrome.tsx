@@ -95,24 +95,43 @@ export function SiteHeader() {
 
       <div id={menuId} className={open ? "mobile-nav is-open" : "mobile-nav"} hidden={!open}>
         <nav aria-label="移动端主导航">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={path === item.path ? "mobile-nav-link is-active" : "mobile-nav-link"}
-            >
-              <span>{item.label}</span>
-              <span className="mobile-nav-en">{item.en}</span>
-            </Link>
-          ))}
-          <Link to="/cooperation" className="mobile-nav-link mobile-nav-cta">
-            <span>了解合作</span>
-            <span className="mobile-nav-en">COOPERATION</span>
-          </Link>
-          <a href={SITE.selfSpace} className="mobile-nav-link">
-            <span>Self Space</span>
-            <span className="mobile-nav-en">SELF SPACE ↗</span>
-          </a>
+          {path === "/" ? (
+            <>
+              <Link to="/spaces" className="mobile-nav-link">
+                <span>我在做什么</span>
+                <span className="mobile-nav-en">SPACES</span>
+              </Link>
+              <a href="https://ymai.love" className="mobile-nav-link">
+                <span>进入 Family Space</span>
+                <span className="mobile-nav-en">FAMILY SPACE ↗</span>
+              </a>
+              <a href={SITE.selfSpace} className="mobile-nav-link">
+                <span>进入 Self Space</span>
+                <span className="mobile-nav-en">SELF SPACE ↗</span>
+              </a>
+            </>
+          ) : (
+            <>
+              {NAV_ITEMS.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={path === item.path ? "mobile-nav-link is-active" : "mobile-nav-link"}
+                >
+                  <span>{item.label}</span>
+                  <span className="mobile-nav-en">{item.en}</span>
+                </Link>
+              ))}
+              <Link to="/cooperation" className="mobile-nav-link mobile-nav-cta">
+                <span>了解合作</span>
+                <span className="mobile-nav-en">COOPERATION</span>
+              </Link>
+              <a href={SITE.selfSpace} className="mobile-nav-link">
+                <span>Self Space</span>
+                <span className="mobile-nav-en">SELF SPACE ↗</span>
+              </a>
+            </>
+          )}
         </nav>
       </div>
     </header>
