@@ -1,319 +1,89 @@
-import { Atlas } from "@/components/Atlas";
-import { Arrow, ArrowLink, BrowserFrame, SectionHeading, StatusPill } from "@/components/Chrome";
+import { Arrow, Mark } from "@/components/Chrome";
 import { Link } from "@/site/router";
-import { CONTACT, PROJECT_COUNT, PROJECTS, STATUS_COUNTS, STATUS_ORDER } from "@/site/content";
-import type { Status } from "@/site/types";
-
-const SPACES = [
-  {
-    id: "family",
-    index: "01",
-    name: "Family Space",
-    cn: "家庭空间",
-    title: "家庭不只是被管理的对象，而是一个需要被理解、支持、共同成长的真实生活空间。",
-    body: "一家人每天真的发生的事，开心的、普通的、难一点的，都可以放进来。重要的事会被记住，理解错了也可以随时纠正。",
-    tags: ["今天", "我家", "回望", "我的"],
-    url: "https://ymai.love",
-    status: "LIVE_VERIFIED" as const,
-    visual: (
-      <BrowserFrame
-        src="/media/ymai-love.png"
-        alt="Family Space 公开首页实拍：深色暖调页面，标题为「这里，留给你们家。」"
-        url="ymai.love"
-        caption="公开首页实拍 · 2026-11-02 · 登录后页面不在本站展示"
-      />
-    ),
-  },
-  {
-    id: "self",
-    index: "02",
-    name: "Self Space",
-    cn: "自我空间",
-    title: "每个人都需要一个能够整理自己、理解经历、保存经验、持续认识自己的空间。",
-    body: "不是一个什么都能答的 AI，也不是心理咨询网站。你说，它回应；它把你说的话放回你面前，最后怎么解释，还是你说了算。",
-    tags: ["说出来", "留下", "回来"],
-    url: "https://ymai.me/gui/",
-    status: "LIVE_VERIFIED" as const,
-    visual: (
-      <BrowserFrame
-        src="/media/ymai-self.png"
-        alt="Self Space 公开首页实拍：深色页面，标题为「这里，留给你自己。」"
-        url="ymai.me/gui"
-        caption="公开首页实拍 · 2026-11-03 · 登录后页面不在本站展示"
-      />
-    ),
-  },
-  {
-    id: "world",
-    index: "03",
-    name: "World Space",
-    cn: "世界空间",
-    title: "让普通人和孩子有机会理解 AI，学习使用 AI，连接外部知识、工具与真实世界。",
-    body: "不要求从零创造工具。选一件你真想做的事，马上开始；每件事都替你选好了工具和第一步，照着做就行。",
-    tags: ["7 个目标", "三步上手", "现实结果"],
-    url: "https://ymai.fun",
-    status: "LIVE_VERIFIED" as const,
-    visual: (
-      <BrowserFrame
-        src="/media/ymai-fun.png"
-        alt="World Space 公开首页实拍：深色首屏，标题为「不懂技术，也能从 0 开始连接 AI 与世界」。"
-        url="ymai.fun"
-        caption="公开首页首屏实拍 · 2026-11-02 · 第三方工具可用性不由本站保证"
-      />
-    ),
-  },
-];
-
-const HIGHLIGHTS = ["family-space", "self-space", "world-space", "family-service-os", "expert-os"];
-
-const STATUS_NOTES: Record<Status, string> = {
-  LIVE_VERIFIED: "公开入口可访问",
-  CODE_ACCEPTED: "代码已验收，未上线",
-  PROTOTYPE: "可运行原型",
-  VALIDATION: "正在验证",
-  RESEARCH: "研究与写作中",
-  HOLD: "暂不发布",
-  PLANNED: "尚未实现",
-};
+import { assetUrl } from "@/site/base";
 
 export function HomePage() {
-  const counts = STATUS_COUNTS;
-  const inBuild = counts.CODE_ACCEPTED + counts.PROTOTYPE + counts.VALIDATION + counts.PLANNED;
-
   return (
-    <>
-      <section className="hero">
-        <div className="shell hero-grid">
-          <div className="hero-copy">
-            <p className="kicker">
-              <span>YUE MING ECOSYSTEM</span>
-              <span>体系可视化 · 2026.11</span>
-            </p>
-            <h1 className="hero-title">
-              让生命与世界
-              <br />
-              更好地连接<span className="title-dot">。</span>
+    <main className="facade">
+      <section className="facade-hero">
+        <div className="shell facade-hero-grid">
+          <div className="facade-copy">
+            <div className="facade-eyebrow">
+              <span className="facade-mark"><Mark /></span>
+              <span>YUE MING</span>
+              <span className="facade-eyebrow-muted">个人门户</span>
+            </div>
+
+            <p className="facade-kicker">从真实生活出发</p>
+            <h1 className="facade-title">
+              把真实生活里的问题，
+              <span className="facade-title-accent">做成可以继续的事。</span>
             </h1>
-            <p className="hero-lede">
-              从家庭、个人到世界，从专业经验到人工智能，我们正在建设一套让知识、技术、专业服务与真实生活相互连接的体系。
+            <p className="facade-statement">
+              我从家庭和人的真实问题出发，借助 AI 与工具，把想法做成能使用、能验证的产品。
             </p>
-            <div className="hero-actions">
-              <Link to="/ecosystem" className="btn btn-primary">
-                看懂整个体系 <Arrow />
+
+            <div className="facade-actions">
+              <a className="btn facade-primary" href="https://ymai.love" target="_blank" rel="noreferrer">
+                进入 Family Space <Arrow external />
+              </a>
+              <Link className="btn facade-secondary" to="/spaces">
+                看我在做什么 <Arrow />
               </Link>
-              <Link to="/evidence" className="btn btn-ghost">
-                查看项目状态与证据 <Arrow />
-              </Link>
             </div>
-            <p className="hero-note">
-              我们不希望再制造一个孤立的 AI 工具。我们希望把已经存在的知识、经验、技术、专业服务与真实需求连接起来，让它们在现实生活中发生作用，并根据真实反馈不断改进。
-            </p>
+
+            <p className="facade-signature">家庭 <i /> 自己 <i /> 世界</p>
           </div>
-          <div className="hero-atlas">
-            <Atlas />
+
+          <div className="facade-window-wrap">
+            <div className="facade-window-note">现在，先从一个家开始。</div>
+            <figure className="facade-window">
+              <div className="facade-window-bar">
+                <span className="facade-window-dots"><i /><i /><i /></span>
+                <span>ymai.love</span>
+                <span className="facade-window-type">FAMILY SPACE</span>
+              </div>
+              <div className="facade-window-image">
+                <img
+                  src={assetUrl("/media/ymai-love.png")}
+                  alt="Family Space 公开首页：这里，留给你们家。"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+              <figcaption>一个给家人留下真实生活的地方。</figcaption>
+            </figure>
+            <span className="facade-window-stamp">01 / 03</span>
           </div>
         </div>
-        <div className="shell hero-facts">
-          <span><b>{PROJECT_COUNT}</b> 条项目记录</span>
-          <span><b>{counts.LIVE_VERIFIED}</b> 个公开入口已确认能打开</span>
-          <span><b>{inBuild}</b> 项在建设、验证或规划</span>
-          <span><b>{counts.RESEARCH}</b> 项研究资产</span>
-          <span className="hero-facts-note">项目状态核对：2026-11-02</span>
+
+        <div className="shell facade-hero-bottom">
+          <span>YUE MING ECOSYSTEM</span>
+          <span className="facade-hero-rule" />
+          <span>向下了解更多 <span aria-hidden="true">↓</span></span>
         </div>
       </section>
 
-      <section className="section section-why">
+      <section className="facade-bridge">
+        <div className="shell facade-bridge-grid">
+          <p className="facade-bridge-label">如果你想继续了解</p>
+          <div className="facade-bridge-copy">
+            <h2>这里不急着把一切都讲完。</h2>
+            <p>先看三个入口，再决定要不要走得更深。</p>
+          </div>
+          <div className="facade-bridge-links">
+            <Link to="/spaces">家庭 / 自己 / 世界 <Arrow /></Link>
+            <a href="https://ymai.me/gui/" target="_blank" rel="noreferrer">进入 Self Space <Arrow external /></a>
+            <Link to="/cooperation">联系与合作 <Arrow /></Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="facade-note">
         <div className="shell">
-          <SectionHeading
-            index="01"
-            kicker="WHY THIS EXISTS"
-            title={<>世界已经拥有很多知识和技术，<br className="wide-break" />但它们还没有真正进入每个人的生活。</>}
-          />
-          <div className="why-grid">
-            <div className="why-copy">
-              <p>家庭遇到问题时，往往不知道如何理解和行动。</p>
-              <p>专业工作者拥有经验，却很难把经验稳定地传递给其他人。</p>
-              <p>家庭教育机构积累了课程、导师和咨询经验，却不一定拥有能够持续运行的服务体系。</p>
-              <p>普通人面对越来越多的 AI 工具，也不一定知道如何把它们转化为自己的能力。</p>
-            </div>
-            <div className="why-note">
-              <p className="note-kicker">我们真正要解决的</p>
-              <p className="note-large">不是单一工具问题，而是人与知识、技术、专业服务和现实资源之间的连接问题。</p>
-              <div className="note-lines">
-                <span>不是再造一个聊天窗口</span>
-                <span>不是把所有产品合并成一个系统</span>
-                <span>不是把概念关系画成已实现的数据流</span>
-              </div>
-            </div>
-          </div>
+          <p>我相信，好的工具应该让人更靠近自己的生活，而不是更远。</p>
         </div>
       </section>
-
-      <section className="section section-spaces">
-        <div className="shell">
-          <SectionHeading
-            index="02"
-            kicker="THREE LIFE SPACES"
-            title={<>从三个不同的生活空间出发。</>}
-            lede="它们不是三个孤立的 AI 聊天窗口，而是面向不同生活场景的入口。三个空间目前各自独立，没有统一登录、共享数据或共享记忆。"
-          />
-          <div className="space-cards">
-            {SPACES.map((space) => (
-              <article className={`space-card space-card-${space.id}`} key={space.id}>
-                <div className="space-card-head">
-                  <span className="space-index">{space.index}</span>
-                  <StatusPill status={space.status} compact />
-                </div>
-                <div className="space-visual">{space.visual}</div>
-                <div className="space-body">
-                  <p className="space-name">{space.name} <span>{space.cn}</span></p>
-                  <h3>{space.title}</h3>
-                  <p>{space.body}</p>
-                  <ul className="tag-list" aria-label={`${space.name} 关键入口`}>
-                    {space.tags.map((tag) => <li key={tag}>{tag}</li>)}
-                  </ul>
-                  <div className="space-links">
-                    <ArrowLink to={`/spaces#${space.id}`}>看它如何工作</ArrowLink>
-                    <ArrowLink to={space.url} external>打开实时页面</ArrowLink>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-professional">
-        <div className="shell">
-          <SectionHeading
-            index="03"
-            kicker="PROFESSIONAL SYSTEMS"
-            title={<>让专业经验，<br />不再只停留在某一个人的头脑里。</>}
-            lede="一套面向机构，一套面向专业工作者。两者都还在建设或验证阶段。"
-          />
-          <div className="system-rows">
-            <article className="system-row">
-              <div className="system-row-title">
-                <span className="system-index">B / 01</span>
-                <h3>Family Service OS</h3>
-                <p>面向机构 · 服务管理系统</p>
-              </div>
-              <div className="system-row-body">
-                <p>让机构的咨询、课程、导师协作、家庭跟进和服务复盘串成一条能一直走下去的服务。V0 只做三块：咨询师的家庭工作台、主管看今天谁需要介入、经营者看整体服务状况。</p>
-                <ul className="inline-facts">
-                  <li>用模拟数据跑通</li>
-                  <li>还没上线</li>
-                  <li>真实数据还没接</li>
-                </ul>
-              </div>
-              <div className="system-row-aside">
-                <StatusPill status="CODE_ACCEPTED" />
-                <ArrowLink to="/institution">看机构服务</ArrowLink>
-              </div>
-            </article>
-
-            <article className="system-row">
-              <div className="system-row-title">
-                <span className="system-index">B / 02</span>
-                <h3>Yueming Expert OS</h3>
-                <p>面向专业工作者 · 判断辅助系统</p>
-              </div>
-              <div className="system-row-body">
-                <p>将专业知识、经验和判断方法转化为可检查、可修正的辅助能力。它辅助专业工作者，而不是替代专业责任；安全、别人能不能重复、同行能不能上手，这几件事还在验证。</p>
-                <ul className="inline-facts">
-                  <li>15 类场景库</li>
-                  <li>F01–F05 五项检查</li>
-                  <li>仍有未关闭问题</li>
-                </ul>
-              </div>
-              <div className="system-row-aside">
-                <StatusPill status="VALIDATION" />
-                <ArrowLink to="/expert-and-research#expert-os">看专业与研究</ArrowLink>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-agent">
-        <div className="shell agent-band">
-          <div className="agent-band-copy">
-            <p className="section-kicker"><span className="section-index">04</span>AGENT SPACE</p>
-            <h2>不只是使用 AI，<br />而是让 AI 与人的真实目标持续发生作用。</h2>
-            <p>不要求每个人成为技术专家，也不要求每个人从零创造工具。让人能够借用已有的 AI、技术、知识、工具与资源，围绕自己的真实目标进行连接、协作和创造。</p>
-            <ArrowLink to="/agent-space" className="on-dark">了解 Agent Space</ArrowLink>
-          </div>
-          <div className="agent-chain" aria-label="Agent Space 连接通道">
-            {["人", "AI", "工具", "知识", "技术", "现实资源", "世界变化"].map((word, index) => (
-              <span key={word} className="agent-chain-item">
-                {word}
-                {index < 6 && <i aria-hidden="true">↔</i>}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-progress">
-        <div className="shell">
-          <SectionHeading
-            index="05"
-            kicker="REAL PROGRESS"
-            title={<>已经做出的，和仍在验证的。</>}
-            lede="每一项都对应证据页里的一条记录：面向谁、已经完成什么、现在处于哪一步、哪天核对、还有什么限制。"
-          />
-          <div className="progress-grid">
-            {STATUS_ORDER.map((status) => (
-              <div className="progress-stat" key={status}>
-                <span className={`stat-dot dot-${status.toLowerCase()}`} aria-hidden="true" />
-                <b>{counts[status]}</b>
-                <span>{status}</span>
-                <small>{STATUS_NOTES[status]}</small>
-              </div>
-            ))}
-          </div>
-          <p className="progress-total">
-            合计 {PROJECT_COUNT} 条项目记录；每条只算一个状态，不重复相加。
-          </p>
-          <div className="highlight-list">
-            {HIGHLIGHTS.map((id) => {
-              const project = PROJECTS.find((item) => item.id === id);
-              if (!project) return null;
-              return (
-                <article className="highlight-row" key={project.id}>
-                  <div>
-                    <p className="highlight-name">{project.name}</p>
-                    <p className="highlight-en">{project.en}</p>
-                  </div>
-                  <p className="highlight-capability">{project.capability}</p>
-                  <StatusPill status={project.status} compact />
-                  <ArrowLink to="/evidence">证据</ArrowLink>
-                </article>
-              );
-            })}
-          </div>
-          <div className="section-foot">
-            <ArrowLink to="/evidence">查看完整项目状态表与证据清单</ArrowLink>
-            <span>公开页能打开，不代表登录后的功能也都验证过。</span>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-cooperation">
-        <div className="shell">
-          <div className="cooperation-panel">
-            <div>
-              <p className="section-kicker"><span className="section-index">06</span>COOPERATION</p>
-              <h2>如果你也在解决真实问题，<br />我们可以一起把事情做出来。</h2>
-              <p>家庭教育机构、专业工作者、技术伙伴、研究伙伴、资源与投资伙伴。合作从具体问题和小范围试点开始，而不是先承诺宏大的结果。</p>
-            </div>
-            <div className="cooperation-actions">
-              <Link to="/cooperation" className="btn btn-primary">联系与合作 <Arrow /></Link>
-              <span>公开联系通道：抖音、公众号与<a href={`mailto:${CONTACT.email}`}>邮箱 {CONTACT.email}</a></span>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+    </main>
   );
 }
