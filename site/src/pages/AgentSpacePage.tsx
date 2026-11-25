@@ -1,5 +1,5 @@
-import { ArrowLink, PageHeader, SectionHeading } from "@/components/Chrome";
-import { AGENT_CAPABILITIES, AGENT_CASES } from "@/site/content";
+import { ArrowLink, PageHeader, SectionHeading, StatusPill } from "@/components/Chrome";
+import { AGENT_CAPABILITIES, AGENT_CASES, AGENT_CONNECTED_PROJECTS } from "@/site/content";
 
 const CHANNEL = [
   { label: "人", note: "真实目标与限制" },
@@ -91,10 +91,37 @@ export function AgentSpacePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section section-connected">
         <div className="shell">
           <SectionHeading
             index="03"
+            kicker="CONNECTED PROJECTS"
+            id="connected-projects"
+            title={<>先接入，再验证。</>}
+            lede="MKI 与 ShengLuo 已经进入 Agent Space 的发现与调用约定，但「登记了」不等于「公众已经能用」。公开状态以证据页的逐项核对为准。"
+          />
+          <div className="connected-grid">
+            {AGENT_CONNECTED_PROJECTS.map((item, index) => (
+              <article className="connected-card" key={item.title}>
+                <div className="connected-card-head">
+                  <span>{String(index + 1).padStart(2, "0")} / {item.code}</span>
+                  <StatusPill status="VALIDATION" compact />
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+                <p className="connected-note">{item.note}</p>
+                <ArrowLink to={item.evidence}>查看证据与限制</ArrowLink>
+              </article>
+            ))}
+          </div>
+          <p className="connected-boundary">接入只说明找到了真源、调用方式与失败时的退路；它不证明授权读取、真实采用、公开安装或生产可用。</p>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="shell">
+          <SectionHeading
+            index="04"
             kicker="TARGET CAPABILITIES"
             title={<>八项能力，逐项标出做到哪里。</>}
             lede="「已实践」表示在至少一个真实项目里跑过；「部分实践」表示有做法和局部经验，但还没有变成能重复使用的做法。两者都不等于产品能力已经完成。"
@@ -124,7 +151,7 @@ export function AgentSpacePage() {
       <section className="section section-cases">
         <div className="shell">
           <SectionHeading
-            index="04"
+            index="05"
             kicker="REAL CASES"
             title={<>四个真实案例，<br />每个都从一次失败或断点开始。</>}
             lede="以下案例都来自真实项目里发生过的事。它们记录问题、借用了什么、在哪里失败、怎么改的，以及最后交出了什么；不把「参与了」写成「做成了」。"
@@ -156,7 +183,7 @@ export function AgentSpacePage() {
         <div className="shell">
           <div className="goal-panel">
             <div>
-              <p className="section-kicker"><span className="section-index">05</span>LONG-TERM GOAL</p>
+              <p className="section-kicker"><span className="section-index">06</span>LONG-TERM GOAL</p>
               <h2>让一个人不必成为技术专家，<br />也能把世界上的能力变成自己的下一步。</h2>
               <p>这不是一个关于「AI 多强」的目标，而是一个关于连接是否真的发生、结果是否真的出现、经验是否真的能被别人接过去的目标。</p>
             </div>
