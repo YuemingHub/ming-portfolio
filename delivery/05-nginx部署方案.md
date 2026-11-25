@@ -476,3 +476,35 @@ nginx 配置未改、未 reload、未 restart；Self Space `/gui/`、`/ming` 跳
 - 不删除 `20261125-mki-shengluo`、`20261104-copy-1715` 与任何更早 release。
 
 详见 [`06-回滚方案`](06-回滚方案.md) §16。
+
+## 17. MKI 与 ShengLuo 体系图补全发布（2026-11-25）
+
+### 17.1 变更范围
+
+上一轮补了项目卡与证据表，但没有补体系总览图，导致首页缩略图仍只显示 10 个节点。本轮把完整关系图、首页缩略图、手机索引与说明统一到同一份节点数据：
+
+- 节点 10→12，新增 MKI 与 ShengLuo · dsh；区域仍为 5 个；
+- 关系 8→10，新增 MKI、ShengLuo 与 Agent Space 的已登记边界说明；
+- 两个节点均为 `VALIDATION`，未把登记、健康检查或工具发现写成真实采用；
+- 首页缩略图改用完整图的节点清单，避免圆点增加而名称漏列；
+- 只替换静态内容与构建产物；nginx 配置未改，未 reload、未 restart，未改后端、Self Space、私有源码或发行仓。
+
+### 17.2 发布与验证
+
+| 项目 | 读数 |
+| --- | --- |
+| 提交 | PR #7 合并提交 `6d2efc83c45c33bdc55ddd157fa052764afc6a11`；CI run `45612880615` 三项检查全部通过，Playwright `101 passed` / `24 skipped` |
+| 发布 | `20261125-ecosystem-2023`；12 个静态文件逐个 sha256 与固定提交产物一致 |
+| 生产产物 | 根 `index.html` 2619B / `2ce5c6380cd3`；JS `index-BngULNWq.js` / `b698d4d40a16`；CSS `index-BweI_pIM.css` |
+| 路由回归 | 公网 `verify-root.mjs post` 34/34；根路径字节与预期发布产物一致 |
+| 浏览器回归 | 公网 `render-check` 9/9；专用检查确认桌面与手机均为 12 节点、10 关系，两个新节点可见、可点击、状态和限制文案正确，手机 390 无横向溢出 |
+| Self Space | `/gui/` 21361B / `564a76ed4b5c`、`/gui/space/` 11117B / `3fd6452c65a4`，与部署前基线一致；真实浏览器渲染正常 |
+| 健康检查 | `/health` 241B / `18368bb5ebd1`，与部署前基线一致 |
+| 发布动作 | 仅原子切换 `current`；未 reload、未 restart，未删除旧 release |
+
+### 17.3 回滚点
+
+- 内容：把 `current` 切回 `20261125-mki-shengluo`；不需要 reload nginx。
+- 不删除 `20261125-ecosystem-2023`、`20261125-mki-shengluo` 与任何更早 release。
+
+详见 [`06-回滚方案`](06-回滚方案.md) §17。
