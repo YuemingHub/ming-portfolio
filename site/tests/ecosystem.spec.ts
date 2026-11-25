@@ -5,6 +5,7 @@ test("体系图包含 MKI 与 dsh ShengLuo，并保留验证边界", async ({ pa
 
   await expect(page.locator(".map-node")).toHaveCount(12);
   await expect(page.locator(".map-edge-list > p")).toHaveCount(10);
+  await expect(page.locator(".edge-group").nth(7).locator("path")).toHaveAttribute("d", "M770 610 C820 610 820 430 860 410");
   await expect(page.locator(".zone-role")).toHaveCount(5);
   await expect(page.locator(".page-meta")).toContainText("12 个节点");
   await expect(page.locator(".page-meta")).toContainText("10 条关系");
@@ -49,4 +50,14 @@ test("体系图包含 MKI 与 dsh ShengLuo，并保留验证边界", async ({ pa
   expect(layout.overlaps).toEqual([]);
 
   await page.locator(".map-layout").screenshot({ path: testInfo.outputPath("ecosystem-mki-shengluo.png") });
+});
+
+test("首页缩略体系图与完整关系图使用同一份节点清单", async ({ page }) => {
+  await page.goto("/ming/", { waitUntil: "networkidle" });
+  await expect(page.locator(".atlas-row")).toHaveCount(5);
+  await expect(page.locator(".atlas-dots i")).toHaveCount(12);
+  await expect(page.locator(".atlas-row").filter({ hasText: "研究与知识" })).toContainText("MKI");
+  await expect(page.locator(".atlas-row").filter({ hasText: "研究与知识" }).locator(".atlas-dots i")).toHaveCount(4);
+  await expect(page.locator(".atlas-row").filter({ hasText: "连接与执行" })).toContainText("ShengLuo · dsh");
+  await expect(page.locator(".atlas-row").filter({ hasText: "连接与执行" }).locator(".atlas-dots i")).toHaveCount(2);
 });
