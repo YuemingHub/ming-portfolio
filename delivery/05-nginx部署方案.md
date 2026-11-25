@@ -445,3 +445,34 @@ nginx 配置未改、未 reload、未 restart；Self Space `/gui/`、`/ming` 跳
 - 不删除 `20261104-copy-1715` 与任何更早 release。
 
 详见 [`06-回滚方案`](06-回滚方案.md) §15。
+
+## 16. MKI 与 ShengLuo 公开入口发布（2026-11-25）
+
+### 16.1 变更范围
+
+只替换作品集静态内容与构建产物，nginx 配置未改、未 reload、未 restart：
+
+- 在现有 Agent Space 页新增 MKI、ShengLuo 项目卡，均标为 `VALIDATION`；
+- 在现有证据页登记两个项目，项目记录 14→16、分层证据 41→47；
+- 明确 MKI 尚未完成授权真实读取、ShengLuo 当前源码分支尚未推送等限制；
+- 不新增路由，不改 Self Space、后端、DNS、证书或任何私有源码。
+
+### 16.2 发布与验证
+
+| 项目 | 读数 |
+| --- | --- |
+| 提交 | PR #5 合并提交 `0600dbf7ea89079601c124a6562a925b105a412f`；CI run `45588511109` 三项检查全部通过 |
+| 发布 | `20261125-mki-shengluo`，`current` 原子切换；12 个静态文件逐个 sha256 与固定提交产物一致 |
+| 生产产物 | 根 `index.html` 2619B / `f2dea4214143`；JS `index-DjBKKYZd.js`；CSS `index-BweI_pIM.css` |
+| 路由回归 | `verify-root.mjs post` 34/34；根路径字节与预期发布产物一致 |
+| 浏览器回归 | `render-check` 9/9；新增公网旅程验证卡片、状态、证据跳转、16 条记录、47 条分层证据与手机布局通过 |
+| Self Space | `/gui/` 21361B / `564a76ed4b5c`、`/gui/space/` 11117B / `3fd6452c65a4`，与部署前基线一致；真实浏览器渲染正常 |
+| 健康检查 | `/health` 241B / `18368bb5ebd1`，与部署前基线一致 |
+| 发布动作 | 仅原子切换 `current`；未 reload、未 restart，未删除旧 release |
+
+### 16.3 回滚点
+
+- 内容：把 `current` 切回 `20261104-copy-1715`；不需要 reload nginx。
+- 不删除 `20261125-mki-shengluo`、`20261104-copy-1715` 与任何更早 release。
+
+详见 [`06-回滚方案`](06-回滚方案.md) §16。
