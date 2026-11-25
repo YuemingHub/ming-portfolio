@@ -2,7 +2,7 @@
 
 本目录只放**可执行、可参数化**的验证脚本；真实服务器路径、账号、备份目录属于运维内部信息，不进入公开仓库。
 
-> 当前状态：`DEPLOYED / PUBLIC_RENDER_VERIFIED`（2026-11-25 内容更新）。作品集位于 `https://ymai.me/` 根路径；`/ming/*` 301 到根路径；Self Space 位于其构建原生的 `https://ymai.me/gui/`。本次公开渲染验证通过，不等于 MKI 已完成真实采用或 ShengLuo 当前版本已公开可用。以下命令只用于已授权的发布。
+> 当前状态：`DEPLOYED / PUBLIC_RENDER_VERIFIED`（2026-11-25 体系图更新）。作品集位于 `https://ymai.me/` 根路径；`/ming/*` 301 到根路径；Self Space 位于其构建原生的 `https://ymai.me/gui/`。本次公开渲染验证通过，不等于 MKI 已完成真实采用或 ShengLuo 当前版本已公开可用。本轮仅原子切换静态内容，nginx 配置未改，未 reload、未 restart。以下命令只用于已授权的发布。
 
 ## 1. 边界
 
