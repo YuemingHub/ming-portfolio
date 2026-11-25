@@ -36,8 +36,8 @@ test("旅程 2 · 技术评估者：核对体系关系与验证中状态", async
 
   await page.goto("/ming/evidence", { waitUntil: "networkidle" });
   await page.getByRole("button", { name: /^VALIDATION/ }).click();
-  await expect(page.locator(".filter-result")).toHaveText("显示 3 / 14 条记录");
-  await expect(page.locator(".evidence-table tbody tr")).toHaveCount(3);
+  await expect(page.locator(".filter-result")).toHaveText("显示 5 / 16 条记录");
+  await expect(page.locator(".evidence-table tbody tr")).toHaveCount(5);
   await expect(page.getByRole("button", { name: /^HOLD 0$/ })).toBeVisible();
 
   await page.screenshot({ path: testInfo.outputPath("journey-2-technical.png"), fullPage: false });
@@ -66,8 +66,39 @@ test("旅程 4 · 研究/写作者：从专业页进入研究资产与证据", a
 
   await page.goto("/ming/evidence", { waitUntil: "networkidle" });
   await page.getByRole("button", { name: /^RESEARCH/ }).click();
-  await expect(page.locator(".filter-result")).toHaveText("显示 3 / 14 条记录");
+  await expect(page.locator(".filter-result")).toHaveText("显示 3 / 16 条记录");
   await expect(page.locator(".evidence-table tbody tr")).toHaveCount(3);
 
   await page.screenshot({ path: testInfo.outputPath("journey-4-research.png"), fullPage: false });
+});
+
+test("旅程 5 · 技术评估者：核对 MKI 与 ShengLuo 的接入边界", async ({ page }, testInfo) => {
+  await page.goto("/ming/agent-space#connected-projects", { waitUntil: "networkidle" });
+  await expect(page.getByRole("heading", { name: "先接入，再验证。" })).toBeVisible();
+  await expect(page.locator(".connected-card")).toHaveCount(2);
+  await expect(page.locator(".connected-card").nth(0)).toContainText("真实知识读取与公众可用性仍未验证");
+  await expect(page.locator(".connected-card").nth(1)).toContainText("公开安装不等于当前版本已验证");
+  await expect(page.locator(".connected-card .status-en")).toHaveText(["VALIDATION", "VALIDATION"]);
+  await page.locator("#connected-projects").scrollIntoViewIfNeeded();
+  await page.screenshot({ path: testInfo.outputPath("journey-5-connected-projects.png"), fullPage: false });
+
+  await page.locator(".connected-card").nth(0).getByRole("link", { name: "查看证据与限制" }).click();
+  await expect(page).toHaveURL(/\/ming\/evidence#project-mki$/);
+  await expect(page.locator(".evidence-layer > b")).toHaveText(["9", "35", "3"]);
+  const mki = page.locator("#project-mki");
+  await expect(mki).toContainText("MKI");
+  await expect(mki).toContainText("不能宣称公众可用或已被真实采用");
+  await expect(mki.getByText("VALIDATION", { exact: true })).toBeVisible();
+  await expect(mki.getByRole("link", { name: /MKI 源码仓/ })).toHaveAttribute(
+    "href",
+    "https://github.com/YuemingHub/MKI-Ming-Knowledge-Intelligence",
+  );
+
+  const shengluo = page.locator("#project-shengluo");
+  await expect(shengluo).toContainText("发行仓，不是开发真源");
+  await expect(shengluo.getByText("VALIDATION", { exact: true })).toBeVisible();
+  await expect(shengluo.getByRole("link", { name: "dsh-shengluo 公开发行仓" })).toHaveAttribute(
+    "href",
+    "https://github.com/YuemingHub/dsh-shengluo",
+  );
 });

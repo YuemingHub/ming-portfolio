@@ -40,7 +40,7 @@ export function EvidencePage() {
         kicker="EVIDENCE & PROGRESS · 证据与进展"
         title={<>做到哪里，<br />就写到哪里。</>}
         lede="这一页把每个项目放回同一把尺子上：面向谁、已经有什么、现在到哪一步、证据在哪里、哪天核对、还有什么不能说。状态不是排名，而是说明限制。"
-        meta={[`${PROJECTS.length} 条项目记录`, "7 种状态", "项目状态核对日期 2026-11-02", "公开版本不含私有链接"]}
+        meta={[`${PROJECTS.length} 条项目记录`, "7 种状态", "各项目核对日期见表", "公开版本不含私有链接"]}
       />
 
       <section className="section section-status">
@@ -143,7 +143,7 @@ export function EvidencePage() {
               </thead>
               <tbody>
                 {visible.map((project) => (
-                  <tr key={project.id}>
+                  <tr key={project.id} id={`project-${project.id}`}>
                     <th scope="row">
                       <span className="evidence-name">{project.name}</span>
                       {project.en && <small>{project.en}</small>}

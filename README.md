@@ -18,13 +18,13 @@
 
 ## 页面
 
-- `/` 首页：体系主张、14 条项目记录、七种状态与体系图
+- `/` 首页：体系主张、16 条项目记录、七种状态与体系图
 - `/ecosystem` 体系总览：5 个区、10 个节点、8 条关系
 - `/spaces` 三个空间：Family / Self / World 的公开入口与边界
 - `/institution` 机构服务：问题、工作面、七步闭环与服务形式
 - `/expert-and-research` 专业与研究：Expert OS、LRDF、书稿、Family Reality Lab
 - `/agent-space` Agent Space：协作通道与“连接不等于集成”
-- `/evidence` 证据与进展：14 条记录、41 条分层证据、状态定义
+- `/evidence` 证据与进展：16 条记录、47 条分层证据、状态定义
 - `/cooperation` 联系与合作：五类合作对象与本地简报生成器
 
 ## 源码与构建

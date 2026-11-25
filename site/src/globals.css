@@ -3304,6 +3304,64 @@ body.menu-open {
   color: var(--ink-soft);
 }
 
+.connected-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.connected-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  min-height: 300px;
+  padding: 24px;
+  border: 1px solid var(--rule);
+  background: var(--paper-3);
+}
+
+.connected-card-head {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.connected-card h3 {
+  font-size: 23px;
+}
+
+.connected-card > p {
+  font-size: 12.5px;
+  line-height: 1.8;
+  color: var(--ink-soft);
+}
+
+.connected-card .connected-note {
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-faint);
+}
+
+.connected-card .text-link {
+  margin-top: auto;
+}
+
+.connected-boundary {
+  margin-top: 18px;
+  padding-left: 14px;
+  border-left: 2px solid var(--accent);
+  font-size: 11.5px;
+  line-height: 1.8;
+  color: var(--ink-soft);
+}
+
 .channel {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -4118,6 +4176,14 @@ body.menu-open {
 
   .channel {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .connected-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .connected-card {
+    min-height: 0;
   }
 
   .channel-step i {

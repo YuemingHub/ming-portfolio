@@ -4,12 +4,12 @@ export const SITE = {
   name: "YUE MING ECOSYSTEM",
   title: "让生命与世界更好地连接",
   version: "2026.11",
-  verifiedAt: "2026-11-02",
+  verifiedAt: "逐项目见表",
   canonical: "https://ymai.me/",
   selfSpace: "https://ymai.me/gui/",
   legacy: "https://ymai.fun/ming/",
   backup: "https://yueminghub.github.io/ming-portfolio/",
-  note: "项目状态以 2026-11-02 核对过的公开页面和仓库记录为准。没有标 LIVE_VERIFIED 的能力，不当作已经上线。",
+  note: "项目状态以每条记录标注的核对日期为准。没有标 LIVE_VERIFIED 的能力，不当作已经上线。",
 };
 
 export const CONTACT = {
@@ -256,6 +256,39 @@ export const PROJECTS: Project[] = [
     verified: "2026-11-02",
     limits: "它不是一个能交付的软件产品，也不是运行平台；这些能力大多还是工作方法和协作习惯，还没有做成产品。",
     route: "/agent-space",
+  },
+  {
+    id: "mki",
+    name: "MKI",
+    en: "Ming Knowledge Intelligence · 知识 refinery",
+    audience: "知识工作者、Agent 与协作者",
+    capability: "把知识整理成可检索、可追溯、可带出处与适用边界的使用单元；Agent Space 已登记它的恢复、调用和不可用降级方式。",
+    status: "VALIDATION",
+    evidence: [
+      { label: "源码、恢复与调用契约：内部接入登记", kind: "private-doc" },
+      { label: "本地健康检查与工具发现：已观察", kind: "private-doc" },
+      { label: "MKI 源码仓：公开访问待核实", kind: "pending", href: "https://github.com/YuemingHub/MKI-Ming-Knowledge-Intelligence" },
+    ],
+    verified: "2026-11-25",
+    limits: "已观察到本地健康检查和工具发现，但没有完成获授权的真实知识读取；公开仓库当前不可访问，不能宣称公众可用或已被真实采用。",
+    route: "/agent-space#connected-projects",
+  },
+  {
+    id: "shengluo",
+    name: "ShengLuo",
+    en: "DeepSeek Harness 插件与源码",
+    audience: "使用 DeepSeek Harness 的开发者",
+    capability: "把 DSH 的原生会话、任务与定时能力组织成可接入 Agent Space 的插件；源码、发行产物与公开作品集保持分开。",
+    status: "VALIDATION",
+    evidence: [
+      { label: "私有源码与本地产品分支：已核对", kind: "private-doc" },
+      { label: "dsh-shengluo 公开发行仓", kind: "public", href: "https://github.com/YuemingHub/dsh-shengluo" },
+      { label: "ShengLuo 源码仓：访问受限", kind: "pending", href: "https://github.com/YuemingHub/ShengLuo" },
+      { label: "当前分支已推送且远端可恢复：待核实", kind: "pending" },
+    ],
+    verified: "2026-11-25",
+    limits: "dsh-shengluo 是发行仓，不是开发真源；本地当前分支尚未推送，公开源码与发布说明也不可访问。不能据此宣称公众可安装当前版本。",
+    route: "/agent-space#connected-projects",
   },
   {
     id: "mingos-protocol",
@@ -576,6 +609,23 @@ export const AGENT_CAPABILITIES = [
   { name: "根据现实变化调整", state: "partial", note: "改错了会退回上一版，但每次调整还是看具体项目，没有统一的做法。" },
 ];
 
+export const AGENT_CONNECTED_PROJECTS = [
+  {
+    code: "KNOWLEDGE / READ-ONLY",
+    title: "MKI · 知识 refinery",
+    body: "把知识整理成可检索、可追溯、能说明出处与适用边界的使用单元，供人和 Agent 在有授权时借用。",
+    note: "已接入发现与调用约定；只完成本地健康检查和工具发现，真实知识读取与公众可用性仍未验证。",
+    evidence: "/evidence#project-mki",
+  },
+  {
+    code: "DSH / SOURCE & RELEASE",
+    title: "ShengLuo · Harness 插件",
+    body: "把 DeepSeek Harness 的原生能力组织成插件，同时保留源码、发行产物与公开作品集之间的边界。",
+    note: "本地源码分支尚未推送；dsh-shengluo 是发行仓，不是当前开发真源，公开安装不等于当前版本已验证。",
+    evidence: "/evidence#project-shengluo",
+  },
+];
+
 export const AGENT_CASES = [
   {
     index: "01",
@@ -689,4 +739,4 @@ export const EVIDENCE_LAYERS = [
 ] as const;
 
 export const MAP_AGGREGATION_NOTE =
-  "体系图按区域展示 10 个节点；证据页按项目列出 14 条记录，有些项目在图上合并成了一个节点。";
+  "体系图按区域展示 10 个节点；证据页按项目列出 16 条记录，有些项目在图上合并成了一个节点。";
