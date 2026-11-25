@@ -14,15 +14,17 @@ const BOXES: Record<string, Box> = {
   lrdf: { x: 460, y: 100, w: 310, h: 58 },
   lab: { x: 460, y: 188, w: 310, h: 58 },
   book: { x: 460, y: 276, w: 310, h: 58 },
-  agent: { x: 860, y: 294, w: 270, h: 118 },
+  mki: { x: 460, y: 360, w: 310, h: 66 },
+  agent: { x: 860, y: 294, w: 270, h: 100 },
+  shengluo: { x: 860, y: 430, w: 270, h: 78 },
   mingos: { x: 460, y: 575, w: 310, h: 120 },
 };
 
 const ZONE_BOXES: Record<string, Box> = {
   life: { x: 32, y: 44, w: 360, h: 280 },
   service: { x: 32, y: 400, w: 360, h: 270 },
-  knowledge: { x: 440, y: 44, w: 350, h: 326 },
-  execution: { x: 840, y: 230, w: 310, h: 220 },
+  knowledge: { x: 440, y: 44, w: 350, h: 410 },
+  execution: { x: 840, y: 230, w: 310, h: 310 },
   technology: { x: 440, y: 520, w: 350, h: 210 },
 };
 
@@ -74,10 +76,24 @@ const EDGES = [
   {
     number: "08",
     kind: "dotted",
-    d: "M600 520 C600 470 565 450 560 430",
+    d: "M770 610 C820 610 820 430 860 410",
     label: "MingOS v0.1 → Agent Space：未来可能的连接方向（未实现）",
   },
+  {
+    number: "09",
+    kind: "dashed",
+    d: "M770 390 C820 390 820 340 860 340",
+    label: "MKI ↔ Agent Space：发现与调用约定已登记，获授权的真实知识读取还没有验证",
+  },
+  {
+    number: "10",
+    kind: "dashed",
+    d: "M1130 448 C1100 448 1100 410 1130 394",
+    label: "ShengLuo ↔ Agent Space：DSH 插件接入边界已登记，发行仓不是开发真源，当前版本公开可用未验证",
+  },
 ];
+
+export const MAP_RELATION_COUNT = EDGES.length;
 
 function nodeLabel(node: MapNode) {
   return `${node.name}，${node.en}`;
@@ -112,7 +128,7 @@ export function EcosystemMap() {
       <p className="map-aggregation-note">{MAP_AGGREGATION_NOTE}</p>
 
       <div className="map-layout">
-        <div className="map-canvas" role="group" aria-label="体系关系图。点击任一系统查看说明。">
+        <div className="map-canvas" role="group" aria-label={`体系关系图，${MAP_NODES.length} 个节点、${MAP_RELATION_COUNT} 条关系。点击任一系统查看说明。`}>
           <svg className="map-svg" viewBox="0 0 1180 780" aria-hidden="true" focusable="false">
             {MAP_ZONES.map((zone) => {
               const box = ZONE_BOXES[zone.id];
@@ -154,7 +170,9 @@ export function EcosystemMap() {
                 [822, 262, "05"],
                 [708, 490, "06"],
                 [700, 88, "07"],
-                [600, 475, "08"],
+                [815, 500, "08"],
+                [818, 350, "09"],
+                [1110, 423, "10"],
               ].map(([x, y, label]) => (
                 <g key={label as string}>
                   <circle cx={x as number} cy={y as number} r="9" />

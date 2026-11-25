@@ -460,6 +460,21 @@ export const MAP_NODES: MapNode[] = [
     links: [{ label: "看家长读本", internal: "/expert-and-research#book" }],
   },
   {
+    id: "mki",
+    name: "MKI",
+    en: "知识 refinery",
+    zone: "knowledge",
+    audience: "知识工作者、Agent 与协作者",
+    problem: "知识需要能被找到、追溯出处，并说清在什么条件下适用。",
+    statuses: ["VALIDATION"],
+    capabilities: ["可检索、可追溯的知识单元", "出处与适用边界", "Agent Space 已登记发现、调用和降级约定"],
+    limits: "只观察到本地健康检查和工具发现；获授权的真实知识读取与公众可用性还没有验证。",
+    links: [
+      { label: "看接入边界与证据", internal: "/agent-space#connected-projects" },
+      { label: "MKI 源码仓（当前不可访问）", href: "https://github.com/YuemingHub/MKI-Ming-Knowledge-Intelligence" },
+    ],
+  },
+  {
     id: "agent",
     name: "Agent Space",
     en: "连接与执行",
@@ -470,6 +485,21 @@ export const MAP_NODES: MapNode[] = [
     capabilities: ["怎么进场", "把现实问题拆开", "交接上下文", "借用外部能力"],
     limits: "不是软件产品，也不是运行平台；这些能力还没有做成产品。",
     links: [{ label: "了解 Agent Space", internal: "/agent-space" }],
+  },
+  {
+    id: "shengluo",
+    name: "ShengLuo · dsh",
+    en: "DeepSeek Harness 插件",
+    zone: "execution",
+    audience: "使用 DeepSeek Harness 的开发者",
+    problem: "把 DSH 的原生会话、任务与定时能力组织成插件，同时分清源码、发行产物与公开作品集。",
+    statuses: ["VALIDATION"],
+    capabilities: ["DSH 原生会话、任务与定时能力", "源码仓与公开发行仓分开", "Agent Space 插件接入边界已登记"],
+    limits: "dsh-shengluo 是发行仓，不是开发真源；本地当前分支尚未推送，不能宣称公众可安装当前版本。",
+    links: [
+      { label: "看接入边界与证据", internal: "/agent-space#connected-projects" },
+      { label: "dsh-shengluo 公开发行仓", href: "https://github.com/YuemingHub/dsh-shengluo" },
+    ],
   },
   {
     id: "mingos",
@@ -739,4 +769,4 @@ export const EVIDENCE_LAYERS = [
 ] as const;
 
 export const MAP_AGGREGATION_NOTE =
-  "体系图按区域展示 10 个节点；证据页按项目列出 16 条记录，有些项目在图上合并成了一个节点。";
+  `体系图按区域展示 ${MAP_NODES.length} 个节点；证据页按项目列出 ${PROJECT_COUNT} 条记录，有些项目在图上合并成了一个节点。`;

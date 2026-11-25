@@ -2,14 +2,6 @@ import { Link } from "@/site/router";
 import { MAP_ZONES, MAP_NODES, STATUS_META } from "@/site/content";
 import type { MapNode } from "@/site/types";
 
-const SHORT: Record<string, string[]> = {
-  life: ["Family Space", "Self Space", "World Space"],
-  service: ["Family Service OS", "Yueming Expert OS"],
-  knowledge: ["LRDF", "Family Reality Lab", "《先看清，再伸手》"],
-  execution: ["Agent Space"],
-  technology: ["MingOS"],
-};
-
 function zoneLabel(nodes: MapNode[]) {
   const statuses = [...new Set(nodes.flatMap((node) => node.statuses))];
   return `${nodes.length} 个节点 · ${statuses.map((status) => STATUS_META[status].label).join(" + ")}`;
@@ -31,7 +23,7 @@ export function Atlas() {
               <span className="atlas-index">{zone.index}</span>
               <div className="atlas-content">
                 <h3>{zone.title}</h3>
-                <p>{SHORT[zone.id].join(" · ")}</p>
+                <p>{nodes.map((node) => node.name).join(" · ")}</p>
               </div>
               <span className="atlas-dots">
                 {nodes.map((node) => (

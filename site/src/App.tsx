@@ -20,7 +20,7 @@ const ROUTES: Record<string, { title: string; description: string; element: () =
   },
   "/ecosystem": {
     title: "体系总览",
-    description: "用五个区域和十个节点的关系图，分清哪些公开入口已经核对过、哪些关系还在设计、哪些只是未来的方向；不把概念上的关系画成已经打通的数据流。",
+    description: "用五个区域和十二个节点的关系图，分清哪些公开入口已经核对过、哪些关系还在设计、哪些只是未来的方向；不把概念上的关系画成已经打通的数据流。",
     element: () => <EcosystemPage />,
   },
   "/spaces": {
