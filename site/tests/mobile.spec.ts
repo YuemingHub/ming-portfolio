@@ -48,3 +48,27 @@ for (const route of ROUTES) {
     ).toEqual([]);
   });
 }
+
+test("手机 390 · 体系图列出 MKI 与 dsh ShengLuo", async ({ page }) => {
+  await page.goto(URL_FOR("/ecosystem"), { waitUntil: "networkidle" });
+  await expect(page.locator(".map-canvas")).toBeHidden();
+  await expect(page.locator(".map-mobile-node")).toHaveCount(12);
+  await expect(page.locator(".map-mobile")).toContainText("MKI");
+  await expect(page.locator(".map-mobile")).toContainText("ShengLuo · dsh");
+
+  await page.locator(".map-mobile-node").filter({ hasText: "MKI" }).click();
+  await expect(page.locator(".panel-title")).toHaveText("MKI");
+  await expect(page.locator(".panel-statuses")).toContainText("VALIDATION");
+  await expect(page.locator(".map-panel")).toContainText("获授权的真实知识读取与公众可用性还没有验证");
+
+  await page.locator(".map-mobile-node").filter({ hasText: "ShengLuo · dsh" }).click();
+  await expect(page.locator(".panel-title")).toHaveText("ShengLuo · dsh");
+  await expect(page.locator(".panel-statuses")).toContainText("VALIDATION");
+  await expect(page.locator(".map-panel")).toContainText("不能宣称公众可安装当前版本");
+
+  const layout = await page.evaluate(() => ({
+    scrollWidth: document.documentElement.scrollWidth,
+    clientWidth: document.documentElement.clientWidth,
+  }));
+  expect(layout.scrollWidth).toBeLessThanOrEqual(layout.clientWidth + 1);
+});
